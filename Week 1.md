@@ -86,7 +86,9 @@ In de tweede les leer je hoe je de homepage van je website kan aanpassen. Je lee
 
 ##### Opdracht 1
 
-Maak een nieuwe pagina `blog` aan met de tekst "Dit is de blog pagina". Voeg een nieuwe route toe aan het bestand `routes/web.php` en maak een nieuw bestand `blog.blade.php` in de map `resources/views`. Open de pagina `/blog` in je browser en controleer of de tekst wordt weergegeven.
+1. Maak een nieuw bestand `simple-static.blade.php` aan met de tekst "Dit is de statische pagina" in de map `resources/views`. 
+2. Voeg een nieuwe route `/static` toe aan het bestand `routes/web.php`. 
+3. Open de pagina `/static` in je browser en controleer of de tekst wordt weergegeven.
 
 ##### Opdracht 2
 
@@ -98,14 +100,14 @@ In de derde les leer je hoe je controllers kan gebruiken in Laravel. Een control
 
 #### Controller aanmaken
 
-1. Maak een nieuwe controller aan met de naam `PagesController`
+1. Maak een nieuwe controller aan met de naam `PageController`
    ```bash
-   php artisan make:controller PagesController
+   php artisan make:controller PageController
    ```
 
 #### Controller logica toevoegen
 
-1. Open de controller `app/Http/Controllers/PagesController.php`
+1. Open de controller `app/Http/Controllers/PageController.php`
 2. Voeg de volgende methode toe aan de controller
    ```php
    public function about()
@@ -122,9 +124,9 @@ In de derde les leer je hoe je controllers kan gebruiken in Laravel. Een control
    ```
 4. Voeg de volgende methode toe aan de controller
 5. ```php
-   public function blog()
+   public function static()
    {
-        return view('blog');
+        return view('simple-static');
    }
    ```
 6. Sla de wijzigingen op
@@ -132,21 +134,21 @@ In de derde les leer je hoe je controllers kan gebruiken in Laravel. Een control
 #### Route aanpassen
 
 1. Open het bestand `routes/web.php`
-2. Verwijder de bestaande routes voor `/about`, `/contact` en `/blog`
+2. Verwijder de bestaande routes voor `/about`, `/contact` en `/static`
 3. Voeg de volgende routes toe
 
    ```php
     Route::get('/about', [PageController::class, 'about']);
     Route::get('/contact', [PageController::class, 'contact']);
-    Route::get('/blog', [PageController::class, 'blog']);
+    Route::get('/static', [PageController::class, 'static']);
    ```
 
 4. Sla de wijzigingen op
-5. Open de pagina's `/about`, `/contact` en `/blog` in je browser en controleer of de tekst wordt weergegeven
+5. Open de pagina's `/about`, `/contact` en `/static` in je browser en controleer of de tekst wordt weergegeven
 
 #### Data doorgeven aan de view
 
-1. Open de controller `app/Http/Controllers/PagesController.php`
+1. Open de controller `app/Http/Controllers/PageController.php`
 2. Pas de methode `about` aan
    ```php
    public function about()
@@ -164,8 +166,8 @@ In de derde les leer je hoe je controllers kan gebruiken in Laravel. Een control
 
 ##### Opdracht 1
 
-Pas de methode `contact` aan in de controller `PagesController` zodat de view `contact.blade.php` de variabele `$email` ontvangt. Pas de view `contact.blade.php` aan zodat de variabele `$email` wordt weergegeven.
+Pas de methode `contact` aan in de controller `PageController` zodat de view `contact.blade.php` de variabele `$email` ontvangt. Pas de view `contact.blade.php` aan zodat de variabele `$email` wordt weergegeven.
 
 ##### Opdracht 2
 
-Pas de methode `blog` aan in de controller `PagesController` zodat de view `blog.blade.php` de variabele `$posts` ontvangt. Pas de view `blog.blade.php` aan zodat de variabele `$posts` wordt weergegeven.
+Pas de methode `static` aan in de controller `PageController` zodat de view `simple-static.blade.php` de variabele `$title` = "dit is een eenvoudige pagina" ontvangt. Pas de view `simple-static.blade.php` aan zodat de variabele `$title` wordt weergegeven.

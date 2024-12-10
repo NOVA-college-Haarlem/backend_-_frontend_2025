@@ -20,7 +20,7 @@ In de vierde les leer je hoe je layouts en Blade kan gebruiken in Laravel. Een l
 Er zijn twee manieren om een layout aan te maken in Laravel. Wij maken gebruik van Component-based layouts.
 
 1. Open een terminal.
-2. Maak een nieuw component aan met de naam `app-layout`
+2. Maak een nieuw component aan met de naam `base-layout`:
    ```bash
    php artisan make:component BaseLayout
    ```
@@ -52,7 +52,7 @@ Pas de view `contact.blade.php` aan zodat de layout `base-layout.blade.php` word
 
 ##### Opdracht 2
 
-Pas de view `blog.blade.php` aan zodat de layout `base-layout.blade.php` wordt gebruikt. Voeg de tekst "Blog" toe aan de pagina.
+Pas de view `simple-static.blade.php` aan zodat de layout `base-layout.blade.php` wordt gebruikt. Voeg de tekst "Simple Page" toe aan de pagina.
 
 ### Les 5: Database
 
@@ -97,9 +97,9 @@ In Laravel kan je gebruik maken van migraties om de database te structureren. Ee
    ```bash
     php artisan migrate
    ```
-5. Controleer of de tabel `categories` is aangemaakt in de **database**\\
+5. Controleer of de tabel `categories` is aangemaakt in de **database**
 
-   #### Seeder
+#### Seeder
 
 In Laravel kan je gebruik maken van seeders om de database te vullen met testgegevens. Een seeder is een PHP-klasse die gegevens in de database invoegt. Met een seeder kan je de database vullen met testgegevens zodat je de functionaliteit van je website kan testen.
 
@@ -136,16 +136,80 @@ In Laravel kan je gebruik maken van seeders om de database te vullen met testgeg
    php artisan db:seed --class=CategorySeeder
    ```
 
-> Je kunt ook een complete nieuwe database vullen met testgegevens door de volgende commando uit te voeren: `php artisan migrate:fresh --seed`
+> Je kunt ook een complete nieuwe database vullen met testgegevens door de `DatabaseSeeder.php` te wijzigen:
+
+```php
+public function run()
+{
+    $this->call([
+        CategorySeeder::class,
+      //   PostSeeder::class,
+    ]);
+}
+```
+
+> En daarna het volgende commando uit te voeren: `php artisan migrate:fresh --seed`
 
 ##### Opdracht 1
 
-Maak een nieuwe migratie aan met de naam `create_posts_table` om de tabel `posts` aan te maken. Voeg de volgende kolommen toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`. Voer de migratie uit om de tabel `posts` aan te maken.
+1. Open een terminal
+2. Maak een nieuwe migratie aan met de naam `create_posts_table` om de tabel `posts` aan te maken.
+3. Voeg de volgende kolommen toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`. 4
+4. Voer de migratie uit om de tabel `posts` aan te maken.
 
 ##### Opdracht 2
 
-Maak een nieuwe seeder aan met de naam `PostSeeder` om testgegevens in de tabel `posts` in te voegen. Voeg de volgende testgegevens toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`. Voer de seeder uit om de testgegevens in de tabel `posts` in te voegen.
+1. Open een terminal
+2. Maak een nieuwe seeder aan met de naam `PostSeeder` om testgegevens in de tabel `posts` in te voegen.
+3. Voeg de volgende testgegevens toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`.
+4. Voer de seeder uit om de testgegevens in de tabel `posts` in te voegen.
+
+#### Van DB via Controller naar View
+
+1. Open een terminal en maak een PostController aan
+   ```bash
+   php artisan make:controller PostController
+   ```
+2. Open het bestand `app/Http/Controllers/PostController.php`
+3. Voeg de volgende methode toe aan de controller om alle posts uit de database te halen
+   ```php
+   public function index()
+   {
+       $posts = DB::table('posts')->get();
+       return view('posts', compact('posts'));
+   }
+   ```
+4. Sla de wijzigingen op
+5. Open het bestand `routes/web.php`
+6. Voeg de volgende route toe om de methode `index` van de controller `PostController` aan te roepen
+   ```php
+   Route::get('/posts', [PostController::class, 'index']);
+   ```
+7. Sla de wijzigingen op
+8. Maak een nieuwe view `posts.blade.php` aan
+9. Voeg de volgende code toe aan `posts
+10. ```php
+    <x-base-layout>
+        <h1>Posts</h1>
+        <ul>
+            @foreach ($posts as $post)
+                <li>
+                    <h2>{{ $post->title }}</h2>
+                    <p>{{ $post->content }}</p>
+                </li>
+            @endforeach
+        </ul>
+    </x-base-layout>
+    ```
+11. Sla de wijzigingen op
+12. Open de pagina `/posts` in je browser en controleer of de tekst wordt weergegeven
 
 ##### Opdracht 3
 
-Maak een nieuwe route aan in het bestand `routes/web.php` met de naam `/posts`. Maak een nieuwe controller aan met de naam `PostController`. Voeg een methode `index` toe aan de controller `PostController` die alle posts uit de database haalt en doorgeeft aan de view `posts.blade.php`. Maak een nieuwe view `posts.blade.php` aan die de titel en de inhoud van de posts weergeeft.
+1. Open een terminal
+2. Maak een nieuwe controller aan met de naam `CategoryController`.
+3. Voeg een methode `index` toe
+4. Pas de methode index aan: zorg ervoor dat alle `categories` uit de database gehaald worden
+5. Stuur alle data naar de view `categories.blade.php`.
+6. Maak een nieuwe route aan in het bestand `routes/web.php` met de naam `/categories` maar wel een get methode.
+7. Maak een nieuwe view `categories.blade.php` aan die de titel en de inhoud van de categories weergeeft.
