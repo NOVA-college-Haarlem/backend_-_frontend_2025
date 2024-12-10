@@ -20,6 +20,11 @@
     - [Model aanmaken](#model-aanmaken)
     - [Model gebruiken](#model-gebruiken)
       - [Opdracht 6](#opdracht-6)
+    - [Overige Post methodes aanpassen](#overige-post-methodes-aanpassen)
+      - [Opdracht 7](#opdracht-7)
+      - [Opdracht 8](#opdracht-8)
+        - [Opdracht 9](#opdracht-9)
+        - [Opdracht 10](#opdracht-10)
 
 ### Leerdoelen week 3
 
@@ -247,7 +252,8 @@ In de zevende les leer je hoe je Eloquent Models kan gebruiken in Laravel. Een E
 
 #### Model aanmaken
 
-1.  Maak een nieuwe model aan met de naam `Post`
+1.  Open een terminal
+2.  Maak een nieuwe model aan met de naam `Post` door het volgende commando uit te voeren:
 
 ```bash
 php artisan make:model Post
@@ -278,3 +284,85 @@ public function index()
 ##### Opdracht 6
 
 Maak een model aan met de naam `Category` en zorg ervoor dat de model de tabel `categories` representeert. Voeg de velden `name`, `slug` en `description` toe aan het model. Gebruik de `Category` model in de `CategoryController` om gegevens uit de database te halen en te tonen in de view `categories/index.blade.php`.
+
+#### Overige Post methodes aanpassen
+
+We dienen het model Post ook te gebruiken in de show methode. We passen de show methode aan zodat we het model Post gebruiken.
+
+```php
+public function show($id)
+{
+   // $post = DB::table('posts')->find($id);
+   $post = Post::find($id);
+   return view('posts.show', compact('post'));
+}
+```
+
+En in de store methode
+
+```php
+public function store(Request $request)
+{
+   $request->validate([
+      'title' => 'required',
+      'content' => 'required',
+   ]);
+
+   // DB::table('posts')->insert([
+   Post::create([
+      'title' => $request->title,
+      'slug'  => Str::slug($request->title),
+      'content' => $request->content,
+   ]);
+
+   return redirect('/posts');
+}
+```
+
+En in de edit methode
+
+```php
+public function edit($id)
+{
+   // $post = DB::table('posts')->find($id);
+   $post = Post::find($id);
+   return view('posts.edit', compact('post'));
+}
+```
+
+En in de update methode
+
+```php
+public function update(Request $request, $id)
+{
+   $request->validate([
+      'title' => 'required',
+      'content' => 'required',
+   ]);
+
+   // $post = DB::table('posts')->where('id', $id)->update([
+   $post = Post::where('id', $id)->update([
+      'title' => $request->title,
+      'slug'  => Str::slug($request->title),
+      'content' => $request->content,
+   ]);
+
+   return redirect('/posts');
+}
+```
+
+##### Opdracht 7
+
+Pas de show methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
+
+##### Opdracht 8
+
+Pas de store methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
+
+###### Opdracht 9
+
+Pas de edit methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
+
+###### Opdracht 10
+
+Pas de update methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
