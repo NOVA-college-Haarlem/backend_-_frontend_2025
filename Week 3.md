@@ -134,41 +134,45 @@ Route::post('/posts', [ PostController::class, 'store' ]);
 public function store(Request $request)
 {
    //hier controleer je of de velden title en content zijn ingevuld
-      $request->validate([
-         'title' => 'required',
-         'content' => 'required',
-      ]);
+   $request->validate([
+      'title' => 'required',
+      'content' => 'required',
+   ]);
 
-      DB::table('posts')->insert([
-         'title' => $request->title,
-         'slug'  => Str::slug($request->title),
-         'content' => $request->content,
-      ]);
+   DB::table('posts')->insert([
+      'title' => $request->title,
+      'slug'  => Str::slug($request->title),
+      'content' => $request->content,
+   ]);
 
-      return redirect('/posts');
+   return redirect('/posts');
 }
 ```
 
 4.  Waarschijnlijk krijg je een foutmelding dat de `Str` class niet bestaat. Voeg de volgende code toe bovenaan `PostController.php` om de `Str` class te importeren.
-    ```php
-    use Illuminate\Support\Str;
-    ```
+
+```php
+use Illuminate\Support\Str;
+```
+
 5.  Test je code. Ga naar `http://blog.test/posts/create` en vul het formulier in. Klik op de submit knop. Je wordt doorgestuurd naar `http://blog.test/posts` en de gegevens zijn opgeslagen in de database.
 
 #### foutmeldingen tonen
 
 1.  Voeg de volgende code toe aan `create.blade.php` om foutmeldingen te tonen.
-    ```php
-    @if ($errors->any())
-       <div>
-          <ul>
-                @foreach ($errors->all() as $error)
-                   <li>{{ $error }}</li>
-                @endforeach
-          </ul>
-       </div>
-    @endif
-    ```
+
+```php
+@if ($errors->any())
+   <div>
+      <ul>
+            @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+            @endforeach
+      </ul>
+   </div>
+@endif
+```
+
 2.  Test je code. Ga naar `http://blog.test/posts/create` en klik op de submit knop zonder iets in te vullen. Je krijgt een foutmelding te zien.
 
 ##### Opdracht 3
@@ -183,18 +187,20 @@ Zorg ervoor dat de data gevalideerd wordt en eventuele foutmeldingen getoond wor
 
 1.  Voeg de volgende code toe aan `PostController.php` om een post te bewerken
 
-    ```php
-    public function edit($id)
-    {
-          $post = DB::table('posts')->find($id);
-          return view('posts.edit', compact('post'));
-    }
-    ```
+```php
+public function edit($id)
+{
+      $post = DB::table('posts')->find($id);
+      return view('posts.edit', compact('post'));
+}
+```
 
 2.  Maak een nieuwe route aan in `web.php` om de `edit` methode te tonen
-    ```php
-    Route::get('/posts/{id}/edit', [ PostController::class, 'edit' ]);
-    ```
+
+```php
+Route::get('/posts/{id}/edit', [ PostController::class, 'edit' ]);
+```
+
 3.  Maak een nieuwe view aan met de naam `edit.blade.php` in de map `posts` en toon een formulier om de gegevens van de post te bewerken.
 4.  Test je code. Ga naar `http://blog.test/posts/1/edit` en je ziet een formulier om de gegevens van de post met id 1 te bewerken.
 
@@ -206,44 +212,48 @@ Maak een `edit` methode in de `CategoryController` om een categorie te bewerken.
 
 1.  Voeg de volgende code toe aan `PostController.php` om een post te updaten
 
-    ```php
-    public function update(Request $request, $id)
-    {
-          $request->validate([
-             'title' => 'required',
-             'content' => 'required',
-          ]);
+```php
+public function update(Request $request, $id)
+{
+      $request->validate([
+         'title' => 'required',
+         'content' => 'required',
+      ]);
 
-          $post = DB::table('posts')->where('id', $id)->update([
-             'title' => $request->title,
-             'slug'  => Str::slug($request->title),
-             'content' => $request->content,
-          ]);
+      $post = DB::table('posts')->where('id', $id)->update([
+         'title' => $request->title,
+         'slug'  => Str::slug($request->title),
+         'content' => $request->content,
+      ]);
 
 
-          return redirect('/posts');
-    }
-    ```
+      return redirect('/posts');
+}
+```
 
 2.  Maak een nieuwe route aan in `web.php` om de `update` methode te verwerken
-    ```php
-    Route::put('/posts/{id}', [ PostController::class, 'update' ]);
-    ```
+
+```php
+Route::put('/posts/{id}', [ PostController::class, 'update' ]);
+```
+
 3.  Voeg de volgende code toe aan `edit.blade.php` om de gegevens van de post te tonen in het formulier
 4.  Test je code. Ga naar `http://blog.test/posts/1/edit` en bewerk de gegevens van de post met id 1.
 5.  Klik op de submit knop en je wordt doorgestuurd naar `http://blog.test/posts` en de gegevens zijn geüpdatet in de database.
 6.  Voeg de volgende code toe aan `edit.blade.php` om de gegevens van de post te tonen in het formulier
-    ```php
-    <form action="/posts/{{ $post->id }}" method="POST">
-       @csrf
-       @method('PUT')
-       <label for="title">Title</label>
-       <input type="text" name="title" id="title" value="{{ $post->title }}">
-       <label for="content">Content</label>
-       <textarea name="content" id="content">{{ $post->content }}</textarea>
-       <button type="submit">Submit</button>
-    </form>
-    ```
+
+```php
+<form action="/posts/{{ $post->id }}" method="POST">
+   @csrf
+   @method('PUT')
+   <label for="title">Title</label>
+   <input type="text" name="title" id="title" value="{{ $post->title }}">
+   <label for="content">Content</label>
+   <textarea name="content" id="content">{{ $post->content }}</textarea>
+   <button type="submit">Submit</button>
+</form>
+```
+
 7.  Test je code. Ga naar `http://blog.test/posts/1/edit` en bewerk de gegevens van de post met id 1. Klik op de submit knop en je wordt doorgestuurd naar `http://blog.test/posts` en de gegevens zijn geüpdatet in de database.
 
 ### Les 7: Eloquent Models
@@ -364,5 +374,3 @@ Pas de store methode in de `CategoryController` aan zodat de `Category` model ge
 Pas de edit methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
 
 ###### Opdracht 10
-
-Pas de update methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
