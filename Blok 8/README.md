@@ -38,3 +38,29 @@ In dit lesprogramma leer je hoe je een website maakt met Laravel. Laravel is een
 > - Ik kan gegevens verwijderen uit de database.
 > - Ik kan een bevestigingspagina maken voor het verwijderen van gegevens.
 > - Ik kan een zoekfunctie maken in Laravel.
+
+## Week 4 - Database Relaties
+> - Database relaties
+>   - One-to-One relaties
+>   - One-to-Many relaties
+>   - Many-to-Many relaties
+> - Eloquent relaties
+>   - Relaties definiëren in models
+>   - Pivot tables
+  - Relatie queries
+> - Formulieren met relaties
+>   - Dropdown menus voor relaties
+>   - Validatie met relaties
+>   - Data opslaan met relaties
+
+## Week 5 - Laravel Breeze
+> - Laravel Breeze installatie en setup
+>   - Nieuwe componenten van Breeze:
+>     - Routes in routes/web.php
+>     - Views in resources/views/auth
+>     - Controllers in app/Http/Controllers/Auth
+>     - Middleware in app/Http/Middleware/Authenticate.php
+> - Authenticatie
+>   - Login/registratie systeem
+>   - Auth middleware gebruik
+>   - Gebruikersauthenticatie

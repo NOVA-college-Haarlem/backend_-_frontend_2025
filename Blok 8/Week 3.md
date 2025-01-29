@@ -24,6 +24,13 @@
       - [Opdracht 8](#opdracht-8)
         - [Opdracht 9](#opdracht-9)
       - [Opdracht 10](#opdracht-10)
+    - [TagController](#tagcontroller)
+      - [Opdracht 11](#opdracht-11)
+      - [Opdracht 12](#opdracht-12)
+      - [Opdracht 13](#opdracht-13)
+      - [Opdracht 14](#opdracht-14)
+      - [Opdracht 15](#opdracht-15)
+      - [Opdracht 16](#opdracht-16)
 
 ## Leerdoelen week 3
 
@@ -361,3 +368,45 @@ Pas de store methode in de `CategoryController` aan zodat de `Category` model ge
 Pas de edit methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
 
 #### Opdracht 10
+
+Pas de update methode in de `CategoryController` aan zodat de `Category` model gebruikt wordt in plaats van de `DB` class.
+
+### TagController
+
+#### Opdracht 11
+Maak een nieuwe controller aan met de naam `TagController`. Maak voor de verschillende methodes een route aan in `web.php`
+
+- index
+- show
+- create
+- store
+- edit
+- update
+- destroy
+
+#### Opdracht 12
+
+Schrijf de index methode in de `TagController` en maak een view aan met de naam `index.blade.php` in de map `tags`. Toon in de view de tags die in de database staan.
+
+#### Opdracht 13
+
+Schrijf de show methode in de `TagController` en maak een view aan met de naam `show.blade.php` in de map `tags`. Toon in de view de tag die in de database staat.
+
+#### Opdracht 14
+
+Schrijf de edit methode in de `TagController` en maak een view aan met de naam `edit.blade.php` in de map `tags`. Toon in de view een formulier met de gegevens van de tag die bewerkt moet worden.
+
+De edit methode moet de tag ophalen uit de database en deze doorgeven aan de view. De view moet een formulier bevatten met de volgende velden:
+
+- name (text input)
+- description (textarea)
+
+Het formulier moet de gegevens van de tag al ingevuld hebben. Als er een fout optreedt bij het valideren van het formulier, moeten de ingevulde gegevens bewaard blijven.
+
+#### Opdracht 15
+
+Schrijf de update methode in de `TagController`. Redirect de gebruiker naar de index pagina van de tags.
+
+#### Opdracht 16
+
+Schrijf de destroy methode in de `TagController` en maak een view aan met de naam `destroy.blade.php` in de map `tags`. Toon in de view een formulier met de gegevens van de tag die verwijderd moet worden.
