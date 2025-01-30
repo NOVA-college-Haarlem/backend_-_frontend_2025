@@ -75,12 +75,32 @@ Zorg ervoor dat de stijling op elke pagina correct is. Dit kun je doen door de h
 
 - Maak een nieuwe component door in de terminal `php artisan make:component HomeLayout` te typen.
 
-Er zijn nu twee bestanden aangemaakt: `HomeLayout.blade.php` en `HomeLayout.php`.
+Er zijn nu twee bestanden aangemaakt: `home-layout.blade.php` en `home-layout.php`.
 
-- Kopieer de code van de `home.blade.php` naar de `HomeLayout.blade.php` file.
-- Zet de variable `{{ $slot }}` in de `HomeLayout.blade.php` file.
+- Kopieer de code van de `home.blade.php` naar de `home-layout.blade.php` file.
+- Zet de variable `{{ $slot }}` in de `home-layout.blade.php` file.
 
 #### Opdracht 3.2
 
 - Zorg ervoor dat de homeLayout component wordt gebruikt in alle views
+
+# Week 2 - Validatie
+
+Validatie is een belangrijk onderdeel van elke webapplicatie. Het is de proces van het controleren of de ingevoerde data voldoet aan de vereisten die we hebben gedefinieerd.
+
+In het project Taxi Pro hebben we al een aantal validaties gemaakt. Deze validaties zijn echter nog niet optimaal. We gaan deze validaties verbeteren in deze week.
+
+### Opdracht 4 - Validatie verbeteren
+
+Op dit moment heeft elke methode in de controllers een validatie. Dit is niet optimaal. We gaan op 1 plek validaties definiëren.
+
+#### Opdracht 4.1
+
+- Open de documentatie van Laravel: [https://laravel.com/docs/validation](https://laravel.com/docs/validation)
+- Lees de documentatie over het gebruik van validaties in Laravel.
+- Maak een nieuwe request aan met de naam `DriverRequest`.
+- Er wordt nu een nieuw bestand aangemaakt: `DriverRequest.php` in de directory `app/Http/Requests`.
+- Open dit bestand en kopieer de code van de store methode van de `DriverController` naar de `DriverRequest` file.
+- Deze validaties kun je nu ook gebruiken voor de update methode van de `DriverController`.
+
 
