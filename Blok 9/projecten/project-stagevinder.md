@@ -22,6 +22,7 @@ StageFinder is een platform waar studenten en bedrijven elkaar kunnen vinden voo
 - Rating systeem voor stageplekken
 - Overzicht van best beoordeelde bedrijven
 
+
 ## Technische Specificaties
 
 - Laravel 10.x
