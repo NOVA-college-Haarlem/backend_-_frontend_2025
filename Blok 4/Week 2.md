@@ -1,4 +1,3 @@
-
 # Blok 4
 
 ## Week 2
@@ -149,12 +148,3 @@ $hp = intval($_POST['hp']);
 ```
 
 2. Kun je dit ook aanpassen voor attack en defense?
-
-
-
-
-
-
-
-
-
