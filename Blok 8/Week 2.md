@@ -52,7 +52,7 @@ Pas de view `contact.blade.php` aan zodat de layout `base-layout.blade.php` word
 
 ##### Opdracht 2
 
-Pas de view `simple-static.blade.php` aan zodat de layout `base-layout.blade.php` wordt gebruikt. Voeg de tekst "Simple Page" toe aan de pagina.
+Pas de view `links.blade.php` aan zodat de layout `base-layout.blade.php` wordt gebruikt. Voeg de tekst "Links Page" toe aan de pagina.
 
 ### Les 5: Database
 
@@ -68,72 +68,73 @@ Bij het initialiseren van een nieuw Laravel project wordt er standaard een SQLit
 
 In Laravel kan je gebruik maken van migraties om de database te structureren. Een migratie is een PHP-klasse die de structuur van de database beschrijft. Met een migratie kan je tabellen aanmaken, kolommen toevoegen en verwijderen, en de structuur van de database aanpassen.
 
-1. Maak een nieuwe migratie aan met de naam `create_categories_table`
+1. Maak een nieuwe migratie aan met de naam `create_companies_table`
    ```bash
-   php artisan make:migration create_categories_table
+   php artisan make:migration create_companies_table
    ```
-2. Open het bestand `database/migrations/2022_01_01_000000_create_categories_table.php`
-3. Voeg de volgende code toe aan de migratie om de tabel `categories` aan te maken
+2. Open het bestand `database/migrations/2022_01_01_000000_create_companies_table.php`
+3. Voeg de volgende code toe aan de migratie om de tabel `companies` aan te maken
 
    ```php
    public function up()
    {
-       Schema::create('categories', function (Blueprint $table) {
+       Schema::create('companies', function (Blueprint $table) {
            $table->id();
            $table->string('name');
            $table->string('slug')->unique();
            $table->text('description')->nullable();
+
            $table->timestamps();
        });
    }
 
    public function down()
    {
-       Schema::dropIfExists('categories');
+       Schema::dropIfExists('companies');
    }
    ```
 
-4. Voer de migratie uit om de tabel `categories` aan te maken
+4. Voer de migratie uit om de tabel `companies` aan te maken
    ```bash
     php artisan migrate
    ```
-5. Controleer of de tabel `categories` is aangemaakt in de **database**
+5. Controleer of de tabel `companies` is aangemaakt in de **database**
 
 #### Seeder
 
 In Laravel kan je gebruik maken van seeders om de database te vullen met testgegevens. Een seeder is een PHP-klasse die gegevens in de database invoegt. Met een seeder kan je de database vullen met testgegevens zodat je de functionaliteit van je website kan testen.
 
-1. Maak een nieuwe seeder aan met de naam `CategorySeeder`
+1. Maak een nieuwe seeder aan met de naam `CompanySeeder`
    ```bash
-   php artisan make:seeder CategorySeeder
+   php artisan make:seeder CompanySeeder
    ```
-2. Open het bestand `database/seeders/CategorySeeder.php`
-3. Voeg de volgende code toe aan de seeder om testgegevens in de tabel `categories` in te voegen
+2. Open het bestand `database/seeders/CompanySeeder.php`
+3. Voeg de volgende code toe aan de seeder om testgegevens in de tabel `companies` in te voegen
 
    ```php
    public function run()
    {
-       DB::table('categories')->insert([
-           'name' => 'PHP',
-           'slug' => 'php',
-           'description' => 'PHP is a popular programming language for web development.',
+       DB::table('companies')->insert([
+           'name' => 'Webbureau Van Steen',
+           'slug' => 'webbureau-van-steen',
+           'description' => 'Webbureau Van Steen voor al uw websites en apps',
            'created_at' => now(),
            'updated_at' => now(),
        ]);
 
-       DB::table('categories')->insert([
-           'name' => 'JavaScript',
-           'slug' => 'javascript',
-           'description' => 'JavaScript is a programming language for web development.',
+       DB::table('companies')->insert([
+           'name' => 'Jose Monkey',
+           'slug' => 'jose-monkey',
+           'description' => 'Jose Monkey Coding for profs.',
            'created_at' => now(),
            'updated_at' => now(),
        ]);
    }
    ```
 
-4. Voer de seeder uit om de testgegevens in de tabel `categories` in te voegen
+4. Voer de seeder uit om de testgegevens in de tabel `companies` in te voegen
    ```bash
-   php artisan db:seed --class=CategorySeeder
+   php artisan db:seed --class=CompanySeeder
    ```
 
 > Je kunt ook een complete nieuwe database vullen met testgegevens door de `DatabaseSeeder.php` te wijzigen:
@@ -142,8 +143,8 @@ In Laravel kan je gebruik maken van seeders om de database te vullen met testgeg
 public function run()
 {
     $this->call([
-        CategorySeeder::class,
-      //   PostSeeder::class,
+        CompanySeeder::class,
+      //   IntershipsSeeder::class,
     ]);
 }
 ```
@@ -153,63 +154,62 @@ public function run()
 ##### Opdracht 1
 
 1. Open een terminal
-2. Maak een nieuwe migratie aan met de naam `create_posts_table` om de tabel `posts` aan te maken.
-3. Voeg de volgende kolommen toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`. 4
-4. Voer de migratie uit om de tabel `posts` aan te maken.
+2. Maak een nieuwe migratie aan met de naam `create_interships_table` om de tabel `internships` aan te maken.
+3. Voeg de volgende kolommen toe aan de tabel `internships`: `title`, `slug`, `start_date`, `end_date`, `hours_per_week`, `compensation`, `type`, `description`, `level_of_education`, `created_at` en `updated_at`.
+4. Voer de migratie uit om de tabel `internships` aan te maken.
 
 ##### Opdracht 2
 
 1. Open een terminal
-2. Maak een nieuwe seeder aan met de naam `PostSeeder` om testgegevens in de tabel `posts` in te voegen.
-3. Voeg de volgende testgegevens toe aan de tabel `posts`: `title`, `slug`, `content`, `category_id`, `created_at` en `updated_at`.
-4. Voer de seeder uit om de testgegevens in de tabel `posts` in te voegen.
+2. Maak een nieuwe seeder aan met de naam `IntershipsSeeder` om testgegevens in de tabel `internships` in te voegen.
+3. Voeg de volgende testgegevens toe aan de tabel `internships`: `internships`, `slug`, `start_date`, `end_date`, `hours_per_week`, `compensation`, `type`, `description`, `level_of_education`, `created_at` en `updated_at`.
+4. Voer de seeder uit om de testgegevens in de tabel `internships` in te voegen.
 
 #### Van DB via Controller naar View
 
-1. Open een terminal en maak een PostController aan
+1. Open een terminal en maak een InternshipController aan
    ```bash
-   php artisan make:controller PostController
+   php artisan make:controller InternshipController
    ```
-2. Open het bestand `app/Http/Controllers/PostController.php`
-3. Voeg de volgende methode toe aan de controller om alle posts uit de database te halen
+2. Open het bestand `app/Http/Controllers/InternshipController.php`
+3. Voeg de volgende methode toe aan de controller om alle internships uit de database te halen
    ```php
    public function index()
    {
-       $posts = DB::table('posts')->get();
-       return view('posts', compact('posts'));
+       $internships = DB::table('internships')->get();
+       return view('internships', compact('internships'));
    }
    ```
 4. Sla de wijzigingen op
 5. Open het bestand `routes/web.php`
-6. Voeg de volgende route toe om de methode `index` van de controller `PostController` aan te roepen
+6. Voeg de volgende route toe om de methode `index` van de controller `InternshipController` aan te roepen
    ```php
-   Route::get('/posts', [PostController::class, 'index']);
+   Route::get('/internships', [InternshipController::class, 'index']);
    ```
 7. Sla de wijzigingen op
-8. Maak een nieuwe view `posts.blade.php` aan
-9. Voeg de volgende code toe aan `posts
+8. Maak een nieuwe view `internships.blade.php` aan
+9. Voeg de volgende code toe aan `internships
 10. ```php
     <x-base-layout>
-        <h1>Posts</h1>
+        <h1>nternships</h1>
         <ul>
-            @foreach ($posts as $post)
+            @foreach ($internships as $internship)
                 <li>
-                    <h2>{{ $post->title }}</h2>
-                    <p>{{ $post->content }}</p>
+                    <h2>{{ $internship->title }}</h2>
+                    <p>{{ $internship->start_date }}</p>
+                    <p>{{ $internship->enddate_date }}</p>
                 </li>
             @endforeach
         </ul>
     </x-base-layout>
     ```
 11. Sla de wijzigingen op
-12. Open de pagina `/posts` in je browser en controleer of de tekst wordt weergegeven
+12. Open de pagina `/internships` in je browser en controleer of de tekst wordt weergegeven
 
 ##### Opdracht 3
 
-1. Open een terminal
-2. Maak een nieuwe controller aan met de naam `CategoryController`.
-3. Voeg een methode `index` toe
-4. Pas de methode index aan: zorg ervoor dat alle `categories` uit de database gehaald worden
-5. Stuur alle data naar de view `categories.blade.php`.
-6. Maak een nieuwe route aan in het bestand `routes/web.php` met de naam `/categories` maar wel een get methode.
-7. Maak een nieuwe view `categories.blade.php` aan die de titel en de inhoud van de categories weergeeft.
+1. Doe nu hetzelde zoals het bovenstaande voor opleidingen:
+2. Maak een controller: EducationController
+3. Maak een seeder: EducationSeeder
+4. Maak een view: educations/index
+5. Zorg dat je de educations kunt zien op het scherm
