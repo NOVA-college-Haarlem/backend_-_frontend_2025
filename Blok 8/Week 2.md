@@ -167,6 +167,8 @@ public function run()
 
 #### Van DB via Controller naar View
 
+##### Opdracht 3
+
 1. Open een terminal en maak een InternshipController aan
    ```bash
    php artisan make:controller InternshipController
@@ -206,7 +208,7 @@ public function run()
 11. Sla de wijzigingen op
 12. Open de pagina `/internships` in je browser en controleer of de tekst wordt weergegeven
 
-##### Opdracht 3
+##### Opdracht 4
 
 1. Doe nu hetzelde zoals het bovenstaande voor opleidingen:
 2. Maak een controller: EducationController
