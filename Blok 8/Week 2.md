@@ -161,7 +161,7 @@ public function run()
 ##### Opdracht 2
 
 1. Open een terminal
-2. Maak een nieuwe seeder aan met de naam `IntershipsSeeder` om testgegevens in de tabel `internships` in te voegen.
+2. Maak een nieuwe seeder aan met de naam `InternshipsSeeder` om testgegevens in de tabel `internships` in te voegen.
 3. Voeg de volgende testgegevens toe aan de tabel `internships`: `internships`, `slug`, `start_date`, `end_date`, `hours_per_week`, `compensation`, `type`, `description`, `level_of_education`, `created_at` en `updated_at`.
 4. Voer de seeder uit om de testgegevens in de tabel `internships` in te voegen.
 
@@ -197,7 +197,7 @@ public function run()
         <ul>
             @foreach ($internships as $internship)
                 <li>
-                    <h2>{{ $internship->title }}</h2>
+                    <h2>{{$internship->title }}</h2>
                     <p>{{ $internship->start_date }}</p>
                     <p>{{ $internship->enddate_date }}</p>
                 </li>
