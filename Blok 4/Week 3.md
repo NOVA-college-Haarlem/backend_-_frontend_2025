@@ -49,3 +49,46 @@ In de vorige les hebben we gewerkt met een database en hebben we gebruik gemaakt
 4. Als een gebruiker succesvol is geregistreerd, wordt deze doorgestuurd naar de `users_create_thankyou.php` pagina.
 5. Als een gebruiker niet succesvol is geregistreerd, wordt deze doorgestuurd naar de `users_create_error.php` pagina.
 
+## Les 2 - Login
+
+In deze les gaan we een login functionaliteit toevoegen aan onze website.
+
+Een login functionaliteit bestaat uit twee delen:
+1. Een login formulier.
+2. Een login proces.
+
+### Opdracht 1
+
+1. Maak een nieuw bestand aan genaamd `login.php`
+2. Maak in dit bestand een form aan voor het inloggen van een gebruiker.
+3. Gebruik de volgende velden:
+    - email
+    - password
+4. Zorg ervoor dat de gebruiker weet welke velden hij moet invullen.
+5. Zorg ervoor dat de `name`-attributen dezelfde namen hebben als de kolommen in de tabel `users`.
+
+### Opdracht 2
+
+1. Maak een nieuw bestand aan genaamd `login_process.php`
+2. Schrijf hier code waarmee je de data uit het formulier kunt valideren.   
+3. Controleer of de email bestaat in de database.
+4. Controleer of de password correct is.
+5. Als de gebruiker correct is ingelogd, wordt deze doorgestuurd naar de `dashboard.php` pagina.
+6. Als de gebruiker niet correct is ingelogd, wordt deze doorgestuurd naar de `login.php` pagina.
+
+### Opdracht 3
+Parameters aanbrengen in de URL
+
+Als het inloggen mislukt, willen we de gebruiker terugsturen naar de `login.php` pagina met een error message.
+
+We kunnen hiervoor parameters toevoegen aan de URL.
+
+1. Voeg een parameter `error` toe aan de URL.
+2. Als het inloggen mislukt, wordt deze parameter toegevoegd aan de URL.
+3. We kunnen deze parameter gebruiken om een error message te tonen.
+4. Dit doen we door te controlleren of de parameter `error` bestaat.
+5. Als de parameter bestaat, wordt deze erbij getoond.  
+
+
+
+
