@@ -131,9 +131,12 @@ if (strlen($name) < 3) {
 
 #### Opdracht 8
 
-Je hebt misschien ook gemerkt dat voor weight en height wij decimalen moeten gebruiken. Dit is onhandig in een text veld. We gaan deze dus laten zijn in een float veld.
+Je hebt misschien ook gemerkt dat voor weight en height wij decimalen moeten gebruiken. Dit is onhandig in een text veld. 
+1. Pas het input veld van weight en height aan zodat het een float veld is. 
+   `<input type="number" step="0.1" id="weight" name="weight">`
+   `<input type="number" step="0.1" id="height" name="height">`
 
-1. Pas de code aan zodat weight en height floats zijn.
+2. Pas de code aan zodat weight en height floats zijn.
 ```php
 $weight = floatval($_POST['weight']);
 $height = floatval($_POST['height']);
@@ -141,10 +144,11 @@ $height = floatval($_POST['height']);
 
 #### Opdracht 9
 Dan hebben we ook nog te maken met hitpoints (hp). Dit is een integer.
-
-1. Pas de code aan zodat hp een integer is.
+1. Pas het input veld van hp aan zodat het een integer is.
+   `<input type="number" id="hp" name="hp">`
+2. Pas de code aan zodat hp een integer is.
 ```php
 $hp = intval($_POST['hp']);
 ```
 
-2. Kun je dit ook aanpassen voor attack en defense?
+3. Kun je dit ook aanpassen voor attack en defense?
