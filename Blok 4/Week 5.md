@@ -1,6 +1,8 @@
-# Week 5
+# Blok 4
 
-## Les 1 - Search   
+## Week 5
+
+### Les 1 - Search   
 
 In deze les gaan we een search formulier maken.
 
@@ -13,15 +15,15 @@ We kunnen het dashboard iets persoonlijker maken.
 3. We kunnen deze gebruiker gegevens in de session zetten.
 4. We kunnen deze gebruiker gegevens in de database zetten.
 
-## Les 2 - Dashboard data
+### Les 2 - Dashboard data
 
 In deze les gaan we de data uit de database halen en tonen op het dashboard.
 
-### Opdracht 1
+#### Opdracht 1
 
 
 
-### Opdracht 1
+#### Opdracht 1
 
 Maak op het dashboard een search formulier.
 

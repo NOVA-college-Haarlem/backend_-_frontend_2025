@@ -1,10 +1,12 @@
-# Week 3
+# Blok 4
 
-## Les 1 - Sessions
+## Week 4
+
+### Les 1 - Sessions
 
 In deze les gaan we een session starten. Een session is een manier om data tussen de server en de client te bewaren. Dit is handig voor het inloggen van gebruikers.
 
-### Opdracht 1
+#### Opdracht 1
 
 We schermen de pagina `dashboard.php` af. Dit kunnen we doen met de volgende code:
 
@@ -20,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
 We controlleren of de user_id in de session array bestaat. Als deze niet bestaat, wordt de gebruiker doorgestuurd naar de `login.php` pagina.
 
 
-### Opdracht 2
+#### Opdracht 2
 
 Hoe zorgen we er dan voor dat de gebruiker succesvol kan inloggen?
 
@@ -63,11 +65,11 @@ exit(); //dit is nodig om de script te stoppen
 Als je alles goed hebt gedaan, zou je nu na het uitloggen naar de `login.php` pagina moeten worden doorgestuurd.
 
 
-## Les 2 - Rollen
+### Les 2 - Rollen
 
 In deze les gaan we de rollen toevoegen aan de gebruiker. Als je in de database kijkt, zie je dat we een `role` kolom hebben in de `users` tabel. Deze rol kunnen we uitlezen en gebruiken om de gebruiker te bepalen of deze gebruiker een admin is of niet.
 
-### Opdracht 1
+#### Opdracht 1
 
 1. Maak een nieuw bestand aan genaamd `admin-dashboard.php`
 2. Maak een nieuw bestand aan genaamd `user-dashboard.php`
