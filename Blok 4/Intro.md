@@ -28,13 +28,14 @@ zie: [Week 3](Week%203.md)
 
 ## Week 4
 
-In week 4 brengen we sessies aan. We gebruiken deze sessies om de gebruiker te authenticeren en pagina's te beschermen.
+In week 4 brengen we sessies aan. We gebruiken deze sessies om de gebruiker te authenticeren en pagina's te beschermen. Als dat allemaal gelukt is gaan we op basis van de rol van de gebruiker verschillende pagina's tonen.
 
 zie: [Week 4](Week%204.md)
 
 ## Week 5
 
-In week 5 gaan we verder met formulieren. We gaan een search formulier maken.
+In
+In week 5 gaan we verder met formulieren. We gaan een search formulier maken. We gaan zoeken naar cards in de database en op basis van de zoekterm kaarten op het scherm tonen. Daarnaast gaan we wat data op het dashboad tonen op basis van database gegegevens.
 
 zie: [Week 5](Week%205.md)
 

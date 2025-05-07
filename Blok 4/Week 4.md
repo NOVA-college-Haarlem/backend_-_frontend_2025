@@ -62,22 +62,15 @@ exit(); //dit is nodig om de script te stoppen
 
 Als je alles goed hebt gedaan, zou je nu na het uitloggen naar de `login.php` pagina moeten worden doorgestuurd.
 
-#### Opdracht 4
 
-We kunnen het dashboard iets persoonlijker maken.
+## Les 2 - Rollen
 
-1. We hebben al de gebruiker ID in de session zetten.
-2. We kunnen deze gebruiker ID gebruiken om de gebruiker te selecteren uit de database.
-3. We kunnen deze gebruiker gegevens in de session zetten.
-4. We kunnen deze gebruiker gegevens in de database zetten.
-
-## Les 2 - Dashboard data
-
-In deze les gaan we de data uit de database halen en tonen op het dashboard.
+In deze les gaan we de rollen toevoegen aan de gebruiker. Als je in de database kijkt, zie je dat we een `role` kolom hebben in de `users` tabel. Deze rol kunnen we uitlezen en gebruiken om de gebruiker te bepalen of deze gebruiker een admin is of niet.
 
 ### Opdracht 1
 
-
+1. Maak een nieuw bestand aan genaamd `admin-dashboard.php`
+2. Maak een nieuw bestand aan genaamd `user-dashboard.php`
 
 
 
