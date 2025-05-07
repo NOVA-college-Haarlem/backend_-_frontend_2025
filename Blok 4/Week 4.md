@@ -67,12 +67,58 @@ Als je alles goed hebt gedaan, zou je nu na het uitloggen naar de `login.php` pa
 
 ### Les 2 - Rollen
 
-In deze les gaan we de rollen toevoegen aan de gebruiker. Als je in de database kijkt, zie je dat we een `role` kolom hebben in de `users` tabel. Deze rol kunnen we uitlezen en gebruiken om de gebruiker te bepalen of deze gebruiker een admin is of niet.
+In deze les gaan we de rollen toevoegen aan de gebruiker. Als je in de database kijkt, zie je dat we een `role` kolom hebben in de `users` tabel. Deze rol kunnen we uitlezen. Op basis hiervan kunnen we de gebruiker bepalen of deze gebruiker een admin is of niet. 
 
 #### Opdracht 1
 
-1. Maak een nieuw bestand aan genaamd `admin-dashboard.php`
-2. Maak een nieuw bestand aan genaamd `user-dashboard.php`
+1. We passen de eerder gemaakte `dashboard.php` aan naar `admin-dashboard.php`
+2. Dit betekent ook dat we de zogenaamde redirect ook aan moeten aanpassen. Als je de pagina login_process.php bekijkt, zie je dat we de gebruiker doorsturen naar de `dashboard.php` pagina. Dit moeten we aanpassen zodat de gebruiker wordt doorgestuurd naar de `admin-dashboard.php` pagina.
+
+> Je zult nu wel denken, 'he, nu gaan alle gebruikers naar de admin-dashboard.php pagina?' Dit gaan we nu aanpassen.
+
+#### Opdracht 2
+
+Bij `login_process.php` gaan we controleren of de gebruiker een admin is. Als de gebruiker een admin is, wordt hij doorgestuurd naar de `admin-dashboard.php` pagina. Als de gebruiker geen admin is, wordt hij doorgestuurd naar de `user-dashboard.php` pagina.
+
+1. Gebruik onderstaande code om de gebruiker te controleren of deze een admin is.
+
+```php
+//login_process.php
+//..succesvol ingelogd
+
+if($user['role'] == 'admin'){
+    header('Location: admin-dashboard.php');
+    exit;
+}
+
+if($user['role'] == 'user'){
+    header('Location: user-dashboard.php');
+    exit;
+}
+```
+
+2. De user-dashboard.php bevat alleen dezelfde controlle of de gebruiker is ingelogd. En een tekst met `Welkom normale gebruiker.`
+
+#### Opdracht 3
+
+We gaan nu de `admin-dashboard.php` pagina aanpassen.
+
+Momenteel controleren we of de gbruiker is ingelogd. Echter moeten we ook een controle uitvoeren of de gebruiker een admin is.
+
+1. Pas de code aan zodat deze ook de admin controle uitvoert. Deze code kun je zetten onder de controle of de gebruiker is ingelogd.
+
+```php
+//admin-dashboard.php   
+
+//als de gebruiker geen admin is, wordt hij doorgestuurd naar het dashboard van een normale gebruiker
+if($user['role'] != 'admin'){
+    header('Location: user-dashboard.php');
+    exit;
+}
+```
+
+
+
 
 
 
