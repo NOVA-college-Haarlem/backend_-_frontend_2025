@@ -41,6 +41,10 @@ In de vorige les hebben we gewerkt met een database en hebben we gebruik gemaakt
 
 1. Maak een nieuw bestand aan genaamd `user_create_process.php`
 2. Schrijf hier code waarmee je de data uit het formulier kunt valideren.
+   1. Controleer of de velden bestaan.
+   2. Controleer of de velden niet leeg zijn.
+   3. Controleer of de email een geldig email adres is.
+   4. Controleer of de password minstens 8 karakters lang is.
 3. Schrijf hier code waarmee je de data uit het formulier kunt halen en deze in de database kunt zetten.
 4. Als een gebruiker succesvol is geregistreerd, wordt deze doorgestuurd naar de `users_create_thankyou.php` pagina.
 5. Als een gebruiker niet succesvol is geregistreerd, wordt deze doorgestuurd naar de `users_create_error.php` pagina.
