@@ -76,6 +76,19 @@ Een login functionaliteit bestaat uit twee delen:
 5. Als de gebruiker correct is ingelogd, wordt deze doorgestuurd naar de `dashboard.php` pagina.
 6. Als de gebruiker niet correct is ingelogd, wordt deze doorgestuurd naar de `login.php` pagina.
 
+
+### Opdracht 3
+
+1. We zetten voor nu op dashboard.php de volgende code:
+
+```php
+<h1>Dashboard</h1>
+<p>Je bent ingelogd.</p>
+```
+
+2. Maar stel nou dat iemand deze URL probeert te openen zonder ingelogd te zijn. Op dit moment kan elke gebruiker naar dashboard.php gaan. Uiteraard is dit niet de bedoeling.
+3. Dit zullen we in de volgende les oplossen.
+
 ### Opdracht 3
 Parameters aanbrengen in de URL
 
@@ -88,7 +101,5 @@ We kunnen hiervoor parameters toevoegen aan de URL.
 3. We kunnen deze parameter gebruiken om een error message te tonen.
 4. Dit doen we door te controlleren of de parameter `error` bestaat.
 5. Als de parameter bestaat, wordt deze erbij getoond.  
-
-
 
 
