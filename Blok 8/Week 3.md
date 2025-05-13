@@ -76,7 +76,7 @@ Route::get('/internships/{id}', [ InternshipController::class, 'show' ]);
 ```
 
 3.  Maak een nieuwe view aan met de naam `show.blade.php` in de map `internships` en toon de gegevens van de stage.
-4.  Test je code. Ga naar `http://blog.test/internships/1` en je ziet de gegevens van de stage met id 1.
+4.  Test je code. Ga naar `http://NOVA-ICT-BPV.test/internships/1` en je ziet de gegevens van de stage met id 1.
 
 #### Opdracht 2
 
@@ -118,7 +118,10 @@ public function create()
    <label for="compensation">Compensation</label>
    <input type="text" name="compensation" id="compensation">
    <label for="type">Type</label>
-   <input type="text" name="type" id="type">
+   <select name="type" id="type">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+        <select>
    <label for="level_of_education">Level of Education</label>
    <input type="text" name="level_of_education" id="level_of_education">
    <button type="submit">Submit</button>
@@ -181,7 +184,7 @@ public function store(Request $request)
 @endif
 ```
 
-2.  Test je code. Ga naar `http://blog.test/internships/create` en klik op de submit knop zonder iets in te vullen. Je krijgt een foutmelding te zien.
+2.  Test je code. Ga naar `http://NOVA-ICT-BPV.test/internships/create` en klik op de submit knop zonder iets in te vullen. Je krijgt een foutmelding te zien.
 
 #### Opdracht 3
 
@@ -210,7 +213,7 @@ Route::get('/internships/{id}/edit', [ InternshipController::class, 'edit' ]);
 ```
 
 3.  Maak een nieuwe view aan met de naam `edit.blade.php` in de map `internships` en toon een formulier om de gegevens van de stage te bewerken.
-4.  Test je code. Ga naar `http://blog.test/internships/1/edit` en je ziet een formulier om de gegevens van de stage met id 1 te bewerken.
+4.  Test je code. Ga naar `http://NOVA-ICT-BPV.test/internships/1/edit` en je ziet een formulier om de gegevens van de stage met id 1 te bewerken.
 
 #### Opdracht 5
 

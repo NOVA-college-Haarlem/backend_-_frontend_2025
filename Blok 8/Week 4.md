@@ -8,8 +8,8 @@
   - [Formulieren en relaties](#formulieren-en-relaties)
   - [Veel-op-veel relatie](#veel-op-veel-relatie)
     - [Migratie Pivot table](#migratie-pivot-table)
-      - [Relatie Post - Tag](#relatie-post---tag)
-      - [Relatie Tag - Post](#relatie-tag---post)
+      - [Relatie Internship - Education](#relatie-internship---education)
+      - [Relatie Education - Internship](#relatie-education---internship)
 
 
 ## Leerdoelen week 4
@@ -35,123 +35,123 @@ In Laravel kan je relaties leggen tussen tabellen met behulp van Eloquent. Eloqu
 
 ### Opdracht 1
 
-1. Open het migratiebestand `create_posts_table.php` in de map `database/migrations`.
-2. Voeg de volgende code toe aan de `posts` tabel:
+1. Open het migratiebestand `create_internships_table.php` in de map `database/migrations`.
+2. Voeg de volgende code toe aan de `internships` tabel:
 
 ```php
  //net na description
- $table->foreignId('category_id')->constrained();
+ $table->foreignId('company_id')->constrained();
 
 ```
 
 3. In de terminal, run `php artisan migrate:fresh --seed` om de migraties opnieuw uit te voeren en de seeders te runnen.
-4. Open het bestand `Post.php` in de map `app/Models`.
-5. Voeg de volgende code toe aan het `Post` model:
+4. Open het bestand `Internship.php` in de map `app/Models`.
+5. Voeg de volgende code toe aan het `Internship` model:
 
 ```php
-public function category()
+public function company()
 {
-    return $this->belongsTo(Category::class);
+    return $this->belongsTo(Company::class);
 }
 ```
 
-Nu hebben we een relatie tussen de `posts` en `categories` tabellen. 
+Nu hebben we een relatie tussen de `internships` en `companies` tabellen. 
 
-> Een post heeft dus een category.
+> Een stage heeft dus een bedrijf.
 
-Als we de category name van de post willen tonen, kunnen we dit doen met de volgende code:
+Als we de company name van de stage willen tonen, kunnen we dit doen met de volgende code:
 
 ```php
-echo $post->category->name;
+echo $internship->company->name;
 ```
 
 ### 1-op-veel relatie
 
-Om de relatie de andere kant op te maken, moeten we de Category model aanpassen.
+Om de relatie de andere kant op te maken, moeten we de Company model aanpassen.
 
 ```php
-public function posts()
+public function internships()
 {
-    return $this->hasMany(Post::class);
+    return $this->hasMany(Internship::class);
 }
 ```
 
-Als je dan andersom de posts van een category wilt tonen, kun je dit doen met de volgende code:
+Als je dan andersom de stages van een bedrijf wilt tonen, kun je dit doen met de volgende code:
 
 ```php
-//categories show
-foreach ($category->posts as $post) {
-    echo $post->title;
+//companies show
+foreach ($company->internships as $internship) {
+    echo $internship->title;
 }
 ```
 
 ## Formulieren en relaties
 
-Stel je maakt een nieuwe post aan, dan moet je ook de category_id invullen. Dit kan je doen met de volgende code in de `store` methode van de `PostController`:
+Stel je maakt een nieuwe stage aan, dan moet je ook de company_id invullen. Dit kan je doen met de volgende code in de `store` methode van de `InternshipController`:
 
 ```php
-$post = new Post();
-$post->title = $request->title;
-$post->description = $request->description;
-$post->category_id = $request->category_id;
-$post->save();
+$internship = new Internship();
+$internship->title = $request->title;
+$internship->description = $request->description;
+$internship->company_id = $request->company_id;
+$internship->save();
 ```
 
-De `category_id` moet een integer zijn en een verwijzing naar een rij in de `categories` tabel. 
+De `company_id` moet een integer zijn en een verwijzing naar een rij in de `companies` tabel. 
 
-In het formulier moet je dan ook een selectie maken met de mogelijke categories. Dit kan je doen met de volgende code in de `create` view:
+In het formulier moet je dan ook een selectie maken met de mogelijke bedrijven. Dit kan je doen met de volgende code in de `create` view:
 
 ```php
-<select name="category_id">
-    @foreach ($categories as $category)
-        <option value="{{ $category->id }}">{{ $category->name }}</option>
+<select name="company_id">
+    @foreach ($companies as $company)
+        <option value="{{ $company->id }}">{{ $company->name }}</option>
     @endforeach
 </select>
 ```
 
-Als je deze code in de `create` view zet, dan krijg je een dropdown met de mogelijke categories.
-Maar daarvoor moet je wel de categories naar de view sturen. Dit kan je doen met de volgende code in de `index` methode van de `PostController`:
+Als je deze code in de `create` view zet, dan krijg je een dropdown met de mogelijke bedrijven.
+Maar daarvoor moet je wel de bedrijven naar de view sturen. Dit kan je doen met de volgende code in de `index` methode van de `InternshipController`:
 
 ```php
-return view('posts.index', compact('posts', 'categories'));
+return view('internships.index', compact('internships', 'companies'));
 ```
 
-Bij het updaten van een post moet je ook de category_id invullen. Dit kan je doen met de volgende code in de `update` methode van de `PostController`:
+Bij het updaten van een stage moet je ook de company_id invullen. Dit kan je doen met de volgende code in de `update` methode van de `InternshipController`:
 
 ```php
-$post = Post::find($id); // of Post::findOrFail($id); // of via model view binding
-$post->title = $request->title;
-$post->description = $request->description;
-$post->category_id = $request->category_id;
-$post->save();
+$internship = Internship::find($id); // of Internship::findOrFail($id); // of via model view binding
+$internship->title = $request->title;
+$internship->description = $request->description;
+$internship->company_id = $request->company_id;
+$internship->save();
 ```
 
-In het formulier, in de view `edit.blade.php` moet je dan ook de category_id invullen. Bestaande gegevens worden meegegeven aan de view.
+In het formulier, in de view `edit.blade.php` moet je dan ook de company_id invullen. Bestaande gegevens worden meegegeven aan de view.
 
 ```php
-<form action="{{ route('posts.update', $post->id) }}" method="POST">
+<form action="{{ route('internships.update', $internship->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div>
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="{{ old('title', $post->title ?? '') }}" required>
+        <input type="text" id="title" name="title" value="{{ old('title', $internship->title ?? '') }}" required>
     </div>
     <div>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required>{{ old('description', $post->description ?? '') }}</textarea>
+        <textarea id="description" name="description" required>{{ old('description', $internship->description ?? '') }}</textarea>
     </div>
     <div>
-        <label for="category_id">Category:</label>
-        <select id="category_id" name="category_id" required>
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ (old('category_id', $post->category_id ?? '') == $category->id) ? 'selected' : '' }}>
-                    {{ $category->name }}
+        <label for="company_id">Company:</label>
+        <select id="company_id" name="company_id" required>
+            @foreach ($companies as $company)
+                <option value="{{ $company->id }}" {{ (old('company_id', $internship->company_id ?? '') == $company->id) ? 'selected' : '' }}>
+                    {{ $company->name }}
                 </option>
             @endforeach
         </select>
     </div>
     <div>
-        <button type="submit">Save Post</button>
+        <button type="submit">Save Internship</button>
     </div>
 </form>
 ```
@@ -160,63 +160,61 @@ Toelichting:
 
 - CSRF Token: De @csrf-directive wordt gebruikt om een CSRF-token in het formulier op te nemen voor beveiliging.
 - Method: De @method('PUT')-directive wordt gebruikt om de HTTP-methode PUT te specificeren, wat betekent dat het formulier gebruikt wordt om een bestaande resource bij te werken.
-- Titel en Beschrijving: Deze velden zijn bedoeld voor het invoeren van de titel en beschrijving van de post. De waarde en inhoud van de textarea gebruiken de old() helper om het formulier opnieuw in te vullen met eerdere invoergegevens in geval van validatiefouten, of met bestaande gegevens als je een post bewerkt.
-- Categorie Selectie: Er wordt een dropdownmenu aangeboden om een categorie te selecteren. Het gebruikt een lus om opties uit de $categories-collectie te vullen, en de old() helper om de geselecteerde categorie te behouden in geval van fouten of bij het bewerken.
+- Titel en Beschrijving: Deze velden zijn bedoeld voor het invoeren van de titel en beschrijving van de stage. De waarde en inhoud van de textarea gebruiken de old() helper om het formulier opnieuw in te vullen met eerdere invoergegevens in geval van validatiefouten, of met bestaande gegevens als je een stage bewerkt.
+- Bedrijf Selectie: Er wordt een dropdownmenu aangeboden om een bedrijf te selecteren. Het gebruikt een lus om opties uit de $companies-collectie te vullen, en de old() helper om het geselecteerde bedrijf te behouden in geval van fouten of bij het bewerken.
 - Verzendknop: Een eenvoudige knop om het formulier te verzenden.
-Dit formulier gaat ervan uit dat je een route hebt genaamd posts.update voor het afhandelen van de formulierinzending, en dat je een $categories-collectie en optioneel een $post-object naar de view stuurt. Pas de route- en variabelenamen aan indien nodig voor je applicatie.
 
 
 ## Veel-op-veel relatie
 
-Om een veel-op-veel relatie tussen tags en posts te maken in Laravel, moet je een pivot table aanmaken en de nodige relaties in de modellen definiëren. Hier zijn de stappen:
+Om een veel-op-veel relatie tussen stages en opleidingen te maken in Laravel, moet je een pivot table aanmaken en de nodige relaties in de modellen definiëren. Hier zijn de stappen:
 
 ### Migratie Pivot table
 
 1. Maak een migratie voor de pivot table
-Je moet een pivot table maken die de post_id en tag_id bevat. Voer het volgende commando uit om een migratie te maken:
+Je moet een pivot table maken die de internship_id en education_id bevat. Voer het volgende commando uit om een migratie te maken:
 
-> php artisan make:migration create_post_tag_table
+> php artisan make:migration create_education_internship_table
 
 2. Vul de migratie aan met de volgende code:
 
 ```php
 public function up()
 {
-    Schema::create('post_tag', function (Blueprint $table) {
+    Schema::create('education_internship', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('post_id')->constrained()->onDelete('cascade');
-        $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+        $table->foreignId('internship_id')->constrained()->onDelete('cascade');
+        $table->foreignId('education_id')->constrained()->onDelete('cascade');
         $table->timestamps();
     });
 }
 ```
 
-Defineer de relaties in de Post en Tag modellen.
+Defineer de relaties in de Internship en Education modellen.
 
-#### Relatie Post - Tag
+#### Relatie Internship - Education
 
 ```php
-public function tags()
+public function educations()
 {
-    return $this->belongsToMany(Tag::class);
+    return $this->belongsToMany(Education::class);
 }
 ```
 
-
-#### Relatie Tag - Post
+#### Relatie Education - Internship
 ```php
-public function posts()
+public function internships()
 {
-    return $this->belongsToMany(Post::class);
+    return $this->belongsToMany(Internship::class);
 }
 ```
 
-Toon de tags bij het maken van een post in de PostController, create method:
+Toon de opleidingen bij het maken van een stage in de InternshipController, create method:
 
 ```php
 public function create(Request $request)
 {
-    $categories = Category::all();
-    $tags = Tag::all();
-    return view('posts.create', compact('categories', 'tags'));
+    $companies = Company::all();
+    $educations = Education::all();
+    return view('internships.create', compact('companies', 'educations'));
 }
