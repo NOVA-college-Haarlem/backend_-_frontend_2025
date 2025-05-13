@@ -80,8 +80,12 @@ In Laravel kan je gebruik maken van migraties om de database te structureren. Ee
    {
        Schema::create('companies', function (Blueprint $table) {
            $table->id();
-           $table->string('name');
-           $table->string('slug')->unique();
+            $table->string('name')->unique();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('phone')->nullable();
            $table->text('description')->nullable();
 
            $table->timestamps();
@@ -116,7 +120,11 @@ In Laravel kan je gebruik maken van seeders om de database te vullen met testgeg
    {
        DB::table('companies')->insert([
            'name' => 'Webbureau Van Steen',
-           'slug' => 'webbureau-van-steen',
+           'address' => 'Kerkstraat 1',
+           'city' => 'Breda',
+           'zipcode' => '4811',
+           'domain' => 'webbureauvansteen.nl',
+           'phone' => '0765432123',
            'description' => 'Webbureau Van Steen voor al uw websites en apps',
            'created_at' => now(),
            'updated_at' => now(),
@@ -124,7 +132,11 @@ In Laravel kan je gebruik maken van seeders om de database te vullen met testgeg
 
        DB::table('companies')->insert([
            'name' => 'Jose Monkey',
-           'slug' => 'jose-monkey',
+           'address' => 'Kerkstraat 1',
+           'city' => 'Breda',
+           'zipcode' => '4811',
+           'domain' => 'josemonkey.nl',
+           'phone' => '0765432123',
            'description' => 'Jose Monkey Coding for profs.',
            'created_at' => now(),
            'updated_at' => now(),
@@ -156,6 +168,19 @@ public function run()
 1. Open een terminal
 2. Maak een nieuwe migratie aan met de naam `create_interships_table` om de tabel `internships` aan te maken.
 3. Voeg de volgende kolommen toe aan de tabel `internships`: `title`, `slug`, `start_date`, `end_date`, `hours_per_week`, `compensation`, `type`, `description`, `level_of_education`, `created_at` en `updated_at`.
+
+```php
+$table->string('title');
+$table->string('slug')->nullable()->unique();
+$table->date('start_date');
+$table->date('end_date');
+$table->integer('hours_per_week');
+$table->integer('compensation')->nullable()->comment('in centen');
+$table->enum('type', ['full-time', 'part-time']);
+$table->text('description');
+$table->string('level_of_education')->nullable();
+$table->timestamps();
+```
 4. Voer de migratie uit om de tabel `internships` aan te maken.
 
 ##### Opdracht 2
@@ -163,7 +188,32 @@ public function run()
 1. Open een terminal
 2. Maak een nieuwe seeder aan met de naam `InternshipsSeeder` om testgegevens in de tabel `internships` in te voegen.
 3. Voeg de volgende testgegevens toe aan de tabel `internships`: `internships`, `slug`, `start_date`, `end_date`, `hours_per_week`, `compensation`, `type`, `description`, `level_of_education`, `created_at` en `updated_at`.
+
+```php
+$internships = [
+    [
+        'title' => 'Internship 1',
+        'description' => 'Description for Internship 1',
+        'start_date' => '2023-01-01',
+        'end_date' => '2023-06-01',
+        'hours_per_week' => 20,
+        'type' => 'full-time',
+    ],
+    [
+        'title' => 'Internship 2',
+        'description' => 'Description for Internship 2',
+        'start_date' => '2023-02-01',
+        'end_date' => '2023-07-01',
+        'hours_per_week' => 15,
+        'type' => 'part-time',
+    ],
+    // Add more internships as needed
+];
+        
+DB::table('internships')->insert($internships);
+```
 4. Voer de seeder uit om de testgegevens in de tabel `internships` in te voegen.
+   
 
 #### Van DB via Controller naar View
 
@@ -193,13 +243,18 @@ public function run()
 9. Voeg de volgende code toe aan `internships
 10. ```php
     <x-base-layout>
-        <h1>nternships</h1>
+        <h1>Internships</h1>
         <ul>
             @foreach ($internships as $internship)
                 <li>
                     <h2>{{$internship->title }}</h2>
                     <p>{{ $internship->start_date }}</p>
                     <p>{{ $internship->enddate_date }}</p>
+                    <p>{{ $internship->hours_per_week }}</p>
+                    <p>{{ $internship->compensation }}</p>
+                    <p>{{ $internship->type }}</p>
+                    <p>{{ $internship->description }}</p>
+                    <p>{{ $internship->level_of_education }}</p>
                 </li>
             @endforeach
         </ul>

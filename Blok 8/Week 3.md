@@ -114,16 +114,16 @@ public function create()
    <label for="end_date">End Date</label>
    <input type="date" name="end_date" id="end_date">
    <label for="hours_per_week">Hours per Week</label>
-   <input type="number" name="hours_per_week" id="hours_per_week">
+   <input type="number" name="hours_per_week" id="hours_per_week" max="40" min="1">
    <label for="compensation">Compensation</label>
-   <input type="text" name="compensation" id="compensation">
+   <input type="number" name="compensation" id="compensation" min="0">
    <label for="type">Type</label>
    <select name="type" id="type">
             <option value="full-time">Full-time</option>
             <option value="part-time">Part-time</option>
         <select>
    <label for="level_of_education">Level of Education</label>
-   <input type="text" name="level_of_education" id="level_of_education">
+   <input type="text" name="level_of_education" id="level_of_education" maxlength="50">
    <button type="submit">Submit</button>
 </form>
 ```
