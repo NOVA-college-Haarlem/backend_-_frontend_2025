@@ -110,7 +110,7 @@ Momenteel controleren we of de gbruiker is ingelogd. Echter moeten we ook een co
 //admin-dashboard.php   
 
 //als de gebruiker geen admin is, wordt hij doorgestuurd naar het dashboard van een normale gebruiker
-if($user['role'] != 'admin'){
+if($_SESSION['role'] != 'admin'){
     header('Location: user-dashboard.php');
     exit;
 }
