@@ -113,7 +113,49 @@ In deze les gaan we de data uit de database halen en tonen op het dashboard.
 
 #### Opdracht 1
 
-1. We maken een connectie met de database.
-2. We maken een query om de data uit de database te halen.
-3. Toon het aantal gebruikers in de database.
-4. Toon het aantal 
+1. Pas het bestand `admin-dashboard.php` aan: 
+2. We maken een connectie met de database.
+3. We maken een query om de data uit de database te halen.
+4. Toon het aantal gebruikers uit de database op het scherm:
+
+
+```php
+// Query data
+$sql = "SELECT COUNT(*) as total_users FROM users";
+$result = mysqli_query($conn, $sql);
+$total_users = mysqli_fetch_assoc($result)['total_users'];
+?>
+
+<div class="bg-blue-500 text-white p-6 rounded-lg shadow-md text-center">
+    <h2 class="text-4xl font-bold"><?php echo $total_users; ?></h2>
+    <p class="mt-2">Totaal aantal gebruikers</p>
+</div>
+```
+
+#### Opdracht 2
+
+1. Pas het bestand `admin-dashboard.php` aan: 
+2. We maken een connectie met de database.
+3. We maken een query om de data uit de database te halen.
+4. Toon het aantal kaarten uit de database op het scherm:
+
+
+```php
+// Query data
+$sql = "SELECT COUNT(*) as total_cards FROM cards";
+$result = mysqli_query($conn, $sql);
+$total_cards = mysqli_fetch_assoc($result)['total_cards'];
+?>
+ <div class="bg-green-500 text-white p-6 rounded-lg shadow-md text-center">
+    <h2 class="text-4xl font-bold"><?php echo $total_cards; ?></h2>
+    <p class="mt-2">Totaal aantal kaarten</p>
+</div>
+```
+
+#### Opdracht 3
+
+1. Pas het bestand `admin-dashboard.php` aan: 
+2. We maken een connectie met de database.
+3. We maken een query om de data uit de database te halen.
+4. Toon het aantal normale gebruikers uit de database op het scherm:
+
