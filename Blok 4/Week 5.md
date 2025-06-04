@@ -159,3 +159,41 @@ $total_cards = mysqli_fetch_assoc($result)['total_cards'];
 3. We maken een query om de data uit de database te halen.
 4. Toon het aantal normale gebruikers uit de database op het scherm:
 
+### Les 3 - Meerdere tabellen
+
+In deze les gaan we meerdere tabellen in de database gebruiken. We maken gebruik van een one-to-one relatie. 
+
+#### Opdracht 1
+
+1. We importeren een nieuwe tabel in de database.
+
+```sql
+CREATE TABLE user_settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    theme ENUM('light', 'dark', 'auto') DEFAULT 'light',
+    cards_per_page INT DEFAULT 12,
+    default_sort ENUM('name', 'type', 'hp', 'attack') DEFAULT 'name',
+    show_card_stats BOOLEAN DEFAULT TRUE,
+    email_notifications BOOLEAN DEFAULT TRUE,
+    two_factor_enabled BOOLEAN DEFAULT FALSE,
+    last_login_ip VARCHAR(45),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_user_settings (user_id)
+);
+
+INSERT INTO user_settings (user_id, theme, cards_per_page, default_sort, email_notifications) VALUES
+(1, 'dark', 24, 'hp', TRUE),
+(2, 'light', 12, 'name', FALSE),
+(4, 'auto', 18, 'type', TRUE);
+```
+
+#### Opdracht 2
+
+1. We maken een nieuwe pagina aan genaamd `profile.php`.
+2. Op deze pagina tonen we alle data van de ingelogde gebruiker.
+3. Nu halen we niet alleen de data uit de users tabel, maar ook de data uit de user_settings tabel middels een join statement.
+
+
