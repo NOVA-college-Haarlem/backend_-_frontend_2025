@@ -196,5 +196,10 @@ INSERT INTO user_settings (user_id, theme, cards_per_page, default_sort, email_n
 2. Deze pagina mag alleen worden bekeken als de gebruiker is ingelogd.
 3. De code hiervoor staat elders in de applicatie.   
 
+#### Opdracht 3
+
+1. Haal de data van de ingelogde gebruiker op.
+2. Toon de data het formulier.
+
 
 
