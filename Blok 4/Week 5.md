@@ -4,16 +4,108 @@
 
 ### Les 1 - Search   
 
-In deze les gaan we een search formulier maken.
+In deze les gaan we een zoek-formulier maken. We gaan deze gebruiken om een pokemon te zoeken.
 
 #### Opdracht 1
 
-We kunnen het dashboard iets persoonlijker maken.
+Maak een zoek-formulier op `pokemon_search.php`.
 
-1. We hebben al de gebruiker ID in de session zetten.
-2. We kunnen deze gebruiker ID gebruiken om de gebruiker te selecteren uit de database.
-3. We kunnen deze gebruiker gegevens in de session zetten.
-4. We kunnen deze gebruiker gegevens in de database zetten.
+1. include de `header.php` en de `navbar.php` bovenaan de pagina.
+2. Maak een formulier met een inputveld en een knop.
+3. Wanneer de gebruiker op de knop klikt, wordt de gebruiker doorgestuurd naar dezelfde pagina, dus de action blijft leeg.
+4. De methode moet GET zijn.
+5. De inputveld moet een naam hebben, bijvoorbeeld `zoek_term`.
+5. De inputveld moet een placeholder hebben, bijvoorbeeld `Voer een naam in`.
+6. De knop moet een naam hebben, bijvoorbeeld `Zoek!`.
+
+Bijvoorbeeld:
+```html
+    <form action="" method="GET" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <label for="zoekveld" class="block text-gray-700 font-bold mb-2">Zoek op naam</label>
+        <input 
+            type="text" 
+            name="zoek_term" 
+            id="zoekveld" 
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Voer een naam in"
+        >
+        <button  
+            type="submit" 
+            name="submit"
+            class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
+            Zoek!
+        </button>
+    </form>
+```
+
+7. Onderaan de pagina moet de `footer.php` worden toegevoegd.
+
+#### Opdracht 2
+
+1. Zodra er op de knop klikt, wordt de gebruiker doorgestuurd naar dezelfde pagina, dus de action blijft leeg.
+2. De methode moet GET zijn. Dat zie je ook in het voorbeeld.
+3. Bovenaan de pagina gaan we het verwerken van het formulier afhandelen. Dit kunnen we doen met een `if` statement.
+4. We controleren of de gebruiker op de knop heeft geklikt.
+5. We controleren of het veld zoek_term bestaat.
+6. We controleren of het veld zoek_term niet leeg is.
+7. We controleren of het veld minstens 3 karakters bevat.
+
+
+#### Opdracht 3
+
+1. Dan maken we een connectie met de database.
+2. We maken een query om de data uit de database te halen.
+3. We tonen de data in een tabel.
+
+
+Dit kan er dan zo uit zien:
+
+```php
+<?php
+
+include 'header.php';
+include 'navbar.php';
+
+if(isset($_GET['submit'])) {//Als er op de knop gedrukt is
+
+    //check if field zoek_term exists
+    if(isset($_GET['zoek_term'])) {
+
+
+        if(!empty($_GET['zoek_term'])){
+            //Opdracht 4: controlleer of de zoekterm minimaal 3 karakters lang is
+
+            if(strlen($_GET['zoek_term']) >= 3){
+                $zoek_term = $_GET['zoek_term'];
+                require "database_connection.php";
+                $sql = "SELECT name, type FROM cards WHERE name LIKE '%$zoek_term%'";
+                $result = mysqli_query($conn, $sql);
+                $cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            }
+        }
+    }
+}
+?>
+
+```
+
+#### Opdracht 4
+
+1. De resultaten die gevonden worden moeten worden getoond. Bijvoorbeeld:
+
+```php
+ <?php if(isset($cards)): ?>
+        <div class="zoekresultaten">
+            <?php foreach($cards as $card): ?>
+                <div class="card">
+                    <h2><?php echo $card['name']; ?></h2>
+                    <p><?php echo $card['type']; ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+```
 
 ### Les 2 - Dashboard data
 
@@ -21,12 +113,7 @@ In deze les gaan we de data uit de database halen en tonen op het dashboard.
 
 #### Opdracht 1
 
-
-
-#### Opdracht 1
-
-Maak op het dashboard een search formulier.
-
-
-
-## Les 2 - 
+1. We maken een connectie met de database.
+2. We maken een query om de data uit de database te halen.
+3. Toon het aantal gebruikers in de database.
+4. Toon het aantal 
