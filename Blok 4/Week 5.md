@@ -180,13 +180,13 @@ CREATE TABLE user_settings (
     last_login_ip VARCHAR(45),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    
     UNIQUE KEY unique_user_settings (user_id)
 );
 
 INSERT INTO user_settings (user_id, theme, cards_per_page, default_sort, email_notifications) VALUES
 (1, 'dark', 24, 'hp', TRUE),
-(2, 'light', 12, 'name', FALSE),
+(2, 'light', 12, 'name', FALSE)****,
 (4, 'auto', 18, 'type', TRUE);
 ```
 
