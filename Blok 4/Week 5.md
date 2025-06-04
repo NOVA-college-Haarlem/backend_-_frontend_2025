@@ -193,7 +193,8 @@ INSERT INTO user_settings (user_id, theme, cards_per_page, default_sort, email_n
 #### Opdracht 2
 
 1. We maken een nieuwe pagina aan genaamd `profile.php`.
-2. Op deze pagina tonen we alle data van de ingelogde gebruiker.
-3. Nu halen we niet alleen de data uit de users tabel, maar ook de data uit de user_settings tabel middels een join statement.
+2. Deze pagina mag alleen worden bekeken als de gebruiker is ingelogd.
+3. De code hiervoor staat elders in de applicatie.   
+
 
 
