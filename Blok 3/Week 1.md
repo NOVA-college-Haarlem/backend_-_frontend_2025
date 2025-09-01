@@ -21,6 +21,22 @@ Vergelijk het eens met een ober in een restaurant: Je vraag om een ice tea. De o
 Dit is hetzelfde met een webpagina. Je vraagt een specifieke site of pagina (via de adresbalk) en de webserver serveert de pagina. Als de pagina niet bestaat dan krijg je een 404 error.
 Alle sites van het world wide web draaien op servers van hostingsproviders. Omdat jij tijdens je opleiding gaat oefenen met websites bouwen heb je ook een webserver nodig. Je hebt geen echte hostingsprovider nodig. Echter kun je dit heel gemakkelijk nabootsen.
 
+## REQUEST RESPONSE CYCLE
+De request response cycle is de cyclus waarin een webpagina wordt gemaakt.
+
+1. De gebruiker vraagt een pagina op.
+2. De webserver ontvangt de vraag.
+3. De webserver verwerkt de vraag.
+4. De webserver geeft de pagina terug aan de gebruiker.
+
+(Deze cyclus is ook te zien in de browser via de Developer Tools)
+En op deze afbeelding zie je hoe de request response cycle werkt:
+
+![Request Response Cycle](rsc.png)
+
+Wij gaan deze cyclus ook gebruiken om de website te maken.
+Wij gaan een lokale webserver gebruiken. Deze is al aangemaakt in de docker-compose.yml file.
+
 ## EEN PROJECTEN MAP
 
 ### OPDRACHT 1: MAAK EEN PROJECTEN MAP
@@ -164,4 +180,76 @@ foreach($menuItems as $key => $value) {
     echo '<a href="' . $value . '">' . $key . '</a>';
 }
 ?>
+```
+Deze schrijfwijze is ook anders te schrijven:
+```php
+<?php
+$menuItems = [
+    'home' => 'index.php',
+    'about' => 'about.php',
+    'contact' => 'contact.php'
+];
+?>
+<?php foreach($menuItems as $key => $value):?>
+    <a href="<?php echo $value; ?>">
+        <?php echo $key; ?>
+    </a>
+<?php endforeach; ?>
+?>
+```
+Deze laatste schrijfwijze is de meest gebruikte en is ook de meest leesbare.
+
+Als we nu nog een pagina willen toevoegen en dus het menu willen uitbreiden dan hoeven we alleen maar de array aan te passen en de pagina toe te voegen.
+
+Bijvoorbeeld:
+```php
+$menuItems = [
+    'home' => 'index.php',
+    'about' => 'about.php',
+    'contact' => 'contact.php',
+    'nieuwe pagina' => 'nieuwe-pagina.php'
+];
+```
+
+### OPDRACHT 9: POKEMON FROM DB
+
+1. We gaan nu de pokemon uit de database halen.
+2. Daarvoor hebben we een database nodig.
+3. Deze is al aangemaakt via Docker genaamd 'pokemon_db'.
+4. We gaan data in de database opslaan door middel van het bestand `pokemon-cards.sql`.
+5. We gaan nu de data uit de database halen. En om de oefen met het tonen hiervan maken we een nieuwe pagina: `pokemon-cards.php`.
+6. Maak een nieuwe pagina: `pokemon-cards.php`
+7. Open de pagina in VS code
+8. Neem de volgende code over:
+```php
+<?php
+
+$dbhost = 'localhost';
+$dbname = 'pokemon_db';
+$dbuser = 'root';
+$dbpass = '';
+
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM pokemon"; // SQL query om alle pokemon uit de database te halen
+$result = mysqli_query($conn, $sql);
+
+$pokemon_cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Loop door alle pokemon uit de database
+foreach($pokemon_cards as $pokemon_card) {
+    echo '<div class="pokemon-card">';
+    echo '<h2>' . $pokemon_card['name'] . '</h2>';
+    echo '<p>' . $pokemon_card['type'] . '</p>';
+    echo '<img src="' . $pokemon_card['pokedex_number'] . '" alt="' . $pokemon_card['name'] . '">';
+    echo '</div>';
+}
+
+?>
+```
 
