@@ -111,18 +111,18 @@ Hiervoor heb je het project geforkt naar je Github account. Nu gaan het project 
 ### OPDRACHT 7: DRY PRINCIPLE
 1. We gaan nu de code opruimen.
 2. De navigatie op alle pagina's is hetzelfde. 
-3. Maak een nieuwe pagina: "header.php"
-4. Open de header.php in VS code
-5. We voegen de navigatie uit de index.php toe aan de header.php
+3. Maak een nieuwe pagina: `menu.php`
+4. Open de menu.php in VS code
+5. We voegen de navigatie uit de index.php toe aan de menu.php
 6. We verwijderen de navigatie uit de index.php
-7. Nu moeten we de header.php in elke pagina toevoegen Door PHP te gebruiken: `include 'header.php';`
+7. Nu moeten we de menu.php in elke pagina toevoegen Door PHP te gebruiken: `include 'menu.php';`
 8. Test je code in de browser
 9. Nu doen we hetzelfde op de andere twee pagina's: "about.php" en "contact.php"
 10. Test je code in de browser
 
 ### OPDRACHT 8: DYNAMISCH MENU
 1. We gaan nu het menu dynamisch maken.
-2. Open de header.php in VS code
+2. Open de menu.php in VS code
 3. We gaan het menu dynamisch maken door gebruik te maken van een array.
 
 
@@ -176,12 +176,20 @@ $menuItems = [
     'contact' => 'contact.php'
 ];
 
+//als we de array willen uitlezen met een loop:
+    foreach($menuItems as $key => $value) {
+        echo $key . ":" . $value . "<br>";
+}
+?>
+
+//willen we een link maken:
 foreach($menuItems as $key => $value) {
     echo '<a href="' . $value . '">' . $key . '</a>';
 }
 ?>
 ```
-Deze schrijfwijze is ook anders te schrijven:
+
+Deze schrijfwijze is ook anders te schrijven door gebruik te maken van een foreach loop met een colon:
 ```php
 <?php
 $menuItems = [
@@ -197,7 +205,7 @@ $menuItems = [
 <?php endforeach; ?>
 ?>
 ```
-Deze laatste schrijfwijze is de meest gebruikte en is ook de meest leesbare.
+Deze laatste schrijfwijze is de meest gebruikte vorm die je kunt tegenkomen.
 
 Als we nu nog een pagina willen toevoegen en dus het menu willen uitbreiden dan hoeven we alleen maar de array aan te passen en de pagina toe te voegen.
 
@@ -211,16 +219,62 @@ $menuItems = [
 ];
 ```
 
-### OPDRACHT 9: POKEMON FROM DB
+### OPDRACHT 9: Menu aanpassen
+
+1. We gaan nu het bestaande menu aanpassen in `menu.php`
+2. Test je code in de browser
+
+### OPDRACHT 10: SOCIALS 
+
+1. We gaan nu ook links naar social media toe te voegen.
+2. We gaan ook een nieuwe pagina maken: `socials.php`
+3. We voegen de volgende code toe:
+```php
+<?php
+    $socials = [
+        'Instagram' => 'https://instagram.com/',
+        'Facebook' => 'https://facebook.com/',
+        'Twitter' => 'https://twitter.com/'
+    ];
+    ?>
+```
+
+4. Loop door de socials array en maak een link naar de social media platformen.
+
+```php
+<?php
+    foreach($socials as $key => $value):?>
+        <a href="<?php echo $value; ?>">
+            <?php echo $key; ?>
+        </a>
+    <?php endforeach; ?>
+?>
+```
+
+
+5. We gaan nu het bestaande socials aanpassen in `socials.php`
+6. We voegen wat HTML toe aan de socials.php:
+```html
+<div class="bg-white shadow p-4 flex justify-center space-x-6 mb-6">
+   <!-- hier staat de foreach loop -->
+</div>
+```
+7. Nu moeten we de socials.php in elke pagina toevoegen Door PHP te gebruiken: `include 'socials.php';`
+8. Test je code in de browser   
+
+### OPDRACHT 11: POKEMON INTO DB
 
 1. We gaan nu de pokemon uit de database halen.
 2. Daarvoor hebben we een database nodig.
 3. Deze is al aangemaakt via Docker genaamd 'pokemon_db'.
 4. We gaan data in de database opslaan door middel van het bestand `pokemon-cards.sql`.
-5. We gaan nu de data uit de database halen. En om de oefen met het tonen hiervan maken we een nieuwe pagina: `pokemon-cards.php`.
-6. Maak een nieuwe pagina: `pokemon-cards.php`
-7. Open de pagina in VS code
-8. Neem de volgende code over:
+
+### OPDRACHT 12: DATATBASE CONNECTION
+
+1. Om te communiceren met de database hebben we een connectie nodig.
+2. We gaan deze connectie maken in een nieuw bestand: `database.php`.
+3. Open de pagina in VS code
+4. Neem de volgende code over:
 ```php
 <?php
 
@@ -235,6 +289,16 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+```
+
+### OPDRACHT 13: POKEMON FROM DB
+1. We gaan nu de data uit de database halen. En om de oefen met het tonen hiervan maken we een nieuwe pagina: `pokemon-cards.php`.
+2. Maak een nieuwe pagina: `pokemon-cards.php`
+3. Open de pagina in VS code
+4. Neem de volgende code over:
+```php
+
+include 'database.php';
 
 $sql = "SELECT * FROM pokemon"; // SQL query om alle pokemon uit de database te halen
 $result = mysqli_query($conn, $sql);
@@ -252,4 +316,18 @@ foreach($pokemon_cards as $pokemon_card) {
 
 ?>
 ```
+5. Bekijk het resultaat in de browser
+
+### OPDRACHT 14: POKEMON INDEX
+
+1. We gaan nu het bovenstaande deel toepassen op de index.php pagina.
+2. Open de index.php pagina in VS code
+3. Neem de volgende code over:
+```php
+<?php
+include 'database.php';
+
+$sql = "SELECT * FROM pokemon";
+$result = mysqli_query($conn, $sql);
+$pokemon_cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
