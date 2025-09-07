@@ -26,7 +26,7 @@ Je hebt in het vorige blok geleerd om een sql statement in een variabele te zett
 Daarnaast heb je ook geleerd om een variabele te plaatsen in de string als je bijvoorbeeld 1 gebruiker wilt ophalen:
  
 Een variabele direct plaatsen in een sql-statement is gevaarlijk. Het kan namelijk misbruikt worden door een andere expert. Hij/zij kan namelijk de gegevens zo aanpassen dat er andere gegevens opgehaald worden of verwijderd. Of zelfs de gehele database kan verwijderd worden. Dit noemen ze ook wel SQL-Injections. Het injecteren van sql. Eerst volgt nu een uitleg over hoe je een sql-injection uitvoert. En daarna hoe je je code zo aanpast dat het niet meer mogelijk is, met behulp van prepared statements
-### OPDRACHT 51: SQL-INJECTIE
+### OPDRACHT 1: SQL-INJECTIE
 1.	Voer de onderstaande opdracht uit in het inlogscherm van je eerder gemaakte project
 Probeer maar eens met een van je eerder gemaakte projecten waarin een inlog-functionaliteit gebouwd is…
  
@@ -42,6 +42,8 @@ Om dit te voorkomen dien je gebruik te maken van prepared statements
 ### PREPARED STATEMENTS 
 
 Met prepared statements stoppen we geen variabelen in een string. We werken met tijdelijke placeholders.
+
+### OPDRACHT 2: DATABASE CONNECTIE aanpassen
 
 Maar eerst maken we een database connectie. Dit gaat op een andere wijze, we maken nu gebruik van PDO (een ander type databaseconnectie):
 
@@ -65,25 +67,42 @@ $stmt->execute(['name' => 'John Doe', 'email' => 'john.doe@example.com', 'phone'
 ```
 
 > Vanaf nu gebruiken we alleen nog maar prepared statements om data op te halen, op te slaan, te verwerken en de verwijderen.
+#### Opdracht 3: PAS DE QUERY AAN: INDEX.PHP
 
-#### OPDRACHT 53: PAS DE QUERY AAN
-1.	Pas de query aan die een enkele tool ophaalt binnen het project van tools4ever (tool_detail.php)
-a.	Zorg ervoor dat je een placeholder gebruikt
-2.	Gebruik bindParam om de juiste variabele te koppelen
+1. Op `index.php` passen we de query aan:
+```php
+<?php
+$stmt = $conn->prepare("SELECT * FROM tools");
+$stmt->execute();
+$tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+```
+
+> Let op de fetchAll methode voor het ophalen van alle data.
+
+#### OPDRACHT 4: PAS DE QUERY AAN: Tool_detail.php
+1.	Pas de query aan die een enkele tool ophaalt binnen het project van tools4ever (tool_detail.php). Zorg ervoor dat je een placeholder gebruikt
 3.	Voer de execute methode uit om de query uit te voeren.
 
-Nu heb je dit:
+Dit doe je zo:
 
 ```php
 <?php
 
 $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM tools WHERE tool_id = :id");
-$stmt->bindParam(':id', $id);
-$stmt->execute();
-    $tool = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->execute(['id' => $id]);
+$tool = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 ```
-Daarna halen we de data op en zetten deze om in een associatieve array:
+> Let op de fetch methode voor het ophalen van een enkele rij data
 
-```php
+# Opdracht 5: PAS DE Queries aan
+
+1. Bekijk nu de applicatie van tools4ever.
+2. Op alle pagina's waar met de database wordt gewerkt moeten we de query aanpassen.
+   - brands_index.php
+   - login-process.php
+   - users_index.php
+   - tools_index.php
+
