@@ -31,11 +31,6 @@ Ga een shortlist maken met software die jij interessant vindt. Verwerk deze lijs
 
 1. Kun je alternatieven vinden? Schrijf van je gekozen of gevonden software de concurrentie op en waarom deze software beter of slechter is om te gaan bestuderen.
 
-### Opdracht 4: Beschikbare documentatie
-
-1. Doe onderzoek naar de verschillende bronnen, documentatie, cursussen, video's, voorbeelden, tutorials, etc. van de software die jij interessant vindt. 
-2. Schrijf je resultaten op in een document. Welke bronnen zijn nuttig en welke zijn niet nuttig?
-
 ### Opdracht 4: Marktonderzoek
 
 1. Doe onderzoek naar de markt van de software die jij interessant vindt. 
@@ -45,8 +40,23 @@ Ga een shortlist maken met software die jij interessant vindt. Verwerk deze lijs
 
 2. Schrijf je resultaten op in een document.
 
-### Opdracht 5: Conclusie
+### Opdracht 5: Beschikbare documentatie
+
+1. Doe onderzoek naar de verschillende bronnen, documentatie, cursussen, video's, voorbeelden, tutorials, etc. van de software die jij interessant vindt. 
+2. Schrijf je resultaten op in een document. Welke bronnen zijn nuttig en welke zijn niet nuttig?
+3. Welke bron ga je gebruiken voor je project?
+
+### Opdracht 6: Conclusie
 
 1. Schrijf je conclusie op in een document.
 
 
+### Opdracht 7: Presentatie
+
+1. Maak een presentatie van je onderzoek.
+2. Presenteer je project aan de klas
+
+### Opdracht 8: Schrijf leerdoelen op
+
+1. Maak een presentatie van je project.
+2. Presenteer je project aan de docenten.

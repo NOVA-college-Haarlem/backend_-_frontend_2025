@@ -81,7 +81,7 @@ $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM tools WHERE tool_id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
-$tool = $stmt->fetch(PDO::FETCH_ASSOC);
+    $tool = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 ```
 Daarna halen we de data op en zetten deze om in een associatieve array:
