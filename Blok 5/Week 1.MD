@@ -102,7 +102,9 @@ $tool = $stmt->fetch(PDO::FETCH_ASSOC);
 1. Bekijk nu de applicatie van tools4ever.
 2. Op alle pagina's waar met de database wordt gewerkt moeten we de query aanpassen.
    - brands_index.php
-   - login-process.php
+   - login-process.php: Let op hier staat per ongeluk een extra database connectie. Deze moeten we verwijderen.
    - users_index.php
    - tools_index.php
+3. Let op er staan een aantal fouten in de code. Fix deze fouten: 
+   - Bij het inloggen als admin wordt de gebruiker niet geaccepteerd.
 
