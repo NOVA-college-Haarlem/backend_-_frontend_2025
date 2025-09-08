@@ -51,10 +51,10 @@
 ```php
 <?php
 
-$dbhost = 'localhost';
+$dbhost = 'mariadb';
 $dbname = 'pokemon_db';
 $dbuser = 'root';
-$dbpass = '';
+$dbpass = 'password';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
