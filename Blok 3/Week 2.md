@@ -76,7 +76,22 @@ include 'database.php';
 $sql = "SELECT * FROM pokemon"; // SQL query om alle pokemon uit de database te halen
 $result = mysqli_query($conn, $sql);
 
-$pokemon_cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+foreach($cards as $card):
+
+    echo $card["id"];
+    echo $card["name"];
+    echo $card["type"];
+
+endforeach;
+
+?>
+```
+
+Wil je nou HTML en CSS toevoegen? Dan kan dat door bijvoorbeeld classes toe te voegen:
+
+```php
 
 // Loop door alle pokemon uit de database
 foreach($pokemon_cards as $pokemon_card) {
@@ -93,19 +108,99 @@ foreach($pokemon_cards as $pokemon_card) {
 
 ### OPDRACHT 14: POKEMON INDEX
 
-1. We gaan nu het bovenstaande deel toepassen op de index.php pagina.
+1. We gaan nu het bovenstaande deel toepassen op de index.php pagina met behoud van de opmaak die er al was.
 2. Open de index.php pagina in VS code
-3. Neem de volgende code over:
-```php
-<?php
-include 'database.php';
+3. Kopeer de gegevens van een pokemon kaart die er al staat.
 
-$sql = "SELECT * FROM pokemon";
-$result = mysqli_query($conn, $sql);
-$pokemon_cards = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-?>
+```html
+ <!-- Pokemon Card 1 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pikachu"
+        class="w-full h-64 object-cover">
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Pikachu</h3>
+        <p class="text-gray-600 mb-4">Elektrisch type Pokémon</p>
+        <a href="#" class="text-blue-600 hover:text-blue-800">Meer informatie →</a>
+    </div>
+</div>
 ```
-4. Bekijk het resultaat in de browser
 
+Voor nu willen we de titel en type dynamisch invullen. Uiteraard moeten we een loop gebruiken
 
+```html
+    <!-- Pokemon Grid -->
+    <div class="max-w-7xl mx-auto px-8 py-12">
+        <h2 class="text-3xl font-bold mb-8">Mijn Favoriete Pokémon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php foreach($cards as $card): ?>
+            <!-- Pokemon Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pikachu"
+                    class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2"><?php echo $card["name"]; ?></h3>
+                    <p class="text-gray-600 mb-4"><?php echo $card["type"]; ?></p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800">Meer informatie →</a>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+```
+
+6. Test je code in de browser
+
+### OPDRACHT 15: Overige kaaten
+
+1. De overige kaarten kunnen we verwijderen.
+
+### OPDRACHT 16: POKEMON AFbeelding
+
+1. Nu moeten we de afbeelding ook dynamisch invullen.
+2. We maken gebruik van een externe site waarbij we een afbeelding kunnen ophalen op basis van het nummer (pokedex_number) van de pokemon.
+3. Dit nummer moeten we ook opslaan in de database.
+4. We gaan een extra kolom aanmaken in de database: `pokedex_number`.
+5. En we gaan alle afbeeldingen updaten met het juiste nummer:
+
+- 'Pikachu', 025
+- 'Charmander', 004
+- 'Squirtle', 007
+- 'Bulbasaur', 001
+- 'Mewtwo', 150
+- 'Charizard', 006
+- 'Blastoise', 009
+- 'Venusaur', 003
+- 'Articuno', 144
+
+Nu kunnen we ook de image url dynamisch invullen door het getal te vervangen door de pokedex_number:
+
+Dit:
+<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pikachu" class="w-full h-64 object-cover">
+                    
+wordt dan dit:
+
+<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/<?php echo $card['pokedex_number']; ?>.png" alt="Pikachu" class="w-full h-64 object-cover">
+
+en aangezien de url van pokemon.com voor rest statisch blijft kunnen we het ook als volgt schrijven:
+
+```php
+<?php $pokemon_default_url = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/"; ?>
+```
+
+en dan kunnen we de url ook dynamisch invullen:
+
+```php
+<img src="<?php echo $pokemon_default_url . $card['pokedex_number']; ?>.png" alt="Pikachu" class="w-full h-64 object-cover">
+```
+
+6. Test je code in de browser
+
+### OPDRACHT 17: POKEMON DETAIL
+
+1. We gaan nu de detail pagina maken.
+2. Maak een nieuwe pagina aan genaamd `pokemon_detail.php`
+3. Open de pagina in VS code
+4. Neem de volgende code over:
+```php
+
+```
