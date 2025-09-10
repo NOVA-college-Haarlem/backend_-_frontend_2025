@@ -175,12 +175,13 @@ Voor nu willen we de titel en type dynamisch invullen. Uiteraard moeten we een l
 Nu kunnen we ook de image url dynamisch invullen door het getal te vervangen door de pokedex_number:
 
 Dit:
+```html
 <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pikachu" class="w-full h-64 object-cover">
-                    
+```
 wordt dan dit:
-
+```html
 <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/<?php echo $card['pokedex_number']; ?>.png" alt="Pikachu" class="w-full h-64 object-cover">
-
+```
 en aangezien de url van pokemon.com voor rest statisch blijft kunnen we het ook als volgt schrijven:
 
 ```php
@@ -203,4 +204,3 @@ en dan kunnen we de url ook dynamisch invullen:
 4. Neem de volgende code over:
 ```php
 
-```
