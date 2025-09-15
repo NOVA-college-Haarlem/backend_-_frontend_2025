@@ -195,12 +195,3 @@ en dan kunnen we de url ook dynamisch invullen:
 ```
 
 6. Test je code in de browser
-
-### OPDRACHT 17: POKEMON DETAIL
-
-1. We gaan nu de detail pagina maken.
-2. Maak een nieuwe pagina aan genaamd `pokemon_detail.php`
-3. Open de pagina in VS code
-4. Neem de volgende code over:
-```php
-
