@@ -88,6 +88,31 @@ include 'drivers-array.php';
 4. Doe dit ook voor de andere gegevens: position, wins, points, image
 5. Test je code in de browser
 
+### Opdracht 6
+1. We gaan nu in plaats van de data uit een array, de data uit de database halen.
+2. Hiervoor maken we gebruik van de data uit het bestand `formula1-drivers.sql`.
+3. Ga naar PHPMyAdmin (http://localhost:8000) en kies de database `formula1`.
+4. Kies het tabblad SQL.
+5. Kopiëer de code uit het bestand `formula1-drivers.sql` en plak deze in het SQL tabblad:
+6. Klik op Starten of Go.
+7. De data is nu in de database geïmporteerd.
+
+### Opdracht 7
+1. We gaan nu de data uit de database halen in het bestand `driver-table.php`.
+2. Daarvoor hebben we een database connectie nodig.
+3. Maak een nieuw bestand aan met de naam `database.php`.
+4. Voeg de volgende code toe:
+```php
+<?php
+$dbhost = 'localhost';
+$dbname = 'formula1';
+$dbuser = 'root';
+$dbpass = '';
+
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+?>
+
+
 
 
 
