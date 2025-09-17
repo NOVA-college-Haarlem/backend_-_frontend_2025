@@ -107,7 +107,7 @@ include 'drivers-array.php';
 $dbhost = 'localhost';
 $dbname = 'formula1';
 $dbuser = 'root';
-$dbpass = '';
+$dbpass = 'password';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 ?>
