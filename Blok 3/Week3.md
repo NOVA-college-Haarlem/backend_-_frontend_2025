@@ -20,11 +20,76 @@ Ga naar: https://github.com/NOVA-college-Haarlem/formula1-2526
 ### Opdracht 2
 
 1. Open het bestand `index.html`
-2. Maak gebruik van het bestand `drivers-array.php`. Hierin staat een array met drivers.
-3. Maak gebruik van de data uit de array om een tabel te maken in het bestand `driver-table.html`. (verander de extensie naar .php)
-4. Gebruik een foreach loop om de data uit de array te tonen.
-5. Sla de wijzigingen op.
-6. Open de browser en ga naar `http://localhost:8000`
-7. Controleer of de data uit de array wordt getoond.
+2. Verander de extensie van de index.html naar index.php
+3. Verander de extensie van de driver-table.html naar driver-table.php
+
+
+### Opdracht 3
+1. De navigatie werkt niet goed. We gaan de navigatie aanpassen.
+2. Zorg ervoor dat je een bestand maakt dat `navbar.php` heet.
+3. Kopieer de navigatie uit de index.php naar de navbar.php
+```html
+<!-- Navigation -->
+    <nav class="bg-black bg-opacity-90 fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i data-feather="flag" class="text-red-600"></i>
+                    <span
+                        class="text-2xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">F1
+                        PULSE</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.php" class="hover:text-red-500 transition">Home</a>
+                    <a href="#" class="hover:text-red-500 transition">News</a>
+                    <a href="#" class="hover:text-red-500 transition">Calendar</a>
+                    <a href="#" class="hover:text-red-500 transition">Teams</a>
+                    <a href="#" class="hover:text-red-500 transition">Drivers</a>
+                </div>
+                <button class="md:hidden">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+```
+4. Pas de link naar `Drivers` aan zodat je erop kan klikken: `href="#"` naar `href="drivers-table.php"`
+
+### Opdracht 4
+1. We gaan de tabel in het bestand `driver-table.php` aanpassen.
+2. Haal alle content weg behalve de rij van Max Verstappen.
+3. Voeg de volgende code toe:
+```php
+ <?php foreach($drivers as $driver): ?>
+<tr class="border-b border-gray-700 hover:bg-gray-750">
+
+//overige code
+</tr>
+<?php endforeach; ?>
+```
+4. Er komt nu een foutmelding. We moeten de array uit het bestand `drivers-array.php` toevoegen aan het bestand `driver-table.php`.
+5. Voeg de volgende code toe ergens bovenaan het bestand `driver-table.php`:
+```php
+<?php
+include 'drivers-array.php';
+?>
+```
+
+
+### Opdracht 5
+1. De naam van Max Verstappen wordt nu 25x herhaald. Dit is natuurlijk niet wat we willen.
+2. We willen de content dynamisch maken.
+3. In de loop schrijven we de volgende code op de plek van de naam:
+
+```php
+<?php echo $driver['name']; ?>
+```
+
+4. Doe dit ook voor de andere gegevens: position, wins, points, image
+5. Test je code in de browser
+
+
+
+
 
 

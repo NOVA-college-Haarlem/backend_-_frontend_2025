@@ -70,7 +70,7 @@ if(password_verify($passwordForm, $dbuser['password'])){
 }
 ```
 
-### 1 to many
+
 
 
 
