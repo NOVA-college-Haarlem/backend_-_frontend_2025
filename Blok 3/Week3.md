@@ -111,10 +111,24 @@ $dbpass = 'password';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 ?>
+```
+5. Importeer de connectie in het bestand `driver-table.php`:
+```php
+<?php
+require 'database.php';
+?>
+```
+6. Maak een query om de data uit de database te halen:
+```php
+<?php
+$query = "SELECT * FROM drivers";
+$result = mysqli_query($conn, $query);
+$drivers = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+```
+7. Test je code in de browser. 
 
-
-
-
-
-
+### Opdracht 8
+1. De data komt niet overeen. 
+2. Dit gaan we fixen.
 
