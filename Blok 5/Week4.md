@@ -39,7 +39,7 @@ $stmt->execute(['id' => $id]);
 ### Opdracht 3
 
 1. Maak nu een pagina waarin we alle soft deleted tools tonen in een tabel.
-2. Maak een nieuw bestand aan genaamd `tool_soft_delete.php`.
+2. Maak een nieuw bestand aan genaamd `tools_deleted.php`.
 3. Voeg de volgende code toe:
 
 ```php
@@ -51,15 +51,15 @@ $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ### Opdracht 4
 
-1. Maak een link aan op de `tool_soft_delete.php` pagina die naar de `tool_soft_delete_restore.php` pagina verwijst.
-2. Maak een nieuw bestand aan genaamd `tool_soft_delete_restore.php`.
+1. Maak een link aan op de `tools_deleted.php` pagina die naar de `tools_deleted_restore.php` pagina verwijst.
+2. Maak een nieuw bestand aan genaamd `tools_deleted_restore.php`.
 3. Voeg de volgende code toe:
 
 ```php
 $id = $_GET['id'];
 $stmt = $conn->prepare("UPDATE tools SET deleted_at = NULL WHERE tool_id = :id");
 $stmt->execute(['id' => $id]);
-header('Location: tool_soft_delete.php');
+header('Location: tools_deleted.php');
 exit();
 ?>
 ```
