@@ -129,6 +129,25 @@ $drivers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 7. Test je code in de browser. 
 
 ### Opdracht 8
-1. De data komt niet overeen. 
+1. De data komt niet overeen in de tabel
 2. Dit gaan we fixen.
+
+```html
+ <tr class="border-b border-gray-700 hover:bg-gray-750">
+    <td class="py-4 px-6 font-bold"><?php echo $driver['driverId'] ?></td>
+    <td class="py-4 px-6 flex items-center">
+        <span><?php echo $driver['forename'] ?> <?php echo $driver['surname'] ?></span>
+    </td>
+    <td class="py-4 px-6">
+        <div class="flex items-center">
+            <div class="w-3 h-3 bg-blue-600 rounded-full mr-2"></div>
+            <?php echo $driver['nationality'] ?>        
+        </div>
+    </td>
+    <td class="py-4 px-6 font-bold"><?php echo $driver['dob'] ?></td>
+</tr>
+```
+3. Test je code in de browser.
+4. De data komt nu overeen in de tabel.
+
 

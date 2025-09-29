@@ -32,7 +32,7 @@ De request response cycle is de cyclus waarin een webpagina wordt gemaakt.
 (Deze cyclus is ook te zien in de browser via de Developer Tools)
 En op deze afbeelding zie je hoe de request response cycle werkt:
 
-![Request Response Cycle](rsc.png)
+![Request Response Cycle](assets/rsc.png)
 
 Wij gaan deze cyclus ook gebruiken om de website te maken.
 Wij gaan een lokale webserver gebruiken. Deze is al aangemaakt in de docker-compose.yml file.

@@ -76,6 +76,8 @@ $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 ```
 
+
+
 ### Opdracht 6
 
 1. Maak nu ook soft deleted functionaliteit aan voor users.
