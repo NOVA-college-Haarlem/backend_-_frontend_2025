@@ -101,6 +101,7 @@ $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ### Opdracht 8
 1. Pas de stijling aan met behulp van AI.
+2. Zet alle data (contructorId, name) die we hebben in een tabel.
 
 ### Opdracht 9
 1. Maak een detail pagina voor de teams.
@@ -113,7 +114,7 @@ $result = mysqli_query($conn, $query);
 $constructor = mysqli_fetch_assoc($result);
 ```
 3. Test je code in de browser.
-4. De data van de team wordt nu getoond in de detail pagina.
+4. De data van de team wordt nu getoond in de detail pagina. Toon nu alle data die we ophalen uit de database.
 
 
 
