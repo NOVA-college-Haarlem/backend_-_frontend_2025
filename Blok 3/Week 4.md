@@ -72,21 +72,27 @@ $driver = mysqli_fetch_assoc($result);
 
 ### Opdracht 5
 
-1. We gaan ook data van constructors (teams) tonen. Daarvoor moeten we eerst het menu aanpassen.
-2. Pas het bestand `navbar.php` aan.
-3. Voeg de volgende code toe:
+1. We gaan nu de data van de constructors (teams) tonen.
+2. Daarvoor hebben we data nodig in de database.
+3. Deze data kun je vinden in het bestand `constructors.sql` in de map `assets`.
+
+### Opdracht 6
+
+4. We gaan ook data van constructors (teams) tonen. Daarvoor moeten we eerst het menu aanpassen.
+5. Pas het bestand `navbar.php` aan.
+6. Voeg de volgende code toe:
 ```html
 <a href="teams.php">Teams</a>
 ```
 
-### Opdracht 6
+### Opdracht 7
 
 1. Voeg data in de database toe. Gebruik het bestand `constructors.sql` in de map `assets`.
 2. Importeer de data in de database.
 3. Test je code in de browser.
 4. De data van de teams wordt nu getoond in de teams pagina.
 
-### Opdracht 7
+### Opdracht 8
 
 1. Maak het bestand `teams.php` aan.
 2. Voeg de volgende code toe:
@@ -99,11 +105,11 @@ $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 3. Test je code in de browser.
 4. De data van de teams wordt nu getoond in de teams pagina.
 
-### Opdracht 8
+### Opdracht 9
 1. Pas de stijling aan met behulp van AI.
 2. Zet alle data (contructorId, name) die we hebben in een tabel.
 
-### Opdracht 9
+### Opdracht 10
 1. Maak een detail pagina voor de teams.
 2. Voeg de volgende code toe:
 ```php
