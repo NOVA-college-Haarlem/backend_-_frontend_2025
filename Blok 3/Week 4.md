@@ -89,8 +89,6 @@ $driver = mysqli_fetch_assoc($result);
 
 1. Voeg data in de database toe. Gebruik het bestand `constructors.sql` in de map `assets`.
 2. Importeer de data in de database.
-3. Test je code in de browser.
-4. De data van de teams wordt nu getoond in de teams pagina.
 
 ### Opdracht 8
 
@@ -102,8 +100,9 @@ $query = "SELECT constructorId, name FROM constructors";
 $result = mysqli_query($conn, $query);
 $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ```
-3. Test je code in de browser.
-4. De data van de teams wordt nu getoond in de teams pagina.
+3. Schrijf een foreach loop om de data van de teams te tonen in een tabel.
+4. Test je code in de browser.
+5. De data van de teams wordt nu getoond in de teams pagina.
 
 ### Opdracht 9
 1. Voeg een link toe naar de detail pagina van de teams.
@@ -111,7 +110,8 @@ $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ```html
 <a href="team-profile.php?id=<?php echo $team['constructorId'] ?>" class="text-blue-500 hover:underline">View Profile</a>
 ```
-
+3. Test je code in de browser.
+4. De link naar de detail pagina van de teams werkt nu.
 
 ### Opdracht 10
 1. Pas de stijling aan met behulp van AI.
