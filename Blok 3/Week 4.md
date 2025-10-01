@@ -97,7 +97,7 @@ $driver = mysqli_fetch_assoc($result);
 1. Maak het bestand `teams.php` aan.
 2. Voeg de volgende code toe:
 ```php
-<?php
+
 $query = "SELECT constructorId, name FROM constructors";
 $result = mysqli_query($conn, $query);
 $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -113,7 +113,7 @@ $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 1. Maak een detail pagina voor de teams.
 2. Voeg de volgende code toe:
 ```php
-<?php
+
 $constructorId = $_GET['id'];
 $query = "SELECT * FROM constructors WHERE constructorId = $constructorId";
 $result = mysqli_query($conn, $query);
