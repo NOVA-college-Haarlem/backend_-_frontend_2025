@@ -106,10 +106,18 @@ $teams = mysqli_fetch_all($result, MYSQLI_ASSOC);
 4. De data van de teams wordt nu getoond in de teams pagina.
 
 ### Opdracht 9
+1. Voeg een link toe naar de detail pagina van de teams.
+2. Voeg de volgende code toe:
+```html
+<a href="team-profile.php?id=<?php echo $team['constructorId'] ?>" class="text-blue-500 hover:underline">View Profile</a>
+```
+
+
+### Opdracht 10
 1. Pas de stijling aan met behulp van AI.
 2. Zet alle data (contructorId, name) die we hebben in een tabel.
 
-### Opdracht 10
+### Opdracht 11
 1. Maak een detail pagina voor de teams.
 2. Voeg de volgende code toe:
 ```php
