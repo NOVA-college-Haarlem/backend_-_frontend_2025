@@ -125,7 +125,7 @@ We gaan gebruik maken van de `add_to_cart.php` pagina.
 ```
 
 ### Opdracht 3
-1. We gaan de `product-detail.php` pagina aanpassen.
+1. We gaan de `tools_detail.php` pagina aanpassen.
 2. De huidige link moeten we aanpassen, we voegen een id-attribuut toe:
 ```html
 <a href="add_to_cart.php?id=<?php echo $tool['tool_id']; ?>" class="btn" id="bestelBtn">Bestel</a>
@@ -133,7 +133,7 @@ We gaan gebruik maken van de `add_to_cart.php` pagina.
 
 ### Opdracht 4
 
-1. Dan voegen we Javascript toe aan de `product-detail.php` pagina. Zet deze code onderaan `</main>`
+1. Dan voegen we Javascript toe aan de `tools_detail.php` pagina. Zet deze code onderaan `</main>`
 2. Voeg de volgende code toe:
 
 ```javascript
