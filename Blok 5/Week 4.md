@@ -133,7 +133,7 @@ We gaan gebruik maken van de `add_to_cart.php` pagina.
 
 ### Opdracht 4
 
-1. Dan voegen we Javascript toe aan de `add_to_cart.php` pagina. Zet deze code onderaan `</main>`
+1. Dan voegen we Javascript toe aan de `product-detail.php` pagina. Zet deze code onderaan `</main>`
 2. Voeg de volgende code toe:
 
 ```javascript
