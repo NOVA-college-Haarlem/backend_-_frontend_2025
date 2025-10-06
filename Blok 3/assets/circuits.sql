@@ -10,6 +10,9 @@ CREATE TABLE `circuits` (
   `url` varchar(71) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE circuits ADD PRIMARY KEY (circuitId);
+
 --
 -- Dumping data for table `circuits`
 --

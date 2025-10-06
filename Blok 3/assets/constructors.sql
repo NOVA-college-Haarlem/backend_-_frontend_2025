@@ -6,6 +6,8 @@ CREATE TABLE `constructors` (
   `url` varchar(73) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE constructors ADD PRIMARY KEY (constructorId);
 --
 -- Dumping data for table `constructors`
 --
