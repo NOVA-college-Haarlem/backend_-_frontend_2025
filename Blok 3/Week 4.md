@@ -69,6 +69,7 @@ $driver = mysqli_fetch_assoc($result);
 ### Opdracht 4
 1. Laten we AI gebruiken om de stijl van de pagina te verbeteren.
 
+## Les 2 - Teams
 
 ### Opdracht 5
 
@@ -132,12 +133,7 @@ $constructor = mysqli_fetch_assoc($result);
 
 
 
-## Les 2 - Images in PHP
 
-In deze les gaan we images toevoegen aan onze applicatie.
-We gaan gebruik maken van de `images` folder in de root van de project.
-We gaan gebruik maken van de `image` kolom in de `drivers` tabel.
-We gaan gebruik maken van de `image` kolom in de `drivers` tabel.
 
 
 
