@@ -107,3 +107,20 @@ if ($result) {
 3. Test de code in je browser.
 
 ### Opdracht 8
+
+We gaan nu PHP code toevoegen aan de `tools_index.php` pagina zodat de gebruiker op tools kan filteren.
+
+### Opdracht 9
+
+1. Voeg de volgende code toe:
+```php
+$filter = $_GET['filter'];
+$value = $_GET['value'];
+
+if ($filter && $value) {
+    $sql = "SELECT * FROM tools WHERE $filter = :value";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['value' => $value]);
+    $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+``` 
