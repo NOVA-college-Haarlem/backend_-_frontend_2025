@@ -1,10 +1,16 @@
-# Week 4
+# Week 5
 
 ## Les 1 - Herhaling
 
 We gaan nu hetzelfde doen als in de vorige les. We gaan nu de data van de circuits tonen. Vorige week hebben we een overzicht gemaakt van teams. We gaan nu de data van de circuits tonen.
 
 ### Opdracht 1
+
+1. Voeg data van circuits toe aan de database.
+2. Gebruik het bestand `circuits.sql` in de assets folder.
+3. Importeer de data in de database via het tabblad SQL in PHPMyAdmin.
+
+### Opdracht 2
 
 1. Maak een nieuw bestand aan genaamd `circuits.php`
 2. Voeg de volgende code toe:
@@ -20,11 +26,11 @@ var_dump($circuits);
 3. Test je code in de browser.
 4. De data van de circuits wordt nu getoond in de circuits pagina.
 
-### Opdracht 2
+### Opdracht 3
 
 1. Pas het bestand `circuits.php` aan zodat de data van de circuits wordt getoond in een tabel.
 
-### Opdracht 3
+### Opdracht 4
 1. We gaan nu een link toevoegen naar de detail pagina van de circuits.
 2. Voeg de volgende code toe:
 ```html
@@ -44,7 +50,7 @@ $circuit = mysqli_fetch_assoc($result);
 ?>
 ```
 
-### Opdracht 4
+### Opdracht 5
 
 1. Pas het bestand `circuit-detail.php` aan zodat de data netjes wordt getoond zoals de rest van de pagina's.
 
