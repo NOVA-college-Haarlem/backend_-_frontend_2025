@@ -132,7 +132,7 @@ if (isset($_GET['filter']) && isset($_GET['value'])) {
 ```php  
 // we hebben nu TWEE voorwaarden aan de WHERE clause toegevoegd. Bestudeer deze code zelf.
  $sql = "SELECT * FROM tools JOIN brands ON brands.brand_id = tools.tool_brand WHERE tools.deleted_at IS NULL AND $filter = :value";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['value' => $value]);
-        $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $conn->prepare($sql);
+$stmt->execute(['value' => $value]);
+$tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ```
