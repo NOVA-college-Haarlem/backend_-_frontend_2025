@@ -112,15 +112,27 @@ We gaan nu PHP code toevoegen aan de `tools_index.php` pagina zodat de gebruiker
 
 ### Opdracht 9
 
-1. Voeg de volgende code toe:
+1. We gaan eerst controlleren welke filter en value de gebruiker heeft gekozen.
+2. Voeg de volgende code toe:
 ```php
-$filter = $_GET['filter'];
-$value = $_GET['value'];
+if (isset($_GET['filter']) && isset($_GET['value'])) {
+    $filter = $_GET['filter'];
 
-if ($filter && $value) {
-    $sql = "SELECT * FROM tools WHERE $filter = :value";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute(['value' => $value]);
-    $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if($filter === 'brands'){
+        $filter = 'brands.brand_name';
+    }
+    $value = $_GET['value'];
 }
-``` 
+```
+
+### Opdracht 10
+
+1. We gaan nu de query aanpassen.
+2. Voeg de volgende code toe:
+```php  
+// we hebben nu TWEE voorwaarden aan de WHERE clause toegevoegd. Bestudeer deze code zelf.
+ $sql = "SELECT * FROM tools JOIN brands ON brands.brand_id = tools.tool_brand WHERE tools.deleted_at IS NULL AND $filter = :value";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['value' => $value]);
+        $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+```
