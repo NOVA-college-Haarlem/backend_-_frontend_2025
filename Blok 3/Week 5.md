@@ -85,7 +85,7 @@ ALTER TABLE drivers ADD COLUMN image VARCHAR(255) NULL;
 2. Zoek op internet voor een image van een team en voeg deze toe aan de `images` folder in de root van de project.
 3. Voeg de kolom `image` toe aan de teams tabel.
 ```sql
-ALTER TABLE teams ADD COLUMN image VARCHAR(255) NULL;
+ALTER TABLE constructors ADD COLUMN image VARCHAR(255) NULL;
 ```
 4. Voer de naam van de afbeelding toe aan de teams tabel.
 5. Echo de naam van de image in de team-profile.php pagina.
