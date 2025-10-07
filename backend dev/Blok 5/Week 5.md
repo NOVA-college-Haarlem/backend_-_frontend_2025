@@ -6,6 +6,12 @@ In deze les gaan we security toevoegen aan onze applicatie.
 
 ### Opdracht 1
 
+1. Alleen ingelogde gebruikers mogen gebruik maken van de tools_delete.php pagina.
+2. Bouw dit verder uit.
+
+
+### Opdracht 2
+
 1. Het bestand tools_delete.php is nog niet veilig. We moeten het aanpassen. We gaan __input validation__ toevoegen.
 2. Voeg de volgende code toe:
 ```php
@@ -16,7 +22,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = (int)$_GET['id'];
 ```
 
-### Opdracht 2
+### Opdracht 3
 
 1. We passen de een klein beetje de code aan.
 2. Voeg de volgende code toe:
@@ -26,7 +32,7 @@ $result = $stmt->execute(
 );
 ```
 
-### Opdracht 3
+### Opdracht 4
 3. Dan gaan we ook nog __error handling__ toevoegen.
 4. Voeg de volgende code toe:
 ```php
@@ -40,7 +46,7 @@ if ($result) {
 }
 ```
 
-### Opdracht 4
+### Opdracht 5
 
 1. Dan willen we dat geen gebruiker deze pagina kan benaderen die niet ingelogd is.
 2. Voeg de volgende code toe:
@@ -51,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ```
 
-### Opdracht 5
+### Opdracht 6
 
 1. Eventueel kunnen we ook nog een __logboek__ toevoegen.
 2. Voeg de volgende code toe:
@@ -61,7 +67,9 @@ if ($result) {
 }
 ```
 
-### Opdracht 6
+## Les 2 - Filtering
+
+### Opdracht 7
 
 1. Filtering toevoegen.
 2. Op de pagina tools_index.php gaan we filters aanbrengen zodat de gebruiker op tools kan filteren.
@@ -76,7 +84,7 @@ if ($result) {
 ```
 4. Daarnaast moeten we ook een class toevoegen aan `<main>`: `class="table"`
 
-### Opdracht 7
+### Opdracht 8
 
 1. Nu gaan we de CSS aanpassen.
 2. Voeg de volgende code toe:
@@ -100,17 +108,17 @@ if ($result) {
 
 ```
 
-### Opdracht 7
+### Opdracht 9
 
 1. Dan gaan we de code aanpassen zodat de gebruiker op tools kan filteren.
 2. Want als we nu op een filter klikken, dan gaat de gebruiker naar de tools_index.php pagina met een GET parameter.
 3. Test de code in je browser.
 
-### Opdracht 8
+### Opdracht 10
 
 We gaan nu PHP code toevoegen aan de `tools_index.php` pagina zodat de gebruiker op tools kan filteren.
 
-### Opdracht 9
+### Opdracht 11
 
 1. We gaan eerst controlleren welke filter en value de gebruiker heeft gekozen.
 2. Voeg de volgende code toe:
@@ -125,7 +133,7 @@ if (isset($_GET['filter']) && isset($_GET['value'])) {
 }
 ```
 
-### Opdracht 10
+### Opdracht 12
 
 1. We gaan nu de query aanpassen.
 2. Voeg de volgende code toe:
@@ -136,3 +144,8 @@ $stmt = $conn->prepare($sql);
 $stmt->execute(['value' => $value]);
 $tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ```
+
+### Opdracht 13
+
+1. Maak nu nog meer filters aan. Bijvoorbeeld voor een alle ander bekende brands.
+2. Ga je een foreach gebruiken?

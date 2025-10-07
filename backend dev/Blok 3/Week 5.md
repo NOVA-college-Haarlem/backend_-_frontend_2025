@@ -132,3 +132,28 @@ if(isset($_GET['filter'])){
 ?>
 ```
 
+### Opdracht 2
+
+1. Zoals je eerder geleerd hebt, kunnen we een GET-array vullen met data uit de URL.
+2. We voegne de volgende link toe aan de drivers-table.php pagina:
+```html
+<a href="drivers-table.php?filter=nationality&value=Dutch" class="text-blue-500 hover:underline">Dutch</a>
+```
+3. We gaan nu de code aanpassen zodat de gebruiker op drivers kan filteren.
+4. Voeg de volgende code toe aan de drivers-table.php pagina:
+```php
+<?php
+//toevoegen aan de if-statement
+$filter = $_GET['filter'];
+$value = $_GET['value'];
+$query = "SELECT * FROM drivers WHERE $filter = '$value'";
+$result = mysqli_query($conn, $query);
+$drivers = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+```
+
+### Opdracht 3
+
+1. Maak zelf nog twee filters aan. Bijvoorbeeld voor de teams en de circuits.
+
+
