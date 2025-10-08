@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 4: Descendant Selector</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Niveau 4: Selecteer studenten in het klaslokaal</h1>
+        <p class="instructie">Selecteer alle <code>&lt;student&gt;</code> elementen die zich BINNEN een <code>&lt;klaslokaal&gt;</code> bevinden.</p>
+        
+        <div class="buiten">
+            <student>Anna (in de gang)</student>
+        </div>
+        
+        <klaslokaal>
+            <student>Bram</student>
+            <student>Charlotte</student>
+            <student>Daan</student>
+        </klaslokaal>
+        
+        <div class="buiten">
+            <student>Emma (in de kantine)</student>
+        </div>
+        
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Alleen de studenten IN het klaslokaal moeten groen worden (Bram, Charlotte, Daan).</p>
+            <p><strong>Tip:</strong> Gebruik een spatie tussen de twee selectors: <code>ouder kind</code></p>
+        </div>
+    </div>
+</body>
+</html>
