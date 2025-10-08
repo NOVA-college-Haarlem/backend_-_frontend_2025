@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 7: Element + Class Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Niveau 7: Selecteer tafels met klasse "groot"</h1>
+        <p class="instructie">Selecteer alle <code>&lt;tafel&gt;</code> elementen die de class <code>groot</code> hebben.</p>
+        
+        <div class="klaslokaal">
+            <tafel>Kleine tafel</tafel>
+            <tafel class="groot">Grote tafel 1</tafel>
+            <stoel class="groot">Grote stoel</stoel>
+            <tafel class="groot">Grote tafel 2</tafel>
+            <tafel>Kleine tafel</tafel>
+        </div>
+        
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Alleen de TAFELS met class="groot" moeten groen worden (niet de stoel).</p>
+            <p><strong>Tip:</strong> Combineer element en class zonder spatie: <code>element.classname</code></p>
+        </div>
+    </div>
+</body>
+</html>
