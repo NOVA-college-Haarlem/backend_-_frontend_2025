@@ -60,3 +60,9 @@ Ga een shortlist maken met software die jij interessant vindt. Verwerk deze lijs
 
 1. Maak een presentatie van je project.
 2. Presenteer je project aan de docenten.
+
+
+### Maak een planning
+
+1. Maak een planning op basis van de lesmateriaal.
+2. Schrijf je planning op in een document.

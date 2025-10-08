@@ -225,5 +225,35 @@ Voeg toe aan je hobby-pagina:
 - Maak een "kaart" class die je kunt hergebruiken
 - Gebruik DevTools om je box model te inspecteren
 
+**Extra uitdaging:**
+- Maak een "container" class die je content centreert met `margin: 0 auto`
+- Experimenteer met verschillende border-styles (solid, dashed, dotted)
+- Maak een kaart met schaduw effect (research: `box-shadow`)
+- Gebruik `border-radius` om afgeronde hoeken te maken
+
+### Controlelijst voor docent
+- [ ] Studenten begrijpen het box model (content, padding, border, margin)
+- [ ] Studenten kunnen padding toevoegen aan elementen
+- [ ] Studenten kunnen borders toevoegen met verschillende stijlen
+- [ ] Studenten kunnen margin gebruiken voor ruimte tussen elementen
+- [ ] Studenten kunnen DevTools gebruiken om het box model te inspecteren
+- [ ] Studenten begrijpen het verschil tussen padding (binnen) en margin (buiten)
+- [ ] Studenten kunnen elementen centreren met `margin: 0 auto`
+
+### Tips voor docent
+- Het box model is abstract - gebruik veel visuele voorbeelden
+- Laat studenten **live** in DevTools aanpassingen maken - ze zien direct het effect
+- Gebruik de box model visualisatie in DevTools uitgebreid
+- Maak het verschil tussen padding en margin duidelijk met achtergrondkleuren
+- Geef praktische voorbeelden: "Een kaartje heeft altijd padding en margin"
+- Laat studenten professionele websites inspecteren - wat zien ze?
+- Herhaal de shorthand notaties meerdere keren (top, right, bottom, left)
+
+### Veelgemaakte Fouten
+1. **Vergeten width te zetten** bij centreren met `margin: 0 auto`
+2. **Padding en margin door elkaar halen** - blijf het verschil benadrukken
+3. **Border vergeten** - border heeft 3 waardes nodig (width, style, color)
+4. **Te veel padding/margin** - houd het simpel in het begin (10px, 15px, 20px)
+
 ---
 

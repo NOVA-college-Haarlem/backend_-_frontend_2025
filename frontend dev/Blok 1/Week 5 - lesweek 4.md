@@ -144,4 +144,24 @@ Herschrijf je hobby-pagina van week 4:
 - Experimenteer met verschillende styles per class
 - Maak een class "highlight" voor tekst die extra moet opvallen
 
+**Extra uitdaging:**
+- Maak een class "button" voor je links die er als knoppen uitzien
+- Combineer classes (bijv. class="tekst groot belangrijk")
+- Gebruik een ID voor je footer
+
+### Controlelijst voor docent
+- [ ] Studenten begrijpen verschil tussen classes en IDs
+- [ ] Studenten kunnen classes toevoegen in HTML
+- [ ] Studenten kunnen classes stylen in CSS met `.`
+- [ ] Studenten kunnen IDs stylen in CSS met `#`
+- [ ] Studenten begrijpen wanneer je classes gebruikt vs IDs
+- [ ] Studenten kunnen meerdere classes op één element gebruiken
+
+### Tips voor docent
+- Herhaal het verschil tussen classes (herbruikbaar) en IDs (uniek) meerdere keren
+- Laat studenten vaak de browser verversen om hun wijzigingen te zien
+- Gebruik kleurrijke voorbeelden - dat maakt het visueler en leuker
+- Loop rond terwijl studenten oefenen en help waar nodig
+- Laat studenten elkaars werk bekijken voor inspiratie
+
 ---
