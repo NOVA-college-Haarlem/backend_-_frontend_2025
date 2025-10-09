@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 11: Universal Descendant Selector</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Niveau 11: Selecteer alles in de kast</h1>
+        <p class="instructie">Selecteer ALLE elementen die binnen <code>&lt;kast&gt;</code> zitten, ongeacht het type.</p>
+        
+        <kast>
+            <boek>Boek 1</boek>
+            <pen>Pen</pen>
+            <schrift>Schrift</schrift>
+            <liniaal>Liniaal</liniaal>
+        </kast>
+        
+        <div class="buiten">
+            <boek>Boek (buiten kast)</boek>
+            <pen>Pen (buiten kast)</pen>
+        </div>
+        
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Alle items IN de kast moeten groen worden.</p>
+            <p><strong>Tip:</strong> Combineer een element selector met de universal selector: <code>element *</code></p>
+        </div>
+    </div>
+</body>
+</html>

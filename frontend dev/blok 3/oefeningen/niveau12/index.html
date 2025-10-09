@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 12: Adjacent Sibling Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Niveau 12: Selecteer stoel direct NA tafel</h1>
+        <p class="instructie">Selecteer alleen de <code>&lt;stoel&gt;</code> die DIRECT na een <code>&lt;tafel&gt;</code> komt.</p>
+        
+        <div class="klaslokaal">
+            <tafel>Tafel 1</tafel>
+            <stoel>Stoel A (direct na tafel)</stoel>
+            <stoel>Stoel B</stoel>
+            <tafel>Tafel 2</tafel>
+            <stoel>Stoel C (direct na tafel)</stoel>
+            <kast>Kast</kast>
+            <stoel>Stoel D (na kast)</stoel>
+        </div>
+        
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Alleen stoelen die DIRECT na een tafel komen moeten groen worden (Stoel A en C).</p>
+            <p><strong>Tip:</strong> De Adjacent Sibling Selector gebruikt een + teken: <code>element1 + element2</code></p>
+        </div>
+    </div>
+</body>
+</html>

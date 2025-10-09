@@ -1,0 +1,13 @@
+/* Niveau 12: Adjacent Sibling Selector (Aangrenzende Broer/Zus Selector)
+   Doel: Selecteer <stoel> die DIRECT na <tafel> komt
+   
+   Instructie:
+   De Adjacent Sibling Selector selecteert een element dat direct volgt
+   op een ander element (beide met dezelfde ouder).
+   Syntax: element1 + element2
+   Dit selecteert element2 alleen als het direct na element1 komt.
+*/
+
+/* JOUW CODE HIER */
+
+
