@@ -1,0 +1,15 @@
+/* Niveau 14: Child Selector (Kind Selector)
+   Doel: Selecteer <student> die DIRECTE kinderen zijn van <klaslokaal>
+   
+   Instructie:
+   De Child Selector selecteert alleen DIRECTE kinderen van een element.
+   Het selecteert GEEN kleinkinderen of verdere afstammelingen.
+   Syntax: ouder > kind
+   
+   Let op het verschil:
+   - ouder kind (met spatie) = alle afstammelingen
+   - ouder > kind (met >) = alleen directe kinderen
+*/
+
+/* JOUW CODE HIER */
+

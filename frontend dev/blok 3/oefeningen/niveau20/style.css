@@ -1,0 +1,21 @@
+/* Niveau 20: :first-of-type Pseudo-class
+   Doel: Selecteer de EERSTE <student> van zijn type
+   
+   Instructie:
+   De :first-of-type pseudo-class selecteert het eerste element van
+   een specifiek type binnen zijn ouder.
+   
+   Verschil met :first-child:
+   - :first-child = moet het allereerste kind zijn
+   - :first-of-type = eerste van dat specifieke element type
+   
+   Syntax: element:first-of-type
+*/
+
+/* JOUW CODE HIER */
+
+rij student:first-of-type {
+   background-color: #4CAF50;
+   color: white;
+   border-color: #45a049;
+}

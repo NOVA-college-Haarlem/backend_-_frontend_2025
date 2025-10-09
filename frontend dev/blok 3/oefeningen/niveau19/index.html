@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 19: Nth Last Child</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Niveau 19: Selecteer de 2e student vanaf het einde</h1>
+        <p class="instructie">Selecteer de <strong>2e</strong> <code>&lt;student&gt;</code> vanaf het
+            <strong>EINDE</strong>.
+        </p>
+
+        <rij>
+            <h3>Rij 1</h3>
+            <student>Anna</student>
+            <student>Bram (2e vanaf einde)</student>
+            <student>Charlotte</student>
+        </rij>
+
+        <rij>
+            <h3>Rij 2</h3>
+            <student>Daan</student>
+            <student>Emma (2e vanaf einde)</student>
+            <student>Finn</student>
+        </rij>
+
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Bram en Emma moeten groen worden (2e vanaf het einde in elke rij).</p>
+            <p><strong>Tip:</strong> Gebruik :nth-last-child(2) om vanaf het einde te tellen:
+                <code>element:nth-last-child(2)</code>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

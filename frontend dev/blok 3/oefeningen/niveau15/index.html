@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 15: First Child</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="style.css">    
+<body>
+    <div class="container">
+        <h1>Niveau 15: Selecteer de eerste student</h1>
+        <p class="instructie">Selecteer de EERSTE <code>&lt;student&gt;</code> binnen zijn ouder.</p>
+        
+        <rij class="rij-1">
+            <h3>Rij 1</h3>
+            <student>Anna (eerste)</student>
+            <student>Bram</student>
+            <student>Charlotte</student>
+        </rij>
+        
+        <rij class="rij-2">
+            <h3>Rij 2</h3>
+            <student>Daan (eerste)</student>
+            <student>Emma</student>
+            <student>Finn</student>
+        </rij>
+        
+        <div class="info">
+            <h3>Doel:</h3>
+            <p>Anna en Daan moeten groen worden (de eerste student in elke rij).</p>
+            <p><strong>Tip:</strong> Gebruik de :first-child pseudo-class: <code>element:first-child</code></p>
+            <p><strong>Let op:</strong> Het moet echt het eerste KIND zijn, niet alleen de eerste van dat type!</p>
+        </div>
+    </div>
+</body>
+</html>
