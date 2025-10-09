@@ -1,0 +1,11 @@
+/* Niveau 13: General Sibling Selector (Algemene Broer/Zus Selector)
+   Doel: Selecteer alle <stoel> die NA <tafel> komen
+   
+   Instructie:
+   De General Sibling Selector selecteert ALLE elementen die na een
+   ander element komen (beide met dezelfde ouder).
+   Het hoeft niet direct erna te zijn, maar ergens erna.
+   Syntax: element1 ~ element2
+*/
+
+/* JOUW CODE HIER */
