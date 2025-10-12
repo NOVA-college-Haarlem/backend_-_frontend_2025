@@ -66,6 +66,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Email validatie voorkomt ongeldige invoer
 - [ ] htmlspecialchars() wordt toegepast op alle user input bij weergave
 - [ ] Prepared statements voorkomen SQL-injectie
+- [ ] Input validatie op alle formuliervelden
 
 **Assessment Vraag:**
 "Laat zien waar je password_hash() gebruikt en leg uit waarom."
@@ -103,7 +104,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 **Als bezoeker wil ik een overzicht van alle beschikbare dieren zien**
 
 **Acceptance Criteria:**
-- [ ] `pets_index.php` toont alle dieren in een grid of lijst
+- [ ] `pets_index.php` toont alle dieren in een grid of lijst of tabel
 - [ ] JOIN query toont asielnaam bij elk dier
 - [ ] Alleen beschikbare dieren worden getoond (`WHERE adoption_status = 'available' AND deleted_at IS NULL`)
 - [ ] htmlspecialchars() wordt toegepast op alle getoonde data
@@ -150,13 +151,16 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ### Één-op-Veel Relatie Feature
 
-#### US-10: Asiel Selectie bij Dier
-**Als asielmedewerker wil ik bij het toevoegen van een dier een asiel kunnen selecteren**
+#### US-10: Per asiel een overzicht van de dieren
+**Als asielmedewerker wil ik een overzicht van de dieren kunnen zien per asiel**
 
 **Acceptance Criteria:**
-- [ ] Dropdown/select element in `pet_create.php` haalt shelters op uit database
-- [ ] Foreign key `shelter_id` wordt opgeslagen in `pets` tabel
-- [ ] JOIN query in `pets_index.php` toont asielnaam bij elk dier
+- [ ] Vanuit asiel_index.php kan je naar het overzicht van de dieren van een bepaald asiel
+- [ ] Er wordt een GET parameter meegegeven die de asielnaam bevat
+- [ ] Er wordt een JOIN query gemaakt om de dieren van het asiel te krijgen
+- [ ] Filter op asielnaam
+- [ ] Alleen beschikbare dieren worden getoond (`WHERE adoption_status = 'available' AND deleted_at IS NULL`)
+- [ ] htmlspecialchars() wordt toegepast op alle getoonde data
 
 **Assessment Vraag:**
 "Laat zien hoe je de één-op-veel relatie hebt opgezet tussen shelters en pets."
