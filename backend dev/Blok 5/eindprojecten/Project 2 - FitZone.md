@@ -27,7 +27,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, role, deleted_at
 - **members:** member_id (PK), membership_type, start_date, emergency_contact, medical_notes, deleted_at
 - **instructors:** instructor_id (PK), specialization, bio, certification, deleted_at
-- **classes:** class_id (PK), class_name, class_type, instructor_id (FK), class_date, class_time, max_participants, deleted_at
+- **classes:** class_id (PK), class_name, class_type, class_date, class_time, max_participants, deleted_at
 - **enrollments:** enrollment_id (PK), enrolled_at
 
 ---
