@@ -2,6 +2,8 @@
 
 ## Verdeling van de projecten
 
+LET OP: De verdeling is niet definitief, en kan nog veranderen.
+
 ### Project 1 - PetMatch
 
 1. Justin
