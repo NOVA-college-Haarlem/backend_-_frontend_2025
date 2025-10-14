@@ -3,10 +3,6 @@
 ## Introductie
 PetMatch is een adoptieplatform waar dierenasielen hun dieren kunnen aanbieden en mensen op zoek naar een huisdier kunnen browsen en adopteren. Bezoekers kunnen dieren bekijken, filteren op soort en leeftijd, en adoptieaanvragen indienen. Asielmedewerkers beheren de dierenprofielen en behandelen adoptieaanvragen.
 
-## Opdracht 1 - Database Ontwerp
-
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
-
 ### Verhaal van de opdrachtgever
 
 "Hallo! Ik ben Sarah van Dierenasiel 'Tweede Kans'. We zijn op zoek naar een modern systeem om onze dieren te kunnen plaatsen bij nieuwe baasjes. Op dit moment gaat alles nog via papieren formulieren en dat is erg inefficiënt.
@@ -48,8 +44,12 @@ Het zou fijn zijn als mensen kunnen filteren op bijvoorbeeld diersoort of leefti
 
 Kunnen jullie ons helpen dit te realiseren?"
 
+## Opdracht 1 - Database Ontwerp
 
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
 
+- Stap 1: ERD maken
+- Stap 2: 
 
 ---
 
@@ -65,23 +65,9 @@ Kunnen jullie ons helpen dit te realiseren?"
 
 ---
 
-#### US-02: Genormaliseerde Database Structuur
-**Als developer wil ik een genormaliseerde database structuur**
-
-**Acceptance Criteria:**
-- [ ] Elke tabel heeft een primary key (AUTO_INCREMENT)
-- [ ] Alle relaties zijn correct opgezet door middel van foreign keys.
-
-**Assessment Vraag:**
-"Waarom is de shelters tabel apart en niet als tekstveld in pets?"
-
-"Wat is het verschil tussen een één-op-één en één-op-veel relatie? Laat beide zien in je database."
-
----
-
 ### Security (15 punten)
 
-#### US-03: Veilige Registratie
+#### US-02: Veilige Registratie
 **Als adopter wil ik veilig kunnen registreren**
 
 **Acceptance Criteria:**
@@ -91,7 +77,7 @@ Kunnen jullie ons helpen dit te realiseren?"
 - [ ] Prepared statements voorkomen SQL-injectie
 - [ ] Input validatie op alle formuliervelden
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien waar je password_hash() gebruikt en leg uit waarom."
 
 ---
@@ -116,7 +102,7 @@ Kunnen jullie ons helpen dit te realiseren?"
 **Als asielmedewerker wil ik dieren kunnen toevoegen**
 
 **Acceptance Criteria:**
-- [ ] Formulier op `pet_create.php` met velden: naam, soort, ras, leeftijd, geslacht, beschrijving, asiel (dropdown)
+- [ ] Formulier op `pet_create.php` met velden: naam, soort (dropdown), ras, leeftijd, geslacht (dropdown), beschrijving, asiel (dropdown)
 - [ ] POST naar `pet_create_process.php` met prepared statement INSERT query
 - [ ] Shelter dropdown toont alle asielen uit `shelters` tabel
 - [ ] Input validatie controleert of alle verplichte velden zijn ingevuld
@@ -171,8 +157,6 @@ Kunnen jullie ons helpen dit te realiseren?"
 - [ ] Alleen administrators hebben toegang tot deze pagina
 
 ---
-
-### Één-op-Veel Relatie Feature
 
 #### US-10: Per asiel een overzicht van de dieren
 **Als asielmedewerker wil ik een overzicht van de dieren kunnen zien per asiel**

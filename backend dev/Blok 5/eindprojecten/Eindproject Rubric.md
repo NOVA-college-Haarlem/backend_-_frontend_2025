@@ -38,7 +38,9 @@ Deze criteria worden tijdens de projectweek afgevinkt door de docent.
 |-----------|-------------------|-----------------|----------|
 | **PDO Connectie** | Gebruikt nog mysqli of geen database connectie, of PDO met grote fouten | PDO connectie correct opgezet | PDO connectie correct met goede error handling |
 | **Prepared Statements** | Geen of nauwelijks prepared statements, SQL-injectie kwetsbaar | Alle queries gebruiken prepared statements met placeholders | Alle queries gebruiken prepared statements met duidelijke structuur en error handling |
+| **ERD** | Geen ERD of incorrect ERD | Correct ERD met duidelijke relaties en constraints | Correct ERD met duidelijke relaties en constraints en genormaliseerd |
 | **Database Design** | Geen logische structuur, geen primary/foreign keys | Logische structuur met primary en foreign keys | Genormaliseerde database met duidelijke relaties en constraints |
+| Database bouwen | Geen database bouwen | Database bouwen met correcte structuur en constraints | Database bouwen met correcte structuur en constraints en genormaliseerd |
 | **Één-op-Veel Relatie** | Geen één-op-veel relatie in database aanwezig | Eén-op-veel relatie correct opgezet met foreign key | Meerdere één-op-veel relaties met correcte constraints en indexes |
 
 **Totaal: ___ / 20**
