@@ -273,9 +273,6 @@ echo "<h2>Totaal leerlingen: " . $totaalLeerlingen . "</h2>";
 4. **Leeftijd berekenen**: Bereken de leeftijd van leerlingen op basis van geboortedatum
 5. **Breadcrumbs**: Voeg breadcrumb navigatie toe (Home > Leerlingen > Details)
 
-
-
-
 ## Les 2 - Samenvatting Blok 3 - Overzicht Week 1 t/m 5
 
 ### Week 1: Introductie PHP & Basis Concepten

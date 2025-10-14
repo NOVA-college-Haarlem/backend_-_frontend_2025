@@ -3,34 +3,57 @@
 ## Introductie
 PetMatch is een adoptieplatform waar dierenasielen hun dieren kunnen aanbieden en mensen op zoek naar een huisdier kunnen browsen en adopteren. Bezoekers kunnen dieren bekijken, filteren op soort en leeftijd, en adoptieaanvragen indienen. Asielmedewerkers beheren de dierenprofielen en behandelen adoptieaanvragen.
 
-## Database Structuur
+## Opdracht 1 - Database Ontwerp
 
 Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
 
-### Entiteiten
-- `users` (adopters en asielmedewerkers)
-- `adopter_profiles` (woonsituatie en ervaring) - **één-op-één relatie met users**
-- `pets` (honden, katten, andere huisdieren)
-- `shelters` (dierenasielen) - **één-op-veel relatie met pets**
-- `adoption_requests` (adoptieaanvragen)
+### Verhaal van de opdrachtgever
 
-### Relaties
-**Één-op-Veel Relatie:** Een asiel heeft meerdere dieren, maar een dier verblijft in één asiel.
+"Hallo! Ik ben Sarah van Dierenasiel 'Tweede Kans'. We zijn op zoek naar een modern systeem om onze dieren te kunnen plaatsen bij nieuwe baasjes. Op dit moment gaat alles nog via papieren formulieren en dat is erg inefficiënt.
 
-**Één-op-Één Relatie:** Een user heeft één adopter_profile, en een adopter_profile hoort bij één user.
+We willen graag een platform waar we profielen kunnen aanmaken voor al onze dieren - honden, katten en andere huisdieren. Bij elk dier willen we informatie kunnen toevoegen zoals:
 
-**Een-op-veel Relatie:** Een adopter kan meerdere adoptieaanvragen indienen, maar een adoptieaanvraag hoort bij één adopter.
+Dieren (pets):
+- naam
+- soort 
+- ras
+- leeftijd
+- karakter beschrijving
+- status (beschikbaar/geadopteerd)
+- foto
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, phone, role, deleted_at
-- **adopter_profiles:** profile_id (PK), housing_type, has_garden, has_other_pets, experience_level, deleted_at
-- **pets:** pet_id (PK), pet_name, species, breed, age_years, gender, description, adoption_status, deleted_at
-- **shelters:** shelter_id (PK), shelter_name, city, address, phone, email, deleted_at
-- **adoption_requests:** request_id (PK), request_date, status, motivation, created_at
+Potentiële adoptanten (users) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- adres
+- telefoonnummer 
+- woonsituatie
+- ervaring met huisdieren
+
+Voor adoptieaanvragen (adoption_requests) willen we bijhouden:
+- motivatie
+- datum aanvraag
+- status (in behandeling/goedgekeurd/afgewezen)
+
+Voor asielen (shelters) houden we bij:
+- naam
+- adres
+- telefoonnummer
+- email
+
+Als asielmedewerkers willen we deze aanvragen kunnen bekijken en beoordelen. We willen ook de dierenprofielen kunnen beheren - nieuwe toevoegen als er dieren binnenkomen en de status aanpassen als ze geadopteerd zijn.
+
+Het zou fijn zijn als mensen kunnen filteren op bijvoorbeeld diersoort of leeftijd. En natuurlijk moet alles veilig zijn - we werken met persoonlijke gegevens van mensen.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+
+
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
 ### Database & PDO (20 punten)
 
