@@ -6,17 +6,15 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 
 ### Project 1 - PetMatch
 
-1. Justin
-2. Jesse
-3. Koen
-
+1. Hidde
+2. Kaio
+3. Jordan
 
 ### Project 2 - FitZone
 
-4. Hidde
-5. Kaio
-6. Jordan
-
+4. Justin
+5. Jesse
+6. Koen
 
 ### Project 3 - BookHaven
 
@@ -30,7 +28,6 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 10. Teoman
 11. Drake
 12. Azaan
- 
 
 ### Project 5 - DriveAway
 
