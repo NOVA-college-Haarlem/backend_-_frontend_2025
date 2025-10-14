@@ -3,38 +3,61 @@
 ## Introductie
 FitZone is een fitness school waar leden zich kunnen inschrijven voor verschillende lessen zoals yoga, spinning en bootcamp. Leden kunnen hun profiel beheren, zich inschrijven voor lessen, en hun planning bekijken. Instructeurs kunnen lessen beheren.
 
-## Database Structuur
+### Verhaal van de opdrachtgever
 
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
+"Hallo! Ik ben Mark, eigenaar van FitZone Fitness. We hebben een groeiend aantal leden en instructeurs, maar ons huidige systeem met papieren inschrijfformulieren werkt niet meer.
 
-### Entiteiten
-- `users` (leden en instructeurs)
-- `members` (lid-specifieke info) - **één-op-één relatie met users**
-- `instructors` (instructeur-specifieke info) - **één-op-één relatie met users**
-- `classes` (yoga, spinning, bootcamp, etc.)
-- `enrollments` (inschrijvingen van leden voor lessen)
+We willen graag een digitaal platform waar onze leden zich kunnen inschrijven voor verschillende lessen. Bij elke les willen we informatie kunnen beheren zoals:
 
-### Relaties
-**Één-op-Veel Relatie:** Een instructeur geeft meerdere lessen, maar een les heeft één instructeur.
+Lessen (classes):
+- lesnaam
+- lestype (yoga, spinning, bootcamp, etc.)
+- datum en tijd
+- maximaal aantal deelnemers
+- instructeur
+- beschrijving
 
-**Een-op-veel Relatie:** Een lid kan meerdere inschrijvingen doen, maar een inschrijving hoort bij één lid.
+Leden (members) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- telefoonnummer
+- lidmaatschapstype (basis, premium)
+- startdatum lidmaatschap
+- noodcontact
+- medische aantekeningen
 
-**Één-op-Één Relaties:**
-- Een user kan één member profiel hebben (voor gewone leden)
-- Een user kan één instructor profiel hebben (voor instructeurs)
+Voor instructeurs (instructors) houden we bij:
+- naam
+- specialisatie (yoga expert, spinning coach, etc.)
+- bio
+- certificeringen
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, role, deleted_at
-- **members:** member_id (PK), membership_type, start_date, emergency_contact, medical_notes, deleted_at
-- **instructors:** instructor_id (PK), specialization, bio, certification, deleted_at
-- **classes:** class_id (PK), class_name, class_type, class_date, class_time, max_participants, deleted_at
-- **enrollments:** enrollment_id (PK), enrolled_at
+Voor inschrijvingen (enrollments) willen we bijhouden:
+- welk lid
+- welke les
+- inschrijfdatum
+- aanwezigheid
+
+Als eigenaar wil ik dat leden zich online kunnen inschrijven voor lessen en hun planning kunnen bekijken. Instructeurs moeten hun eigen lessen kunnen beheren en zien wie er ingeschreven staat.
+
+Het zou fijn zijn als leden kunnen filteren op type les of op instructeur. En natuurlijk moet alles veilig zijn - we werken met persoonlijke gegevens en medische informatie.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+## Opdracht 1 - Database Ontwerp
+
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
+
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik een PDO database connectie opzetten**
@@ -52,12 +75,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key relaties correct opgezet
 - [ ] Unique constraints waar nodig (bijv. email, unieke inschrijving)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Waarom hebben we een aparte instructors tabel naast users?"
 
 ---
 
-### Security (15 punten)
+### Security
 
 #### US-03: Veilige Registratie
 **Als lid wil ik veilig kunnen registreren**
@@ -71,7 +94,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ---
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien waar je password_hash() gebruikt en leg uit waarom."
 
 #### US-04: Veilige Login
@@ -83,12 +106,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Beschermde pagina's voor instructeurs (role = 'instructor')
 - [ ] Session checks op admin/instructor pagina's
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit waar je password_verify() gebruikt en waarom dit veilig is."
 
 ---
 
-### CRUD - Classes (10 punten)
+### CRUD - Classes
 
 #### US-05: Les Aanmaken (CREATE)
 **Als instructeur wil ik nieuwe lessen kunnen aanmaken**
@@ -110,7 +133,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Filter toont alleen toekomstige lessen (`WHERE class_date >= NOW()`)
 - [ ] htmlspecialchars() op alle output
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit wat de JOIN query doet en waarom we COUNT() gebruiken."
 
 ---
@@ -135,7 +158,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Role check: alleen instructeur/admin
 - [ ] Redirect met success message
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen soft delete en hard delete in jouw project?"
 
 ---
@@ -150,8 +173,6 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ---
 
-### Één-op-Veel Relatie Feature
-
 #### US-10: Per les een overzicht van de deelnemers
 **Als instructeur wil ik een overzicht van de deelnemers van een les kunnen zien**
 
@@ -161,7 +182,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Er wordt een JOIN query gemaakt om de deelnemers van de les te krijgen
 - [ ] htmlspecialchars() wordt toegepast op alle getoonde data
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat de één-op-veel relatie tussen members en classes zien in je database en code."
 
 ---
@@ -178,7 +199,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Live update van aantal ingeschreven deelnemers
 - [ ] Error handling voor volle lessen
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX implementatie zien en leg uit hoe de data zonder refresh wordt bijgewerkt."
 
 ---
@@ -204,7 +225,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Combinatie van meerdere filters mogelijk
 - [ ] JOIN query filtert op instructeur naam
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien hoe je filtering hebt geïmplementeerd met prepared statements."
 
 ---
@@ -262,13 +283,14 @@ fitzone/
 - [ ] Session management en role checks
 
 ### Voor Mondeling
-- [ ] Demonstratie van alle functionaliteit
-- [ ] Prepared statements kunnen uitleggen
-- [ ] Password hashing kunnen uitleggen
-- [ ] XSS preventie met htmlspecialchars() kunnen tonen
-- [ ] AJAX + JSON kunnen uitleggen
-- [ ] JOIN query kunnen uitleggen
-- [ ] Soft delete kunnen demonstreren
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
+- [ ] Kan prepared statements uitleggen en aanwijzen
+- [ ] Kan password_hash() en password_verify() uitleggen
+- [ ] Kan htmlspecialchars() uitleggen met voorbeeld
+- [ ] Kan AJAX implementatie uitleggen
+- [ ] Kan JOIN query uitleggen
+- [ ] Kan soft delete uitleggen
+- [ ] Kan één-op-één en één-op-veel relaties uitleggen
 
 ---
 

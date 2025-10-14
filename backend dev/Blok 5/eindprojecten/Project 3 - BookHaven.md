@@ -3,36 +3,65 @@
 ## Introductie
 BookHaven is een bibliotheek management systeem waar leden boeken kunnen zoeken, lenen en hun leengeschiedenis kunnen bekijken. Bibliothecarissen kunnen het boekenbestand beheren en nieuwe boeken toevoegen aan de collectie.
 
-## Database Structuur
+### Verhaal van de opdrachtgever
 
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
+"Hallo! Ik ben Emma, hoofd van de openbare bibliotheek BookHaven. We hebben een groeiende collectie boeken en steeds meer leden, maar ons huidige papieren systeem raakt overbelast.
 
-### Entiteiten
-- `users` (leden en bibliothecarissen)
-- `member_cards` (lidkaart info) - **één-op-één relatie met users**
-- `books` (titels in de bibliotheek)
-- `authors` (schrijvers) - **één-op-veel relatie met books**
-- `loans` (uitleningen)
+We willen graag een digitaal systeem waar we onze boeken kunnen beheren en leden online kunnen zoeken en lenen. Voor elk boek willen we informatie bijhouden zoals:
 
-### Relaties
-**Één-op-Veel Relatie:** Een auteur heeft meerdere boeken geschreven, maar een boek heeft één hoofdauteur.
+Boeken (books):
+- titel
+- ISBN
+- publicatiejaar
+- genre (fictie, non-fictie, geschiedenis, etc.)
+- aantal beschikbare exemplaren
+- auteur
 
-**Een-op-veel Relatie:** Een lid kan meerdere uitleningen doen, maar een uitlening hoort bij één lid.
+Auteurs (authors):
+- voornaam
+- achternaam
+- geboortejaar
+- land van herkomst
 
-**Één-op-Één Relatie:** Een user heeft één member_card, en een member_card hoort bij één user.
+Leden (users) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- adres
+- telefoonnummer
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, role, deleted_at
-- **member_cards:** card_id (PK), member_number (UNIQUE), issue_date, expiry_date, max_loans, deleted_at
-- **books:** book_id (PK), title, isbn (UNIQUE), publication_year, genre, copies_available, deleted_at
-- **authors:** author_id (PK), firstname, lastname, country, birth_year, deleted_at
-- **loans:** loan_id (PK), loan_date, due_date, return_date
+Voor lidkaarten (member_cards) houden we bij:
+- uniek lidnummer
+- afgiftedatum
+- vervaldatum
+- maximaal aantal uitleningen
+
+Voor uitleningen (loans) willen we bijhouden:
+- welk boek
+- welk lid
+- leendatum
+- inleverdatum
+- daadwerkelijke retourdatum
+
+Als bibliothecarissen willen we het boekenbestand kunnen beheren - nieuwe boeken toevoegen, gegevens wijzigen, en verwijderde boeken kunnen herstellen. Leden moeten kunnen zoeken op titel of auteur, en kunnen filteren op genre.
+
+Het is belangrijk dat we kunnen zien welke boeken beschikbaar zijn en welke uitgeleend zijn. En natuurlijk moet alles veilig zijn - we werken met persoonlijke gegevens van onze leden.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+## Opdracht 1 - Database Ontwerp
+
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
+
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik PDO gebruiken in plaats van mysqli**
@@ -52,25 +81,13 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key constraints correct ingesteld
 - [ ] Indexes op foreign key kolommen voor performance
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit waarom we authors in een aparte tabel hebben en niet als tekstveld in books."
 
 ---
 
-#### US-02B: Één-op-Één Relatie Implementeren
-**Als developer wil ik een één-op-één relatie tussen users en member_cards**
 
-**Acceptance Criteria:**
-- [ ] De `user_id` kolom in `member_cards` heeft een UNIQUE constraint (dit maakt het 1-op-1)
-- [ ] Bij registratie wordt automatisch een member_card aangemaakt met uniek member_number
-- [ ] JOIN query kan gebruikt worden om user data + lidkaart data te combineren
-
-**Assessment Vraag:**
-"Wat is het verschil tussen een één-op-één en één-op-veel relatie? Laat beide zien in je database."
-
----
-
-### Security (15 punten)
+### Security
 
 #### US-03: Account Aanmaken
 **Als lid wil ik een account kunnen aanmaken**
@@ -83,21 +100,24 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ---
 
-#### US-04: Inloggen
-**Als lid wil ik kunnen inloggen**
+**Assessment Voorbeeldvraag:**
+"Laat zien waar je password_hash() gebruikt en leg uit waarom."
+
+#### US-04: Veilige Login
+**Als lid wil ik veilig kunnen inloggen**
 
 **Acceptance Criteria:**
-- [ ] Login formulier POST naar `login_process.php`
-- [ ] `password_verify()` vergelijkt ingevoerd wachtwoord met hash
-- [ ] Bij success: `$_SESSION['user_id']` en `$_SESSION['role']` instellen
-- [ ] Bij failure: generieke foutmelding
+- [ ] `password_verify()` controleert wachtwoord
+- [ ] Session management (`$_SESSION['user_id']`, `$_SESSION['role']`)
+- [ ] Beschermde pagina's voor bibliothecarissen (role = 'librarian')
+- [ ] Session checks op admin/librarian pagina's
 
-**Assessment Vraag:**
-"Laat password_verify() zien in je code en leg uit waarom we dit gebruiken."
+**Assessment Voorbeeldvraag:**
+"Leg uit waar je password_verify() gebruikt en waarom dit veilig is."
 
 ---
 
-### CRUD - Books (10 punten)
+### CRUD - Books
 
 #### US-05: Boek Toevoegen (CREATE)
 **Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen**
@@ -119,7 +139,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Alleen beschikbare boeken (`WHERE deleted_at IS NULL`)
 - [ ] Toont: titel, auteur naam, ISBN, beschikbaarheid
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit wat de JOIN query doet en waarom we een subquery gebruiken voor loaned_count."
 
 ---
@@ -144,7 +164,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Alleen role = 'librarian' mag verwijderen
 - [ ] Logging naar `delete.log` bestand
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien wat er gebeurt bij soft delete vs hard delete in je database."
 
 ---
@@ -159,17 +179,19 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ---
 
-### Één-op-Veel Relatie Feature
-
-#### US-10: Auteur Selecteren
-**Als bibliothecaris wil ik bij het toevoegen van een boek een auteur kunnen selecteren**
+#### US-10: Per Auteur een overzicht van de boeken
+**Als bibliothecaris wil ik een overzicht van de boeken van een bepaalde auteur kunnen zien**
 
 **Acceptance Criteria:**
-- [ ] SELECT query haalt alle auteurs op voor dropdown
-- [ ] JOIN in overzicht toont auteur naam ipv ID
+- [ ] Vanuit authors_index.php kan je naar het overzicht van de boeken van een bepaalde auteur
+- [ ] Er wordt een GET parameter meegegeven die de author_id bevat
+- [ ] Er wordt een JOIN query gemaakt om de boeken van de auteur te krijgen
+- [ ] Filter op author_id
+- [ ] Alleen beschikbare boeken worden getoond (`WHERE deleted_at IS NULL`)
+- [ ] htmlspecialchars() wordt toegepast op alle getoonde data
 
-**Assessment Vraag:**
-"Laat de één-op-veel relatie zien tussen authors en books in je database schema."
+**Assessment Voorbeeldvraag:**
+"Laat de één-op-veel relatie tussen authors en books zien in je database en code."
 
 ---
 
@@ -185,7 +207,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] JSON response: `{available: true, copies_left: 3}`
 - [ ] UI update zonder page reload
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX implementatie zien en leg uit hoe JSON werkt."
 
 ---
@@ -211,7 +233,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] LIKE query: `WHERE title LIKE :search OR author_name LIKE :search`
 - [ ] Prepared statement met wildcards: `%search%`
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien hoe je zoekfunctie werkt met prepared statements."
 
 ---
@@ -272,14 +294,14 @@ bookhaven/
 - [ ] Session management
 
 ### Voor Mondeling
-- [ ] Demo van alle functionaliteit
-- [ ] Prepared statements uitleggen
-- [ ] Password hashing tonen
-- [ ] XSS preventie demonstreren
-- [ ] AJAX + JSON uitleggen
-- [ ] JOIN query uitleggen
-- [ ] Soft delete tonen
-- [ ] Verschil 1-op-1 vs 1-op-veel relatie uitleggen
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
+- [ ] Kan prepared statements uitleggen en aanwijzen
+- [ ] Kan password_hash() en password_verify() uitleggen
+- [ ] Kan htmlspecialchars() uitleggen met voorbeeld
+- [ ] Kan AJAX implementatie uitleggen
+- [ ] Kan JOIN query uitleggen
+- [ ] Kan soft delete uitleggen
+- [ ] Kan één-op-één en één-op-veel relaties uitleggen
 
 ---
 

@@ -47,12 +47,12 @@ Deze criteria worden tijdens de projectweek afgevinkt door de docent.
 
 ### 2. Database Implementatie (20 punten)
 
-| Criterium           | Onvoldoende (0-2)                                                                                                                                        | Voldoende (3-4)                                                                                                                                                    | Goed (5)                                                                                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tabellen** | Geen tabellen of tabellen sluiten niet aan bij opdracht | Tabellen sluiten grotendeels/bijna aan bij opdracht | Tabellen sluiten volledig aan bij opdracht |
-| **Primary keys** | Geen primary keys op alle tabellen | Primary keys op alle tabellen | Primary keys op alle tabellen |
-| **Foreign keys** | Geen foreign keys op alle tabellen | Foreign keys op alle tabellen | Foreign keys op alle tabellen |
-| **Database connectie** | Gebruikt nog mysqli of geen database connectie, of PDO met grote fouten | PDO connectie correct opgezet | PDO connectie correct met goede error handling |
+| Criterium              | Onvoldoende (0-2)                                                       | Voldoende (3-4)                                     | Goed (5)                                       |
+| ---------------------- | ----------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------- |
+| **Tabellen**           | Geen tabellen of tabellen sluiten niet aan bij opdracht                 | Tabellen sluiten grotendeels/bijna aan bij opdracht | Tabellen sluiten volledig aan bij opdracht     |
+| **Primary keys**       | Geen primary keys op alle tabellen                                      | Primary keys op alle tabellen                       | Primary keys op alle tabellen                  |
+| **Foreign keys**       | Geen foreign keys op alle tabellen                                      | Foreign keys op alle tabellen                       | Foreign keys op alle tabellen                  |
+| **Database connectie** | Gebruikt nog mysqli of geen database connectie, of PDO met grote fouten | PDO connectie correct opgezet                       | PDO connectie correct met goede error handling |
 
 **Totaal: ___ / 20**
 
@@ -70,15 +70,15 @@ Deze criteria worden tijdens de projectweek afgevinkt door de docent.
 
 ### 4. Functionaliteit & Features (40 punten)
 
-| Criterium                       | Onvoldoende (0-2)                | Voldoende (3-4)                                                       | Goed (5)                                                           |
+| Criterium                       | Onvoldoende (0-2)              | Voldoende (3-4)                                                     | Goed (5)                                                           |
 | ------------------------------- | ------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | **CRUD - Create**               | Niet werkend                   | Create werkend voor minimaal 1 entiteit                             | Create werkend voor meerdere entiteiten met pre-filled formulieren |
-| **CRUD - Read**                 | Niet werkend                   | Read werkend voor minimaal 1 entiteit                             | Read werkend voor meerdere entiteiten met pre-filled formulieren |
+| **CRUD - Read**                 | Niet werkend                   | Read werkend voor minimaal 1 entiteit                               | Read werkend voor meerdere entiteiten met pre-filled formulieren   |
 | **CRUD - Update**               | Niet werkend                   | Update werkend voor minimaal 1 entiteit                             | Update werkend voor meerdere entiteiten met pre-filled formulieren |
 | **CRUD - Delete**               | Niet werkend                   | Delete werkend voor minimaal 1 entiteit                             | Delete werkend voor meerdere entiteiten met pre-filled formulieren |
 | **Soft Delete**                 | Niet geïmplementeerd           | Soft delete werkend met deleted_at kolom                            | Soft delete met restore functionaliteit                            |
-| **Één-op-Veel Relatie Feature** | Geen feature die relatie toont | Opzoektabel/dropdown toont gerelateerde data (bijv. brand bij tool) | JOIN query toont gekoppelde data in overzicht/detail pagina        |
-| **AJAX Implementation**         | Niet werkend                   | AJAX werkend zonder page reload                                     | AJAX met JSON response en error handling                           |
+| **Restore**                     | Niet geïmplementeerd           | Werken op 1 entiteit                                                | Werken op meerdere entiteiten                                      |
+| **Één-op-Veel Relatie Feature** | Geen feature die relatie toont | Opzoektabel/dropdown toont gerelateerde data (bijv. brand bij tool) | JOIN query toont gekoppelde data in overzicht/detail pagina        |                          |
 | **Filtering/Zoeken**            | Niet geïmplementeerd           | Filtering werkend met GET parameters                                | Meerdere filters met prepared statements                           |
 
 **Totaal: ___ / 40**
@@ -87,8 +87,8 @@ Deze criteria worden tijdens de projectweek afgevinkt door de docent.
 
 ### 5. Code Kwaliteit (5 punten)
 
-| Criterium                       | Onvoldoende (0-1)                             | Voldoende (2-3)                                 | Goed (4-5)                                                    |
-| ------------------------------- | --------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------- |
+| Criterium                       | Onvoldoende (0-1)                             | Voldoende (2-3)                                 | Goed (4-5)                             |
+| ------------------------------- | --------------------------------------------- | ----------------------------------------------- | -------------------------------------- |
 | **Code Structuur & Naamgeving** | Chaotisch, geen scheiding, onduidelijke namen | Logische bestandsstructuur met duidelijke namen | DRY principe, professionele naamgeving |
 
 **Totaal: ___ / 5**
@@ -105,18 +105,18 @@ Deze criteria worden beoordeeld tijdens het 20-minuten durende mondeling assessm
 
 ### 6. Mondeling Assessment (100 punten)
 
-| Criterium                            | Onvoldoende (0-7)                                                                               | Voldoende (8-9)                                                                            | Goed (10)                                                                                          |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| **Demo van je Applicatie**           | Applicatie werkt niet of kan niet alle CRUD-operaties laten zien (create, read, update, delete) | Laat alle CRUD-operaties zien, inloggen werkt, AJAX functie werkt, filtering werkt         | Laat alles zien én vertelt wat elke functie doet en hoe je het hebt gebouwd                          |
-| **Security** | Heeft moeite met uitleggen van security concepten | Kan een enkel security concept (prepared statements, password hashing, XSS) uitleggen | Kan meerdere security concepten uitleggen |
-| **Frontend Implementatie**           | Geen CSS/styling toegepast, ongestructureerde HTML of onvolledige implementatie | Basis CSS/styling met Bootstrap of eigen CSS, nette HTML structuur | Professionele styling, semantische HTML5 elementen |
-| **CRUD - Create Implementatie**      | Kan create niet uitleggen/demonstreren           | Legt basis create flow uit met prepared statements              | Toont diepgaand begrip van create proces en data validatie            |
-| **CRUD - Read Implementatie**        | Kan read niet uitleggen/demonstreren            | Legt basis read queries uit met prepared statements             | Toont begrip van complexe queries en data ophalen                     |
-| **CRUD - Update Implementatie**      | Kan update niet uitleggen/demonstreren          | Legt basis update flow uit met prepared statements              | Toont diepgaand begrip van update proces en data validatie            |
-| **CRUD - Delete Implementatie**      | Kan delete niet uitleggen/demonstreren          | Legt basis delete/soft-delete uit met prepared statements       | Toont begrip van delete implications en data integriteit              |
-| **JOIN Query Implementatie**      | Kan JOIN query niet uitleggen/demonstreren          | Legt basis JOIN query uit met prepared statements       | Toont begrip van JOIN query en data ophalen              |
-| **Filtering Implementatie**      | Kan filtering niet uitleggen/demonstreren          | Legt basis filtering uit met prepared statements       | Toont begrip van filtering en data ophalen              |
-| **AJAX Implementatie**      | Kan AJAX niet uitleggen/demonstreren          | Legt basis AJAX uit met prepared statements       | Toont begrip van AJAX en data ophalen              |
+| Criterium                       | Onvoldoende (0-7)                                                                               | Voldoende (8-9)                                                                       | Goed (10)                                                                   |
+| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **Demo van je Applicatie**      | Applicatie werkt niet of kan niet alle CRUD-operaties laten zien (create, read, update, delete) | Laat alle CRUD-operaties zien, inloggen werkt, AJAX functie werkt, filtering werkt    | Laat alles zien én vertelt wat elke functie doet en hoe je het hebt gebouwd |
+| **Security**                    | Heeft moeite met uitleggen van security concepten                                               | Kan een enkel security concept (prepared statements, password hashing, XSS) uitleggen | Kan meerdere security concepten uitleggen                                   |
+| **Frontend Implementatie**      | Geen CSS/styling toegepast, ongestructureerde HTML of onvolledige implementatie                 | Basis CSS/styling met Bootstrap of eigen CSS, nette HTML structuur                    | Professionele styling, semantische HTML5 elementen                          |
+| **CRUD - Create Implementatie** | Kan create niet uitleggen/demonstreren                                                          | Legt basis create flow uit met prepared statements                                    | Toont diepgaand begrip van create proces en data validatie                  |
+| **CRUD - Read Implementatie**   | Kan read niet uitleggen/demonstreren                                                            | Legt basis read queries uit met prepared statements                                   | Toont begrip van complexe queries en data ophalen                           |
+| **CRUD - Update Implementatie** | Kan update niet uitleggen/demonstreren                                                          | Legt basis update flow uit met prepared statements                                    | Toont diepgaand begrip van update proces en data validatie                  |
+| **CRUD - Delete Implementatie** | Kan delete niet uitleggen/demonstreren                                                          | Legt basis delete/soft-delete uit met prepared statements                             | Toont begrip van delete implications en data integriteit                    |
+| **JOIN Query Implementatie**    | Kan JOIN query niet uitleggen/demonstreren                                                      | Legt basis JOIN query uit met prepared statements                                     | Toont begrip van JOIN query en data ophalen                                 |
+| **Filtering Implementatie**     | Kan filtering niet uitleggen/demonstreren                                                       | Legt basis filtering uit met prepared statements                                      | Toont begrip van filtering en data ophalen                                  |
+| **AJAX Implementatie**          | Kan AJAX niet uitleggen/demonstreren                                                            | Legt basis AJAX uit met prepared statements                                           | Toont begrip van AJAX en data ophalen                                       |
 
 
 **Totaal: ___ / 100**
@@ -136,8 +136,8 @@ Deze criteria worden beoordeeld tijdens het 20-minuten durende mondeling assessm
 | **Subtotaal Projectweek**        | **___** | **100** |
 |                                  |         |         |
 | **DEEL B: MONDELING ASSESSMENT** |         |         |
-| 6. Mondeling Assessment          | ___     | 100      |
-| **Subtotaal Assessment**         | **___** | **100**  |
+| 6. Mondeling Assessment          | ___     | 100     |
+| **Subtotaal Assessment**         | **___** | **100** |
 |                                  |         |         |
 | **EINDTOTAAL**                   | **___** | **200** |
 
@@ -154,6 +154,7 @@ Deze criteria worden beoordeeld tijdens het 20-minuten durende mondeling assessm
 - [ ] READ operatie (database → tabel/overzicht)
 - [ ] UPDATE operatie (formulier pre-filled → database)
 - [ ] DELETE operatie (soft delete met deleted_at)
+- [ ] Restore functionaliteit voor soft deleted items
 - [ ] Één-op-veel relatie in database (met foreign key)
 - [ ] Opzoektabel of dropdown die relatie toont (bijv. brand selecteren bij tool)
 - [ ] JOIN query om gekoppelde data te tonen
@@ -168,7 +169,6 @@ Deze criteria worden beoordeeld tijdens het 20-minuten durende mondeling assessm
 - [ ] Minimaal 2 verschillende entiteiten (bijv. users en tools)
 
 ### Nice-to-Have Elementen:
-- [ ] Restore functionaliteit voor soft deleted items
 - [ ] Role-based access (admin vs user)
 - [ ] Logging systeem (delete.log of activity log)
 - [ ] Multiple AJAX features

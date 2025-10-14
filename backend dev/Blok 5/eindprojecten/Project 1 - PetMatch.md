@@ -48,14 +48,15 @@ Kunnen jullie ons helpen dit te realiseren?"
 
 Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
 
-- Stap 1: ERD maken
-- Stap 2: 
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
 ## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik een PDO database connectie opzetten**
@@ -65,9 +66,20 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 
 ---
 
-### Security (15 punten)
+#### US-02: Genormaliseerde Database
+**Als developer wil ik een genormaliseerde database**
 
-#### US-02: Veilige Registratie
+**Acceptance Criteria:**
+- [ ] Primary keys op alle tabellen
+- [ ] Foreign key relaties correct opgezet
+- [ ] Unique constraints waar nodig (bijv. email, unieke inschrijving)
+
+**Assessment Voorbeeldvraag:**
+"Waarom hebben we een aparte shelters tabel naast users?"
+
+### Security
+
+#### US-03: Veilige Registratie
 **Als adopter wil ik veilig kunnen registreren**
 
 **Acceptance Criteria:**
@@ -91,12 +103,12 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] Foutmeldingen zijn generiek ("Ongeldige inloggegevens")
 - [ ] Session checks beschermen shelter staff pagina's
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit hoe password_verify() werkt en waarom we dit gebruiken."
 
 ---
 
-### CRUD - Pets (10 punten)
+### CRUD - Pets
 
 #### US-05: Dier Toevoegen (CREATE)
 **Als asielmedewerker wil ik dieren kunnen toevoegen**
@@ -118,7 +130,7 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] Alleen beschikbare dieren worden getoond (`WHERE adoption_status = 'available' AND deleted_at IS NULL`)
 - [ ] htmlspecialchars() wordt toegepast op alle getoonde data
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit wat deze JOIN query doet en waarom we dat nodig hebben."
 
 ---
@@ -143,7 +155,7 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] Confirmation dialog voorkomt onbedoeld verwijderen
 - [ ] Na verwijderen redirect naar `pets_index.php` met success message
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen soft delete en hard delete? Laat je code zien."
 
 ---
@@ -169,7 +181,7 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] Alleen beschikbare dieren worden getoond (`WHERE adoption_status = 'available' AND deleted_at IS NULL`)
 - [ ] htmlspecialchars() wordt toegepast op alle getoonde data
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien hoe je de één-op-veel relatie hebt opgezet tussen shelters en pets."
 
 ---
@@ -186,7 +198,7 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] Aanvraag teller wordt live bijgewerkt (zonder refresh)
 - [ ] Error handling toont melding bij mislukte request (bijv. al aangevraagd)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX implementatie zien en leg uit hoe JSON data wordt uitgewisseld."
 
 ---
@@ -213,7 +225,7 @@ Studenten moeten zelf een database ontwerp maken op basis van bovenstaande verei
 - [ ] LIKE query met prepared statement: `WHERE pet_name LIKE :search`
 - [ ] Zoekterm wordt veilig verwerkt met wildcards: `%Max%`
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat zien hoe je filtering hebt geïmplementeerd met prepared statements."
 
 ---
@@ -271,7 +283,7 @@ petmatch/
 - [ ] Session management voor login
 
 ### Voor Mondeling
-- [ ] Kan alle functionaliteit demonstreren
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
 - [ ] Kan prepared statements uitleggen en aanwijzen
 - [ ] Kan password_hash() en password_verify() uitleggen
 - [ ] Kan htmlspecialchars() uitleggen met voorbeeld
