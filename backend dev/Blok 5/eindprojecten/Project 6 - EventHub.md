@@ -3,34 +3,66 @@
 ## Introductie
 EventHub is een ticketing platform waar organisatoren evenementen kunnen aanmaken zoals concerten, sportevents en festivals. Bezoekers kunnen events browsen, filteren en tickets kopen. Het systeem houdt bij hoeveel tickets er beschikbaar zijn per evenement.
 
-## Database Structuur
+### Verhaal van de opdrachtgever
 
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
+"Hallo! Ik ben Lisa, directeur van EventHub. We organiseren evenementen zoals concerten, sportevents en festivals, maar ons huidige ticketsysteem is verouderd en inefficiënt.
 
-### Entiteiten
-- `users` (bezoekers en organisatoren)
-- `visitor_profiles` (bezoeker voorkeuren) - **één-op-één relatie met users**
-- `events` (concerten, sportevenementen, etc.)
-- `venues` (locaties/zalen) - **één-op-veel relatie met events**
-- `tickets` (verkochte tickets)
+We willen graag een modern ticketingplatform waar organisatoren events kunnen aanmaken en bezoekers tickets kunnen kopen. Voor elk evenement willen we informatie bijhouden zoals:
 
-### Relaties
-**Één-op-Veel Relatie:** Een venue host meerdere events, maar een event vindt plaats op één venue.
+Events (events):
+- evenement naam
+- beschrijving
+- datum en tijd
+- locatie/venue
+- categorie (concert, sport, festival, theater)
+- maximaal aantal tickets
+- ticketprijs
+- organisator
 
-**Één-op-Één Relatie:** Een user heeft één visitor_profile, en een visitor_profile hoort bij één user.
+Venues (venues):
+- naam van de locatie
+- adres
+- stad
+- capaciteit
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, phone, role, deleted_at
-- **visitor_profiles:** profile_id (PK), preferred_categories, payment_method, newsletter_subscription, deleted_at
-- **events:** event_id (PK), event_name, description, event_date, event_time, venue_id (FK), category, max_tickets, ticket_price, organizer_id (FK), deleted_at
-- **venues:** venue_id (PK), venue_name, address, city, capacity, deleted_at
-- **tickets:** ticket_id (PK), purchase_date, quantity, total_price, ticket_code (UNIQUE)
+Bezoekers (users) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- telefoonnummer
+
+Voor bezoekersprofielen (visitor_profiles) houden we bij:
+- favoriete categorieën
+- voorkeurs betaalmethode
+- nieuwsbrief inschrijving
+
+Voor tickets (tickets) willen we bijhouden:
+- welk event
+- welke bezoeker
+- aankoopdatum
+- aantal tickets
+- totaalprijs
+- unieke ticket code
+
+Als organisatoren willen we events kunnen aanmaken en beheren. Bezoekers moeten kunnen filteren op categorie, zoeken op naam, en direct tickets kunnen kopen zonder page reload.
+
+Het is belangrijk dat we real-time kunnen bijhouden hoeveel tickets er nog beschikbaar zijn. En natuurlijk moet alles veilig zijn - we werken met betalingen en persoonlijke gegevens.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+## Opdracht 1 - Database Ontwerp
+
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
+
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik PDO gebruiken**
@@ -50,7 +82,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key constraints
 - [ ] Unique constraints waar relevant (ticket_code, email)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Waarom is venues een aparte tabel en niet een tekstveld in events?"
 
 ---
@@ -64,12 +96,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Bij registratie wordt automatisch een visitor_profile record aangemaakt
 - [ ] JOIN query kan gebruikt worden om user data + voorkeuren te combineren
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen een één-op-één en één-op-veel relatie? Laat beide zien in je database."
 
 ---
 
-### Security (15 punten)
+### Security
 
 #### US-03: Account Aanmaken
 **Als bezoeker wil ik een account kunnen maken**
@@ -91,12 +123,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Role-based access (organizer vs visitor)
 - [ ] Input validatie
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat password_verify() zien en leg uit waarom we dat gebruiken."
 
 ---
 
-### CRUD - Events (10 punten)
+### CRUD - Events
 
 #### US-05: Event Aanmaken (CREATE)
 **Als organisator wil ik events kunnen aanmaken**
@@ -118,7 +150,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Alleen toekomstige events
 - [ ] Beschikbare tickets weergeven
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit hoe de subquery werkt om verkochte tickets te tellen."
 
 ---
@@ -143,7 +175,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Role check
 - [ ] Email notificatie aan ticketkopers (optioneel)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat gebeurt er met verkochte tickets als een event wordt geannuleerd?"
 
 ---
@@ -168,7 +200,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key opslag
 - [ ] JOIN toont venue info bij event
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat de één-op-veel relatie tussen venues en events zien."
 
 ---
@@ -186,7 +218,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Live update van beschikbare tickets
 - [ ] Error handling voor uitverkocht
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX implementatie zien en leg uit hoe JSON werkt."
 
 ---
@@ -212,7 +244,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] LIKE query met wildcards
 - [ ] Prepared statements met :search placeholder
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je zoekfunctie zien met prepared statements."
 
 ---
@@ -269,14 +301,14 @@ eventhub/
 - [ ] Session management
 
 ### Voor Mondeling
-- [ ] Demo functionaliteit
-- [ ] Prepared statements uitleggen
-- [ ] Password hashing tonen
-- [ ] XSS preventie
-- [ ] AJAX + JSON uitleggen
-- [ ] JOIN query uitleggen
-- [ ] Soft delete demonstreren
-- [ ] Verschil 1-op-1 vs 1-op-veel relatie uitleggen
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
+- [ ] Kan prepared statements uitleggen en aanwijzen
+- [ ] Kan password_hash() en password_verify() uitleggen
+- [ ] Kan htmlspecialchars() uitleggen met voorbeeld
+- [ ] Kan AJAX implementatie uitleggen
+- [ ] Kan JOIN query uitleggen
+- [ ] Kan soft delete uitleggen
+- [ ] Kan één-op-één en één-op-veel relaties uitleggen
 
 ---
 

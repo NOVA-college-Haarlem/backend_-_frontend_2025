@@ -3,34 +3,63 @@
 ## Introductie
 DriveAway is een autoverhuur service waar klanten verschillende auto's kunnen huren voor korte of lange termijn. Klanten kunnen beschikbare auto's bekijken, gefilterd op type of merk, en reserveringen maken. Medewerkers beheren de vloot en verhuuradministratie.
 
-## Database Structuur
+### Verhaal van de opdrachtgever
 
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
+"Hallo! Ik ben Thomas, eigenaar van DriveAway Car Rental. We hebben een groeiende vloot auto's en steeds meer klanten, maar ons huidige boekingssysteem met spreadsheets wordt te ingewikkeld.
 
-### Entiteiten
-- `users` (klanten en medewerkers)
-- `driver_profiles` (rijbewijs info) - **één-op-één relatie met users**
-- `vehicles` (auto's in de vloot)
-- `brands` (BMW, Mercedes, Toyota, etc.) - **één-op-veel relatie met vehicles**
-- `rentals` (verhuuradministratie)
+We willen graag een digitaal platform waar klanten online auto's kunnen reserveren en wij onze vloot kunnen beheren. Voor elke auto willen we informatie bijhouden zoals:
 
-### Relaties
-**Één-op-Veel Relatie:** Een merk heeft meerdere voertuigen, maar een voertuig hoort bij één merk.
+Voertuigen (vehicles):
+- kenteken
+- merk (BMW, Mercedes, Toyota, etc.)
+- model
+- bouwjaar
+- voertuigtype (sedan, SUV, van, cabrio)
+- dagprijs
+- beschikbaarheid
 
-**Één-op-Één Relatie:** Een user heeft één driver_profile, en een driver_profile hoort bij één user.
+Merken (brands):
+- merknaam
+- land van herkomst
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, phone, role, deleted_at
-- **driver_profiles:** profile_id (PK), drivers_license (UNIQUE), license_expiry, driving_experience_years, deleted_at
-- **vehicles:** vehicle_id (PK), license_plate (UNIQUE), model, year, vehicle_type, daily_rate, is_available, deleted_at
-- **brands:** brand_id (PK), brand_name, country, deleted_at
-- **rentals:** rental_id (PK), start_date, end_date, total_price, status, created_at
+Klanten (users) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- telefoonnummer
+
+Voor rijbewijzen (driver_profiles) houden we bij:
+- rijbewijs nummer
+- vervaldatum rijbewijs
+- jaren rijervaring
+
+Voor verhuur (rentals) willen we bijhouden:
+- welke auto
+- welke klant
+- startdatum
+- einddatum
+- totaalprijs
+- status (actief, voltooid, geannuleerd)
+
+Als verhuurmedewerkers willen we de vloot kunnen beheren - nieuwe auto's toevoegen, gegevens wijzigen, en auto's uit bedrijf kunnen halen. Klanten moeten kunnen filteren op merk en voertuigtype, en direct kunnen zien welke auto's beschikbaar zijn.
+
+Het is belangrijk dat we kunnen checken of een auto al verhuurd is voor bepaalde data. En natuurlijk moet alles veilig zijn - we werken met persoonlijke gegevens en rijbewijsgegevens.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+## Opdracht 1 - Database Ontwerp
+
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
+
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik PDO implementeren voor database connectie**
@@ -43,15 +72,15 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 
 ---
 
-#### US-02: Genormaliseerd Database Design
-**Als developer wil ik een goed database design**
+#### US-02: Genormaliseerde Database
+**Als developer wil ik een genormaliseerde database**
 
 **Acceptance Criteria:**
-- [ ] Primary keys (AUTO_INCREMENT) op alle tabellen
-- [ ] Foreign key constraints
-- [ ] Indexes voor performance op veel-gebruikte kolommen
+- [ ] Primary keys op alle tabellen
+- [ ] Foreign key relaties correct opgezet
+- [ ] Unique constraints waar nodig (bijv. email, kenteken)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Waarom hebben we brands in een aparte tabel?"
 
 ---
@@ -65,12 +94,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Bij registratie wordt automatisch een driver_profile record aangemaakt
 - [ ] JOIN query kan gebruikt worden om user data + rijbewijs data te combineren
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen een één-op-één en één-op-veel relatie? Laat beide zien in je database."
 
 ---
 
-### Security (15 punten)
+### Security
 
 #### US-03: Veilige Registratie
 **Als klant wil ik veilig kunnen registreren**
@@ -92,12 +121,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Protected pages voor medewerkers
 - [ ] Session timeout na inactiviteit
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat password_verify() zien en leg uit waarom dit veiliger is dan directe vergelijking."
 
 ---
 
-### CRUD - Vehicles (10 punten)
+### CRUD - Vehicles
 
 #### US-05: Voertuig Toevoegen (CREATE)
 **Als medewerker wil ik voertuigen kunnen toevoegen**
@@ -119,7 +148,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Filter op beschikbaarheid (niet verhuurd)
 - [ ] htmlspecialchars() op alle data
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit hoe de subquery werkt om te checken of een auto verhuurd is."
 
 ---
@@ -144,7 +173,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] JavaScript confirmation
 - [ ] Success feedback na actie
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is soft delete en waarom check je of een voertuig verhuurd is?"
 
 ---
@@ -169,7 +198,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key opslag in `vehicles.brand_id`
 - [ ] JOIN toont merknaam in overzichten
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat de één-op-veel relatie tussen brands en vehicles zien."
 
 ---
@@ -186,7 +215,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] JSON response: `{available: true, next_available: '2024-12-25', total_price: 450.00}`
 - [ ] Live feedback in UI
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX code zien en leg uit hoe de beschikbaarheidscheck werkt."
 
 ---
@@ -212,7 +241,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Multiple filters combineerbaar
 - [ ] AND clauses in WHERE statement
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je filtering implementatie zien met prepared statements."
 
 ---
@@ -269,14 +298,14 @@ driveaway/
 - [ ] Session management
 
 ### Voor Mondeling
-- [ ] Demo alle functionaliteit
-- [ ] Prepared statements uitleggen
-- [ ] Password hashing tonen
-- [ ] XSS preventie
-- [ ] AJAX + JSON uitleggen
-- [ ] JOIN query uitleggen
-- [ ] Soft delete demonstreren
-- [ ] Verschil 1-op-1 vs 1-op-veel relatie uitleggen
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
+- [ ] Kan prepared statements uitleggen en aanwijzen
+- [ ] Kan password_hash() en password_verify() uitleggen
+- [ ] Kan htmlspecialchars() uitleggen met voorbeeld
+- [ ] Kan AJAX implementatie uitleggen
+- [ ] Kan JOIN query uitleggen
+- [ ] Kan soft delete uitleggen
+- [ ] Kan één-op-één en één-op-veel relaties uitleggen
 
 ---
 

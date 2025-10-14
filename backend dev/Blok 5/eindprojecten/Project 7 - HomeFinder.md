@@ -3,34 +3,67 @@
 ## Introductie
 HomeFinder is een vastgoed platform waar makelaars woningen kunnen aanbieden en kopers kunnen zoeken naar hun droomhuis. Bezoekers kunnen panden bekijken, filteren op locatie, prijs en type. Makelaars beheren hun eigen portefeuille van panden.
 
-## Database Structuur
+### Verhaal van de opdrachtgever
 
-Studenten moeten zelf een database ontwerp maken op basis van onderstaande vereisten.
+"Hallo! Ik ben David, eigenaar van HomeFinder Makelaardij. We hebben een groeiend aantal panden en klanten, maar ons huidige systeem met spreadsheets en papieren brochures werkt niet meer.
 
-### Entiteiten
-- `users` (kopers en makelaars)
-- `buyer_profiles` (koper voorkeuren) - **één-op-één relatie met users**
-- `properties` (woningen, appartementen, etc.)
-- `agents` (makelaars) - **één-op-veel relatie met properties**
-- `viewings` (bezichtigingen)
+We willen graag een modern vastgoedplatform waar makelaars panden kunnen aanbieden en kopers online kunnen zoeken. Voor elk pand willen we informatie bijhouden zoals:
 
-### Relaties
-**Één-op-Veel Relatie:** Een makelaar beheert meerdere panden, maar een pand heeft één verantwoordelijke makelaar.
+Panden (properties):
+- adres
+- stad
+- postcode
+- woningtype (appartement, huis, villa, penthouse)
+- prijs
+- aantal slaapkamers
+- aantal badkamers
+- vierkante meters
+- beschrijving
+- verantwoordelijke makelaar
+- status (te koop, verkocht, in optie)
 
-**Één-op-Één Relatie:** Een user heeft één buyer_profile, en een buyer_profile hoort bij één user.
+Makelaars (agents):
+- naam kantoor
+- bio
+- licentienummer
 
-### Belangrijke Kolommen
-- **users:** user_id (PK), email (UNIQUE), password, firstname, lastname, phone, role, deleted_at
-- **buyer_profiles:** profile_id (PK), user_id (FK, UNIQUE), max_budget, preferred_locations, preferred_property_type, financing_approved, deleted_at
-- **properties:** property_id (PK), address, city, postal_code, property_type, price, bedrooms, bathrooms, square_meters, description, agent_id (FK), status, deleted_at
-- **agents:** agent_id (PK), user_id (FK), agency_name, bio, license_number, deleted_at
-- **viewings:** viewing_id (PK), property_id (FK), user_id (FK), viewing_date, viewing_time, status, created_at
+Kopers (users) moeten een account kunnen aanmaken met:
+- naam
+- email
+- wachtwoord
+- telefoonnummer
+
+Voor kopersprofielen (buyer_profiles) houden we bij:
+- maximum budget
+- voorkeurslocaties
+- voorkeur woningtype
+- financiering goedgekeurd
+
+Voor bezichtigingen (viewings) willen we bijhouden:
+- welk pand
+- welke koper
+- datum en tijd
+- status (gepland, voltooid, geannuleerd)
+
+Als makelaars willen we onze panden kunnen beheren - nieuwe toevoegen, details wijzigen, en verkochte panden kunnen markeren. Kopers moeten kunnen filteren op woningtype en prijsklasse, en direct interesse kunnen tonen.
+
+Het is belangrijk dat we kunnen zien welke panden beschikbaar zijn en welke al verkocht zijn. En natuurlijk moet alles veilig zijn - we werken met persoonlijke financiële gegevens.
+
+Kunnen jullie ons helpen dit te realiseren?"
+
+## Opdracht 1 - Database Ontwerp
+
+Studenten moeten zelf een database ontwerp maken op basis van bovenstaande vereisten.
+
+- Stap 1: ERD
+- Stap 2: Relatie Model
+- Stap 3: DB Bouwen
 
 ---
 
-## User Stories
+## Opdracht 2 - User Stories
 
-### Database & PDO (20 punten)
+### Database & PDO
 
 #### US-01: PDO Database Connectie
 **Als developer wil ik PDO implementeren**
@@ -50,7 +83,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Foreign key constraints
 - [ ] Correcte data types (DECIMAL voor prijs)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Waarom hebben we een aparte agents tabel naast users?"
 
 ---
@@ -63,12 +96,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Bij registratie wordt automatisch een buyer_profile record aangemaakt
 - [ ] JOIN query kan gebruikt worden om user data + koper voorkeuren te combineren
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen een één-op-één en één-op-veel relatie? Laat beide zien in je database."
 
 ---
 
-### Security (15 punten)
+### Security
 
 #### US-03: Veilige Registratie
 **Als koper wil ik veilig kunnen registreren**
@@ -90,12 +123,12 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Protected routes voor makelaars
 - [ ] Input sanitization
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat password_hash() en password_verify() zien in je code."
 
 ---
 
-### CRUD - Properties (10 punten)
+### CRUD - Properties
 
 #### US-05: Pand Toevoegen (CREATE)
 **Als makelaar wil ik woningen kunnen toevoegen**
@@ -117,7 +150,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Alleen actieve listings (`deleted_at IS NULL`)
 - [ ] htmlspecialchars() op alle data
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Leg uit hoe de JOIN query werkt om makelaar informatie te tonen."
 
 ---
@@ -142,7 +175,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Confirmation dialog
 - [ ] Redirect met success message
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Wat is het verschil tussen soft delete en hard delete?"
 
 ---
@@ -166,7 +199,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] Dropdown selecteert makelaar
 - [ ] JOIN toont makelaar info in listings
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat de één-op-veel relatie tussen agents en properties zien."
 
 ---
@@ -184,7 +217,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] UI feedback zonder refresh
 - [ ] Error handling (al interesse getoond)
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je AJAX implementatie zien en leg uit hoe JSON data wordt uitgewisseld."
 
 ---
@@ -210,7 +243,7 @@ Studenten moeten zelf een database ontwerp maken op basis van onderstaande verei
 - [ ] BETWEEN queries: `WHERE price BETWEEN :min AND :max`
 - [ ] Multiple filters combineerbaar
 
-**Assessment Vraag:**
+**Assessment Voorbeeldvraag:**
 "Laat je filtering zien met prepared statements en BETWEEN queries."
 
 ---
@@ -268,14 +301,14 @@ homefinder/
 - [ ] Session management
 
 ### Voor Mondeling
-- [ ] Demo functionaliteit
-- [ ] Prepared statements uitleggen
-- [ ] Password hashing tonen
-- [ ] XSS preventie
-- [ ] AJAX + JSON uitleggen
-- [ ] JOIN query uitleggen
-- [ ] Soft delete demonstreren
-- [ ] Verschil 1-op-1 vs 1-op-veel relatie uitleggen
+- [ ] Kan alle CRUD functionaliteiten demonstreren en toelichten
+- [ ] Kan prepared statements uitleggen en aanwijzen
+- [ ] Kan password_hash() en password_verify() uitleggen
+- [ ] Kan htmlspecialchars() uitleggen met voorbeeld
+- [ ] Kan AJAX implementatie uitleggen
+- [ ] Kan JOIN query uitleggen
+- [ ] Kan soft delete uitleggen
+- [ ] Kan één-op-één en één-op-veel relaties uitleggen
 
 ---
 
