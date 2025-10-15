@@ -21,25 +21,23 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 7. Thijs
 8. Jay
 9. Ayaz
-
-
-### Project 4 - TastyBites
-
 10. Teoman
-11. Drake
-12. Azaan
+
+
 
 ### Project 5 - DriveAway
 
 13. Lorenzo
 14. Ali
 15. Demian
+16. Azaan
 
 ### Project 6 - EventHub
 
 16. Indy
 17. Silvio
 18. Symon
+19. Drake
 
 ### Project 7 - HomeFinder
 
