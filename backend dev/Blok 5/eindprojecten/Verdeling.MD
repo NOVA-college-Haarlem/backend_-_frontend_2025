@@ -15,12 +15,13 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 4. Justin
 5. Jesse
 6. Koen
+7. Ayaz
 
 ### Project 3 - BookHaven
 
 7. Thijs
 8. Jay
-9. Ayaz
+x
 10. Teoman
 
 
