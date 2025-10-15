@@ -21,9 +21,7 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 
 7. Thijs
 8. Jay
-x
 10. Teoman
-
 
 
 ### Project 5 - DriveAway
