@@ -21,3 +21,5 @@
 ✅ Flex-wrap voor multi-line layouts
 ✅ Perfect centreren (horizontaal + verticaal)
 ✅ Navigatie bars (horizontaal en verticaal)
+
+
