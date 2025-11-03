@@ -6,7 +6,7 @@
 
 ---
 
-## Week 1: Introductie & Basis HTML
+## Week 1: Introductie HTML
 **Leerdoelen:**
 - Uitleggen wat HTML is en waarvoor het gebruikt wordt
 - Een correcte mappenstructuur aanmaken voor een webproject
@@ -15,7 +15,7 @@
 
 ---
 
-## Week 2: Afbeeldingen, Links & DevTools
+## Week 2: Afbeeldingen en Links
 **Leerdoelen:**
 - Afbeeldingen toevoegen aan een webpagina
 - Links maken naar andere websites
@@ -24,7 +24,7 @@
 
 ---
 
-## Week 3: CSS Introductie & Copilot
+## Week 3: CSS Introductie
 **Leerdoelen:**
 - Een externe CSS stylesheet aanmaken en linken
 - Basis CSS properties toepassen (kleuren, lettertypen)
@@ -57,7 +57,7 @@
 
 ---
 
-## Week 7: Semantische HTML & Code Structuur
+## Week 7: Semantische HTML
 **Leerdoelen:**
 - Uitleggen waarom semantische HTML belangrijk is
 - Correct gebruik maken van `<header>`, `<main>`, `<footer>`, `<section>`, `<article>`

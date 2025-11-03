@@ -1,152 +1,214 @@
-# Frontend Ontwikkeling - Blok 2
+# Week 8: Eindproject - "Complete Website"
 
-## Week 8: Eindproject - "Mijn Verbeterde Portfolio"
+## Projectomschrijving
+Bouw een complete, professioneel uitziende website met ALLE technieken uit Blok 2. Dit is je kans om te laten zien wat je hebt geleerd!
 
-### Projectomschrijving
-Deze week bouwen studenten een verbeterde versie van hun Blok 1 portfolio, maar nu met alle nieuwe technieken die ze geleerd hebben: buttons, cards, navigatie, formulieren en layout skills.
-
----
-
-### Leerdoelen
+## Leerdoelen
 Na deze week kan de student:
-- Zelfstandig een complete website bouwen met alle Blok 2 technieken
+- Een complete website zelfstandig bouwen
+- Alle Blok 2 technieken toepassen
 - Design keuzes maken en uitleggen
-- Code organiseren in overzichtelijke bestanden
-- Feedback geven en ontvangen op elkaars werk
-- Een eigen portfolio presenteren
-
----
+- Code netjes organiseren
+- Presenteren voor de klas
 
 ## Projecteisen
 
 ### Minimale Vereisten (Voldoende)
 
-**Technisch:**
-- [ ] Gestylede navigatie (horizontaal of verticaal)
-- [ ] Minimaal 3 button variaties gebruikt
-- [ ] Minimaal 3 gestylede cards (voor projecten/skills)
-- [ ] Contact formulier met styled inputs
-- [ ] Gecentreerde content container (max-width, margin: 0 auto)
-- [ ] Box-shadows en border-radius waar passend
-- [ ] Hover effecten op alle interactieve elementen
-- [ ] Nette, georganiseerde CSS met comments
-- [ ] Werkende links (binnen pagina met #anchors)
+**Technisch - Moet erin:**
+- [ ] Professionele navigatie (horizontaal, styled, hover)
+- [ ] Minimaal 5 verschillende button styles
+- [ ] Consistent kleurenschema (3 kleuren max)
+- [ ] Minimaal 2 verschillende fonts
+- [ ] Hero section met call-to-action
+- [ ] Minimaal 8 gestylede afbeeldingen
+- [ ] Gestylede lijsten (bullets of nummers)
+- [ ] 2-kolom layout ergens op de pagina
+- [ ] Gecentreerde content (max-width + margin)
+- [ ] Footer met links
+- [ ] Hover effecten OVERAL
+- [ ] Nette CSS met comments
 
-**Content:**
-- [ ] Header met navigatie
-- [ ] "Over Mij" sectie
-- [ ] "Projecten" sectie met minimaal 3 project cards
-- [ ] "Skills" of "Wat Ik Kan" sectie
-- [ ] Contact formulier of contact sectie
-- [ ] Footer met links/copyright
+**Content - Minimaal:**
+- [ ] Header met logo/naam + navigatie
+- [ ] Hero section
+- [ ] Over/Info sectie
+- [ ] Features/Diensten sectie
+- [ ] Gallery/Portfolio sectie
+- [ ] Contact info sectie
+- [ ] Footer
 
-**Design:**
-- [ ] Consistent kleurenschema (2-3 hoofdkleuren)
-- [ ] Goede leesbaarheid (contrast, font-sizes)
-- [ ] Passende spacing (niet te vol, niet te leeg)
-- [ ] Professioneel uiterlijk
+**Design - Kwaliteit:**
+- [ ] Consistent kleurenschema
+- [ ] Goede leesbaarheid
+- [ ] Professionele spacing
+- [ ] Aantrekkelijk design
 
 ### Bonus Functies (Goed/Uitstekend)
 
-**Extra Features:**
+**Extra Styling:**
+- [ ] Meerdere button sizes (small, medium, large)
+- [ ] Button groepen (buttons naast elkaar)
+- [ ] Active state op navigatie links
 - [ ] Breadcrumb navigatie
-- [ ] Meerdere button types (primary, secondary, outline)
-- [ ] Cards met badges ("Nieuw!", "Featured")
-- [ ] Horizontal cards (afbeelding naast tekst)
-- [ ] Active states op navigatie
-- [ ] 2-kolom layout (sidebar + content)
-- [ ] Gallery sectie met inline-block
-- [ ] Validation states op formulier (success/error styling)
+- [ ] Image filters (grayscale, brightness)
+- [ ] Image hover effects (zoom, overlay)
+- [ ] Smooth scroll behavior
+- [ ] Gradient backgrounds
+
+**Extra Layout:**
+- [ ] 3-kolom sectie
+- [ ] Sidebar layout
+- [ ] Sticky header
+- [ ] Parallax effect (basic)
 
 **Extra Polish:**
-- [ ] Smooth transitions op alle hover effecten
-- [ ] Shadow effecten die verbeteren bij hover
-- [ ] Overlay effecten op cards
-- [ ] Custom styled select dropdowns
-- [ ] Footer met meerdere link groepen
-- [ ] Social media links met icons
-- [ ] Responsive design (basis media queries)
+- [ ] CSS variabelen voor alles
+- [ ] Animations (fade in, slide in)
+- [ ] Box shadows overal
+- [ ] Border radius consistent
+- [ ] Loading animations
 
----
+## Onderwerp Keuzes
+
+Kies ÉÉN onderwerp:
+
+1. **Portfolio Website**
+   - Over jezelf
+   - Skills sectie
+   - Project gallery
+   - Contact info
+
+2. **Bedrijfswebsite**
+   - Lokale bakkerij
+   - Kapper/salon
+   - Restaurant
+   - Sportclub
+
+3. **Product Landing Page**
+   - Nieuwe game
+   - App
+   - Product
+   - Service
+
+4. **Event Website**
+   - Festival
+   - Concert
+   - Conferentie
+   - Wedstrijd
+
+5. **Eigen Idee**
+   - Overleg met docent!
 
 ## Weekplanning
 
-### Dag 1 (90 min): Planning & Start
+### Dag 1 (90 min): Planning & Setup
 
-**1. Project Kickoff (15 min)**
-- Toon voorbeelden van goede portfolio sites
-- Bespreek wat een portfolio moet bevatten
-- Leg eisen uit
+**1. Kickoff (15 min)**
+- Voorbeelden bekijken
+- Eisen bespreken
+- Onderwerp kiezen
 
-**2. Design & Planning (25 min)**
+**2. Planning Fase (30 min)**
 
-**Wireframing:**
-Studenten schetsen (op papier of digitaal):
-- Welke secties komen er?
-- Waar komt de navigatie?
-- Hoe zien de cards eruit?
-- Welke kleuren ga ik gebruiken?
+**Wireframe (schets op papier):**
+```
+┌─────────────────────────┐
+│  Header + Nav           │
+├─────────────────────────┤
+│                         │
+│    Hero Section         │
+│                         │
+├─────────────────────────┤
+│  Sectie 1  │  Sectie 2  │
+├─────────────────────────┤
+│    Gallery              │
+├─────────────────────────┤
+│  Footer                 │
+└─────────────────────────┘
+```
+
+**Beslissingen maken:**
+- Welke kleuren? (Kies 3)
+- Welke fonts? (Kies 2)
+- Welke secties?
+- Welke afbeeldingen?
 
 **Checklist maken:**
-- Welke technieken moet ik gebruiken?
-- Welke content heb ik nodig?
-- Welke afbeeldingen?
+```
+□ Header + nav
+□ Hero met button
+□ Over sectie
+□ Features (3 items)
+□ Gallery (8+ afbeeldingen)
+□ Contact sectie
+□ Footer
+□ Buttons (5+ styles)
+□ Hover effecten
+```
 
 **3. Project Setup (15 min)**
 
 **Bestandsstructuur:**
 ```
-mijn-portfolio/
+eindproject/
 ├── index.html
 ├── css/
 │   └── style.css
-├── images/
-│   ├── profile.jpg
-│   ├── project1.jpg
-│   ├── project2.jpg
-│   └── project3.jpg
-└── README.md (optioneel)
+└── images/
+    ├── hero-bg.jpg
+    ├── logo.png
+    ├── gallery/
+    │   ├── img1.jpg
+    │   ├── img2.jpg
+    │   └── ...
+    └── ...
 ```
 
-**Basis HTML Template:**
+**HTML Basis:**
 ```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - [Jouw Naam]</title>
+    <title>[Jouw Project]</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header + Nav -->
     <header>
-        <nav>
-            <!-- Navigatie -->
-        </nav>
+        <div class="container">
+            <div class="logo">[Logo]</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">Over</a>
+                <a href="#services">Diensten</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Over Mij -->
-    <section id="about">
-        <!-- Content -->
+    <section class="hero" id="home">
+        <!-- Hero content -->
     </section>
 
-    <!-- Projecten -->
-    <section id="projects">
-        <!-- Project cards -->
+    <section class="about" id="about">
+        <!-- About content -->
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-        <!-- Skill cards -->
+    <section class="services" id="services">
+        <!-- Services content -->
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-        <!-- Contact form -->
+    <section class="gallery" id="gallery">
+        <!-- Gallery content -->
     </section>
 
-    <!-- Footer -->
+    <section class="contact" id="contact">
+        <!-- Contact content -->
+    </section>
+
     <footer>
         <!-- Footer content -->
     </footer>
@@ -154,10 +216,31 @@ mijn-portfolio/
 </html>
 ```
 
-**Basis CSS Template:**
+**CSS Basis:**
 ```css
 /* ==================== */
-/* Reset & Base         */
+/* CSS Variabelen       */
+/* ==================== */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --dark-bg: #2c3e50;
+
+    --font-main: Arial, sans-serif;
+    --font-heading: Georgia, serif;
+
+    --space-xs: 10px;
+    --space-sm: 20px;
+    --space-md: 40px;
+    --space-lg: 60px;
+    --space-xl: 100px;
+}
+
+/* ==================== */
+/* Reset               */
 /* ==================== */
 * {
     margin: 0;
@@ -166,363 +249,288 @@ mijn-portfolio/
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-main);
+    color: var(--text-color);
     line-height: 1.6;
-    color: #333;
 }
 
 /* ==================== */
-/* Container            */
+/* Container           */
 /* ==================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--space-sm);
 }
 
 /* ==================== */
-/* Buttons              */
-/* ==================== */
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-/* Voeg je button styles toe */
-
-/* ==================== */
-/* Cards                */
-/* ==================== */
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Voeg je card styles toe */
-
-/* ==================== */
-/* Navigation           */
-/* ==================== */
-/* Voeg je nav styles toe */
-
-/* ==================== */
-/* Forms                */
-/* ==================== */
-/* Voeg je form styles toe */
-
-/* ==================== */
-/* Sections             */
+/* Sections            */
 /* ==================== */
 section {
-    padding: 60px 0;
+    padding: var(--space-lg) 0;
 }
 
-/* ==================== */
-/* Footer               */
-/* ==================== */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
+/* Voeg hier jouw styling toe! */
 ```
 
-**4. Begin met Bouwen (35 min)**
+**4. Beginnen met Bouwen (30 min)**
+- HTML structuur compleet maken
+- Header + navigatie starten
+- Hero section HTML
 
-Studenten beginnen met:
-1. HTML structuur opzetten (alle secties)
-2. Navigatie maken
-3. Over Mij sectie
-4. Begin met eerste project card
+### Dag 2 (90 min): Bouwen
 
-**Docent loopt rond en helpt waar nodig.**
+**1. Check-in (5 min)**
+- Stand van zaken?
+- Problemen?
 
----
-
-### Dag 2 (90 min): Verder Bouwen
-
-**1. Stand van Zaken (5 min)**
-- Waar ben je?
-- Wat lukt goed?
-- Waar loop je tegenaan?
-
-**2. Zelfstandig Werken (70 min)**
+**2. Zelfstandig Werken (75 min)**
 
 **Prioriteiten:**
-1. Alle HTML secties af
-2. Navigatie compleet + styled
-3. Minimaal 3 project cards
-4. Contact formulier
-5. Footer
+1. Header + nav compleet + styled
+2. Hero section af
+3. Minimaal 2 content secties
+4. Buttons maken (5+ styles)
+5. Eerste afbeeldingen toevoegen
 
-**Focus op:** Eerst werkend, dan mooi maken!
+**Focus:**
+- Eerst structuur
+- Dan styling
+- Dan polish
 
-**Veel voorkomende problemen klassikaal bespreken**
-
-**3. Tussenevaluatie (15 min)**
-
-Quick check:
-- Laat je voortgang zien aan docent
-- Krijg feedback
-- Plan voor volgende sessie
-
----
+**3. Tussentijdse Check (10 min)**
+- Voortgang tonen aan docent
+- Feedback krijgen
+- Planning maken voor volgende sessie
 
 ### Dag 3 (90 min): Afwerken & Presenteren
 
-**1. Laatste Aanpassingen (30 min)**
-- Fix bugs
-- Voeg laatste polish toe
-- Test hover effecten
-- Check spacing en alignment
-- Valideer HTML/CSS (optioneel)
+**1. Laatste Sprint (40 min)**
+- Alle secties compleet
+- Alle afbeeldingen styled
+- Alle buttons gemaakt
+- Hover effecten overal
+- Footer af
+- Bug fixes
+- Code opschonen
+
+**Quick checklist:**
+```
+□ 5+ button styles?
+□ 8+ afbeeldingen?
+□ Alle hover effecten?
+□ Footer compleet?
+□ Navigatie werkt?
+□ Alles gecentreerd?
+□ Spacing overal goed?
+```
 
 **2. Peer Review (20 min)**
 
-**In tweetallen:**
-- Bekijk elkaars portfolio
-- Geef feedback:
-  - Wat vind je mooi?
-  - Wat zou je anders doen?
-  - Werkt alles?
-  - Responsive?
+**In tweetallen bekijken:**
 
-**Feedback formulier:**
+Geef feedback op:
 1. Eerste indruk (1-5 sterren)
-2. Navigatie werkt goed? (ja/nee)
-3. Cards zien er professioneel uit? (ja/nee)
-4. Formulier is duidelijk? (ja/nee)
-5. Hover effecten werken? (ja/nee)
-6. Wat vind je het mooist?
-7. Tip voor verbetering?
+2. Navigatie werkt? ✓ / ✗
+3. Hero section mooi? ✓ / ✗
+4. Buttons professioneel? ✓ / ✗
+5. Afbeeldingen goed? ✓ / ✗
+6. Spacing consistent? ✓ / ✗
+7. Mooist onderdeel?
+8. Één tip?
 
-**3. Presentaties (40 min)**
+**3. Presentaties (30 min)**
 
-**Elke student presenteert (3-4 min):**
+**Format (3 min per student):**
 
-**Format:**
-1. **Demo** (1.5 min)
-   - Open website in browser
-   - Navigeer door secties
-   - Laat hover effecten zien
-   - Laat 1-2 favoriete onderdelen zien
+**1. Demo (1.5 min)**
+- Open je website
+- Scroll door alle secties
+- Laat hover effecten zien
+- Laat je favoriete onderdeel zien
 
-2. **Code Highlight** (1 min)
-   - Open CSS
-   - Laat 1 interessant stuk zien
-   - "Dit ben ik het meest trots op omdat..."
+**2. Code Highlight (1 min)**
+- Open je CSS
+- Laat één cool stuk code zien
+- Leg uit waarom je trots bent
 
-3. **Reflectie** (0.5 min)
-   - Wat vond je moeilijk?
-   - Wat ging goed?
-   - Wat zou je volgende keer anders doen?
+**3. Reflectie (0.5 min)**
+- Wat ging goed?
+- Wat was moeilijk?
+- Wat zou je anders doen?
 
 **Klasgenoten mogen vragen stellen!**
-
----
 
 ## Beoordelingscriteria
 
 ### Technische Kwaliteit (40%)
 
-| Criterium | Onvoldoende (1-5) | Voldoende (6-7) | Goed (8-10) |
-|-----------|-------------------|------------------|-------------|
-| **Buttons** | Weinig/geen styled buttons | Meerdere button types, hover werkt | Veel variaties, smooth transitions, consistent |
-| **Cards** | Geen/basis cards | 3+ cards met shadows/radius | Professionele cards, hover effecten, badges |
-| **Navigatie** | Basis lijst | Styled nav, hover werkt | Mooie nav, active states, smooth effects |
-| **Formulier** | Ongestyleerd | Styled inputs, focus states | Professioneel form, validation states |
-| **Code Kwaliteit** | Rommelig, geen comments | Georganiseerd, basis comments | Zeer netjes, goede structuur, duidelijke comments |
+| Aspect | Onvoldoende (1-5) | Voldoende (6-7) | Goed (8-10) |
+|--------|-------------------|-----------------|-------------|
+| **Buttons** | <3 styles | 5+ styles, hover werkt | Veel variaties, sizes, smooth transitions |
+| **Navigatie** | Basic | Styled, hover, werkt | Professioneel, active states, perfect |
+| **Layout** | Basic | 2-kolom werkt | Meerdere layouts, sidebar, perfect centered |
+| **Afbeeldingen** | <5, basic | 8+, borders/shadows | 8+, filters, hover effects, professional |
+| **Code** | Rommelig | Netjes, comments | Zeer netjes, georganiseerd, CSS vars |
 
 ### Functionaliteit (30%)
 
-| Criterium | Onvoldoende | Voldoende | Goed |
-|-----------|-------------|-----------|------|
-| **Alle Secties** | Mist >2 secties | Alle vereiste secties | Alle secties + extra's |
-| **Interactiviteit** | Weinig hover effects | Hover op links/buttons | Hover overal, smooth |
-| **Navigatie Werkt** | Links werken niet | Links werken | Links + active states |
+| Aspect | Onvoldoende | Voldoende | Goed |
+|--------|-------------|-----------|------|
+| **Alle Secties** | Mist >2 | Alle vereist | Alle + extras |
+| **Interactiviteit** | Weinig hover | Hover op links/buttons | Hover overal, smooth |
+| **Navigation** | Werkt niet | Werkt | Werkt + active states |
 
 ### Design & UX (20%)
 
-| Criterium | Onvoldoende | Voldoende | Goed |
-|-----------|-------------|-----------|------|
-| **Kleurenschema** | Geen samenhang | Consistent, 2-3 kleuren | Mooi schema, goed contrast |
-| **Spacing** | Te vol of te leeg | Goede spacing | Perfecte spacing, adem in design |
-| **Leesbaarheid** | Slecht leesbaar | Goed leesbaar | Uitstekend leesbaar |
+| Aspect | Onvoldoende | Voldoende | Goed |
+|--------|-------------|-----------|------|
+| **Kleurenschema** | Geen samenhang | 2-3 kleuren consistent | Perfect schema, contrast |
+| **Typografie** | 1 font, slecht | 2 fonts, hiërarchie | Perfect hiërarchie, leesbaar |
+| **Spacing** | Inconsistent | Consistent | Perfect spacing overal |
 
 ### Presentatie (10%)
 
-| Criterium | Onvoldoende | Voldoende | Goed |
-|-----------|-------------|-----------|------|
-| **Demo** | Kan niet demo geven | Kan demo geven | Duidelijke, zelfverzekerde demo |
-| **Reflectie** | Geen reflectie | Kan reflecteren | Goede reflectie met lessen geleerd |
+| Aspect | Onvoldoende | Voldoende | Goed |
+|--------|-------------|-----------|------|
+| **Demo** | Kan niet demo geven | Kan demo geven | Zelfverzekerd, duidelijk |
+| **Reflectie** | Geen | Basis reflectie | Goede reflectie + lessen |
 
----
+## Inspiratie & Content Tips
 
-## Inspiratie & Tips
+### Content Verzamelen
 
-### Content Ideeën
+**Voor Portfolio:**
+- Schrijf over jezelf (200 woorden)
+- Lijst je skills
+- Verzamel project screenshots
+- Maak contact info
 
-**Over Mij:**
-- Foto van jezelf
-- Korte intro (2-3 zinnen)
-- Wat je studeert
-- Wat je leuk vindt
+**Voor Bedrijf:**
+- Bedenk bedrijfsnaam
+- Schrijf over diensten (3-5)
+- Verzamel stock foto's (Unsplash)
+- Maak openingstijden/contact
 
-**Projecten (als je nog geen echte hebt):**
-- Je Blok 1 website
-- Oefeningen uit dit blok
-- Toekomstige project ideeën
-- Placeholder projecten ("Coming Soon")
+### Design Inspiratie
 
-**Skills:**
-- HTML
-- CSS
-- Buttons styling
-- Card design
-- Forms
-- Navigation
-- Layout
+**Kleurenschema's:**
+- Blauw + Groen (tech, modern)
+- Rood + Geel (energie, food)
+- Paars + Roze (creatief, fun)
+- Blauw + Oranje (professioneel)
 
-### Design Tips
+**Button Styles:**
+- Primary (gevuld, accent kleur)
+- Secondary (outline)
+- Ghost (transparant)
+- Success (groen)
+- Danger (rood)
 
-**Kleurenschema kiezen:**
-- [Coolors.co](https://coolors.co/) - Genereer kleuren
-- [Adobe Color](https://color.adobe.com/)
-- Kies 1 primaire kleur, 1-2 accent kleuren
-- Gebruik grijs voor tekst (#333, #666)
+**Layout Patronen:**
+- Hero + 3 kolommen
+- Hero + 2 kolommen + gallery
+- Hero + alternating 2-kolom
+- Hero + grid gallery + footer
 
-**Fonts:**
-- Arial (veilig, altijd goed)
-- Of Google Fonts (later)
-- Max 2 fonts gebruiken
+## Veelgemaakte Fouten
 
-**Spacing:**
-- Gebruik veelvouden van 5 of 10
-- Padding: 10px, 15px, 20px, 30px
-- Margin: 20px, 40px, 60px
-- Consistent houden!
-
----
-
-## Veelgemaakte Fouten & Oplossingen
-
-### Technische Fouten
-
-**1. Navigatie links werken niet**
-```html
-<!-- FOUT -->
-<a href="about">Over</a>
-
-<!-- GOED -->
-<a href="#about">Over</a>  <!-- Met # -->
-
-<!-- En section moet id hebben -->
-<section id="about">...</section>
-```
-
-**2. Cards staan niet naast elkaar**
+**1. Content niet gecentreerd**
 ```css
-/* FOUT: cards zijn block */
-.card {
-    width: 300px;
+/* FOUT */
+body {
+    max-width: 1200px;
 }
 
-/* GOED: gebruik inline-block */
-.card {
-    width: 300px;
-    display: inline-block;
-    vertical-align: top;
-}
-```
-
-**3. Hover effecten werken niet**
-```css
-/* FOUT: geen transition */
-.btn {
-    background-color: blue;
-}
-.btn:hover {
-    background-color: darkblue;
-}
-
-/* GOED: met transition */
-.btn {
-    background-color: blue;
-    transition: background-color 0.3s;
-}
-.btn:hover {
-    background-color: darkblue;
-}
-```
-
-**4. Content niet gecentreerd**
-```css
-/* FOUT: geen width */
-.container {
-    margin: 0 auto;
-}
-
-/* GOED: met max-width */
+/* GOED */
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 ```
 
----
+**2. Geen transitions**
+```css
+/* FOUT */
+.btn:hover {
+    background-color: darkblue;
+}
+
+/* GOED */
+.btn {
+    transition: all 0.3s;
+}
+.btn:hover {
+    background-color: darkblue;
+}
+```
+
+**3. Inconsistente spacing**
+```css
+/* FOUT */
+.section1 { padding: 20px; }
+.section2 { padding: 35px; }
+.section3 { padding: 15px; }
+
+/* GOED: gebruik variabelen */
+section {
+    padding: var(--space-lg) 0;
+}
+```
+
+**4. Te veel kleuren**
+Gebruik max 3-4 kleuren TOTAAL
+
+**5. Slechte image kwaliteit**
+Download HD afbeeldingen (Unsplash, Pexels)
 
 ## Extra Resources
 
 **Inspiratie:**
-- [Awwwards - Portfolio Sites](https://www.awwwards.com/websites/portfolio/)
-- [Dribbble - Portfolio Designs](https://dribbble.com/search/portfolio)
+- Awwwards.com
+- Dribbble.com
+- Behance.net
+
+**Afbeeldingen:**
+- Unsplash.com
+- Pexels.com
+- Pixabay.com
+
+**Kleuren:**
+- Coolors.co
+- Adobe Color
 
 **Tools:**
-- [Coolors](https://coolors.co/) - Kleuren
-- [Unsplash](https://unsplash.com/) - Gratis foto's
-- [Box Shadow Generator](https://box-shadow.dev/)
-
-**Leren:**
-- [W3Schools HTML/CSS](https://www.w3schools.com/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-
----
+- Box Shadow Generator
+- Gradient Generator
+- Border Radius Generator
 
 ## Tips voor Docent
 
-### Voor het Project
-- Zorg dat alle technieken goed beheerst zijn
-- Laat goede voorbeelden zien (niet te ingewikkeld!)
-- Benadruk: "Eerst werkend, dan mooi"
+### Voorbereiding
+- Laat goede voorbeelden zien
+- Bespreek planning
+- Help met onderwerp kiezen
 
-### Tijdens het Project
+### Tijdens Project
 - Loop constant rond
-- Spot veelgemaakte fouten vroeg
-- Moedig experimenteren aan
+- Spot problemen vroeg
+- Help prioriteren
 - Vier kleine successen
-- Help met prioriteren: "Wat is het belangrijkst?"
+- "Eerst werkend, dan mooi"
 
-### Bij Problemen
-- "Laat eens zien in DevTools"
-- "Heb je clearfix toegevoegd?"
-- "Staat je link in de HTML?"
-- Debuggen leren is ook een skill!
+### Veelvoorkomende Hulpvragen
+- "Hoe centreer ik?"  → max-width + margin: 0 auto
+- "Waarom staan ze niet naast elkaar?" → display: inline-block
+- "Hover werkt niet" → transition toevoegen
+- "Te wit" → backgrounds toevoegen
 
 ### Presentaties
 - Positieve sfeer
-- Laat andere studenten ook complimenten geven
-- Stel vragen: "Waarom heb je deze kleur gekozen?"
-- Vier wat ze bereikt hebben!
-
-### Na het Project
-- Laat studenten portfolio online zetten (GitHub Pages) - optioneel
-- Preview Blok 3: "Nu gaan we Flexbox en Grid leren!"
+- Moedig feedback aan
+- Vier wat bereikt is
+- Stel vragen over keuzes
 
 ---
 
-**Succes met je portfolio! 🎉**
+**Veel succes met je eindproject! 🚀**
