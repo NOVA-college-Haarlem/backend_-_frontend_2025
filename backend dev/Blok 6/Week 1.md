@@ -11,9 +11,7 @@ We gaan een todo list applicatie bouwen met Laravel. In dit project leren we de 
 - Basis CRUD operaties implementeren
 - Routes en controllers gebruiken
 - Blade templates maken voor de frontend
-
-
-
+  
 ## Project starten
 
 ### Opdracht 1: Project Aanmaken
@@ -445,10 +443,108 @@ In Laravel kan je seeder aanmaken met de `make:seeder` command.
             ],
         ];
 
-        Task::insert($tasks);
+        Task::insert($tasks); //Hier wordt het model gebruikt om de data in de database te inserten.
     }   
     ```
 
 Deze seeder zal de tabel `tasks` vullen met de data uit de array $tasks. We zien de taken in de database.
+
+## Model aanmaken
+In Laravel kan je models aanmaken met de `make:model` command.
+
+### Opdracht 14: Model aanmaken
+1. Maak een nieuwe model aan met de naam `Task`
+   ```bash
+   php artisan make:model Task
+2. Het model is aangemaakt. Dit model representeert de tabel `tasks` in de database.
+3. Open het bestand `app/Models/Task.php` om de code te bekijken.
+
+## Category Migration aanmaken
+1. Maak een nieuwe migration aan met de naam `create_categories_table`
+   ```bash
+   php artisan make:migration create_categories_table
+   ```
+2. Open de migration `database/migrations/2025_11_11_123456_create_categories_table.php`
+3. Voeg de volgende code toe:
+    ```php
+    public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+    ```
+4. Sla de wijzigingen op en open de pagina `/categories` in je browser.
+
+Deze migration zal de tabel `categories` aanmaken met de kolommen name en color.
+
+## Category Seeder aanmaken
+1. Maak een nieuwe seeder aan met de naam `CategoriesSeeder`
+   ```bash
+   php artisan make:seeder CategoriesSeeder
+   ```
+2. Open de seeder `database/seeders/CategoriesSeeder.php`
+3. Voeg de volgende code toe:
+    ```php
+    public function run()
+    {
+         $categories = [
+            [
+                'name' => 'Prive'
+            ],
+            [
+                'name' => 'Werk'
+            ],
+            
+        ];
+
+        Category::insert($categories);
+    }
+    ```
+4. Sla de wijzigingen op en open de pagina `/categories` in je browser.
+
+Deze seeder zal de tabel `categories` vullen met de data uit de array $categories. We zien de categories in de database.
+
+Deze seeder zal de tabel `categories` vullen met de data uit de array $categories. We zien de categories in de database.
+
+## Model toevoegen
+1. Maak een nieuwe model aan met de naam `Category`
+   ```bash
+   php artisan make:model Category
+   ```
+2. Open het bestand `app/Models/Category.php`
+
+## DatabaseSeeder
+
+De database seeder is de eerste seeder die wordt uitgevoerd bij het migreren van de database.
+
+Om de eerder gemaakte seeders te kunnen uitvoeren, moeten we dit toevoegen aan de DatabaseSeeder.php.
+
+1. Open het bestand `database/seeders/DatabaseSeeder.php`
+2. Voeg de volgende code toe:
+    ```php
+    public function run()
+    {
+        $this->call([
+            TasksSeeder::class,
+            CategoriesSeeder::class,
+        ]);
+    }
+    ```
+3. Om dan de seeder uit te voeren, moeten we het volgende commando uitvoeren:
+    ```bash
+    php artisan db:seed
+    ```
+4. Het kan zijn dat je een error krijgt. Dit komt omdat de DatabaseSeeder gebruikt maakt van de UserFactory. Deze probeert een gebruiker aan te maken maar waarschijnlijk bestaat deze al.
+
+> We bouwen de database opnieuw op. Dit kan je voorkomen door het volgende commando uit te voeren:
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+Dit zal de database wissen en opnieuw migreren en de seeders uitvoeren.
+
 
 
