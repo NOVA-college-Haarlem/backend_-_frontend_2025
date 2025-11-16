@@ -11,7 +11,7 @@ We gaan een todo list applicatie bouwen met Laravel. In dit project leren we de 
 - Basis CRUD operaties implementeren
 - Routes en controllers gebruiken
 - Blade templates maken voor de frontend
-  
+
 ## Project starten
 
 ### Opdracht 1: Project Aanmaken
