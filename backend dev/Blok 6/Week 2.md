@@ -101,7 +101,7 @@ Deze methode zal de view `tasks.create` weergeven. Echter is de view nog niet aa
 2. Voeg de volgende code toe:
     ```php
     <h1>Taak aanmaken</h1>
-    <form action="tasks/store/" method="post"
+    <form action="{{ route('tasks.store') }}" method="post">
         @csrf
         <label for="title">Titel</label>
         <input type="text" name="title" id="title">
@@ -136,6 +136,40 @@ Deze methode zal de taak opslaan in de database.
 1. Open het bestand `routes/web.php`
 2. Voeg de volgende route toe:
     ```php
-    Route::post('/tasks/store', [TaskController::class, 'store']);
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
     ```
 3. Sla de wijzigingen op en open de pagina `/tasks/create` in je browser.
+
+Deze route zal naar de methode `store` in de `TaskController` verwijzen.
+
+> Zoals je ziet is de route genaamd `tasks.store`. Dit is de naam van de route die we in de view gebruiken.
+
+## Route namen
+
+Route namen zijn belangrijk voor het genereren van URL's. We kunnen deze namen gebruiken in de view om naar de juiste route te verwijzen.
+
+### Opdracht 3.5 Routes aanpassen
+1. Open het bestand `routes/web.php`
+2. Pas de reeds gemaakte routes aan zodat deze gebruik maken van de route namen:
+    ```php
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    ```
+3. Sla de wijzigingen op en open de pagina `/tasks` in je browser.
+
+Deze routes zullen naar de juiste methoden in de `TaskController` verwijzen.
+
+> Zoals je ziet is de route genaamd `tasks.index`. Dit is de naam van de route die we in de view gebruiken.
+
+
+## Migratie aanpassen
+
+- user firstname en lastname toevoegen
+
+## Models en relaties
+
+- task koppelen aan user
+- task koppelen aan category
+- category koppelen aan tasks
+
