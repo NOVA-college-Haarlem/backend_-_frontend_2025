@@ -396,3 +396,20 @@ De volgende code dien je dan te hebben:
 ```php
 <?php
 
+```php
+<?php
+
+$email = $_POST['email_form'];
+$password = $_POST['password_form'];
+$firstname = $_POST['firstname_form'];
+$lastname = $_POST['lastname_form'];
+$role = $_POST['role_form'];
+
+$query = "INSERT INTO users (email, password, firstname, lastname, role) VALUES ('$email', '$password', '$firstname', '$lastname', '$role')";
+$result = mysqli_query($conn, $query);
+
+if($result){
+    header("location: dashboard.php");
+    exit;
+}
+```
