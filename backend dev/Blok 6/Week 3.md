@@ -49,3 +49,64 @@ Zie hieronder de volledige code:
 </x-base-layout>
 ```
 
+Je web.php route:
+```php
+Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+```
+
+De TaskController edit methode:
+```php
+public function edit(Task $task)
+{
+    return view('tasks.edit', compact('task'));
+}
+``` 
+
+
+De TaskController update methode:
+```php
+public function update(Request $request, Task $task)
+{
+   $task = Task::findOrFail($id);
+        $task->title = $request->title;
+    $task->description = $request->description;
+    $task->due_date = $request->due_date;
+    $task->is_completed = $request->completed ? false : true;
+    $task->user_id = 1; //tijdelijke user_id, later aanpassen naar ingelogde gebruiker
+    $task->category_id = 1; //tijdelijke category_id, later aanpassen naar gekozen categorie
+    $task->save(); //hiermee slaan we de taak op in de database
+    return redirect()->route('tasks.index');
+}
+```
+
+### Opdracht 1.3: Delete Functionaliteit
+
+De TaskController delete methode:
+```php
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('tasks.index');
+    }
+```
+
+In de index view:
+```php
+<p>
+    <form method="post" action="{{ route('tasks.destroy', $task->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit">DELETE</button>
+    </form>
+</p>
+```
+
+In de web.php route:
+```php
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+
+```
