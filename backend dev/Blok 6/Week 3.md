@@ -110,3 +110,21 @@ Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.
 
 
 ```
+
+### Opdracht 1.4: Category Toevoegen
+
+Maak nu zelf een functionaliteit toe om een category toe te voegen aan de database.
+
+
+### Opdracht 1.4.1: Category Aanpassen
+
+Maak nu zelf een functionaliteit toe om een category aan te passen in de database.
+
+### Opdracht 1.4.2: Category Verwijderen
+
+Maak nu zelf een functionaliteit toe om een category te verwijderen uit de database.
+
+### Opdracht 1.4.3: Category Lijst Weergeven
+
+Maak nu zelf een functionaliteit toe om een category lijst te weergeven in de database.
+
