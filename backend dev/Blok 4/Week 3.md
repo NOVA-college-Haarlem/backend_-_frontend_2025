@@ -91,17 +91,7 @@ Een login functionaliteit bestaat uit twee delen:
 2. Maar stel nou dat iemand deze URL probeert te openen zonder ingelogd te zijn. Op dit moment kan elke gebruiker naar dashboard.php gaan. Uiteraard is dit niet de bedoeling.
 3. Dit zullen we in de volgende les oplossen.
 
-#### Opdracht 3
-Parameters aanbrengen in de URL
+### Sessions
 
-Als het inloggen mislukt, willen we de gebruiker terugsturen naar de `login.php` pagina met een error message.
-
-We kunnen hiervoor parameters toevoegen aan de URL.
-
-1. Voeg een parameter `error` toe aan de URL.
-2. Als het inloggen mislukt, wordt deze parameter toegevoegd aan de URL.
-3. We kunnen deze parameter gebruiken om een error message te tonen.
-4. Dit doen we door te controlleren of de parameter `error` bestaat.
-5. Als de parameter bestaat, wordt deze erbij getoond.  
 
 
