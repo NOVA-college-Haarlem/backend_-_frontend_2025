@@ -1,71 +1,41 @@
 <?php
 
-if(!isset($_POST['email_form'])){
-    echo "Geen email veld gevonden";
-    exit;
-}
-
-if(!isset($_POST['password_form'])){
-    echo "Geen wachtwoord veld gevonden";
-    exit;
-}
-
-if(empty($_POST['email_form'])){
-    echo "Geen email ingevuld";
-    exit;
-}
-
-if(empty($_POST['password_form'])){
-    echo "Geen wachtwoord ingevuld";
-    exit;
-}
-
 $email = $_POST['email_form'];
 $password = $_POST['password_form'];
 
+if(empty($email)){
+    echo "Email mag niet leeg zijn";
+    exit;
+}
 
-require 'database_connection.php';
+if(empty($password)){
+    echo "Wachtwoord mag niet leeg zijn";
+    exit;
+}
 
-$sql = "SELECT * FROM users WHERE email = '$email'";
+require 'database.php';
+
+$sql = "SELECT * FROM users WHERE email = '$email' ";
+
 $result = mysqli_query($conn, $sql);
 
-$user = mysqli_fetch_assoc($result);
+$user = mysqli_fetch_assoc($result);// 1 gebruiker halen wij op uit db.
 
-if(is_array($user)){
+if(is_array($user)){ //een gebruiker is gevonden op basis van email
 
-    if($password == $user['password']){
+    if($password  == $user['password']){ //check wachtwoord_form met wachtwoord db
+        //gebruiker is succesvol ingelogd!!!!
 
         session_start();
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
-        $_SESSION['firstname'] = $user['firstname'];
-        $_SESSION['role'] = $user['role'];
-
-
-        if($user['role'] == 'admin'){
-            header('Location: admin-dashboard.php');
-            exit;
-        }
         
-        if($user['role'] == 'user'){
-            header('Location: user-dashboard.php');
-            exit;
-        }
-
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['firstname'] = $user['firstname'];
+        $_SESSION['lastname'] = $user['lastname'];
+        
+        header("location: dashboard.php");
         exit;
     }
 }
 
-
-header('Location: login.php?error=wrong');
-exit;
-
-$var = NULL;
-
-if(is_null($var)){
-    echo "De variabele is null";
-} else {
-    echo "De variabele is niet null";
-}
-
-echo $var ?? "De variabele is null";
+echo "Email is bij ons onbekend";

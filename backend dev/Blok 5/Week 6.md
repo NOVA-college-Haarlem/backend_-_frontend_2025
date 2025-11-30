@@ -247,7 +247,7 @@ require 'header.php';
 ```php
 <?php
 session_start();
-http_response_code(403);
+    http_response_code(403);
 require 'header.php';
 ?>
 <main class="error-page error-403">
