@@ -90,8 +90,8 @@ Users ofwel gebruikers zijn shop owners, customer service medewerkers, warehouse
 #### Products
 Een product kan meerdere categorieën hebben.
 Een product kan meerdere reviews hebben.
-Een product kan in meerdere winkelwagens zitten.
-Een product kan in meerdere bestellingen zitten.
+Een product kan in  winkelwagens zitten.
+Een product kan in meerdere bestellingmeerdereen zitten.
 
 #### Categories
 Een categorie kan meerdere producten hebben.

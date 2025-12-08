@@ -52,7 +52,7 @@ DB_PASSWORD=password
 - [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
 - [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
 - [ ] Als bibliothecaris wil ik kunnen zien welke boeken uitgeleend zijn zodat ik weet wat beschikbaar is
-- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend
+- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
 - [ ] Als bibliothecaris wil ik boeken kunnen categoriseren zodat leden makkelijker kunnen browsen
 
 ### Bibliotheeklid
