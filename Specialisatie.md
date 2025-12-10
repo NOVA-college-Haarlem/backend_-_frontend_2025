@@ -1,5 +1,8 @@
 # Specialisatie
 
+
+# Werkproces 1: Softwarepakket onderzoek en keuze
+
 Je gaat je verdiepen in een softwarepakket. Eerst onderzoek je het aanbod, waarna je een keuze maakt voor een softwarepakket. Tot slot schrijf je een verslag over jouw keuze.
 
 Ga een shortlist maken met software die jij interessant vindt. Verwerk deze lijst in een document
@@ -66,3 +69,25 @@ Ga een shortlist maken met software die jij interessant vindt. Verwerk deze lijs
 
 1. Maak een planning op basis van de lesmateriaal.
 2. Schrijf je planning op in een document.
+
+## Werkproces 2: Software eigen maken en reflectie
+
+### Opdracht 1: Planning maken
+
+Maak een planning hoe de rest van het project eruit gaat zien. Probeer een zo realistisch mogelijke planning neer te zetten. Houd er ook rekening mee dat sommige onderdelen ook naast elkaar uitgevoerd kunnen worden en niet perse na elkaar. In de planning zijn de volgende onderdelen opgenomen:
+
+Onderdeel (onderwerp)
+Datum dat eraan gewerkt gaat worden
+Geschatte tijd dat het in beslag gaat nemen
+
+### Opdracht 2: Software eigen maken 
+Je hebt een cursus uitgekozen die je gaat doen. Het liefst zien we een cursus met een certificaat, zodat je dit straks ook op je CV kan zetten. Als certificaat niet mogelijk is, doe een cursus waarbij wel de voortgang in de gaten gehouden kan worden, want dit is je bewijs. 
+
+### Opdracht 3: Reflecteren
+
+Je gaat een uitgebreide reflectie schrijven over het hele proces van het start van het onderzoek (werkproces 1) t/m het bouwen van de applicatie (werkproces 2). In de reflectie neem je de schrijver mee in jouw gehele leerproces:
+
+- Wat ging goed en waarom?
+- Wat ging minder goed en waarom?
+- Wat zou je de volgende keer anders aanpakken en waarom?
+- Wat neem je uit dit project mee voor de volgende keer en waarom?
