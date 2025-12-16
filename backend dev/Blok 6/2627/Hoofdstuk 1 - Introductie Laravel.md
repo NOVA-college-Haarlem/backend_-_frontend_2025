@@ -17,6 +17,8 @@ Hierbij kunnen gebruikers:
     - [Leerdoelen hoofdstuk 1](#leerdoelen-hoofdstuk-1)
   - [Hoofdstuk 1 - Project Setup en Basis Functionaliteit](#hoofdstuk-1---project-setup-en-basis-functionaliteit)
     - [Leerdoelen hoofdstuk 1](#leerdoelen-hoofdstuk-1-1)
+  - [Benodigdheden](#benodigdheden)
+    - [Opdracht 0: Installeer Laravel Herd](#opdracht-0-installeer-laravel-herd)
   - [Project starten](#project-starten)
     - [Opdracht 1: Project Aanmaken](#opdracht-1-project-aanmaken)
     - [Opdracht 2: Project verkennen](#opdracht-2-project-verkennen)
@@ -47,6 +49,17 @@ Hierbij kunnen gebruikers:
 - Mappenstructuur van Laravel verkennen.
 - Eenvoudige routes, controllers en views maken.
 
+## Benodigdheden
+
+- Laravel Herd
+- VS Code
+
+### Opdracht 0: Installeer Laravel Herd 
+
+1. Ga naar https://herd.laravel.com/ en volg de instructies om Laravel Herd te installeren.
+2. Installeer Laravel Herd op je computer.
+3. Start Laravel Herd 
+
 ## Project starten
 
 ### Opdracht 1: Project Aanmaken
@@ -55,7 +68,7 @@ Hierbij kunnen gebruikers:
 2. Kies voor het gebruik van Laravel Breeze voor authenticatie.
 3. Noem het project "spelshop".
 4. Kies Blade voor de frontend.
-5. Testing Framework: PHPUnit.
+5. Testing Framework: Pest.
 6. Target location: _hoef je niet te kiezen_.
 7. Ga naar http://spelshop.test om te controleren of het project werkt.
 
@@ -66,6 +79,12 @@ Hierbij kunnen gebruikers:
 2. Bekijk de mappen app, routes, resources, database.
 3. Open `resources/views/welcome.blade.php` en verander de titel of tekst.
 4. Herlaad de pagina in de browser.
+
+> Laravel maakt gebruik van het MVC (Model View Controller) patroon.
+
+![MVC patroon](./images/mvc.webp)
+
+Om te oefenen met Laravel gaan we eerst eenvoudige statische pagina's maken. Deze pagina's tonen eenvoudige data. Binnen Laravel geven we de locaties (routes) aan waar we de data willen tonen. De data wordt dan getoond in de view. Routes zijn de adressen binnen de applicatie. De routes die we nu gaan maken kunnen worden opgehaald met een GET request. Deze statische pagina's hebben nog geen MVC patroon. Hier worden alleen VIEWS getoond.
 
 ### Opdracht 3: Eerste routes voor de webshop
 We maken statische pagina’s voor de webshop.
@@ -112,15 +131,9 @@ We maken statische pagina’s voor de webshop.
 2. Deze zijn al aangeleverd in het project.
 3. Open de terminal en voer de volgende commando uit:
     ```bash
-    php artisan test --group="StaticRoutes"
+    php artisan test --group=StaticRoutes
     ```
 4. Je ziet de test resultaten.
-
-Er ontstaat een foutmelding omdat de routes nog niet bestaan.
-Om een test te draaien waarbij de test stop op het moment van falen dan dien je de volgende commando op te geven:
-    ```bash
-    php artisan test --group=StaticRoutes --stop-on-failure 
-    ```
 
 ## CRUD maken
 We gaan een CRUD voor categorieën maken. (CREATE, READ, UPDATE, DELETE)
@@ -167,12 +180,19 @@ Daarnaast moeten we ook een migration maken voor de categorieën. Dit is een bes
 ### opdracht 7: Seeder maken
 
 Daarnaas moeten we ook een seeder maken voor de categorieën. Een seeder is een bestand dat de database data aanpast.
-   ```bash
-   php artisan make:seeder CategoriesSeeder
-   ```
+```bash
+php artisan make:seeder CategoriesSeeder
+```
 2. Open de seeder `database/seeders/CategoriesSeeder.php`
 3. Voeg de volgende code toe:
-    ```php
+
+```php
+<?php
+
+//bovenin de seeder voeg je de volgende code toe:
+use App\Models\Category;
+
+//in de run methode voeg je de volgende code toe:
     public function run()
     {
         $categories = [
@@ -192,45 +212,57 @@ Daarnaas moeten we ook een seeder maken voor de categorieën. Een seeder is een 
 
         Category::insert($categories);
     }
-    ```
+```
 4. Sla de wijzigingen op.
+
+Voeg deze seeder toe aan de DatabaseSeeder.php.
+
+```php
+public function run()
+{
+    $this->call([
+        CategoriesSeeder::class,
+    ]);
+}
+```
 
 ### opdracht 8: Controller maken
 
 Een controller is als een verkeerstoren op een vliegveld. Hij regelt de verkeer op de weg. In de controller regelen we de logica van de website.
 
 5. Maak een nieuwe controller aan met de naam `CategoryController`.
-   ```bash
-   php artisan make:controller CategoryController
-   ```
+```bash
+php artisan make:controller CategoryController
+```
 
 ### opdracht 8.1: Methode aanpassen
 1. Open de controller `app/Http/Controllers/CategoryController.php`
 2. Pas de methode `index` aan met de volgende code:
-    ```php
-   public function index()
-    {
-        // Lijst alle categorieën ophalen
-        $categories = Category::all();
-        return view('categories.index', compact('categories'));
-    }
-    ```
+```php
+public function index()
+{
+    // Lijst alle categorieën ophalen
+    $categories = Category::all();
+    return view('categories.index', compact('categories'));
+}
+```
 3. Sla de wijzigingen op.
 
 ### opdracht 9: Route maken
 
 1. Maak een nieuwe route aan voor de categorieën.
-   ```php
-   Route::get('/categories', [CategoryController::class, 'index']);
-   ```
+```php
+Route::get('/categories', [CategoryController::class, 'index']);
+```
 
 ### opdracht 10: View maken
 7. Maak een nieuwe view aan voor de categorieën.
-   ```php
-   php artisan make:view categories.index
-   ```
-In de view `categories.index.blade.php` kunnen we de data weergeven met de volgende code:
 ```php
+php artisan make:view categories.index
+```
+In de view `categories.index.blade.php` kunnen we de data weergeven met de volgende code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,7 +293,9 @@ In de view `categories.index.blade.php` kunnen we de data weergeven met de volge
 
 ```bash
 php artisan test --group="CategoriesIndex"
+```
 
+Je ziet de test resultaten.
 
 
 
