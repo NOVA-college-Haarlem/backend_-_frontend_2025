@@ -9,37 +9,35 @@ Hierbij kunnen gebruikers:
 • Review achterlaten over een spel
 • Een spel kopen
 
-## inhoudsopgave
+## ERD Spelshop
+
+![ERD](./images/erd.png)
+
+## Inhoudsopgave
 
 - [Blok 6 - Laravel Spelshop Project](#blok-6---laravel-spelshop-project)
   - [Introductie](#introductie)
-  - [inhoudsopgave](#inhoudsopgave)
-    - [Leerdoelen hoofdstuk 1](#leerdoelen-hoofdstuk-1)
+  - [ERD Spelshop](#erd-spelshop)
+  - [Inhoudsopgave](#inhoudsopgave)
   - [Hoofdstuk 1 - Project Setup en Basis Functionaliteit](#hoofdstuk-1---project-setup-en-basis-functionaliteit)
-    - [Leerdoelen hoofdstuk 1](#leerdoelen-hoofdstuk-1-1)
-  - [Benodigdheden](#benodigdheden)
-    - [Opdracht 0: Installeer Laravel Herd](#opdracht-0-installeer-laravel-herd)
-  - [Project starten](#project-starten)
-    - [Opdracht 1: Project Aanmaken](#opdracht-1-project-aanmaken)
-    - [Opdracht 2: Project verkennen](#opdracht-2-project-verkennen)
-    - [Opdracht 3: Eerste routes voor de webshop](#opdracht-3-eerste-routes-voor-de-webshop)
-    - [Opdracht 4: Test de routes](#opdracht-4-test-de-routes)
-  - [CRUD maken](#crud-maken)
-    - [opdracht 5: Model maken](#opdracht-5-model-maken)
-    - [opdracht 6: Migration maken](#opdracht-6-migration-maken)
-    - [opdracht 7: Seeder maken](#opdracht-7-seeder-maken)
-    - [opdracht 8: Controller maken](#opdracht-8-controller-maken)
-    - [opdracht 8.1: Methode aanpassen](#opdracht-81-methode-aanpassen)
-    - [opdracht 9: Route maken](#opdracht-9-route-maken)
-    - [opdracht 10: View maken](#opdracht-10-view-maken)
-    - [opdracht 11: Test je code](#opdracht-11-test-je-code)
+    - [Leerdoelen hoofdstuk 1](#leerdoelen-hoofdstuk-1)
+    - [Benodigdheden](#benodigdheden)
+      - [Opdracht 0: Installeer Laravel Herd](#opdracht-0-installeer-laravel-herd)
+    - [Project starten](#project-starten)
+      - [Opdracht 1: Project Aanmaken](#opdracht-1-project-aanmaken)
+      - [Opdracht 2: Project verkennen](#opdracht-2-project-verkennen)
+      - [Opdracht 3: Eerste routes voor de webshop](#opdracht-3-eerste-routes-voor-de-webshop)
+      - [Opdracht 4: Test de routes](#opdracht-4-test-de-routes)
+    - [CRUD maken](#crud-maken)
+      - [opdracht 5: Model maken](#opdracht-5-model-maken)
+      - [opdracht 6: Migration maken](#opdracht-6-migration-maken)
+      - [opdracht 7: Seeder maken](#opdracht-7-seeder-maken)
+      - [opdracht 8: Controller maken](#opdracht-8-controller-maken)
+        - [opdracht 8.1: Methode aanpassen](#opdracht-81-methode-aanpassen)
+      - [opdracht 9: Route maken](#opdracht-9-route-maken)
+      - [opdracht 10: View maken](#opdracht-10-view-maken)
+      - [opdracht 11: Test je code](#opdracht-11-test-je-code)
 
-
-### Leerdoelen hoofdstuk 1
-- Een Laravel project opzetten met Laravel Herd
-- Laravel Herd installeren en gebruiken om een nieuw Laravel project te starten.
-- Mappenstructuur van Laravel verkennen.
-- Eenvoudige routes, controllers en views maken.
 
 ## Hoofdstuk 1 - Project Setup en Basis Functionaliteit
 
@@ -49,20 +47,20 @@ Hierbij kunnen gebruikers:
 - Mappenstructuur van Laravel verkennen.
 - Eenvoudige routes, controllers en views maken.
 
-## Benodigdheden
+### Benodigdheden
 
 - Laravel Herd
 - VS Code
 
-### Opdracht 0: Installeer Laravel Herd 
+#### Opdracht 0: Installeer Laravel Herd 
 
 1. Ga naar https://herd.laravel.com/ en volg de instructies om Laravel Herd te installeren.
 2. Installeer Laravel Herd op je computer.
 3. Start Laravel Herd 
 
-## Project starten
+### Project starten
 
-### Opdracht 1: Project Aanmaken
+#### Opdracht 1: Project Aanmaken
 
 1. Maak gebruik van Laravel Herd.
 2. Kies voor het gebruik van Laravel Breeze voor authenticatie.
@@ -74,7 +72,7 @@ Hierbij kunnen gebruikers:
 
 **Verwacht resultaat:** Je ziet de Laravel welkomstpagina op http://spelshop.test
 
-### Opdracht 2: Project verkennen
+#### Opdracht 2: Project verkennen
 1. Open het project spelshop in VS Code.
 2. Bekijk de mappen app, routes, resources, database.
 3. Open `resources/views/welcome.blade.php` en verander de titel of tekst.
@@ -86,7 +84,7 @@ Hierbij kunnen gebruikers:
 
 Om te oefenen met Laravel gaan we eerst eenvoudige statische pagina's maken. Deze pagina's tonen eenvoudige data. Binnen Laravel geven we de locaties (routes) aan waar we de data willen tonen. De data wordt dan getoond in de view. Routes zijn de adressen binnen de applicatie. De routes die we nu gaan maken kunnen worden opgehaald met een GET request. Deze statische pagina's hebben nog geen MVC patroon. Hier worden alleen VIEWS getoond.
 
-### Opdracht 3: Eerste routes voor de webshop
+#### Opdracht 3: Eerste routes voor de webshop
 We maken statische pagina’s voor de webshop.
 1. Open `routes/web.php`.
 2. Voeg een route toe voor de homepage van de webshop:
@@ -125,7 +123,7 @@ We maken statische pagina’s voor de webshop.
     ```
 12. Herlaad de pagina in de browser.
 
-### Opdracht 4: Test de routes
+#### Opdracht 4: Test de routes
 
 1. We gaan gebruik maken van automatisch testing.
 2. Deze zijn al aangeleverd in het project.
@@ -135,7 +133,7 @@ We maken statische pagina’s voor de webshop.
     ```
 4. Je ziet de test resultaten.
 
-## CRUD maken
+### CRUD maken
 We gaan een CRUD voor categorieën maken. (CREATE, READ, UPDATE, DELETE)
 We zorgen eerst voor een overzicht van de categorieën. Om dit te doen gaan we volledig gebruik maken van het MVC (Model View Controller) patroon. 
 
@@ -143,7 +141,7 @@ We zorgen eerst voor een overzicht van de categorieën. Om dit te doen gaan we v
 > - In de model zorgen we voor de data, dit is vaak een representatie van de data in de database. 
 > - In de view weergeven we de data.
 
-### opdracht 5: Model maken
+#### opdracht 5: Model maken
 
 1. Om data uit de database te halen, moeten we een model maken.
    ```bash
@@ -156,7 +154,7 @@ We zorgen eerst voor een overzicht van de categorieën. Om dit te doen gaan we v
     ```
 4. Sla de wijzigingen op.
 
-### opdracht 6: Migration maken
+#### opdracht 6: Migration maken
 
 Daarnaast moeten we ook een migration maken voor de categorieën. Dit is een bestand dat de database schema aanpast.
    ```bash
@@ -177,7 +175,7 @@ Daarnaast moeten we ook een migration maken voor de categorieën. Dit is een bes
     ```
 3. Sla de wijzigingen op.
 
-### opdracht 7: Seeder maken
+#### opdracht 7: Seeder maken
 
 Daarnaas moeten we ook een seeder maken voor de categorieën. Een seeder is een bestand dat de database data aanpast.
 ```bash
@@ -226,7 +224,7 @@ public function run()
 }
 ```
 
-### opdracht 8: Controller maken
+#### opdracht 8: Controller maken
 
 Een controller is als een verkeerstoren op een vliegveld. Hij regelt de verkeer op de weg. In de controller regelen we de logica van de website.
 
@@ -235,7 +233,7 @@ Een controller is als een verkeerstoren op een vliegveld. Hij regelt de verkeer 
 php artisan make:controller CategoryController
 ```
 
-### opdracht 8.1: Methode aanpassen
+##### opdracht 8.1: Methode aanpassen
 1. Open de controller `app/Http/Controllers/CategoryController.php`
 2. Pas de methode `index` aan met de volgende code:
 ```php
@@ -248,14 +246,14 @@ public function index()
 ```
 3. Sla de wijzigingen op.
 
-### opdracht 9: Route maken
+#### opdracht 9: Route maken
 
 1. Maak een nieuwe route aan voor de categorieën.
 ```php
 Route::get('/categories', [CategoryController::class, 'index']);
 ```
 
-### opdracht 10: View maken
+#### opdracht 10: View maken
 7. Maak een nieuwe view aan voor de categorieën.
 ```php
 php artisan make:view categories.index
@@ -289,7 +287,7 @@ In de view `categories.index.blade.php` kunnen we de data weergeven met de volge
 </html>
 ```
 
-### opdracht 11: Test je code
+#### opdracht 11: Test je code
 
 ```bash
 php artisan test --group="CategoriesIndex"
