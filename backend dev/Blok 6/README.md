@@ -54,6 +54,7 @@ In dit lesprogramma leer je hoe je een website maakt met Laravel. Laravel is een
 >   - Data opslaan met relaties
 
 ## Week 5 - Laravel Breeze
+> - Flash messages
 > - Laravel Breeze installatie en setup
 >   - Nieuwe componenten van Breeze:
 >     - Routes in routes/web.php

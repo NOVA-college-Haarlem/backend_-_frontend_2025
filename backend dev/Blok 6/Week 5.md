@@ -41,15 +41,14 @@ We gaan nu flash messages toevoegen aan de todo list.
 Laravel Breeze is een package dat Laravel uitbreidt met authenticatie functionaliteit.
 
 ### Opdracht 4.1: Breeze installeren
-1. Installeer Laravel Breeze:
+1. Maak een GIT Commit van de huidige status van het project. Want we gaan mischien dingen veranderen en we willen deze niet verliezen.
+2. Installeer Laravel Breeze:
     ```bash
     composer require laravel/breeze --dev
     php artisan breeze:install blade
     npm install
     npm run dev
     ```
-2. Sla de wijzigingen op en open de pagina `/tasks/create` in je browser.
-3. We zien nu de Breeze pagina.
 
 ### Opdracht 4.2: Starterspakket 
 
