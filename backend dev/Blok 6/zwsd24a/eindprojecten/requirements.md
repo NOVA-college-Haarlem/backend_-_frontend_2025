@@ -291,3 +291,4 @@ Raadpleeg de weekbestanden (Week 1 t/m Week 6) voor gedetailleerde uitleg over:
 - Week 5: Laravel Breeze, authenticatie
 - Week 6: (Zie project specifieke eisen)
 
+

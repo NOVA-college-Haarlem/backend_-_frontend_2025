@@ -154,7 +154,7 @@ Voor nu willen we de titel en type dynamisch invullen. Uiteraard moeten we een l
 
 1. De overige kaarten kunnen we verwijderen.
 
-### OPDRACHT 16: POKEMON AFbeelding
+### OPDRACHT 16: POKEMON Afbeelding
 
 1. Nu moeten we de afbeelding ook dynamisch invullen.
 2. We maken gebruik van een externe site waarbij we een afbeelding kunnen ophalen op basis van het nummer (pokedex_number) van de pokemon.

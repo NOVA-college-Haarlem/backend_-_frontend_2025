@@ -1,0 +1,84 @@
+## Filtering
+
+Door filters kunnen we de gebruiker helpen om snel de juiste data te vinden.
+
+### Opdracht 1
+
+1. Filtering toevoegen.
+2. Op de pagina tools_index.php gaan we filters aanbrengen zodat de gebruiker op tools kan filteren.
+3. Voeg de volgende code toe aan `<main>`:
+```html
+<aside>
+    <h2>Filters</h2>
+    <ul>
+        <li><a href="tools_index.php?filter=brand&value=makita">makita</a></li>
+    </ul>
+</aside>
+```
+4. Daarnaast moeten we ook een class toevoegen aan `<main>`: `class="table"`
+
+### Opdracht 2
+
+1. Nu gaan we de CSS aanpassen.
+2. Voeg de volgende code toe:
+```css
+.table {
+  display: flex;
+  flex-direction: row;
+}
+
+.table aside {
+  display: flex;
+  justify-content: start;
+  width: 12%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.table aside h2 {
+  font-size: 14px;
+}
+
+```
+
+### Opdracht 3
+
+1. Dan gaan we de code aanpassen zodat de gebruiker op tools kan filteren.
+2. Want als we nu op een filter klikken, dan gaat de gebruiker naar de tools_index.php pagina met een GET parameter.
+3. Test de code in je browser.
+
+### Opdracht 4
+
+We gaan nu PHP code toevoegen aan de `tools_index.php` pagina zodat de gebruiker op tools kan filteren.
+
+### Opdracht 5
+
+1. We gaan eerst controlleren welke filter en value de gebruiker heeft gekozen.
+2. Voeg de volgende code toe:
+```php
+if (isset($_GET['filter']) && isset($_GET['value'])) {
+    $filter = $_GET['filter'];
+
+    if($filter === 'brands'){
+        $filter = 'brands.brand_name';
+    }
+    $value = $_GET['value'];
+}
+```
+
+### Opdracht 6
+
+1. We gaan nu de query aanpassen.
+2. Voeg de volgende code toe:
+```php  
+// we hebben nu TWEE voorwaarden aan de WHERE clause toegevoegd. Bestudeer deze code zelf.
+ $sql = "SELECT * FROM tools JOIN brands ON brands.brand_id = tools.tool_brand WHERE tools.deleted_at IS NULL AND $filter = :value";
+$stmt = $conn->prepare($sql);
+$stmt->execute(['value' => $value]);
+$tools = $stmt->fetchAll(PDO::FETCH_ASSOC);
+```
+
+### Opdracht 7
+
+1. Maak nu nog meer filters aan. Bijvoorbeeld voor een alle ander bekende brands.
+2. Ga je een foreach gebruiken?

@@ -129,7 +129,7 @@ We maken statische pagina’s voor de webshop.
 2. Deze zijn al aangeleverd in het project.
 3. Open de terminal en voer de volgende commando uit:
     ```bash
-    php artisan test --group=StaticRoutes
+    php artisan test --group=StaticRoutesTest
     ```
 4. Je ziet de test resultaten.
 
@@ -223,6 +223,12 @@ public function run()
     ]);
 }
 ```
+
+5. Draai de seeder met de volgende commando:
+```bash
+php artisan migrate:fresh --seed
+```
+6. Je ziet de categorieën in de database.
 
 #### opdracht 8: Controller maken
 
