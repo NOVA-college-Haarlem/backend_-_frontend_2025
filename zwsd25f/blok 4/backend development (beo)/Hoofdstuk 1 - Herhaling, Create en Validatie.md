@@ -1,8 +1,4 @@
-# Blok 4
-
-## Week 1
-
-### Herhaling Blok 3
+# Hoofdstuk 1 - Herhaling en Validatie
 
 In blok 3 hebben we PHP een introductie gedaan. We hebben gekeken naar:
 
