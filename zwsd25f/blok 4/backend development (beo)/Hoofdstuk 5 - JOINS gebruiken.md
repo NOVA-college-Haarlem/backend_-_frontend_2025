@@ -35,7 +35,7 @@ INSERT INTO `driver_standing` (`driverStandingsId`, `raceId`, `driverId`, `point
 
 We willen de standings table niet op deze manier tonen maar we willen de namen van de driver ERBIJ. 
 
-We gaan deze JOIN gebruiken:
+We gaan deze JOIN gebruiken. Met een JOIN kunnen we overeenkomende rijen tussen twee tabellen koppelen. We maken gebruik van de driverId kolom om de overeenkomende rijen te koppelen. Dit is de primaire key van de drivers tabel en de foreign key van de driver_standings tabel.
 
 ```php
 require 'database.php';
