@@ -2,96 +2,51 @@
 
 In deze les gaan we de data uit de database halen en tonen op het dashboard.
 
-#### Opdracht 1
+#### Opdracht 1 - Aantal drivers in db
 
-1. Pas het bestand `admin-dashboard.php` aan: 
-2. We maken een connectie met de database.
-3. We maken een query om de data uit de database te halen.
-4. Toon het aantal gebruikers uit de database op het scherm:
+Toon het aantal drivers in db
 
-
-```php
-// Query data
-$sql = "SELECT COUNT(*) as total_users FROM users";
-$result = mysqli_query($conn, $sql);
-$total_users = mysqli_fetch_assoc($result)['total_users'];
-?>
-
-<div class="bg-blue-500 text-white p-6 rounded-lg shadow-md text-center">
-    <h2 class="text-4xl font-bold"><?php echo $total_users; ?></h2>
-    <p class="mt-2">Totaal aantal gebruikers</p>
-</div>
-```
-
-#### Opdracht 2
-
-1. Pas het bestand `admin-dashboard.php` aan: 
-2. We maken een connectie met de database.
-3. We maken een query om de data uit de database te halen.
-4. Toon het aantal kaarten uit de database op het scherm:
+Hiervoor hebben we een database connectie nodig.
+Met behulp van de COUNT function kunnen we het aantal drivers in de database halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'number_of_drivers'.
 
 
 ```php
-// Query data
-$sql = "SELECT COUNT(*) as total_cards FROM cards";
+
+require 'database.php';
+
+$sql = "SELECT COUNT(*) AS number_of_drivers FROM drivers";
 $result = mysqli_query($conn, $sql);
-$total_cards = mysqli_fetch_assoc($result)['total_cards'];
-?>
- <div class="bg-green-500 text-white p-6 rounded-lg shadow-md text-center">
-    <h2 class="text-4xl font-bold"><?php echo $total_cards; ?></h2>
-    <p class="mt-2">Totaal aantal kaarten</p>
-</div>
+$count = mysqli_fetch_assoc($result);
 ```
 
-#### Opdracht 3
+#### Opdracht 2 - Aantal drivers uit Duitsland in db
 
-1. Pas het bestand `admin-dashboard.php` aan: 
-2. We maken een connectie met de database.
-3. We maken een query om de data uit de database te halen.
-4. Toon het aantal normale gebruikers uit de database op het scherm:
+Met behulp van de COUNT function kunnen we het aantal drivers in de database halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'number_of_drivers'.
+En we maken gebruik van de WHERE clause om de drivers te filteren op de nationaliteit 'German'.
+```php
 
-### Les 3 - Meerdere tabellen
+require 'database.php';
 
-In deze les gaan we meerdere tabellen in de database gebruiken. We maken gebruik van een one-to-one relatie. 
+$sql = "SELECT COUNT(*) AS number_of_drivers FROM drivers WHERE nationality = 'German'";
+$result = mysqli_query($conn, $sql);
+$count_germany = mysqli_fetch_assoc($result);
 
-#### Opdracht 1
-
-1. We importeren een nieuwe tabel in de database.
-
-```sql
-CREATE TABLE user_settings (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    theme ENUM('light', 'dark', 'auto') DEFAULT 'light',
-    cards_per_page INT DEFAULT 12,
-    default_sort ENUM('name', 'type', 'hp', 'attack') DEFAULT 'name',
-    show_card_stats BOOLEAN DEFAULT TRUE,
-    email_notifications BOOLEAN DEFAULT TRUE,
-    two_factor_enabled BOOLEAN DEFAULT FALSE,
-    last_login_ip VARCHAR(45),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    UNIQUE KEY unique_user_settings (user_id)
-);
-
-INSERT INTO user_settings (user_id, theme, cards_per_page, default_sort, email_notifications) VALUES
-(1, 'dark', 24, 'hp', TRUE),
-(2, 'light', 12, 'name', FALSE),
-(4, 'auto', 18, 'type', TRUE);
+echo "Het aantal drivers is " . $count['number_of_drivers'] . "<br>";
 ```
 
-#### Opdracht 2
+#### Opdracht 3 - Hoogtste positie behaald door het team RENAULT (constructor_standing tabel)
 
-1. We maken een nieuwe pagina aan genaamd `profile.php`.
-2. Deze pagina mag alleen worden bekeken als de gebruiker is ingelogd.
-3. De code hiervoor staat elders in de applicatie.   
+Met behulp van de MAX function kunnen we de hoogtste positie behaald door het team RENAULT halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'highest_position'.
+En we maken gebruik van de JOIN clause om de constructors te filteren op de naam 'RENAULT'.
+```php
 
-#### Opdracht 3
+require 'database.php';
 
-1. Haal de data van de ingelogde gebruiker op.
-2. Toon de data het formulier.
+$sql = "SELECT MAX(position) as highest_position FROM constructor_standing 
+                    JOIN constructors ON constructors.constructorId = constructor_standing.constructorId
+                    WHERE constructors.name = 'RENAULT'";
+$result = mysqli_query($conn, $sql);
+$standings = mysqli_fetch_assoc($result);
 
-
-
-
+var_dump($standings['highest_position']);
+die;
