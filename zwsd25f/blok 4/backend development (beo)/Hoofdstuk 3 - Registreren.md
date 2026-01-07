@@ -1,8 +1,4 @@
-# Blok 4
-
-## Week 3
-
-### Les 1 - Registreren
+# Hoofdstuk 3 - Registreren
 
 In de vorige les hebben we gewerkt met een database en hebben we gebruik gemaakt van een form om pokemon kaarten op te slaan. In deze les gaan we een nieuwe gebruiker registreren.
 

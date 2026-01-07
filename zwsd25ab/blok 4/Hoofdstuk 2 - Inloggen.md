@@ -8,6 +8,12 @@ Een login functionaliteit bestaat uit twee delen:
 
 #### Opdracht 1
 
+1. importeer `users.sql` in de database.
+2. Controleer of de gebruikers correct zijn ingevoegd.
+
+
+#### Opdracht 2
+
 1. Maak een nieuw bestand aan genaamd `login.php`
 2. Maak in dit bestand een form aan voor het inloggen van een gebruiker.
 3. Gebruik de volgende velden:
@@ -43,7 +49,7 @@ Een login functionaliteit bestaat uit twee delen:
 </html>
 ```
 
-#### Opdracht 2
+#### Opdracht 3
 
 1. Maak een nieuw bestand aan genaamd `login_process.php`
 2. Schrijf hier code waarmee je de data uit het formulier kunt valideren.

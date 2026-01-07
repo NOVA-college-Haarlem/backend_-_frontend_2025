@@ -1,6 +1,4 @@
-# Blok 4
-
-## Week 5 - zoeken in Formula1-256
+# Hoofdstuk 5 - Zoeken
 
 In deze les gaan we zoeken in de database en nog een keer filters aanbrengen. Omdat jullie dat wilde gaan we met het project Formula1-256 verder.
 

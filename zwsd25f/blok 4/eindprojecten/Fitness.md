@@ -49,8 +49,8 @@ Afbeeldingen dienen opgeslagen te worden op de webserver en op de juiste wijze d
 ### Blok 4
 
 #### Frontend
-1.  Als bezoeker wil ik een about page kunnen bekijken zodat ik kan lezen wat deze website te bieden heeft.    Mobile-friendly
-2.  Als bezoeker wil ik dat minstens 3 pagina’s waaronder de allereerste pagina goed te bekijken is op een mobiel.    Mobile-friendly
+1. Als bezoeker wil ik een about page kunnen bekijken zodat ik kan lezen wat deze website te bieden heeft.    Mobile-friendly
+2. Als bezoeker wil ik dat minstens 3 pagina’s waaronder de allereerste pagina goed te bekijken is op een mobiel.    Mobile-friendly
 3. Als lid wil ik op elke pagina een timer zien die aangeeft hoe lang ik op die pagina ben.    Javascript
 
 #### Backend

@@ -6,7 +6,7 @@ In blok 3 hebben we PHP een introductie gedaan. We hebben gekeken naar:
 - Data types
 - Arrays
 - Associative arrays
-- Conditionals
+- Conditionals (if-statements)
 - Loops
 - Ingebouwde PHP functies
 - Database connectie
