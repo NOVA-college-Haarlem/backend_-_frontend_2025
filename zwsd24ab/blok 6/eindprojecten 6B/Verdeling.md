@@ -20,6 +20,7 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 8. Silvio
 9. Symon
 10. Drake
+11. Jay
 
 ### Project 3 - Cinema System
 
@@ -34,6 +35,6 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 
 16. Jordan
 17. Thijs
-18. Jay
+
 19. Teoman
 20. Jesse
