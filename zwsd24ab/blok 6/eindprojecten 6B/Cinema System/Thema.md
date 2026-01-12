@@ -1,0 +1,2 @@
+# Thema
+Een bioscoop wil een applicatie om films, zalen, voorstellingen en tickets te beheren. Klanten kunnen online tickets kopen. Films kunnen worden gekozen op basis van genre, leeftijdsgrens en duur. Zalen kunnen worden gekozen op basis van capaciteit en schermgrootte. Voorstellingen kunnen worden gekozen op basis van datum, tijd en film. Tickets kunnen worden gekozen op basis van voorstelling en stoel.
