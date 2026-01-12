@@ -69,3 +69,9 @@ Afbeeldingen dienen opgeslagen te worden op de webserver en op de juiste wijze d
 14. Als medewerker wil ik detailpagina's van gebruikers kunnen bekijken zodat ik zijn/haar gegevens kan ophalen.
 15. Als medewerker wil ik kunnen zoeken door de database naar gebruikers op basis van achternaam of email.
 
+
+## Eisen
+
+- Alle input van gebruikers moet validatie ondergaan
+- Een dashboard moet gemaakt worden voor de medewerker
+- Pagina's moeten afgeschermd zijn voor gebruikers die niet ingelogd zijn
