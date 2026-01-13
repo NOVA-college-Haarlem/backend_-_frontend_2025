@@ -40,6 +40,11 @@ git push -u origin main
 ```
 Dit push de code naar de nieuwe repository.
 
+## Installeer de dependencies
+1. Run `composer install`
+2. Run `npm install`
+3. Run `npm run dev`
+
 ## Laravel configuratie
 1. Maak een kopie van de .env.example file en noem deze .env
 2. Maak een database.sqlite bestand aan in de map database
@@ -48,9 +53,8 @@ Dit push de code naar de nieuwe repository.
 5. Migreer de huidige migraties naar de nieuwe database
 6. Run `php artisan migrate`
 
-## Installeer de dependencies
-1. Run `composer install`
-2. Run `npm install`
-3. Run `npm run dev`
+
+
+
 
 
