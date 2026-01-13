@@ -35,7 +35,7 @@ Dit voegt de nieuwe origin (link) toe aan de repository.
 
 6. Typ in de terminal:
 ```bash
-it branch -M main
+git branch -M main
 git push -u origin main
 ```
 Dit push de code naar de nieuwe repository.
