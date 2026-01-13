@@ -10,7 +10,7 @@ LaravelDaily heeft een starter kit voor Laravel 12. Deze starter kit bevat een v
 
 1. Clone de repository naar de Herd folder
 ```bash
-git clone https://github.com/LaravelDaily/laravel-starter-kit.git ProjectBlok6B
+git clone https://github.com/LaravelDaily/starter-kit.git ProjectBlok6B
 ```
 
 ### Nieuwe eigen repository aanmaken
