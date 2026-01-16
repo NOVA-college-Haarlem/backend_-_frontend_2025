@@ -9,6 +9,8 @@ Om een detail pagina te maken hebben we een query nodig die alle data van een dr
 ```php
 <?php
 
+require 'database.php';
+
 $query = "SELECT * FROM drivers WHERE driverId = 1";
 $result = mysqli_query($conn, $query);
 $driver = mysqli_fetch_assoc($result);
