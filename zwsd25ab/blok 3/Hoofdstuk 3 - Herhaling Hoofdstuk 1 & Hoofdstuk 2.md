@@ -103,9 +103,9 @@ include 'drivers-array.php';
 4. Voeg de volgende code toe:
 ```php
 <?php
-$dbhost = 'localhost';
-$dbname = 'formula1';
-$dbuser = 'root';
+$dbhost = 'mariadb';
+$dbname = 'Formula1';
+$dbuser = 'user';
 $dbpass = 'password';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
