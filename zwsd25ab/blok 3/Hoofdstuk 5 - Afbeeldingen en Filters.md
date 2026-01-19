@@ -34,7 +34,7 @@ var_dump($circuits);
 1. We gaan nu een link toevoegen naar de detail pagina van de circuits.
 2. Voeg de volgende code toe:
 ```html
-<a href="circuit-profile.php?id=<?php echo $circuit['circuitId'] ?>" class="text-blue-500 hover:underline">View Profile</a>
+<a href="circuit-detail.php?id=<?php echo $circuit['circuitId'] ?>" class="text-blue-500 hover:underline">View Profile</a>
 ```
 3. Test je code in de browser.
 4. De link naar de detail pagina van de circuits werkt nu.
