@@ -115,6 +115,12 @@ ALTER TABLE circuits ADD COLUMN image VARCHAR(255) NULL;
 6. In de assets folder staat een nieuw bestand genaamd `api.php`.
 7. Open het bestand `api.php` en bestudeer de code.
 8. Dit bestand hebben we nodig in de driver-profile.php pagina. Hiervoor gebruiken we `include`.
+9. In `driver-profile.php` kunnen we nu - nadat we de `$driver` hebben opgehaald - de bijbehorende foto ophalen via de api:
+```php
+$driverData = fetchWikipediaPhoto($driver['forename'] . ' ' . $driver['surname']);
+$image = isset($driverData['photo_url']) ? $driverData['photo_url'] : '';
+```
+10. Gebruik nu de `$image`-variabele om de afbeelding te tonen.
 
 ## Les 3 - Filter
 
