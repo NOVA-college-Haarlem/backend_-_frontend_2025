@@ -1,14 +1,15 @@
 # Week 6
 
 
-## Les 1 - Herhaling Project: De Regenboog School
+## Les 1 - Herhaling Project: Tools4Ever
 
-In deze les gaan we alle geleerde concepten van week 1 t/m 5 herhalen in één nieuw project. Je gaat een website bouwen voor basisschool "De Regenboog" met twee losse entiteiten: **klassen** en **leerlingen**.
+In deze les gaan we alle geleerde concepten van week 1 t/m 5 herhalen in één nieuw project. Je gaat een website bouwen voor Kluswinkel "Tools4Ever" met twee losse entiteiten: **tools** en **brands**, **users**.
 
 ### Projectomschrijving
-Basisschool De Regenboog wil een website waar bezoekers informatie kunnen bekijken over:
-- Alle klassen op de school (groep 1 t/m groep 8)
-- Alle leerlingen die op school zitten
+Tools4Ever wil een website waar bezoekers informatie kunnen bekijken over:
+- Alle tools op de website
+- Alle brands op de website
+- Alle users op de website
 
 ### Wat ga je oefenen?
 - Project setup met Docker
@@ -22,77 +23,11 @@ Basisschool De Regenboog wil een website waar bezoekers informatie kunnen bekijk
 
 ---
 
-### Database Schema
+### Opdracht 1:De repository
 
-#### Tabel 1: `klassen`
-```sql
-CREATE TABLE klassen (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    naam VARCHAR(50) NOT NULL,
-    lokaal VARCHAR(10) NOT NULL,
-    juf_meester VARCHAR(100) NOT NULL,
-    aantal_leerlingen INT NOT NULL,
-    verdieping INT NOT NULL
-);
-```
+De repository is te vinden op https://github.com/NOVA-college-Haarlem/tools4ever
 
-#### Tabel 2: `leerlingen`
-```sql
-CREATE TABLE leerlingen (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    voornaam VARCHAR(50) NOT NULL,
-    achternaam VARCHAR(50) NOT NULL,
-    geboortedatum DATE NOT NULL,
-    klas VARCHAR(50) NOT NULL,
-    woonplaats VARCHAR(100) NOT NULL,
-    hobby VARCHAR(100)
-);
--- Data voor klassen
-INSERT INTO klassen (naam, lokaal, juf_meester, aantal_leerlingen, verdieping) VALUES
-('Groep 1A', 'A101', 'Juf Emma van der Berg', 24, 1),
-('Groep 2A', 'A102', 'Juf Sophie de Vries', 22, 1),
-('Groep 3A', 'B201', 'Meester Lucas Janssen', 26, 2),
-('Groep 4A', 'B202', 'Juf Anna Bakker', 25, 2),
-('Groep 5A', 'C301', 'Meester Tim Visser', 28, 3),
-('Groep 6A', 'C302', 'Juf Lisa Smit', 27, 3),
-('Groep 7A', 'D401', 'Meester David de Jong', 24, 4),
-('Groep 8A', 'D402', 'Juf Maria Mulder', 26, 4);
-
--- Data voor leerlingen
-INSERT INTO leerlingen (voornaam, achternaam, geboortedatum, klas, woonplaats, hobby) VALUES
-('Noah', 'Jansen', '2017-03-15', 'Groep 1A', 'Haarlem', 'Voetbal'),
-('Emma', 'de Boer', '2017-07-22', 'Groep 1A', 'Haarlem', 'Tekenen'),
-('Liam', 'Visser', '2017-01-10', 'Groep 1A', 'Heemstede', 'Lego'),
-('Sophie', 'Bakker', '2016-05-18', 'Groep 2A', 'Haarlem', 'Dansen'),
-('Lucas', 'Hendriks', '2016-09-30', 'Groep 2A', 'Bloemendaal', 'Zwemmen'),
-('Mila', 'van Dijk', '2016-11-12', 'Groep 2A', 'Haarlem', 'Paardrijden'),
-('Sem', 'Mulder', '2015-04-25', 'Groep 3A', 'Haarlem', 'Gamen'),
-('Julia', 'Smit', '2015-08-08', 'Groep 3A', 'Heemstede', 'Zingen'),
-('Daan', 'de Groot', '2015-02-14', 'Groep 3A', 'Haarlem', 'Voetbal'),
-('Fleur', 'Bos', '2014-10-03', 'Groep 4A', 'Haarlem', 'Lezen'),
-('Finn', 'Vermeer', '2014-06-20', 'Groep 4A', 'Bloemendaal', 'Skaten'),
-('Lisa', 'de Vries', '2014-12-17', 'Groep 4A', 'Haarlem', 'Ballet'),
-('Max', 'Kok', '2013-03-09', 'Groep 5A', 'Haarlem', 'Voetbal'),
-('Anna', 'Peters', '2013-07-28', 'Groep 5A', 'Heemstede', 'Tekenen'),
-('Bram', 'Dijkstra', '2013-11-05', 'Groep 5A', 'Haarlem', 'Muziek'),
-('Eva', 'Willems', '2012-04-12', 'Groep 6A', 'Haarlem', 'Hockey'),
-('Thijs', 'Janssen', '2012-09-22', 'Groep 6A', 'Bloemendaal', 'Voetbal'),
-('Noa', 'van Leeuwen', '2012-01-30', 'Groep 6A', 'Haarlem', 'Dansen'),
-('Sam', 'de Wit', '2011-05-15', 'Groep 7A', 'Haarlem', 'Programmeren'),
-('Luna', 'Schouten', '2011-10-08', 'Groep 7A', 'Heemstede', 'Volleybal'),
-('Jesse', 'Brouwer', '2011-02-19', 'Groep 7A', 'Haarlem', 'Basketbal'),
-('Zoë', 'van den Berg', '2010-06-25', 'Groep 8A', 'Haarlem', 'Atletiek'),
-('Milan', 'Dekker', '2010-08-14', 'Groep 8A', 'Bloemendaal', 'Tennis'),
-('Sara', 'Prins', '2010-12-02', 'Groep 8A', 'Haarlem', 'Gitaar');
-```
-
----
-
-### Opdracht 1: Project Setup
-
-1. Kloon en fork de repository https://github.com/NOVA-college-Haarlem/regenboog_school
-3. Open de terminal in VS Code en voer uit: `docker compose up -d`
-4. Ga naar http://localhost:8000 en importeer de tabellen en data in de database `regenboog_school`
+Deze kun je forken en clonen naar je projecten map (C:\projecten)
 
 ---
 ### Opdracht 2: Database Connectie
@@ -104,7 +39,7 @@ INSERT INTO leerlingen (voornaam, achternaam, geboortedatum, klas, woonplaats, h
 <?php
 
 $dbhost = 'mariadb';
-$dbname = 'regenboog_school';
+$dbname = 'tools4ever';
 $dbuser = 'root';
 $dbpass = 'password';
 
@@ -141,54 +76,57 @@ echo "Database connectie succesvol!";
 1. Pas `index.php` aan zodat het een mooie homepage wordt:
 
 
-### Opdracht 5: Klassen Overzicht
+### Opdracht 5: Tools Overzicht
 
-1. Maak een nieuw bestand: `klassen.php`
-2. Haal alle klassen op uit de database en toon ze in een tabel:
+1. Maak een nieuw bestand: `tools_index.php`
+2. Haal alle tools op uit de database en toon ze in een tabel:
 
 
 ### Opdracht 6: Link naar de detail pagina
 
-1. Voeg een link toe naar de detail pagina van de klas:
+1. Voeg een link toe naar de detail pagina van de tool: `tool_detail.php?id=...`
 
 ```html
-<a href="klas-detail.php?id=<?php echo $klas['id']; ?>">View Profile</a>
+<a href="tools_detail.php?id=<?php echo $tool['tool_id']; ?>">Bekijk gereedschap</a>
 ```
 
-### Opdracht 7: Klas Detail Pagina
+### Opdracht 7: Tool Detail Pagina
 
-1. Maak een nieuw bestand: `klas-detail.php`
-2. Toon de details van één specifieke klas
-3. 
+1. Maak een nieuw bestand: `tools_detail.php`
+2. Toon de details van één specifieke tool
+3. Toon alle informatie van de tool
 
-### Opdracht 8: Leerlingen Overzicht
+### Opdracht 8: Merken Overzicht
 
-1. Maak een nieuw bestand: `leerlingen.php`
-2. Toon alle leerlingen in een tabel (maak dit zelf met de kennis uit opdracht 5)
-3. Kolommen die je moet tonen: voornaam, achternaam, geboortedatum, klas, woonplaats, hobby
-4. Voeg een link toe naar een detail pagina: `leerling-detail.php?id=...`
+1. Maak een nieuw bestand: `brands_index.php`
+2. Toon alle brands in een tabel (maak dit zelf met de kennis uit opdracht 5)
+3. Kolommen die je moet tonen: naam
+4. Voeg een link toe naar een detail pagina: `brand_detail.php?id=...`
 
----
+### Opdracht 9: Gebruikers Overzicht
 
-### Opdracht 8: Leerling Detail Pagina
+1. Maak een nieuw bestand: `users_index.php`
+2. Toon alle users in een tabel (maak dit zelf met de kennis uit opdracht 5)
+3. Kolommen die je moet tonen: voornaam, achternaam, email
 
-1. Maak een nieuw bestand: `leerling-detail.php`
-2. Toon de details van één specifieke leerling (gebruik opdracht 6 als voorbeeld)
-3. Toon alle informatie van de leerling
+### Opdracht 10: Gebruiker Detail Pagina
 
----
+1. Voeg een link toe naar een detail pagina: `user_detail.php?id=...`
+2. De detail pagina moet de volgende informatie tonen: voornaam, achternaam, email, telefoonnummer, adres, postcode, woonplaats, status van de gebruiker (actief, inactief en de rol van de gebruiker (admin, user, etc.)
 
-### Opdracht 9: Filter op Klas
 
-1. Voeg bovenaan `leerlingen.php` een filter sectie toe met links:
+
+### Opdracht 9: Filter op Tool Brand
+
+1. Voeg bovenaan `tools_index.php` een filter sectie toe met links:
 
 ```php
 <div style="background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 10px;">
-    <strong>Filter op klas:</strong>
+    <strong>Filter op tool brand:</strong>
     <a href="leerlingen.php">Alle leerlingen</a> |
-    <a href="leerlingen.php?filter=klas&value=Groep 1A">Groep 1A</a> |
-    <a href="leerlingen.php?filter=klas&value=Groep 2A">Groep 2A</a> |
-    <a href="leerlingen.php?filter=klas&value=Groep 3A">Groep 3A</a>
+    <a href="tools_index.php?filter=brand&value=brand1">brand1</a> |
+    <a href="tools_index.php?filter=brand&value=brand2">brand2</a> |
+    <a href="tools_index.php?filter=brand&value=brand3">brand3</a>
     <!-- Voeg meer klassen toe -->
 </div>
 ```
@@ -200,21 +138,14 @@ echo "Database connectie succesvol!";
 if(isset($_GET['filter']) && isset($_GET['value'])){
     $filter = $_GET['filter'];
     $value = $_GET['value'];
-    $query = "SELECT * FROM leerlingen WHERE $filter = '$value'";
+    $query = "SELECT * FROM tools WHERE $filter = '$value'";
 } else {
-    $query = "SELECT * FROM leerlingen";
+    $query = "SELECT * FROM tools";
 }
 $result = mysqli_query($conn, $query);
-$leerlingen = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$tools = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 ```
-
----
-
-### Opdracht 10: Filter op Woonplaats
-
-1. Voeg ook een filter toe voor woonplaats op de `leerlingen.php` pagina
-2. Leerlingen kunnen gefilterd worden op: Haarlem, Heemstede, Bloemendaal
 
 ---
 
@@ -222,10 +153,9 @@ $leerlingen = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 1. Maak een nieuwe pagina: `statistieken.php`
 2. Toon interessante statistieken, bijvoorbeeld:
-   - Totaal aantal klassen: `SELECT COUNT(*) as totaal FROM klassen`
-   - Totaal aantal leerlingen: `SELECT COUNT(*) as totaal FROM leerlingen`
-   - Gemiddeld aantal leerlingen per klas
-   - Aantal leerlingen per woonplaats
+   - Totaal aantal tools: `SELECT COUNT(*) as totaal FROM tools`
+   - Totaal aantal brands: `SELECT COUNT(*) as totaal FROM brands`
+   - Totaal aantal users: `SELECT COUNT(*) as totaal FROM users`
 
 Voorbeeldcode voor statistieken:
 ```php
@@ -233,18 +163,19 @@ Voorbeeldcode voor statistieken:
 require 'database.php';
 
 // Totaal aantal klassen
-$query1 = "SELECT COUNT(*) as totaal FROM klassen";
+$query1 = "SELECT COUNT(*) as totaal FROM tools";
 $result1 = mysqli_query($conn, $query1);
-$totaalKlassen = mysqli_fetch_assoc($result1)['totaal'];
+$totaalTools = mysqli_fetch_assoc($result1)['totaal'];
 
-// Totaal aantal leerlingen
-$query2 = "SELECT COUNT(*) as totaal FROM leerlingen";
+// Totaal aantal brands
+$query2 = "SELECT COUNT(*) as totaal FROM brands";
 $result2 = mysqli_query($conn, $query2);
-$totaalLeerlingen = mysqli_fetch_assoc($result2)['totaal'];
+$totaalBrands = mysqli_fetch_assoc($result2)['totaal'];
 
 // Toon de statistieken
-echo "<h2>Totaal klassen: " . $totaalKlassen . "</h2>";
-echo "<h2>Totaal leerlingen: " . $totaalLeerlingen . "</h2>";
+echo "<h2>Totaal tools: " . $totaalTools . "</h2>";
+echo "<h2>Totaal brands: " . $totaalBrands . "</h2>";
+echo "<h2>Totaal users: " . $totaalUsers . "</h2>";
 ?>
 ```
 
@@ -255,25 +186,18 @@ echo "<h2>Totaal leerlingen: " . $totaalLeerlingen . "</h2>";
 - [ ] Project draait op http://localhost
 - [ ] Database is aangemaakt en gevuld
 - [ ] Navigatie werkt op alle pagina's
-- [ ] Klassen overzicht toont alle klassen
-- [ ] Klas detail pagina werkt met GET parameter
-- [ ] Leerlingen overzicht toont alle leerlingen
-- [ ] Leerling detail pagina werkt met GET parameter
-- [ ] Filter op klas werkt
-- [ ] Filter op woonplaats werkt
+- [ ] Tools overzicht toont alle tools
+- [ ] Tool detail pagina werkt met GET parameter
+- [ ] Brands overzicht toont alle brands
+- [ ] Brand detail pagina werkt met GET parameter
+- [ ] Users overzicht toont alle users
+- [ ] User detail pagina werkt met GET parameter
+- [ ] Filter op tool brand werkt
 - [ ] Code is netjes en gebruikt `include` voor herhaalde delen
 
 ---
 
-### Bonusopdrachten
-
-1. **Styling verbeteren**: Gebruik Tailwind CSS of eigen CSS om de pagina's mooier te maken
-2. **Zoekfunctie**: Maak een zoekbalk waar je leerlingen kunt zoeken op naam
-3. **Sorteren**: Voeg sorteer functionaliteit toe (bijvoorbeeld op achternaam)
-4. **Leeftijd berekenen**: Bereken de leeftijd van leerlingen op basis van geboortedatum
-5. **Breadcrumbs**: Voeg breadcrumb navigatie toe (Home > Leerlingen > Details)
-
-## Les 2 - Samenvatting Blok 3 - Overzicht Week 1 t/m 5
+## Samenvatting Blok 3 - Overzicht Week 1 t/m 5
 
 ### Week 1: Introductie PHP & Basis Concepten
 
