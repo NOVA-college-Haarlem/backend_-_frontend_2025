@@ -52,25 +52,6 @@ Daarnaast heb je ook geleerd om een variabele te plaatsen in de string als je bi
  
 Een variabele direct plaatsen in een sql-statement is gevaarlijk. Het kan namelijk misbruikt worden door een andere expert. Hij/zij kan namelijk de gegevens zo aanpassen dat er andere gegevens opgehaald worden of verwijderd. Of zelfs de gehele database kan verwijderd worden. Dit noemen ze ook wel SQL-Injections. Het injecteren van sql. Eerst volgt nu een uitleg over hoe je een sql-injection uitvoert. En daarna hoe je je code zo aanpast dat het niet meer mogelijk is, met behulp van prepared statements
 
-#### Opdracht 0 - project setup
-
-1. Fork de repository [https://github.com/NOVA-college-Haarlem/tools4ever](https://github.com/NOVA-college-Haarlem/tools4ever).
-2. Clone de repository naar je projecten map (C:\projecten) `git clone https://github.com/NOVA-college-Haarlem/tools4ever.git`
-3. Open het project in VS Code.
-4. Open de terminal in VS Code en type `docker compose up -d` in.
-
-### Opdracht 0.1 - Database
-
-1. Ga in de browser naar `http://localhost:8000` 
-2. Importeer de bestanden uit de map `sql/opdracht 0` in de database.
-   - brands.sql
-   - tools.sql
-   - user_settings.sql
-   - users.sql
-3. Controleer of de database correct is ingevoegd.
-4. Ga in de browser naar `http://localhost en bekijk de website.
-
-
 #### OPDRACHT 1: SQL-INJECTIE
 1. Log in met de volgende gegevens:
    - Email: admin@admin.com
