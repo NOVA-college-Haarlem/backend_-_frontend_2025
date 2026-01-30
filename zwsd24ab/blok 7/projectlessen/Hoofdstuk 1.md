@@ -79,9 +79,9 @@ Zo zie je dat je een database dat door een ander beheerd wordt,kunt gebruiken. J
 
 Met Postman kunnen we de API testen. We kunnen de API key invullen en de API URL invullen. We kunnen de request testen en de response bekijken.
 
-## Opdracht 3.
+## Opdracht 3 - PHP
 
-Gebruik je huidige applicatie en probeer eens de API van de OpenWeatherMap te gebruiken door het temperatuur van vandaag te tonen op je site.
+Gebruik je huidige PHP of Laravel (zie onderaan) applicatie en probeer eens de API van de OpenWeatherMap te gebruiken door het temperatuur van vandaag te tonen op je site.
 
 In PHP hebben daarvoor een apart bestand nodig. Maak een nieuw bestand aan genaamd `weather.php`.
 
@@ -89,8 +89,6 @@ In dit bestand voeg je de volgende code toe:
 
 ```php
 <?php
-
-require 'database.php';
 
 $apiKey = 'YOUR_API_KEY';
 $city = 'Beverwijk'; //of een stad naar keuze
@@ -101,6 +99,76 @@ $temp = $data['main']['temp'];
 echo $temp;
 
 ?>
+```
+
+Deze code zorgt ervoor dat je de API van de OpenWeatherMap kunt gebruiken.
+
+## Opdracht 4 - Laravel
+
+Gebruik je huidige Laravel applicatie en probeer eens de API van de OpenWeatherMap te gebruiken door het temperatuur van vandaag te tonen op je site.
+
+In Laravel hebben daarvoor een service nodig. Maak een nieuw service aan genaamed `WeatherService.php` in de folder `app/Services`.
+
+In dit bestand voeg je de volgende code toe:
+
+```php
+<?php
+
+namespace App\Services;
+
+class WeatherService
+{
+    protected $apiKey;
+    protected $baseUrl = 'https://api.openweathermap.org/data/2.5/';
+
+    public function __construct()
+    {
+        $this->apiKey = config('services.weather.api_key');
+    }
+
+    public function getCurrentWeather($city)
+    {
+        $url = $this->baseUrl . 'weather?q=' . urlencode($city) . '&appid=' . $this->apiKey;
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+        return [
+            'location' => $data['name'],
+            'temperature' => round($data['main']['temp'] - 273.15, 2), // Convert from Kelvin to Celsius
+            'condition' => $data['weather'][0]['description'],
+        ];
+    }
+}
+```
+
+Deze code zorgt ervoor dat je de API van de OpenWeatherMap kunt gebruiken.
+
+Nu moet je nog twee configuraties aanpassen in de `config/services.php` file.
+
+```php
+<?php
+
+return [
+    'weather' => [
+        'api_key' => env('WEATHER_API_KEY'),
+    ],
+];
+```
+
+En ook in de .env file moet je de API key toevoegen:
+```
+WEATHER_API_KEY=YOUR_API_KEY
+```
+
+Nu kunnen we de WeatherService gebruiken in onze controller.
+
+Je mag zelf kiezen welke controller je gebruikt. Als je bijvoorbeeld in de PostController de weather wilt tonen, dan voeg je de volgende code toe:
+
+```php
+ $weatherService = new \App\Services\WeatherService();
+        $weather = $weatherService->getCurrentWeather('Beverwijk');
+        return view('posts.index', compact('weather'));
+    }
+}
 ```
 
 Deze code zorgt ervoor dat je de API van de OpenWeatherMap kunt gebruiken.
