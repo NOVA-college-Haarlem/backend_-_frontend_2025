@@ -17,8 +17,8 @@ Postman is een programma dat je kunt gebruiken om API's te testen. Je kunt deze 
 
 ## Opdracht 1.
 
-1. Installeer het programma van Postman.
-2. Open het programma.
+1. Installeer het programma van Postman: https://www.postman.com/downloads/
+2. Registreer je als student en open het programma.
 
 
 ## Opdracht 2. 
@@ -69,43 +69,39 @@ Deze formule gebruiken we om de temperatuur in Celsius te berekenen.
 De temperatuur in Celsius is:
 273.63 - 273.15 = 0.48
 
-De `dt` is de tijd in Unix timestamp. We moeten deze omrekenen naar een datum. Om dit om te rekenen gebruiken we de volgende formule:
-datum = Unix timestamp * 1000
+De `dt` is de tijd in Unix timestamp (aantal seconden sinds 1-1-1970). In PHP kun je dit direct omzetten naar een leesbare datum met de `date()` functie.
 
-De datum is:
-1738108800 * 1000 = 2025-01-29 12:00:00
+Voorbeeld met `date()`:
+
+```php
+$dt = 1738108800;
+echo date('Y-m-d H:i:s', $dt); // 2025-01-29 12:00:00
+```
 
 Zo zie je dat je een database dat door een ander beheerd wordt,kunt gebruiken. Je kunt de data uit deze database halen en in je eigen applicatie gebruiken.
 
 Met Postman kunnen we de API testen. We kunnen de API key invullen en de API URL invullen. We kunnen de request testen en de response bekijken.
 
-## Opdracht 3 - PHP
+## Opdracht 3 - Laravel
 
-Gebruik je huidige PHP of Laravel (zie onderaan) applicatie en probeer eens de API van de OpenWeatherMap te gebruiken door het temperatuur van vandaag te tonen op je site.
+We maken een nieuwe Laravel applicatie aan om de API van de OpenWeatherMap te gebruiken en de temperatuur van vandaag te tonen op je site.
 
-In PHP hebben daarvoor een apart bestand nodig. Maak een nieuw bestand aan genaamd `weather.php`.
+### 3.1 Aanmaken nieuwe Laravelapplicatie
 
-In dit bestand voeg je de volgende code toe:
+1. Open Laravel Herd. Ga naar Sites en klik op Add.
+2. Kies "No starter kit".
+3. Geef project name "Weerapp".
+4. Check het vinkje bij "Initialize a git repository". Maak het project aan.
+5. Open het project in VS Code.
 
-```php
-<?php
+### 3.2 Project aanmaken op Github.
 
-$apiKey = 'YOUR_API_KEY';
-$city = 'Beverwijk'; //of een stad naar keuze
-$url = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey";
-$response = file_get_contents($url);
-$data = json_decode($response, true);
-$temp = $data['main']['temp'];
-echo $temp;
+1. Ga naar github.com en klik op "New".
+2. Vul bij "repository name" de projectnaam "weerapp" in en klik op "Create repository".
+3. Kopieer de instructies bij "…or push an existing repository from the command line". Open de Terminal (Ctrl+J) in je VS Code-project. Controleer of de terminal op het juiste pad van je project staat en voer de instructies uit.
+4. Ververs de pagina op github.com. De code van het weerapp-project moet nu zichtbaar zijn.
 
-?>
-```
-
-Deze code zorgt ervoor dat je de API van de OpenWeatherMap kunt gebruiken.
-
-## Opdracht 4 - Laravel
-
-Gebruik je huidige Laravel applicatie en probeer eens de API van de OpenWeatherMap te gebruiken door het temperatuur van vandaag te tonen op je site.
+### 3.3. Maak de Laravel-service aan
 
 In Laravel hebben daarvoor een service nodig. Maak een nieuw service aan genaamed `WeatherService.php` in de folder `app/Services`.
 
@@ -159,12 +155,24 @@ En ook in de .env file moet je de API key toevoegen:
 WEATHER_API_KEY=YOUR_API_KEY
 ```
 
+### 3.4 Gebruik de WeatherService
+
 Nu kunnen we de WeatherService gebruiken in onze controller.
 
 Je mag zelf kiezen welke controller je gebruikt. Als je bijvoorbeeld in de PostController de weather wilt tonen, dan voeg je de volgende code toe:
 
 ```php
- $weatherService = new \App\Services\WeatherService();
+<?php
+
+namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use App\Services\WeatherService;
+
+class PostController extends Controller
+{
+    public function index()
+    {
+        $weatherService = new WeatherService();
         $weather = $weatherService->getCurrentWeather('Beverwijk');
         return view('posts.index', compact('weather'));
     }
