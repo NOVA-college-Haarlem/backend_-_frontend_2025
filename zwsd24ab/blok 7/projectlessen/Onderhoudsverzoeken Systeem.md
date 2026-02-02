@@ -38,6 +38,11 @@ Beheerders kunnen:
 Maak een nieuwe repository aan op Github.
 Zorg ervoor dat je samen kunt werken aan het project door de andere gebruiker een link te geven naar de repository.
 
+
+Voor authorisatie kun je gebruik maken van Laravel Breeze of van de eerste gebruikte starter kit:
+
+https://github.com/LaravelDaily/starter-kit/
+
 ### Aan de slag
 
 - **Bespreek samen**: Hoe fijnmazig maken jullie locaties (alleen gebouw, of ook lokaalnummer)?  

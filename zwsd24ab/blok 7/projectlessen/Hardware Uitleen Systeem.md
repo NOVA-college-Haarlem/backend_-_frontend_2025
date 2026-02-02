@@ -19,10 +19,10 @@ Beheerders kunnen:
 
 ### Technische eisen
 
-Laravel (nieuwste stabiele versie)
-Database met minimaal: users, hardware_items, loans
-Authenticatie (Laravel Breeze of Fortify)
-Autorisatie via rollen (user/admin)
+- Laravel (nieuwste stabiele versie)
+- Database met minimaal: users, hardware_items, loans
+- Authenticatie (Laravel Breeze of Fortify)
+- Autorisatie via rollen (user/admin)
 
 ### Aan de slag
 
@@ -34,6 +34,11 @@ Verdeel het werk: Wie doet de backend/models, wie de views/styling?
 
 Maak een nieuwe repository aan op Github.
 Zorg ervoor dat je samen kunt werken aan het project door de andere gebruiker een link te geven naar de repository.
+
+
+Voor authorisatie kun je gebruik maken van Laravel Breeze of van de eerste gebruikte starter kit:
+
+https://github.com/LaravelDaily/starter-kit/
 
 ### Eerste stappen in Laravel
 ```bash
