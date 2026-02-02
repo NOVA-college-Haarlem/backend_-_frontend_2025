@@ -33,6 +33,11 @@ Beheerders kunnen:
 - Authenticatie (Laravel Breeze of Fortify)
 - Autorisatie via rollen (bijv. user/medewerker/admin)
 
+### Github
+
+Maak een nieuwe repository aan op Github.
+Zorg ervoor dat je samen kunt werken aan het project door de andere gebruiker een link te geven naar de repository.
+
 ### Aan de slag
 
 - **Bespreek samen**: Hoe fijnmazig maken jullie locaties (alleen gebouw, of ook lokaalnummer)?  

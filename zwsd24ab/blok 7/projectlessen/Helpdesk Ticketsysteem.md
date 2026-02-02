@@ -41,6 +41,11 @@ Beheerders kunnen:
   Welke categorieën zijn belangrijk? (netwerk, hardware, software, account, overig)
 - **Maak een ERD**: Schets jullie database-structuur voordat je begint.
 - **Verdeel het werk**: Wie richt de modellen/migrations/controllers in, wie maakt de views en styling?
+  
+### Github
+
+Maak een nieuwe repository aan op Github.
+Zorg ervoor dat je samen kunt werken aan het project door de andere gebruiker een link te geven naar de repository.
 
 ### Eerste stappen in Laravel
 

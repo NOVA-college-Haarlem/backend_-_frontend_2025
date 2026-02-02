@@ -40,6 +40,11 @@ Beheerders kunnen:
 - **Maak een ERD**: Schets jullie database-structuur voordat je begint.
 - **Verdeel het werk**: Wie werkt aan de backend (models, controllers, policies), wie werkt aan de views en UX?
 
+### Github
+
+Maak een nieuwe repository aan op Github.
+Zorg ervoor dat je samen kunt werken aan het project door de andere gebruiker een link te geven naar de repository.
+
 ### Eerste stappen in Laravel
 
 ```bash
