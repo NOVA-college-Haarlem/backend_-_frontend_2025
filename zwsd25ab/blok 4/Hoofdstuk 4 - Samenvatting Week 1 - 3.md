@@ -1,19 +1,29 @@
-## Samenvatting weken 1 t/m 3
+## Samenvatting hoofdstuk 1 t/m 3
 
-### Week 1 – Fundament & authenticatie
-- Opzetten van een herbruikbare databaseconnectie via `database.php`, zodat elke pagina dezelfde mysqli-verbinding gebruikt en we duidelijke foutmeldingen tonen bij mislukte connecties.
-- Bouwen van het eerste loginformulier (`login.php`) en het bijbehorende verwerkingsscript (`login_process.php`) met basale validatie (lege velden tegenhouden, gebruiker ophalen op e‑mail, wachtwoordvergelijking).
-- Introduceren van sessies na een succesvolle login en directe doorverwijzing naar `dashboard.php`, waarmee we de basis legden voor een beschermde omgeving.
+### Hoofdstuk 1 – Create en Validatie
+- Bouw van een formulier `create_tool.php` om nieuwe tools aan te maken met velden als naam, brand, categorie, prijs en afbeelding.
+- Toepassen van server-side validatie in `create_tool_process.php`:
+  - controleren op lege velden;
+  - minimale lengte van tekstvelden;
+  - controleren of prijs numeriek is en onder een maximaal bedrag blijft;
+  - controleren of de afbeelding een geldige URL heeft en niet te lang is.
+- Na geslaagde validatie de ingevulde data opslaan in de database met een `INSERT`-query.
 
-### Week 2 – Gebruikersbeheer & navigatie
-- Uitbreiding met een registratieformulier (`register.php`) inclusief rollenkeuze en server-side controles in `register_process.php` (empty checks, minimale lengte, e-mailvalidatie) voordat een nieuwe gebruiker in de tabel `users` belandt.
-- Toevoeging van `session_check.php` als eenvoudige middleware om niet-ingelogde bezoekers te blokkeren en `logout.php` om sessies op te ruimen.
-- Introductie van een gedeelde header/navigation (`header.php` en `navbar.php`) die links naar dashboard, klassenoverzicht, klas aanmaken en gebruikersbeheer bevat, zodat alle beschermde pagina's dezelfde menustructuur tonen.
+### Hoofdstuk 2 – Registreren
+- Werken met de `users`-tabel in de database (o.a. firstname, lastname, email, password, role, address, city, is_active).
+- Opzetten van een registratieformulier in `user_create.php` met `name`-attributen die overeenkomen met de kolomnamen in de database.
+- In `user_create_process.php`:
+  - controleren of alle vereiste velden bestaan en niet leeg zijn;
+  - valideren van het e-mailadres;
+  - controleren of het wachtwoord minimaal 8 karakters lang is;
+  - na geldige invoer de nieuwe gebruiker opslaan in de database en doorverwijzen naar een succes- of foutpagina.
 
-### Week 3 – Klassenbeheer
-- Maken van een overzichtspagina `klassen.php` die alle klassen uit de database leest, toont in een tabel en linkt naar detailpagina's (`klas-detail.php`) via queryparameters.
-- Bouwen van het formulier `create_klas.php` en het verwerkingsscript `create_klas_process.php` met uitgebreide validatie (lengte-controles, numerieke checks, maximum 30 leerlingen) en het opslaan van de klas in de tabel `klassen`.
-- Voorbereiden van detailfunctionaliteit door alvast een parametercontrole in `klas-detail.php` te plaatsen; de verdere uitwerking staat voor komende weken gepland.
-
-Met deze onderdelen beschikt de Regenboog-schoolapp na drie weken over een volledige authenticatiestroom, basisgebruikersbeheer en de eerste CRUD-stap voor klassen. Week 4 bouwt hierop voort met verfijningen en nieuwe features.
+### Hoofdstuk 3 – Inloggen en Sessions
+- Maken van een loginformulier in `login.php` met de velden email en password.
+- Schrijven van `login_process.php` om:
+  - de ingevoerde gegevens op te halen;
+  - de bijbehorende gebruiker uit de database te selecteren op e-mailadres;
+  - het wachtwoord te controleren en bij succes door te sturen naar `dashboard.php`, bij fout een melding te tonen.
+- Introductie van sessions (`session_start()` en de `$_SESSION`-array) om gebruikersgegevens op te slaan na een succesvolle login.
+- Opzetten van `session_check.php` om te controleren of een gebruiker is ingelogd, en deze check toevoegen aan beschermde pagina’s zoals `dashboard.php` en pagina’s waar je nieuwe data (zoals tools) kunt aanmaken.
 
