@@ -38,3 +38,7 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 
 19. Teoman
 20. Jesse
+
+### Project 5 - Hotel Management
+
+- Nog in te vullen
