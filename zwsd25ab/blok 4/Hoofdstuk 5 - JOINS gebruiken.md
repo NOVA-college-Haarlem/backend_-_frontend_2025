@@ -3,9 +3,9 @@
 In deze les gaan we JOINS gebruiken om de data uit de database te halen.
 
 
-#### Opdracht 1 - Overzicht standings
+#### Opdracht 1 - Overzicht gebruikers
 
-Eerder hebben we al een driver overzicht gemaakt. Nu gaan we de standings tonen in een overzicht.
+Eerder hebben we al een gebruikers overzicht gemaakt. Nu gaan we de gebruikers tonen in een overzicht.
 
 1. Maak een nieuw bestand aan genaamd `standings.php`.
 2. Voeg de volgende code toe:

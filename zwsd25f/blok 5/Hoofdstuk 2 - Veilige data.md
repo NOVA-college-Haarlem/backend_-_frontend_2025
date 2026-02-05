@@ -11,6 +11,7 @@
       - [Opdracht 3](#opdracht-3)
   - [Validatie](#validatie)
       - [Opdracht 6](#opdracht-6)
+    - [Opdracht 7](#opdracht-7)
   - [Hashing](#hashing)
       - [Opdracht 10](#opdracht-10)
       - [Opdracht 11](#opdracht-11)
@@ -35,7 +36,7 @@ echo htmlspecialchars($tool_name);
 #### Opdracht 2: HTMLspecialchars
 
 1. Maak via het create formulier een nieuwe tool aan met de volgende data:
-   - tool_name: <h1>Hamer van Jupiter</h1>
+   - tool_name: `<h1>Hamer van Jupiter</h1>`
    - tool_category: Hamers
    - tool_price: 100
    - tool_brand: Makita
@@ -62,16 +63,24 @@ Validatie is een belangrijk onderdeel van elke webapplicatie. Het is de proces v
 
 Validatie wordt gebruikt om te voorkomen dat ongeldige data in de database wordt opgeslagen. Dit helpt bij het verbeteren van de data kwaliteit en de betrouwbaarheid van de applicatie.
 
-We hebben al een aantal validaties toegepast in de vorige les of er staan ook al validaties in de code. We gaan deze validaties nu verbeteren.
+We hebben al een aantal validaties toegepast in de vorige lessen of er staan ook al validaties in de code. We gaan deze validaties nu verbeteren.
 
 > - Wat gebeurt er bijvoorbeeld als je geen naam invult?
 > - Wat gebeurt als je geen prijs invult?
+
+
+Validatie voorbeeld code kun je vinden in blok 4 __Hoofdstuk 1 - Herhaling, Create en Validatie.__ [Link](../blok%204/backend%20development%20(beo)/Hoofdstuk%201%20-%20Herhaling%2C%20Create%20en%20Validatie.md)
 
 #### Opdracht 6
 1. Open het bestand `tool_create_process.php` en kijk naar de code.
 2. Waar in de code wordt de data gevalideerd?
 3. Wat gebeurt er als de data niet voldoet aan de vereisten? Bedenk zelf een paar eisen.
 4. Pas de code aan zodat de data voldoet aan de vereisten.
+
+### Opdracht 7
+
+1. Pas validatie toe op alle formulieren binnen de applicatie van tools4ever.
+
 
 ## Hashing
 
