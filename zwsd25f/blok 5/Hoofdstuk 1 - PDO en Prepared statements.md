@@ -40,7 +40,7 @@ De delete query gebruiken we om een enkele rij uit de database te verwijderen op
 ### Update
 Met de Update query kunnen we bestaande records (rijen) wijzigen/updaten naar de correcte informatie. Hiervoor gebruiken we ten eerste een GET-request in combinatie met een SELECT WHERE statement om de juiste data op te halen (detail-pagina-techiek). En ten tweede gebruiken we een POST-request in combiniatie met de UPDATE WHERE query om het gewenste resultaat te behalen. 
 
-We gaan tijdens dit blok  met het project Tools4ever aan de slag. Dit project kun je forken en clonen vanaf github: https://github.com/NOVA-college-Haarlem//toolsforever-blok4/
+We gaan tijdens dit blok  met het project Tools4ever aan de slag. Dit project kun je forken en clonen vanaf github: https://github.com/NOVA-college-Haarlem/toolsforever-blok4/
 
 In de vorige twee periodes hebben we gebruik gemaakt van eenvoudige functies om de queries uit te voeren. Echter zijn deze functies niet veilig genoeg. Deze manier van coderen met PHP kan leiden tot SQL-injecties met grote negatieve gevolgen. Dit jaar introduceren we een andere wijze van connectie maken met de database en daardoor een iets andere schrijfwijze. We gaan gebruik maken van een object binnen php genaamd pdo.
 Om het probleem met sql injecties te demonstreren volgt hieronder een korte toelichting
@@ -54,8 +54,8 @@ Een variabele direct plaatsen in een sql-statement is gevaarlijk. Het kan nameli
 
 #### Opdracht 0 - project setup
 
-1. Fork de repository [https://github.com/NOVA-college-Haarlem/tools4ever](https://github.com/NOVA-college-Haarlem/tools4ever).
-2. Clone de repository naar je projecten map (C:\projecten) `git clone https://github.com/NOVA-college-Haarlem/tools4ever.git`
+1. Fork de repository [https://github.com/NOVA-college-Haarlem/tools4ever-blok4](https://github.com/NOVA-college-Haarlem/tools4ever-blok4).
+2. Clone de repository naar je projecten map (C:\projecten) `git clone https://github.com/NOVA-college-Haarlem/tools4ever-blok4.git`
 3. Open het project in VS Code.
 4. Open de terminal in VS Code en type `docker compose up -d` in.
 
