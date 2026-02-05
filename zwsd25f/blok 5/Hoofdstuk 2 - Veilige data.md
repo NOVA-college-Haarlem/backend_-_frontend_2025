@@ -22,7 +22,7 @@
 #### Opdracht 1
 
 1. Ga verder met het verbeteren van de code door overal pdo te gebruiken.
-2. Controleer of de code werkt door alle pagina's te testen
+2. Controleer of de code werkt door alle pagina's te testen, het gaat hierbij om alle paginas die een database connectie hebben.
 
 ## Htmlspecialchars
 
@@ -45,7 +45,7 @@ echo htmlspecialchars($tool_name);
 
 #### Opdracht 3
 
-1. Pas overal in de code waar data wordt getoond de htmlspecialchars functie toe.
+1. Pas overal in de code waar data wordt __getoond__ de htmlspecialchars functie toe.
 
 Bijvoorbeeld:
 ```php
@@ -98,11 +98,11 @@ Hashing wordt gebruikt om wachtwoorden veilig op te slaan in de database.
 
 ```php
 
-//van mysqli naar PDO
+//van mysqli 
 $sql = "INSERT INTO users (email, password, firstname, lastname, role, address, city, is_active) VALUES ('$email', '$password', '$firstname', '$lastname', '$role', '$address', '$city', '$is_active')";
 $result = mysqli_query($conn, $sql);
 
-//naar...   
+//naar...naar PDO
 $stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, role, address, city, is_active) VALUES (:email, :password, :firstname, :lastname, :role, :address, :city, :is_active)");
 $result = $stmt->execute(['email' => $email, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'role' => $role, 'address' => $address, 'city' => $city, 'is_active' => $is_active]);
 //check if the query was successful
