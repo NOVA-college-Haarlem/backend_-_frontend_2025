@@ -42,7 +42,7 @@
 6. Importeer de data in de database door het tabblad SQL te selecteren
 7. Kopiëer de volgende code en plak deze in het SQL tabblad:
 
-### OPDRACHT 12: DATATBASE CONNECTION
+### OPDRACHT 12: DATABASE CONNECTION
 
 1. Om te communiceren met de database hebben we een connectie nodig.
 2. We gaan deze connectie maken in een nieuw bestand: `database.php`.
