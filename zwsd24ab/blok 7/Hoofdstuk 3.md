@@ -466,3 +466,437 @@ Een paar dingen om op te letten:
 **Let op:** Elke keer als je de pagina ververst, wordt de API opnieuw aangeroepen. Dit is nog geen caching! Dat lossen we op in de volgende opdracht.
 
 ---
+
+## Opdracht 7: Cache-logica implementeren
+
+**Doel:** Alleen de API aanroepen als de data ouder is dan 10 minuten
+
+Dit is de kern van dit hoofdstuk. We gaan de controller aanpassen zodat deze eerst in de database kijkt. Alleen als de data "verlopen" is (ouder dan 10 minuten), wordt de API opnieuw aangeroepen.
+
+### 7.1 Controller aanpassen
+
+Open `app/Http/Controllers/CoinController.php` en vervang de `index` methode:
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Coin;
+use App\Services\CoinGeckoService;
+use Carbon\Carbon;
+
+class CoinController extends Controller
+{
+    public function index()
+    {
+        $cacheMinutes = 10;
+
+        // Stap 1: Kijk of er coins in de database staan
+        $latestCoin = Coin::orderBy('fetched_at', 'desc')->first();
+
+        // Stap 2: Bepaal of de data verlopen is
+        $dataIsExpired = !$latestCoin || $latestCoin->fetched_at < Carbon::now()->subMinutes($cacheMinutes);
+
+        if ($dataIsExpired) {
+            // Stap 3a: Data is verlopen → haal nieuwe data op van de API
+            $service = new CoinGeckoService();
+            $apiCoins = $service->getTopCoins();
+
+            foreach ($apiCoins as $apiCoin) {
+                Coin::updateOrCreate(
+                    ['coin_id' => $apiCoin['id']],
+                    [
+                        'symbol' => $apiCoin['symbol'],
+                        'name' => $apiCoin['name'],
+                        'image' => $apiCoin['image'],
+                        'current_price' => $apiCoin['current_price'],
+                        'market_cap' => $apiCoin['market_cap'],
+                        'market_cap_rank' => $apiCoin['market_cap_rank'],
+                        'price_change_percentage_24h' => $apiCoin['price_change_percentage_24h'],
+                        'fetched_at' => now(),
+                    ]
+                );
+            }
+
+            $fromCache = false;
+        } else {
+            // Stap 3b: Data is nog vers → gebruik de database
+            $fromCache = true;
+        }
+
+        $coins = Coin::orderBy('market_cap_rank')->get();
+        return view('coins.index', compact('coins', 'fromCache'));
+    }
+}
+```
+
+### 7.2 Hoe werkt dit?
+
+Laten we de cache-logica stap voor stap doorlopen:
+
+```
+Bezoeker opent /coins
+        │
+        ▼
+Zijn er coins in de database?
+        │
+   Nee ─┤── Ja
+   │         │
+   │         ▼
+   │    Is fetched_at ouder dan 10 minuten?
+   │         │
+   │    Nee ─┤── Ja
+   │    │         │
+   │    ▼         ▼
+   │  Toon uit   Haal nieuwe data
+   │  database    op van API
+   │              │
+   │              ▼
+   │         Sla op in database
+   │              │
+   ▼              ▼
+Haal data    Toon uit database
+van API
+```
+
+De sleutel is deze regel:
+
+```php
+$dataIsExpired = !$latestCoin || $latestCoin->fetched_at < Carbon::now()->subMinutes($cacheMinutes);
+```
+
+Dit leest als: "De data is verlopen als er **geen** coin in de database staat, **of** als de nieuwste coin langer dan 10 minuten geleden is opgehaald."
+
+### 7.3 Carbon voor tijdberekening
+
+`Carbon` is een PHP library die standaard bij Laravel zit. Het maakt het makkelijk om met datums en tijden te werken.
+
+```php
+Carbon::now()                    // Huidige datum en tijd
+Carbon::now()->subMinutes(10)    // 10 minuten geleden
+Carbon::now()->subHours(1)       // 1 uur geleden
+```
+
+We vergelijken `fetched_at` (het tijdstip van de laatste API call) met "10 minuten geleden". Als `fetched_at` **eerder** is dan 10 minuten geleden, is de data verlopen.
+
+### 7.4 Testen
+
+Open http://cryptodashboard.test/coins.
+
+1. **Eerste bezoek:** De data wordt opgehaald van de API (je ziet een korte laadtijd).
+2. **Ververs de pagina:** De data komt direct uit de database (sneller!).
+3. **Wacht 10 minuten en ververs:** De data wordt opnieuw opgehaald van de API.
+
+**Checkpoint:** De pagina laadt merkbaar sneller bij de tweede keer verversen.
+
+---
+
+## Opdracht 8: Cache-status tonen
+
+**Doel:** In de view tonen of de data uit de cache komt of vers is opgehaald
+
+### 8.1 View aanpassen
+
+Open `resources/views/coins/index.blade.php` en voeg onder de `<h1>` het volgende toe:
+
+```html
+<div style="margin-bottom: 15px; padding: 10px; border-radius: 5px;
+    background-color: {{ $fromCache ? '#1b5e20' : '#e65100' }};">
+    @if ($fromCache)
+        <span>&#x1f4be; Data uit cache (database)</span>
+    @else
+        <span>&#x1f310; Verse data opgehaald van CoinGecko API</span>
+    @endif
+
+    @if ($coins->isNotEmpty())
+        <br>
+        <small>Laatst opgehaald: {{ $coins->first()->fetched_at }}</small>
+    @endif
+</div>
+```
+
+### 8.2 Wat zie je?
+
+- **Groene balk**: De data komt uit de database (cache hit). Er is geen API call gedaan.
+- **Oranje balk**: De data is zojuist vers opgehaald van de API (cache miss).
+
+Dit maakt het voor jou als ontwikkelaar visueel duidelijk wanneer de cache wordt gebruikt.
+
+**Checkpoint:** Ververs de pagina een paar keer. De eerste keer zie je de oranje balk. Daarna zie je de groene balk.
+
+---
+
+## Opdracht 9: Handmatige refresh
+
+**Doel:** Een knop toevoegen waarmee je de cache handmatig kunt verversen
+
+Soms wil je als gebruiker de nieuwste data zien, zonder 10 minuten te wachten. We voegen een refresh-knop toe.
+
+### 9.1 Nieuwe route
+
+Voeg in `routes/web.php` een tweede route toe:
+
+```php
+Route::get('/coins', [CoinController::class, 'index']);
+Route::get('/coins/refresh', [CoinController::class, 'refresh']);
+```
+
+### 9.2 Refresh methode in de controller
+
+Voeg een nieuwe methode toe aan `CoinController.php`:
+
+```php
+public function refresh()
+{
+    $service = new CoinGeckoService();
+    $apiCoins = $service->getTopCoins();
+
+    foreach ($apiCoins as $apiCoin) {
+        Coin::updateOrCreate(
+            ['coin_id' => $apiCoin['id']],
+            [
+                'symbol' => $apiCoin['symbol'],
+                'name' => $apiCoin['name'],
+                'image' => $apiCoin['image'],
+                'current_price' => $apiCoin['current_price'],
+                'market_cap' => $apiCoin['market_cap'],
+                'market_cap_rank' => $apiCoin['market_cap_rank'],
+                'price_change_percentage_24h' => $apiCoin['price_change_percentage_24h'],
+                'fetched_at' => now(),
+            ]
+        );
+    }
+
+    return redirect('/coins');
+}
+```
+
+Deze methode haalt altijd verse data op, ongeacht de cache-tijd.
+
+### 9.3 Refresh-knop in de view
+
+Voeg naast de cache-status een knop toe:
+
+```html
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; border-radius: 5px;
+    background-color: {{ $fromCache ? '#1b5e20' : '#e65100' }};">
+    <div>
+        @if ($fromCache)
+            <span>&#x1f4be; Data uit cache (database)</span>
+        @else
+            <span>&#x1f310; Verse data opgehaald van CoinGecko API</span>
+        @endif
+
+        @if ($coins->isNotEmpty())
+            <br>
+            <small>Laatst opgehaald: {{ $coins->first()->fetched_at }}</small>
+        @endif
+    </div>
+    <a href="/coins/refresh" style="background-color: #f5c542; color: #1a1a2e; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+        Ververs data
+    </a>
+</div>
+```
+
+Dit vervangt het blokje dat je in opdracht 8 hebt toegevoegd.
+
+**Checkpoint:** Klik op "Ververs data". De pagina laadt opnieuw met de oranje balk (verse data). Ververs daarna normaal - je ziet de groene balk (cache).
+
+---
+
+## Opdracht 10: `fetched_at` als Carbon object
+
+**Doel:** De datum netjes formatteren met Carbon
+
+### 10.1 Cast toevoegen aan het model
+
+Open `app/Models/Coin.php` en voeg een `$casts` property toe:
+
+```php
+class Coin extends Model
+{
+    protected $fillable = [
+        'coin_id',
+        'symbol',
+        'name',
+        'image',
+        'current_price',
+        'market_cap',
+        'market_cap_rank',
+        'price_change_percentage_24h',
+        'fetched_at',
+    ];
+
+    protected $casts = [
+        'fetched_at' => 'datetime',
+    ];
+}
+```
+
+Door `'fetched_at' => 'datetime'` toe te voegen, behandelt Laravel dit veld automatisch als een Carbon object. Hierdoor kun je methodes zoals `->format()` en `->diffForHumans()` gebruiken.
+
+### 10.2 View aanpassen
+
+Pas de "Laatst opgehaald" regel in de view aan:
+
+```html
+<small>Laatst opgehaald: {{ $coins->first()->fetched_at->format('d-m-Y H:i:s') }}</small>
+```
+
+Nu zie je de datum in een leesbaar formaat, bijvoorbeeld: `11-02-2026 14:35:22`.
+
+**Bonustip:** Probeer ook `->diffForHumans()` uit. Dan krijg je tekst als "2 minuten geleden":
+
+```html
+<small>Laatst opgehaald: {{ $coins->first()->fetched_at->diffForHumans() }}</small>
+```
+
+**Checkpoint:** De datum wordt netjes geformateerd weergegeven in de cache-statusbalk.
+
+---
+
+## Bonusopdracht: Coin detailpagina
+
+**Doel:** Een detailpagina maken voor een individuele coin
+
+### Route
+
+Voeg toe aan `routes/web.php`:
+
+```php
+Route::get('/coins/{coin_id}', [CoinController::class, 'show']);
+```
+
+### Controller methode
+
+Voeg toe aan `CoinController.php`:
+
+```php
+public function show($coin_id)
+{
+    $coin = Coin::where('coin_id', $coin_id)->firstOrFail();
+    return view('coins.show', compact('coin'));
+}
+```
+
+### View
+
+Maak `resources/views/coins/show.blade.php`:
+
+```html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $coin->name }} - Crypto Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
+        h1 { color: #f5c542; }
+        .coin-card {
+            background-color: #16213e;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .coin-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .coin-header img { width: 48px; height: 48px; }
+        .stat { margin: 10px 0; }
+        .stat-label { color: #888; }
+        .positive { color: #00c853; }
+        .negative { color: #ff1744; }
+        a { color: #f5c542; }
+    </style>
+</head>
+<body>
+    <a href="/coins">&larr; Terug naar overzicht</a>
+
+    <div class="coin-card">
+        <div class="coin-header">
+            <img src="{{ $coin->image }}" alt="{{ $coin->name }}">
+            <div>
+                <h1 style="margin: 0;">{{ $coin->name }}</h1>
+                <span style="color: #888;">{{ strtoupper($coin->symbol) }} · Rank #{{ $coin->market_cap_rank }}</span>
+            </div>
+        </div>
+
+        <div class="stat">
+            <span class="stat-label">Prijs:</span>
+            <strong>&euro;{{ number_format($coin->current_price, 2, ',', '.') }}</strong>
+        </div>
+
+        <div class="stat">
+            <span class="stat-label">24u verandering:</span>
+            <strong class="{{ $coin->price_change_percentage_24h >= 0 ? 'positive' : 'negative' }}">
+                {{ number_format($coin->price_change_percentage_24h, 2, ',', '.') }}%
+            </strong>
+        </div>
+
+        <div class="stat">
+            <span class="stat-label">Marktkapitalisatie:</span>
+            <strong>&euro;{{ number_format($coin->market_cap, 0, ',', '.') }}</strong>
+        </div>
+
+        <div class="stat">
+            <span class="stat-label">Laatst bijgewerkt:</span>
+            {{ $coin->fetched_at->format('d-m-Y H:i:s') }}
+        </div>
+    </div>
+</body>
+</html>
+```
+
+### Link toevoegen in de tabel
+
+Pas in `resources/views/coins/index.blade.php` de naam-kolom aan zodat je kunt doorklikken:
+
+```html
+<td>
+    <a href="/coins/{{ $coin->coin_id }}" style="text-decoration: none; color: inherit;">
+        <div class="coin-info">
+            <img src="{{ $coin->image }}" alt="{{ $coin->name }}">
+            <span>{{ $coin->name }}</span>
+            <span class="coin-symbol">{{ strtoupper($coin->symbol) }}</span>
+        </div>
+    </a>
+</td>
+```
+
+**Checkpoint:** Klik op een coin in de tabel. Je komt op een detailpagina met alle informatie over die coin.
+
+---
+
+## Samenvatting
+
+In dit hoofdstuk heb je geleerd:
+
+| Concept | Wat je hebt geleerd |
+|---------|---------------------|
+| **Caching** | Data opslaan in je eigen database om API calls te verminderen |
+| **Cache-logica** | Controleren of data verlopen is met `fetched_at` en `Carbon` |
+| **`updateOrCreate`** | Records bijwerken of aanmaken in één methode |
+| **`Carbon`** | Tijdberekeningen maken (`subMinutes`, `diffForHumans`) |
+| **Casts** | Database velden automatisch omzetten naar het juiste type |
+| **CoinGecko API** | Gratis crypto data ophalen zonder API key |
+
+**Het verschil zonder en met caching:**
+
+| | Zonder caching | Met caching |
+|---|---|---|
+| **API calls** | Elke pageview = 1 API call | Maximaal 1 per 10 minuten |
+| **Snelheid** | Afhankelijk van internet | Eigen database = snel |
+| **Rate limits** | Snel bereikt bij veel bezoekers | Nauwelijks een probleem |
+| **Als API down is** | Pagina werkt niet | Data wordt nog steeds getoond |
