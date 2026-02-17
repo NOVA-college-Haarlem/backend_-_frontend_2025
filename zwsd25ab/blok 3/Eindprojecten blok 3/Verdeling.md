@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 | Naam | Project |
 |------|---|
 | Aaliyan | Bookstore |
@@ -23,3 +24,5 @@
 | Stefan | Recipes|
 | Xiang |Bookstore |
 | Zakariya | Cars|
+=======
+>>>>>>> d936cd0 (Remove outdated markdown files for Eindproject Blok 3, including project instructions and team distribution. These files are no longer relevant to the current project structure.)
