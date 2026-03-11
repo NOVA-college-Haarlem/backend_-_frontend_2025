@@ -75,7 +75,7 @@ $driver = mysqli_fetch_assoc($result);
 
 1. We gaan nu de data van de constructors (teams) tonen.
 2. Daarvoor hebben we data nodig in de database.
-3. Deze data kun je vinden in het bestand `constructors.sql` in de map `assets`.
+3. Deze data kun je vinden in het bestand `constructors.sql` in de map `sql`.
 
 ### Opdracht 6
 
@@ -88,7 +88,7 @@ $driver = mysqli_fetch_assoc($result);
 
 ### Opdracht 7
 
-1. Voeg data in de database toe. Gebruik het bestand `constructors.sql` in de map `assets`.
+1. Voeg data in de database toe. Gebruik het bestand `constructors.sql` in de map `sql`.
 2. Importeer de data in de database.
 
 ### Opdracht 8
