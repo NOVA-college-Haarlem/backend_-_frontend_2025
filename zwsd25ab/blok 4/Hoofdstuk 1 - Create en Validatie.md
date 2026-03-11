@@ -16,6 +16,8 @@ In blok 3 hebben we PHP een introductie gedaan. We hebben gekeken naar:
 
 In deze les gaan we verder met het project tools4ever. Dit is een project waarin we tools en brands tonen. Kijk naar de herhaling les van blok 3 voor meer informatie over het project.
 
+Tools4ever: https://github.com/NOVA-college-Haarlem/toolsforever-blok4
+
 ### Opdracht 1
 
 We gaan met behulp van een formulier een nieuwe tool aanmaken. De attributen die we moeten invullen zijn:
