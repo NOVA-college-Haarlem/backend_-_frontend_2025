@@ -86,11 +86,6 @@ $driver = mysqli_fetch_assoc($result);
 <a href="teams.php">Teams</a>
 ```
 
-### Opdracht 7
-
-1. Voeg data in de database toe. Gebruik het bestand `constructors.sql` in de map `sql`.
-2. Importeer de data in de database.
-
 ### Opdracht 8
 
 1. Maak het bestand `teams.php` aan.
