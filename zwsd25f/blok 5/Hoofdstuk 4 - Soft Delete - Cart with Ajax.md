@@ -272,6 +272,7 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 1. **Toon alle tools van de winkelwagen van de ingelogde user op het scherm.**
 2. Zorg ervoor dat de teller altijd correct getoond wordt in de header.
+3. Een niet-ingelogde user mag geen tools in de winkelwagen toevoegen en nu kan het bijna wel. Hoe los je dit op?
 
 
 
