@@ -16,6 +16,7 @@
     - [Opdracht 3](#opdracht-3-1)
     - [Opdracht 4](#opdracht-4-1)
     - [Opdracht 5](#opdracht-5-1)
+    - [Opdracht 6](#opdracht-6-1)
 
 ## Soft Delete
 
@@ -252,4 +253,26 @@ COMMIT;
 We hebben nu een cart tabel aangemaakt. We hebben ook een FOREIGN KEY toegevoegd aan de user_id en tool_id kolommen.
 
 > Als je alles goed hebt gedaan, zou je nu in de browser naar de `tools_detail.php` pagina moeten gaan en een tool kunnen toevoegen aan de winkelwagen. Controleer dit door ook in de database te kijken of de record in de cart tabel is toegevoegd.
+
+### Opdracht 6
+
+1. We gaan de `cart.php` pagina toevoegen.
+2. Voeg de volgende code toe:
+```php
+session_start();
+require 'database.php';
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM cart WHERE user_id = :user_id";
+$stmt = $conn->prepare($sql);
+$stmt->execute(['user_id' => $user_id]);
+$cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+```
+
+1. **Toon alle tools van de winkelwagen van de ingelogde user op het scherm.**
+2. Zorg ervoor dat de teller altijd correct getoond wordt in de header.
+
+
+
 
