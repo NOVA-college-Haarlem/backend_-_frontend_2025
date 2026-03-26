@@ -2,8 +2,14 @@
 
 ## SnapMarket
 
+- Demelsa
+
 ## GameVault
 
+- 
+
 ## SportBuddy
+
+- Dimitri
 
 ## RecipeBox
