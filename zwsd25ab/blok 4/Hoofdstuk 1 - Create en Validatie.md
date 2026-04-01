@@ -197,3 +197,10 @@ if($result){
     exit;
 }
 ```
+
+#### Samenvatting
+
+<video src="PHP_Formulieren__Data_Validatie.mp4" controls></video>
+
+
+
