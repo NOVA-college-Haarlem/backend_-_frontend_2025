@@ -70,7 +70,7 @@ Hiervoor heb je het project geforkt naar je Github account. Nu gaan het project 
 4.	Open de terminal:
     - In de terminal kun je commando’s opgeven. 
     - Type het volgende in:
-    git clone https://github.com/<jouw github username>/mijn-eerste-project 
+    `git clone https://github.com/<jouw github username>/mijn-eerste-project`
  
 9.	Druk op Enter
 10.	Nu wordt het project van je remote repo gekloond naar je local repo in de projecten map
