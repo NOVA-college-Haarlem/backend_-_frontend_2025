@@ -101,6 +101,7 @@ We maken statische pagina’s voor de webshop.
     });
     //hieronder nog routes toevoegen voor /over en /contact
     ```
+3. Maak een kopie van `welcome.blade.php` en hernoem het bestand naar `home.blade.php`.
 3. Voeg routes toe voor:
     - `/over` (informatie over de webshop)
     - `/contact` (contactpagina)
