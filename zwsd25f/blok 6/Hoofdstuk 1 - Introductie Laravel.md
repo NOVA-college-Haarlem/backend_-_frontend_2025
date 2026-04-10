@@ -62,15 +62,22 @@ Hierbij kunnen gebruikers:
 
 #### Opdracht 1: Project Aanmaken
 
-1. Maak gebruik van Laravel Herd.
-2. Kies voor het gebruik van Laravel Breeze voor authenticatie.
-3. Noem het project "spelshop".
-4. Kies Blade voor de frontend.
-5. Testing Framework: Pest.
-6. Target location: _hoef je niet te kiezen_.
-7. Ga naar http://spelshop.test om te controleren of het project werkt.
+1. Start Laravel Herd.
+2. Kies "New site".
+3. Kies "No Starter Kit".
+4. Voer "spelshop" als Project Name in. De overige default kunnen blijven zoals ze zijn. Maar maak wel een git repo aan.
+5. Ga naar http://spelshop.test om te controleren of het project werkt.
 
 **Verwacht resultaat:** Je ziet de Laravel welkomstpagina op http://spelshop.test
+
+##### Troubleshooting
+
+Als de website http://spelshop.test niet zichtbaar is:
+
+- Sluit Docker af.
+- Flush DNS (google de Terminal-commando's)
+- Run `herd secure spelshop.test` (mss moet eerst Herd CLI geinstalleerd worden)
+
 
 #### Opdracht 2: Project verkennen
 1. Open het project spelshop in VS Code.
