@@ -45,37 +45,6 @@ Beheerders kunnen:
 
 Maak een nieuwe repository aan. Zorg dat alle teamleden toegang hebben. Werk met feature branches — één branch per user story of feature.
 
-### Eerste stappen
-
-```bash
-composer create-project laravel/laravel bezoekersregistratie
-cd bezoekersregistratie
-
-php artisan make:model Visit -mcr
-php artisan make:model Visitor -mcr
-```
-
-Voorbeeld van de logica voor "wie is er nu in het pand":
-
-```php
-// In VisitController of een aparte methode
-public function aanwezig()
-{
-    $aanwezig = Visit::whereNull('checked_out_at')
-        ->with(['visitor', 'host'])
-        ->orderBy('checked_in_at', 'desc')
-        ->get();
-
-    return view('receptie.aanwezig', compact('aanwezig'));
-}
-```
-
-De `checked_out_at`-kolom is `NULL` zolang de bezoeker nog in het pand is. Bij uitchecken vul je de huidige tijd in:
-
-```php
-$visit->update(['checked_out_at' => now()]);
-```
-
 ### Bonusfunctionaliteit
 
 - Bezoeker kan vooraf een digitale bezoekersbadge (PDF) ontvangen per e-mail

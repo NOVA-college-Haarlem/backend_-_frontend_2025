@@ -50,18 +50,6 @@ Beheerders kunnen:
 
 Maak een nieuwe repository aan. Zorg dat alle teamleden toegang hebben. Werk met feature branches — één branch per user story of feature.
 
-### Eerste stappen
-
-```bash
-composer create-project laravel/laravel freelance-marktplaats
-cd freelance-marktplaats
-
-php artisan make:model Project -mcr
-php artisan make:model Bid -mcr
-php artisan make:model Review -mcr
-php artisan make:model Category -mcr
-```
-
 Denk na over de status van een opdracht: open / in uitvoering / afgerond / gesloten. En de status van een bieding: pending / accepted / rejected.
 
 ### Bonusfunctionaliteit

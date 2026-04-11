@@ -48,16 +48,6 @@ Beheerders kunnen:
 
 Maak een nieuwe repository aan. Zorg dat alle teamleden toegang hebben. Werk met feature branches — één branch per user story of feature.
 
-### Eerste stappen
-
-```bash
-composer create-project laravel/laravel evenementenplatform
-cd evenementenplatform
-
-php artisan make:model Event -mcr
-php artisan make:model Registration -mcr
-```
-
 ### Bonusfunctionaliteit
 
 - QR-code genereren per aanmelding als "ticket"

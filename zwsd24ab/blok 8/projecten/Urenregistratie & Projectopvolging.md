@@ -44,36 +44,6 @@ Beheerders kunnen:
 
 Maak een nieuwe repository aan. Zorg dat alle teamleden toegang hebben. Werk met feature branches — één branch per user story of feature.
 
-### Eerste stappen
-
-```bash
-composer create-project laravel/laravel urenregistratie
-cd urenregistratie
-
-php artisan make:model Project -mcr
-php artisan make:model TimeEntry -mcr
-php artisan make:model ActivityType -mcr
-```
-
-Voor de CSV-export kun je gebruik maken van Laravel's response-methode:
-
-```php
-public function exportCsv(Project $project)
-{
-    $entries = $project->timeEntries()->with('user', 'activityType')->get();
-
-    $csvData = "Medewerker,Datum,Uren,Activiteit,Omschrijving\n";
-    foreach ($entries as $entry) {
-        $csvData .= "{$entry->user->name},{$entry->date},{$entry->hours},{$entry->activityType->naam},{$entry->description}\n";
-    }
-
-    return response($csvData, 200, [
-        'Content-Type'        => 'text/csv',
-        'Content-Disposition' => 'attachment; filename="uren-' . $project->naam . '.csv"',
-    ]);
-}
-```
-
 ### Bonusfunctionaliteit
 
 - Dashboard met grafieken (uren per week, uren per project)
