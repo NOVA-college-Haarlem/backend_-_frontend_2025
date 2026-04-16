@@ -152,6 +152,7 @@ We zorgen eerst voor een overzicht van de categorieën. Om dit te doen gaan we v
 
 #### opdracht 5: Model maken
 
+1. Installeer de VS Code extensie "SQLite Viewer". Hiermee kunnen we later de database bekijken in VS Code (vergelijkbaar met PhpMyAdmin).
 1. Om data uit de database te halen, moeten we een model maken.
    ```bash
    php artisan make:model Category
