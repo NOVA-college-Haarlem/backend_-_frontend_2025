@@ -253,6 +253,10 @@ php artisan make:controller CategoryController
 1. Open de controller `app/Http/Controllers/CategoryController.php`
 2. Pas de methode `index` aan met de volgende code:
 ```php
+// Voeg bovenin het bestand de volgende regel toe:
+use App\Models\Category;
+
+// Voeg in de class CategoryController de volgende functie toe:
 public function index()
 {
     // Lijst alle categorieën ophalen
@@ -303,17 +307,4 @@ In de view `categories.index.blade.php` kunnen we de data weergeven met de volge
 </html>
 ```
 
-#### opdracht 11: Test je code
-
-```bash
-php artisan test --group="CategoriesIndex"
-```
-
-Je ziet de test resultaten.
-
-
-
-
-
-
-
+Test of de pagina de categorieën toont op: https://spelshop.test/categories.
