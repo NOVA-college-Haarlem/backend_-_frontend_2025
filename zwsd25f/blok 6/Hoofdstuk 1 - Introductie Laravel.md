@@ -137,7 +137,7 @@ We maken statische pagina’s voor de webshop.
 2. Deze zijn al aangeleverd in het project.
 3. Open de terminal en voer de volgende commando uit:
     ```bash
-      php artisan test --filter=ExampleTest
+      php artisan test
     ```
 4. Je ziet de test resultaten.
 
