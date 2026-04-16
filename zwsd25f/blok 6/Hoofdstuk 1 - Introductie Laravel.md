@@ -130,6 +130,7 @@ We maken statische pagina’s voor de webshop.
     <p>Dit is de contactpagina.</p>
     ```
 12. Herlaad de pagina in de browser.
+13. Commit alle changes.
 
 #### Opdracht 4: Test de routes
 
