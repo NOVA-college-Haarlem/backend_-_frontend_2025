@@ -1,4 +1,4 @@
-# Hoofdstuk 2 - Inloggen en Sessions
+# Hoofdstuk 3 - Inloggen en Sessions
 
 
 ## Inloggen
@@ -9,13 +9,8 @@ Een login functionaliteit bestaat uit twee delen:
 1. Een login formulier.
 2. Een login proces.
 
+
 #### Opdracht 1
-
-1. importeer `users.sql` in de database.
-2. Controleer of de gebruikers correct zijn ingevoegd.
-
-
-#### Opdracht 2
 
 1. Maak een nieuw bestand aan genaamd `login.php`
 2. Maak in dit bestand een form aan voor het inloggen van een gebruiker.
@@ -52,7 +47,7 @@ Een login functionaliteit bestaat uit twee delen:
 </html>
 ```
 
-#### Opdracht 3
+#### Opdracht 2
 
 1. Maak een nieuw bestand aan genaamd `login_process.php`
 2. Schrijf hier code waarmee je de data uit het formulier kunt valideren.
@@ -136,7 +131,7 @@ We kunnen nu deze sessie controle toevoegen aan onze website. Bijvoorbeeld zo:
 require 'session_check.php';
 ```
 
-### Opdracht 4
+### Opdracht 3
 
 1. Maak een nieuw bestand aan genaamd `dashboard.php`.
 2. Voeg de volgende code toe:
@@ -147,7 +142,7 @@ require 'session_check.php';
 
 Nu we op een sessie controleren moeten er ook voor zorgen dat de sessie correct aangemaakt wordt. We doen dit in het bestand `login_process.php`. 
 
-### Opdracht 5
+### Opdracht 4
 
 1. Op inlog_process.php moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
 ```php
@@ -165,6 +160,6 @@ header("location: dashboard.php");
 exit;
 ``` 
 
-### Opdracht 6
+### Opdracht 5
 
 Breng een sessie check toe aan de tool_create.php pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
