@@ -34,7 +34,6 @@ In de vorige les hebben we gewerkt met een database en hebben we gebruik gemaakt
     - password
     - address
     - city
-    - is_active
     - role
 4. Zorg ervoor dat de gebruiker weet welke velden verplicht ingevuld moeten worden (zet een sterretje bij het label).
 5. Zorg ervoor dat de `name`-attributen dezelfde namen hebben als de kolommen in de tabel `users`.
