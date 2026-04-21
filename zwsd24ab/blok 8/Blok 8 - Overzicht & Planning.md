@@ -18,7 +18,7 @@ Je docent speelt de rol van **Product Owner** — degene die bepaalt wat er gebo
 | Week 4 | **Projectweek 1** | Sprint 1 — Bouwen, Daily Stand-ups, Sprint Review |
 | Week 5 | Lesweek | Sprint Retrospective verwerken, Laravel Mail & Notifications |
 | Week 6 | Lesweek | Technische verdieping, code review onderling |
-| Week 7 | Lesweek | Assessment voorbereiding, laatste sprintplanning |
+| Week 7 | Lesweek | Assessment voorbereiding, Unit testen met Pest, laatste sprintplanning |
 | Week 8 | **Projectweek 2** | Sprint 2 — Bouwen, Demo, Mondeling assessment |
 
 ---
@@ -75,4 +75,5 @@ Je wordt **individueel** beoordeeld, ook al werk je in een team. Zorg dus dat je
 - Authenticatie via Laravel Breeze of de starter kit
 - Meerdere gebruikersrollen
 - Nette Git-workflow: feature branches, regelmatige commits, duidelijke commit messages
+- Minimaal 1 feature test met Pest voor een kernflow in jullie project
 - **Nice to have**: Laravel Authorization met Gates & Policies (zie Hoofdstuk 3)
