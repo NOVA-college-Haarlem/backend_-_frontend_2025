@@ -126,7 +126,10 @@ Als je nu `database.sqlite` opent en de products tabel bekijkt, zie je dat de 3 
 
 #### opdracht 17: Product view maken
 
-1. Maak de map `resources/views/products` en het bestand `index.blade.php`.
+1. Maak de product view aan met het volgende artisan commando:
+```bash
+php artisan make:view products.index
+```
 2. Voeg deze code toe:
    ```html
    <!DOCTYPE html>
