@@ -308,3 +308,9 @@ In de view `categories.index.blade.php` kunnen we de data weergeven met de volge
 ```
 
 Test of de pagina de categorieën toont op: https://spelshop.test/categories.
+
+##### Troubleshooting
+
+Als de pagina categories niet zichtbaar is op https, maar wel op http, stel dan in Herd > Sites het slotje in voor spelshop.test:
+
+![Secure local Laravel](./images/secure-laravel-fix.png)
