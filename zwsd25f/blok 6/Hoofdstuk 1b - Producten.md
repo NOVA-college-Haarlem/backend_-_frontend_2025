@@ -97,6 +97,7 @@
    ```bash
    php artisan migrate:fresh --seed
    ```
+Als je nu `database.sqlite` opent en de products tabel bekijkt, zie je dat de 3 spellen zijn toegevoegd.
 
 #### opdracht 15: Product controller maken
 
