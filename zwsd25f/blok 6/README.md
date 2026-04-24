@@ -44,6 +44,9 @@ In dit lesprogramma leer je hoe je een website maakt met Laravel. Laravel is een
 | Hoofdstuk | Onderwerp | Week |
 |-----------|-----------|------|
 | [Hoofdstuk 1](Hoofdstuk%201%20-%20Introductie%20Laravel.md) | Project Setup en Basis Functionaliteit | 1 |
+| [Hoofdstuk 1b](Hoofdstuk%201b%20-%20Producten.md) | Herhaling MVC voor producten | 1 |
+| [Hoofdstuk 1c](Hoofdstuk%201c%20-%20Detailpagina.md) | Detailpagina's voor categorieen en producten | 1 |
+| [Hoofdstuk 1d](Hoofdstuk%201d%20-%20Layout%20files.md) | Gedeelde layout met props en attribute merge | 1 |
 | [Hoofdstuk 2](Hoofdstuk%202%20-%20Models%20en%20Relaties.md) | Models en Relaties | 2 |
 | [Hoofdstuk 3](Hoofdstuk%203%20-%20CRUD%20Formulieren%20en%20Validatie.md) | CRUD Formulieren en Validatie | 3 |
 | [Hoofdstuk 4](Hoofdstuk%204%20-%20Authenticatie%20en%20Middleware.md) | Authenticatie en Middleware | 4 |
