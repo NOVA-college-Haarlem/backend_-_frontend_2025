@@ -51,6 +51,7 @@
 2. Open `database/seeders/ProductsSeeder.php` en voeg toe:
    ```php
    <?php
+   namespace Database\Seeders;
 
    use App\Models\Category;
    use App\Models\Product;
