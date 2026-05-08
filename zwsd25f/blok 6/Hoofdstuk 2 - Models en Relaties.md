@@ -1,259 +1,494 @@
-# Hoofdstuk 2 - Models en Relaties
+# Hoofdstuk 2 - Nieuwe entiteiten toevoegen
 
-We werken de datastructuur uit volgens het ERD en koppelen alle modellen, migrations, seeders en relaties.  
+We breiden de spelshop stap voor stap uit met vier nieuwe entiteiten: **Price**, **Review**, **Order** en **Role**. Voor elke entiteit doorloop je telkens dezelfde stappen: model → migration → seeder → controller → route → view.  
 ![ERD](./images/erd.png)
 
 ## Inhoudsopgave
-- [Hoofdstuk 2 - Models en Relaties](#hoofdstuk-2---models-en-relaties)
+- [Hoofdstuk 2 - Nieuwe entiteiten toevoegen](#hoofdstuk-2---nieuwe-entiteiten-toevoegen)
   - [Inhoudsopgave](#inhoudsopgave)
-    - [Leerdoelen](#leerdoelen)
-    - [Benodigdheden](#benodigdheden)
-      - [Opdracht 1: Models \& migrations genereren](#opdracht-1-models--migrations-genereren)
-        - [Opdracht 1.1 Test de models](#opdracht-11-test-de-models)
-      - [Opdracht 2: Migrations invullen (volgens ERD)](#opdracht-2-migrations-invullen-volgens-erd)
-        - [Opdracht 2.1 Test de migrations](#opdracht-21-test-de-migrations)
-      - [Opdracht 3: Seeders](#opdracht-3-seeders)
-  - [Opdracht 4: Relaties in de models](#opdracht-4-relaties-in-de-models)
-  - [Opdracht 5: Controller \& route voor producten](#opdracht-5-controller--route-voor-producten)
-  - [Opdracht 6: View voor producten](#opdracht-6-view-voor-producten)
-  - [Opdracht 7: Eager loading vs N+1](#opdracht-7-eager-loading-vs-n1)
-  - [Opdracht 8: Validatie \& mass assignment](#opdracht-8-validatie--mass-assignment)
-  - [Opdracht 9: Tests](#opdracht-9-tests)
+  - [Leerdoelen](#leerdoelen)
+  - [Benodigdheden](#benodigdheden)
+  - [Deel 1 – Price (gezamenlijk)](#deel-1--price-gezamenlijk)
+    - [Opdracht 34: Price model maken](#opdracht-34-price-model-maken)
+    - [Opdracht 35: Price migration invullen](#opdracht-35-price-migration-invullen)
+    - [Opdracht 36: Price seeder maken](#opdracht-36-price-seeder-maken)
+    - [Opdracht 37: PriceController maken](#opdracht-37-pricecontroller-maken)
+    - [Opdracht 38: Route toevoegen](#opdracht-38-route-toevoegen)
+    - [Opdracht 39: View maken](#opdracht-39-view-maken)
+  - [Deel 2 – Review (zelfstandig)](#deel-2--review-zelfstandig)
+    - [Opdracht 40: Review – alle stappen](#opdracht-40-review--alle-stappen)
+  - [Deel 3 – Order (zelfstandig)](#deel-3--order-zelfstandig)
+    - [Opdracht 41: Order – alle stappen](#opdracht-41-order--alle-stappen)
+  - [Deel 4 – Role (zelfstandig)](#deel-4--role-zelfstandig)
+    - [Opdracht 42: Role – alle stappen](#opdracht-42-role--alle-stappen)
   - [Afronding / Reflectie](#afronding--reflectie)
 
-### Leerdoelen
-- Models maken en `$fillable` instellen.
-- Migrations invullen volgens het ERD.
-- Relaties implementeren (one-to-many, many-to-many via pivot).
-- Seeders toevoegen voor basisdata.
-- Eager loading gebruiken om N+1 te voorkomen.
-- Basis tests draaien voor relaties en queries.
+## Leerdoelen
+- Telkens dezelfde reeks stappen (model, migration, seeder, controller, route, view) toepassen voor een nieuwe entiteit.
+- Relaties tussen modellen definiëren met `belongsTo()` en `hasMany()`.
+- Eager loading gebruiken om N+1-queries te voorkomen.
+- Zelfstandig een volledige entiteit opbouwen aan de hand van het ERD.
 
-### Benodigdheden
-- Werkend spelshop-project uit Hoofdstuk 1.
-- Database connectie actief.
-- Command-line gereed: `php artisan migrate:fresh --seed` mag gebruikt worden.
+## Benodigdheden
+- Werkend spelshop-project uit Hoofdstuk 1 t/m 1e.
+- Categories en Products zijn al aanwezig met model, migration, seeder, controller, routes en views.
+- Database connectie actief; `php artisan migrate:fresh --seed` mag vrij gebruikt worden.
 
 ---
 
-#### Opdracht 1: Models & migrations genereren
-1. Maak de modellen met migrations:
+## Deel 1 – Price (gezamenlijk)
+
+Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bouwen Price stap voor stap op.
+
+---
+
+#### Opdracht 34: Price model maken
+
+1. Genereer het model:
    ```bash
-   php artisan make:model Product -m
    php artisan make:model Price -m
-   php artisan make:model Review -m
-   php artisan make:model Order -m
-   php artisan make:model Role -m
    ```
-Een tussentabel (pivot table) is een tabel die gebruikt wordt om de relatie tussen twee modellen op te slaan. In ons geval is de tussentabel de tabel die gebruikt wordt om de relatie tussen producten en orders op te slaan. Hiervoor is geen model nodig.
-```bash
-php artisan make:migration create_orderrows_table
-```
+   De vlag `-m` maakt meteen een lege migration aan.
 
-##### Opdracht 1.1 Test de models
+2. Open `app/Models/Price.php` en voeg de volgende code toe aan de class:
+   ```php
+   protected $fillable = ['price', 'in_effect_date', 'product_id'];
 
-1. Controleer met behulp van de aangeleverde test of de models gemaakt zijn:
-```bash
-php artisan test --group=CheckModelExistsTest
-```
+   public function product()
+   {
+       return $this->belongsTo(Product::class);
+   }
+   ```
 
-#### Opdracht 2: Migrations invullen (volgens ERD)
-Vul per migration de kolommen + foreign keys in. Voorbeeld (products):
-```php
-public function up()
-{
-    Schema::create('products', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->mediumText('description')->nullable();
-        $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-        $table->timestamps();
-    });
-}
-```
-Gebruik dit als leidraad voor de andere tabellen:
-- `categories`: `name`
-- `prices`: `price` (int, cents), `in_effect_date` (datetime), `product_id`
-- `reviews`: `comment` (mediumtext), `rating` (int 1-5), `user_id`, `product_id`
-- `orders`: `orderdate` (datetime), `user_id`, `status` (enum: ordered/delivered/canceled), `total_price` (int, cents)
-- `orderrows`: `order_id`, `product_id`, `quantity`, `total_price` (int, cents)
-- `roles`: `name`
-- `users`: voeg `role_id` toe als foreign key (als dat nog niet in de migration stond)
+   > **Uitleg:**
+   > - `$fillable` beschermt tegen mass assignment: alleen de genoemde velden mogen via `create()` of `fill()` ingevuld worden.
+   > - `belongsTo(Product::class)` geeft aan dat een prijs bij één product hoort.
 
-Voer migrations uit:
-```bash
-php artisan migrate
-```
+3. Open `app/Models/Product.php` en voeg de omgekeerde relatie toe:
+   ```php
+   public function prices()
+   {
+       return $this->hasMany(Price::class);
+   }
+   ```
 
-##### Opdracht 2.1 Test de migrations
-1. Controleer met behulp van de aangeleverde test of de seeders gemaakt zijn:
-```bash
-php artisan test --group=CheckMigrationExists
-```
+   > Een product kan meerdere prijzen hebben, vandaar `hasMany()`.
 
-#### Opdracht 3: Seeders
-1. Maak seeders:
+---
+
+#### Opdracht 35: Price migration invullen
+
+1. Open de nieuw aangemaakte migration in `database/migrations/` (de naam eindigt op `_create_prices_table.php`).
+2. Vul de `up`-methode als volgt in:
+   ```php
+   public function up(): void
+   {
+       Schema::create('prices', function (Blueprint $table) {
+           $table->id();
+           $table->integer('price'); // opgeslagen in centen, bijv. 3495 = €34,95
+           $table->datetime('in_effect_date');
+           $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+           $table->timestamps();
+       });
+   }
+   ```
+
+   > **Uitleg:**
+   > - Prijzen slaan we op als geheel getal in centen. Zo vermijden we afrondingsfouten met decimalen.
+   > - `foreignId('product_id')->constrained()` maakt de foreign key én koppelt die automatisch aan de `products`-tabel.
+   > - `cascadeOnDelete()` zorgt dat als een product verwijderd wordt, de bijbehorende prijzen ook verwijderd worden.
+
+3. Draai de migration:
    ```bash
-   php artisan make:seeder CategoriesSeeder
-   php artisan make:seeder ProductsSeeder
+   php artisan migrate
+   ```
+
+---
+
+#### Opdracht 36: Price seeder maken
+
+1. Maak een seeder aan:
+   ```bash
    php artisan make:seeder PricesSeeder
-   php artisan make:seeder ReviewsSeeder
    ```
-2. Voorbeeld `CategoriesSeeder`:
-   ```php
-   use App\Models\Category;
 
-   public function run()
+2. Open `database/seeders/PricesSeeder.php` en voeg de volgende inhoud toe:
+   ```php
+   <?php
+
+   use App\Models\Price;
+   use App\Models\Product;
+   use Illuminate\Database\Seeder;
+
+   class PricesSeeder extends Seeder
    {
-       $categories = [
-           ['name' => 'Bordspellen'],
-           ['name' => 'Kaartspellen'],
-           ['name' => 'Puzzels'],
-       ];
-       Category::insert($categories);
+       public function run(): void
+       {
+           $catan = Product::where('name', 'Catan')->first();
+           $carcassonne = Product::where('name', 'Carcassonne')->first();
+           $uno = Product::where('name', 'Uno')->first();
+
+           Price::insert([
+               [
+                   'price' => 3495,
+                   'in_effect_date' => '2024-01-01 00:00:00',
+                   'product_id' => $catan?->id,
+                   'created_at' => now(),
+                   'updated_at' => now(),
+               ],
+               [
+                   'price' => 3295,
+                   'in_effect_date' => '2025-01-01 00:00:00',
+                   'product_id' => $catan?->id,
+                   'created_at' => now(),
+                   'updated_at' => now(),
+               ],
+               [
+                   'price' => 2995,
+                   'in_effect_date' => '2024-01-01 00:00:00',
+                   'product_id' => $carcassonne?->id,
+                   'created_at' => now(),
+                   'updated_at' => now(),
+               ],
+               [
+                   'price' => 895,
+                   'in_effect_date' => '2024-01-01 00:00:00',
+                   'product_id' => $uno?->id,
+                   'created_at' => now(),
+                   'updated_at' => now(),
+               ],
+           ]);
+       }
    }
    ```
-3. Koppel alle seeders in `DatabaseSeeder`:
+
+   > **Let op:** we zoeken producten op via hun naam (zoals in `ProductsSeeder`). Zo hoeven we geen vaste id's te hardcoderen.
+
+3. Voeg de seeder toe in `database/seeders/DatabaseSeeder.php` **na** `ProductsSeeder`:
    ```php
-   public function run()
+   $this->call([
+       CategoriesSeeder::class,
+       ProductsSeeder::class,
+       PricesSeeder::class, // nieuw
+   ]);
+   ```
+
+4. Draai de migrations en seeders opnieuw:
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
+
+---
+
+#### Opdracht 37: PriceController maken
+
+1. Maak de controller aan:
+   ```bash
+   php artisan make:controller PriceController
+   ```
+
+2. Open `app/Http/Controllers/PriceController.php` en voeg een `index`-methode toe:
+   ```php
+   <?php
+
+   namespace App\Http\Controllers;
+
+   use App\Models\Price;
+
+   class PriceController extends Controller
    {
-       $this->call([
-           CategoriesSeeder::class,
-           ProductsSeeder::class,
-           PricesSeeder::class,
-           ReviewsSeeder::class,
-       ]);
+       public function index()
+       {
+           $prices = Price::with('product')->orderBy('in_effect_date', 'desc')->get();
+
+           return view('prices.index', compact('prices'));
+       }
    }
    ```
-4. Draai seeding:
-   ```bash
-   php artisan db:seed
-   ```
 
-## Opdracht 4: Relaties in de models
-Voeg `$fillable` en relaties toe:
-```php
-// Category.php
-protected $fillable = ['name'];
-public function products() { return $this->hasMany(Product::class); }
+   > **Uitleg:**
+   > - `Price::with('product')` laadt het gekoppelde product in één query mee (eager loading). Zonder dit zou Laravel voor iedere prijs apart een query uitvoeren om het product op te halen.
+   > - `orderBy('in_effect_date', 'desc')` toont de meest recente prijzen bovenaan.
 
-// Product.php
-protected $fillable = ['name', 'description', 'category_id'];
-public function category() { return $this->belongsTo(Category::class); }
-public function prices() { return $this->hasMany(Price::class); }
-public function reviews() { return $this->hasMany(Review::class); }
-public function orderrows() { return $this->hasMany(Orderrow::class); }
+---
 
-// Price.php
-protected $fillable = ['price', 'in_effect_date', 'product_id'];
-public function product() { return $this->belongsTo(Product::class); }
+#### Opdracht 38: Route toevoegen
 
-// Review.php
-protected $fillable = ['comment', 'rating', 'user_id', 'product_id'];
-public function product() { return $this->belongsTo(Product::class); }
-public function user() { return $this->belongsTo(User::class); }
-
-// Order.php
-protected $fillable = ['orderdate', 'user_id', 'status', 'total_price'];
-public function user() { return $this->belongsTo(User::class); }
-public function orderrows() { return $this->hasMany(Orderrow::class); }
-
-// Orderrow.php
-protected $fillable = ['order_id', 'product_id', 'quantity', 'total_price'];
-public function order() { return $this->belongsTo(Order::class); }
-public function product() { return $this->belongsTo(Product::class); }
-
-// User.php
-public function orders() { return $this->hasMany(Order::class); }
-public function reviews() { return $this->hasMany(Review::class); }
-public function role() { return $this->belongsTo(Role::class); }
-
-// Role.php
-protected $fillable = ['name'];
-public function users() { return $this->hasMany(User::class); }
-```
-
-## Opdracht 5: Controller & route voor producten
-1. Maak controller:
-   ```bash
-   php artisan make:controller ProductController
-   ```
-2. Methode `index`:
+1. Open `routes/web.php`.
+2. Voeg bovenaan de import toe:
    ```php
-   public function index()
-   {
-       // Laad categorie en laatste prijs per product
-       $products = Product::with([
-           'category',
-           'prices' => fn($q) => $q->latest('in_effect_date')->limit(1),
-           'reviews',
-       ])->get();
-
-       return view('products.index', compact('products'));
-   }
+   use App\Http\Controllers\PriceController;
    ```
-3. Route toevoegen in `routes/web.php`:
+3. Voeg de route toe:
    ```php
-   use App\Http\Controllers\ProductController;
-   Route::get('/products', [ProductController::class, 'index']);
+   Route::get('/prices', [PriceController::class, 'index']);
    ```
 
-## Opdracht 6: View voor producten
-`resources/views/products/index.blade.php`:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producten</title>
-</head>
-<body>
-    <h1>Producten</h1>
-
-    @if($products->isEmpty())
-        <p>Geen producten gevonden.</p>
-    @else
-        @foreach($products as $product)
-            <div>
-                <h2>{{ $product->name }}</h2>
-                <p>Categorie: {{ $product->category->name ?? 'Onbekend' }}</p>
-                <p>Huidige prijs: 
-                    {{ optional($product->prices->first())->price ? number_format($product->prices->first()->price / 100, 2) : 'n.v.t.' }}
-                </p>
-                <p>Aantal reviews: {{ $product->reviews->count() }}</p>
-            </div>
-        @endforeach
-    @endif
-</body>
-</html>
-```
-
-## Opdracht 7: Eager loading vs N+1
-1. Vergelijk:
-   - Zonder eager loading: `Product::all()`
-   - Met eager loading: `Product::with('category','prices')->get()`
-2. Log queries (bijv. `DB::enableQueryLog()` of Laravel Debugbar) en noteer het verschil in aantal queries.
-
-## Opdracht 8: Validatie & mass assignment
-1. Voeg `$fillable` toe zoals hierboven.
-2. Bij opslaan/bijwerken (bijv. in `store`): valideer `name`, `category_id`, `price`.
-3. Maak bij het aanmaken van een product direct ook een `Price` record aan (in cents).
-
-## Opdracht 9: Tests
-1. Maak een testgroep `ModelsRelations` met Pest of PHPUnit.
-2. Test dat:
-   - `Category->products` werkt.
-   - `Product->prices` de laatste prijs kan geven.
-   - `Order->orderrows` en `Orderrow->product` werken.
-   - `Review->product` en `Review->user` werken.
-3. Draai de tests:
-   ```bash
-   php artisan test --group="ModelsRelations"
+4. Voeg optioneel een link toe aan de navigatie in `resources/views/components/layout.blade.php`:
+   ```html
+   <a href="/prices">Prijzen</a>
    ```
+
+---
+
+#### Opdracht 39: View maken
+
+1. Maak de map `resources/views/prices/` aan.
+2. Maak daarin het bestand `index.blade.php` met de volgende inhoud:
+   ```blade
+   <x-layout title="Prijzen">
+       <h1>Prijsoverzicht</h1>
+
+       @if($prices->isEmpty())
+           <p>Er zijn nog geen prijzen ingevoerd.</p>
+       @else
+           <table border="1" cellpadding="8">
+               <thead>
+                   <tr>
+                       <th>Product</th>
+                       <th>Prijs</th>
+                       <th>Geldig vanaf</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   @foreach($prices as $price)
+                       <tr>
+                           <td>{{ $price->product->name ?? 'Onbekend' }}</td>
+                           <td>€ {{ number_format($price->price / 100, 2, ',', '.') }}</td>
+                           <td>{{ \Carbon\Carbon::parse($price->in_effect_date)->format('d-m-Y') }}</td>
+                       </tr>
+                   @endforeach
+               </tbody>
+           </table>
+       @endif
+   </x-layout>
+   ```
+
+   > **Uitleg:**
+   > - `$price->product->name` werkt omdat we in de controller `with('product')` hebben gebruikt.
+   > - `number_format($price->price / 100, 2, ',', '.')` zet centen om naar een leesbare prijs (bijv. 3495 → 34,95).
+   > - `Carbon::parse(...)->format('d-m-Y')` maakt van de datetime een nette datum.
+
+3. Test de pagina in de browser: `https://spelshop.test/prices`
+
+   Controleer:
+   - Zijn alle vier de prijsregels zichtbaar?
+   - Worden productnamen correct getoond?
+   - Klopt de prijsopmaak (€ 34,95)?
+
+---
+
+## Deel 2 – Review (zelfstandig)
+
+Je doorloopt nu dezelfde stappen zelfstandig voor **Review**. Gebruik Deel 1 als voorbeeld.
+
+---
+
+#### Opdracht 40: Review – alle stappen
+
+Gegevens volgens het ERD:
+| Veld | Type | Opmerking |
+|---|---|---|
+| `comment` | `mediumText` | De tekst van de review |
+| `rating` | `integer` | Cijfer van 1 t/m 5 |
+| `user_id` | foreign key | Welke gebruiker heeft de review geschreven |
+| `product_id` | foreign key | Op welk product slaat de review |
+
+**Stap 1 – Model**
+- Commando: `php artisan make:model Review -m`
+- Voeg `$fillable` toe met alle vier velden.
+- Voeg twee relaties toe: `product()` (belongsTo) en `user()` (belongsTo).
+- Voeg ook de omgekeerde relatie `reviews()` toe aan `Product` (hasMany).
+
+**Stap 2 – Migration**
+- Gebruik `mediumText` voor `comment`.
+- Gebruik `integer` voor `rating`.
+- Voeg twee foreign keys toe: `product_id` en `user_id`. Beide verwijzen naar de bijbehorende tabellen met `constrained()`.
+
+**Stap 3 – Seeder**
+- Commando: `php artisan make:seeder ReviewsSeeder`
+- Zoek producten op via naam (net als in `PricesSeeder`).
+- Zoek een user op via `User::first()` of maak in `DatabaseSeeder` eerst een testgebruiker aan.
+- Voeg minimaal 3 reviews in.
+- Vergeet niet de seeder toe te voegen aan `DatabaseSeeder`.
+- Draai: `php artisan migrate:fresh --seed`
+
+**Stap 4 – Controller**
+- Commando: `php artisan make:controller ReviewController`
+- Maak een `index`-methode die alle reviews ophaalt met eager loading van `product` en `user`.
+- Sorteer op `created_at` aflopend.
+
+**Stap 5 – Route**
+- Voeg een route toe voor `GET /reviews`.
+
+**Stap 6 – View**
+- Maak `resources/views/reviews/index.blade.php`.
+- Toon een tabel met: productnaam, gebruikersnaam, rating (1-5) en comment.
+- Gebruik `<x-layout>` als omhulsel.
+
+**Controleer:**
+- [ ] `php artisan migrate:fresh --seed` geeft geen fouten.
+- [ ] `/reviews` toont een overzicht van reviews met product- en gebruikersnaam.
+- [ ] De relaties `Review->product` en `Review->user` werken.
+
+---
+
+## Deel 3 – Order (zelfstandig)
+
+Orders zijn iets complexer: een order bevat meerdere producten via een tussentabel (`orderrows`). Die tussentabel heeft **geen eigen model** — je maakt alleen een migration.
+
+---
+
+#### Opdracht 41: Order – alle stappen
+
+Gegevens voor de `orders`-tabel:
+| Veld | Type | Opmerking |
+|---|---|---|
+| `orderdate` | `datetime` | Datum en tijdstip van bestelling |
+| `status` | `enum` | Toegestane waarden: `ordered`, `delivered`, `canceled` |
+| `total_price` | `integer` | Totaalprijs in centen |
+| `user_id` | foreign key | Welke gebruiker heeft besteld |
+
+Gegevens voor de `orderrows`-tabel (tussentabel, geen model):
+| Veld | Type | Opmerking |
+|---|---|---|
+| `order_id` | foreign key | Koppeling naar de order |
+| `product_id` | foreign key | Welk product in de bestelling |
+| `quantity` | `integer` | Aantal stuks |
+| `total_price` | `integer` | Regelprijs in centen |
+
+**Stap 1 – Model**
+- Commando: `php artisan make:model Order -m`
+- Voeg `$fillable` toe.
+- Voeg relaties toe: `user()` (belongsTo) en `orderrows()` (hasMany naar een Orderrow model — zie tip hieronder).
+- Voeg de omgekeerde relatie `orders()` toe aan `User` (hasMany).
+
+> **Tip Orderrow:** er is geen `Orderrow`-model, maar Laravel verwacht standaard een model wanneer je `hasMany(Orderrow::class)` schrijft. Maak daarom ook een Orderrow-model aan:
+> ```bash
+> php artisan make:model Orderrow
+> ```
+> Voeg aan `Orderrow` de relaties `order()` (belongsTo) en `product()` (belongsTo) toe.
+
+**Stap 2 – Migrations**
+- De `-m` vlag heeft al een migration voor `orders` aangemaakt. Vul die in.
+- Voor de tussentabel maak je een **aparte** migration aan:
+  ```bash
+  php artisan make:migration create_orderrows_table
+  ```
+  Vul ook deze migration in met de vier velden uit de tabel hierboven. Gebruik `cascadeOnDelete()` op beide foreign keys.
+- Gebruik voor het `status`-veld een enum:
+  ```php
+  $table->enum('status', ['ordered', 'delivered', 'canceled'])->default('ordered');
+  ```
+
+**Stap 3 – Seeder**
+- Commando: `php artisan make:seeder OrdersSeeder`
+- Maak minimaal 2 orders aan voor een bestaande gebruiker.
+- Je hoeft geen orderrows te seeden (dat is optioneel).
+- Voeg de seeder toe aan `DatabaseSeeder` en draai opnieuw: `php artisan migrate:fresh --seed`
+
+**Stap 4 – Controller**
+- Commando: `php artisan make:controller OrderController`
+- Maak een `index`-methode die alle orders ophaalt met eager loading van `user`.
+- Sorteer op `orderdate` aflopend.
+
+**Stap 5 – Route**
+- Voeg een route toe voor `GET /orders`.
+
+**Stap 6 – View**
+- Maak `resources/views/orders/index.blade.php`.
+- Toon een tabel met: gebruikersnaam, besteldatum, status en totaalprijs (in euro's).
+- Gebruik `<x-layout>` als omhulsel.
+
+**Controleer:**
+- [ ] `php artisan migrate:fresh --seed` geeft geen fouten.
+- [ ] Zowel de `orders` als de `orderrows` tabel bestaat in de database.
+- [ ] `/orders` toont een overzicht van bestellingen.
+
+---
+
+## Deel 4 – Role (zelfstandig)
+
+Roles zijn eenvoudig: een rol heeft alleen een naam. De koppeling naar users verloopt via een foreign key `role_id` in de `users`-tabel.
+
+---
+
+#### Opdracht 42: Role – alle stappen
+
+Gegevens voor de `roles`-tabel:
+| Veld | Type | Opmerking |
+|---|---|---|
+| `name` | `string` | Naam van de rol, bijv. `admin`, `klant` |
+
+**Stap 1 – Model**
+- Commando: `php artisan make:model Role -m`
+- Voeg `$fillable` toe met `name`.
+- Voeg de relatie `users()` toe (hasMany naar User).
+- Voeg de omgekeerde relatie `role()` toe aan `User` (belongsTo Role).
+
+**Stap 2 – Migrations**
+- Vul de migration voor `roles` in met alleen het veld `name`.
+- Voeg daarna in een **aparte** migration `role_id` toe aan de `users`-tabel:
+  ```bash
+  php artisan make:migration add_role_id_to_users_table
+  ```
+  Vul die migration als volgt in:
+  ```php
+  public function up(): void
+  {
+      Schema::table('users', function (Blueprint $table) {
+          $table->foreignId('role_id')->nullable()->constrained()->nullOnDelete();
+      });
+  }
+
+  public function down(): void
+  {
+      Schema::table('users', function (Blueprint $table) {
+          $table->dropForeign(['role_id']);
+          $table->dropColumn('role_id');
+      });
+  }
+  ```
+
+  > **Let op:** de `roles`-migration moet **eerder uitgevoerd worden** dan de `users`-migration die `role_id` toevoegt. Laravel voert migrations uit op bestandsnaam (datum-prefix). Controleer of de nummering klopt.
+
+**Stap 3 – Seeder**
+- Commando: `php artisan make:seeder RolesSeeder`
+- Voeg minimaal de rollen `admin`, `medewerker` en `klant` in.
+- Voeg de seeder toe aan `DatabaseSeeder` **vóór** de `UsersSeeder` (of als er nog geen UsersSeeder is, gewoon als eerste).
+- Draai: `php artisan migrate:fresh --seed`
+
+**Stap 4 – Controller**
+- Commando: `php artisan make:controller RoleController`
+- Maak een `index`-methode die alle rollen ophaalt.
+
+**Stap 5 – Route**
+- Voeg een route toe voor `GET /roles`.
+
+**Stap 6 – View**
+- Maak `resources/views/roles/index.blade.php`.
+- Toon een eenvoudige lijst van alle rolnamen.
+- Gebruik `<x-layout>` als omhulsel.
+
+**Controleer:**
+- [ ] `php artisan migrate:fresh --seed` geeft geen fouten.
+- [ ] De kolom `role_id` bestaat in de `users`-tabel.
+- [ ] `/roles` toont de drie rollen.
+
+---
 
 ## Afronding / Reflectie
-- Je hebt het volledige datamodel volgens het ERD opgezet met models, migrations, seeders en relaties.
-- Je toont producten met categorie, prijs en reviews, en gebruikt eager loading om N+1 te vermijden.
-- Volgende stap: CRUD uitbreiden, authenticatie/roles toepassen en filters/paginatie toevoegen.
+
+Je hebt voor vier entiteiten telkens dezelfde stappen doorlopen:
+
+| Stap | Wat doe je? |
+|---|---|
+| Model | Maak het model, stel `$fillable` in en definieer relaties |
+| Migration | Beschrijf de tabelstructuur met de juiste veldtypes en foreign keys |
+| Seeder | Voeg testdata in die de relaties correct respecteert |
+| Controller | Haal data op (met eager loading) en geef die door aan de view |
+| Route | Koppel een URL aan de controllermethode |
+| View | Toon de data overzichtelijk in een Blade-template |
+
+**Volgende stap:** in Hoofdstuk 3 voeg je CRUD-functionaliteit toe (create, update, delete) en werk je met formulieren en validatie.
 
