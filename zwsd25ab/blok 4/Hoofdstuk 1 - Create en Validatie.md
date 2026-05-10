@@ -124,7 +124,7 @@ if(strlen($_POST['naam'])  < 3){{
 1. Controleer of de naam van de brand langer is dan 3 karakters.
 
 ```php  
-if( empty($_POST['brand']) && strlen($_POST['brand'] < 3) ){
+if( empty($_POST['brand']) && strlen($_POST['brand']) < 3){
         echo "brand veld moet volledig zijn";
         exit;
     }
