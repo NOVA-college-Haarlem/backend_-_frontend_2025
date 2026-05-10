@@ -135,8 +135,7 @@ require 'session_check.php';
 
 ### Opdracht 4
 
-1. Maak een nieuw bestand aan genaamd `dashboard.php`.
-2. Voeg de volgende code toe:
+1. Voeg de volgende code toe aan `dashboard.php`:
 ```php
 <?php
 require 'session_check.php';
