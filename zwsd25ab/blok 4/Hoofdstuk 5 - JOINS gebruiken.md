@@ -36,7 +36,7 @@ We maken een overzichtspagina waarop we alle gebruikers tonen samen met hun inst
 ```php
 <?php
 
-require 'database_connection.php';
+require 'database.php';
 
 $sql = "SELECT * FROM users
             JOIN usersettings
@@ -96,7 +96,7 @@ Nu we weten hoe een JOIN werkt, gaan we dit toepassen op de ingelogde gebruiker.
 ```php
 <?php
 require 'session_check.php';
-require 'database_connection.php';
+require 'database.php';
 ```
 
 3. Haal de gegevens van de ingelogde gebruiker op met een JOIN:
