@@ -144,17 +144,19 @@ Nu we op een sessie controleren moeten er ook voor zorgen dat de sessie correct 
 
 ### Opdracht 5
 
-1. Op inlog_process.php moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
+1. Op `login_process.php` moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
 ```php
 <?php
 session_start();
+
 $_SESSION['user_id'] = $user['id'];
+$_SESSION['role'] = $user['role'];
 $_SESSION['email'] = $user['email'];
 $_SESSION['firstname'] = $user['firstname'];
 $_SESSION['lastname'] = $user['lastname'];
 ```
 
-2. We kunnen nu de gebruiker doorgestuurd naar de dashboard pagina.
+2. We kunnen nu de gebruiker doorsturen naar de dashboard-pagina.
 ```php
 header("location: dashboard.php");
 exit;
