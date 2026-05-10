@@ -119,15 +119,15 @@ Dit gaan we toepassen in onze website. We maken een apart bestand aan genaamd `s
 session_start();
 
 if(empty($_SESSION['user_id'])){
-    echo "Je bent niet ingelogd";
-    echo "<a href='login.php'>Login hier in</a>";
+    echo "Je bent niet ingelogd.";
+    echo "<br/><a href='login.php'>Login hier in</a>";
     exit;
 }
 ```
 
 Dit bestand checkt of de gebruiker is ingelogd. Als de gebruiker niet ingelogd is, dan wordt een link getoond om naar de login pagina te gaan.
 
-We kunnen nu deze sessie controle toevoegen aan onze website. Bijvoorbeeld zo:
+We kunnen nu deze sessie controle als volgt toevoegen aan onze website:
 ```php
 <?php
 require 'session_check.php';
@@ -137,7 +137,6 @@ require 'session_check.php';
 
 1. Voeg de volgende code toe aan `dashboard.php`:
 ```php
-<?php
 require 'session_check.php';
 ```
 
