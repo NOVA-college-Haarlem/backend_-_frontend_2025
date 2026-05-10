@@ -110,6 +110,8 @@ if(isset($_SESSION['user_id'])){
 }
 ```
 
+### Opdracht 3
+
 Dit gaan we toepassen in onze website. We maken een apart bestand aan genaamd `session_check.php`. In dit bestand gaan we de sessie controleren.
 
 ```php
@@ -131,7 +133,7 @@ We kunnen nu deze sessie controle toevoegen aan onze website. Bijvoorbeeld zo:
 require 'session_check.php';
 ```
 
-### Opdracht 3
+### Opdracht 4
 
 1. Maak een nieuw bestand aan genaamd `dashboard.php`.
 2. Voeg de volgende code toe:
@@ -142,7 +144,7 @@ require 'session_check.php';
 
 Nu we op een sessie controleren moeten er ook voor zorgen dat de sessie correct aangemaakt wordt. We doen dit in het bestand `login_process.php`. 
 
-### Opdracht 4
+### Opdracht 5
 
 1. Op inlog_process.php moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
 ```php
@@ -160,6 +162,6 @@ header("location: dashboard.php");
 exit;
 ``` 
 
-### Opdracht 5
+### Opdracht 6
 
 Breng een sessie check toe aan de tool_create.php pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
