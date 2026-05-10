@@ -163,4 +163,4 @@ exit;
 
 ### Opdracht 6
 
-Breng een sessie check toe aan de tool_create.php pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
+Breng een sessie check toe aan de `create_tool.php` pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
