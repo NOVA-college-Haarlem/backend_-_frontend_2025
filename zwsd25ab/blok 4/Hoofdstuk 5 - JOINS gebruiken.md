@@ -14,12 +14,12 @@ Met een **JOIN** koppelen we de twee tabellen aan elkaar op basis van een overee
 
 ```
 users                          usersettings
-+----+----------+----------+   +----+---------+-------+----------+
-| id | firstname| lastname |   | id | user_id | theme | language |
-+----+----------+----------+   +----+---------+-------+----------+
-|  1 | Jan      | de Vries |   |  1 |    1    | dark  | nl       |
-|  2 | Sara     | Bakker   |   |  2 |    2    | light | en       |
-+----+----------+----------+   +----+---------+-------+----------+
++----+----------+----------+   +----+---------+-------+---------------------+
+| id | firstname| lastname |   | id | user_id | backgroundColor | font      |
++----+----------+----------+   +----+---------+-------+---------------------+
+|  1 | Jan      | de Vries |   |  1 |    1    | yellow          | "Georgia" |
+|  2 | Sara     | Bakker   |   |  2 |    2    | pink            | "Arial"   |
++----+----------+----------+   +----+---------+-------+---------------------+
 ```
 
 De kolom `usersettings.user_id` is de **foreign key** die verwijst naar `users.id` (de **primary key**).
@@ -31,6 +31,13 @@ De kolom `usersettings.user_id` is de **foreign key** die verwijst naar `users.i
 We maken een overzichtspagina waarop we alle gebruikers tonen samen met hun instellingen.
 
 1. Voer de SQL-code van `sql/user_settings.sql` uit in PhpMyAdmin.
+2. Voer de volgende SQL-code uit:
+    ```sql
+    INSERT INTO `user_settings` (`user_id`, `backgroundColor`, `font`) VALUES
+    (1, '#ffffff', 'Arial'),
+    (2, '#f0f0f0', 'Verdana'),
+    (3, '#e8e8e8', 'Georgia');
+    ```
 2. Maak een nieuw bestand aan genaamd `users_settings_overview.php`.
 3. Voeg eerst de database connectie toe en haal de data op:
 
@@ -60,14 +67,14 @@ Met `ON users.id = usersettings.user_id` vertellen we de database: *koppel de ri
     <title>Gebruikers & Instellingen</title>
 </head>
 <body>
-    <h1>Gebruikers overzicht</h1>
+    <h1>Gebruikersoverzicht</h1>
 
     <?php foreach($users as $user): ?>
         <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
             <h2><?php echo $user['firstname'] . ' ' . $user['lastname']; ?></h2>
             <p>Email: <?php echo $user['email']; ?></p>
-            <p>Thema: <?php echo $user['theme']; ?></p>
-            <p>Taal: <?php echo $user['language']; ?></p>
+            <p>Backgroundcolor: <?php echo $user['backgroundColor']; ?></p>
+            <p>Font: <?php echo $user['font']; ?></p>
         </div>
     <?php endforeach; ?>
 
@@ -79,7 +86,7 @@ Met `ON users.id = usersettings.user_id` vertellen we de database: *koppel de ri
 
 ```php
 $sql = "SELECT users.id, users.firstname, users.lastname, users.email,
-               usersettings.theme, usersettings.language
+               usersettings.backgroundColor, usersettings.font
         FROM users
             JOIN usersettings
                 ON users.id = usersettings.user_id";
@@ -106,10 +113,10 @@ require 'database.php';
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT users.firstname, users.lastname, users.email,
-               usersettings.theme, usersettings.language
+               user_settings.backgroundColor, user_settings.font
         FROM users
-            JOIN usersettings
-                ON users.id = usersettings.user_id
+            JOIN user_settings
+                ON users.id = user_settings.user_id
         WHERE users.id = $user_id";
 
 $result = mysqli_query($conn, $sql);
@@ -133,8 +140,8 @@ $user = mysqli_fetch_assoc($result);
     <p>Email: <?php echo $user['email']; ?></p>
 
     <h2>Mijn instellingen</h2>
-    <p>Thema: <?php echo $user['theme']; ?></p>
-    <p>Taal: <?php echo $user['language']; ?></p>
+    <p>Thema: <?php echo $user['backgroundColor']; ?></p>
+    <p>Taal: <?php echo $user['font']; ?></p>
 </body>
 </html>
 ```
@@ -148,5 +155,5 @@ Voeg aan de profielpagina een tabel toe waarbij je alle gebruikers én hun inste
 De tabel moet de volgende kolommen bevatten:
 - Naam
 - Email
-- Thema
-- Taal
+- Backgroundcolor
+- Font
