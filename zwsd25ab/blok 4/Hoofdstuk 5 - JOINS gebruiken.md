@@ -30,8 +30,9 @@ De kolom `usersettings.user_id` is de **foreign key** die verwijst naar `users.i
 
 We maken een overzichtspagina waarop we alle gebruikers tonen samen met hun instellingen.
 
-1. Maak een nieuw bestand aan genaamd `users_settings_overview.php`.
-2. Voeg eerst de database connectie toe en haal de data op:
+1. Voer de SQL-code van `sql/user_settings.sql` uit in PhpMyAdmin.
+2. Maak een nieuw bestand aan genaamd `users_settings_overview.php`.
+3. Voeg eerst de database connectie toe en haal de data op:
 
 ```php
 <?php
