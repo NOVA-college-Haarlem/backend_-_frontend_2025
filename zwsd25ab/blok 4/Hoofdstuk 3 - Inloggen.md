@@ -110,6 +110,8 @@ if(isset($_SESSION['user_id'])){
 }
 ```
 
+### Opdracht 3
+
 Dit gaan we toepassen in onze website. We maken een apart bestand aan genaamd `session_check.php`. In dit bestand gaan we de sessie controleren.
 
 ```php
@@ -117,49 +119,49 @@ Dit gaan we toepassen in onze website. We maken een apart bestand aan genaamd `s
 session_start();
 
 if(empty($_SESSION['user_id'])){
-    echo "Je bent niet ingelogd";
-    echo "<a href='login.php'>Login hier in</a>";
+    echo "Je bent niet ingelogd.";
+    echo "<br/><a href='login.php'>Login hier in</a>";
     exit;
 }
 ```
 
 Dit bestand checkt of de gebruiker is ingelogd. Als de gebruiker niet ingelogd is, dan wordt een link getoond om naar de login pagina te gaan.
 
-We kunnen nu deze sessie controle toevoegen aan onze website. Bijvoorbeeld zo:
+We kunnen nu deze sessie controle als volgt toevoegen aan onze website:
 ```php
 <?php
 require 'session_check.php';
 ```
 
-### Opdracht 3
+### Opdracht 4
 
-1. Maak een nieuw bestand aan genaamd `dashboard.php`.
-2. Voeg de volgende code toe:
+1. Voeg de volgende code toe aan `dashboard.php`:
 ```php
-<?php
 require 'session_check.php';
 ```
 
 Nu we op een sessie controleren moeten er ook voor zorgen dat de sessie correct aangemaakt wordt. We doen dit in het bestand `login_process.php`. 
 
-### Opdracht 4
+### Opdracht 5
 
-1. Op inlog_process.php moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
+1. Op `login_process.php` moeten we de sessie aanmaken. En dat doen we op het moment dat we de gebruiker hebben geverfieerd. Dus na het controleren van het wachtwoord. 
 ```php
 <?php
 session_start();
+
 $_SESSION['user_id'] = $user['id'];
+$_SESSION['role'] = $user['role'];
 $_SESSION['email'] = $user['email'];
 $_SESSION['firstname'] = $user['firstname'];
 $_SESSION['lastname'] = $user['lastname'];
 ```
 
-2. We kunnen nu de gebruiker doorgestuurd naar de dashboard pagina.
+2. We kunnen nu de gebruiker doorsturen naar de dashboard-pagina.
 ```php
 header("location: dashboard.php");
 exit;
 ``` 
 
-### Opdracht 5
+### Opdracht 6
 
-Breng een sessie check toe aan de tool_create.php pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
+Breng een sessie check toe aan de `create_tool.php` pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.

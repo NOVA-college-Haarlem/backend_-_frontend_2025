@@ -39,7 +39,7 @@
    ```
 4. Draai de migrations:
    ```bash
-   php artisan migrate
+   php artisan migrate  
    ```
 
 #### opdracht 14: Product seeder maken
