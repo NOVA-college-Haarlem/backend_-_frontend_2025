@@ -16,7 +16,7 @@ LET OP: De verdeling is niet definitief, en kan nog veranderen.
 ### Project 3 - EventManagement
 
 4. Don
-5. Majd
+5. Luca
 
 ### Project 4 - HotelManagement
 
