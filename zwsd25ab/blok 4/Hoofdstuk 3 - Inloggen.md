@@ -165,3 +165,15 @@ exit;
 ### Opdracht 6
 
 Breng een sessie check toe aan de `create_tool.php` pagina. Het is immers zo dat dat alleen ingelogde gebruikers toegang hebben tot deze pagina.
+
+### Extra opdracht 
+
+Maak een pagina waarop je de naam van een merk (brand) kunt wijzigen.
+
+1. Maak de tabel `brands` aan in de database.
+2. Maak vanaf `brands_index.php` een link naar een nieuw bestand: `brands_edit.php`.
+3. Op `brands_edit.php` kun je de naam wijzigen van het merk waarop geklikt is. Maak een formulier waarmee je de naam kunt wijzigen. 
+    - De naam mag niet leeg zijn en is maximaal 50 karakters lang.
+4. Als de nieuwe naam correct is opgeslagen stuur je de gebruiker terug naar de pagina `brands_index.php`.
+5. De pagina `brands_edit.php` mag alleen bewerkt worden door een gebruiker met de "admin" `role`. **Bonus**: toon de link naar `brands_edit.php` alleen aan gebruikers met de "admin" `role`.
+
