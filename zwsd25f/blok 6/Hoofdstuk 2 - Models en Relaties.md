@@ -115,6 +115,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 2. Open `database/seeders/PricesSeeder.php` en voeg de volgende inhoud toe:
    ```php
    <?php
+   namespace Database\Seeders;
 
    use App\Models\Price;
    use App\Models\Product;
@@ -125,7 +126,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
        public function run(): void
        {
            $catan = Product::where('name', 'Catan')->first();
-           $carcassonne = Product::where('name', 'Carcassonne')->first();
+           $carcassonne = Product::where('name', 'Carcassone')->first();
            $uno = Product::where('name', 'Uno')->first();
 
            Price::insert([
@@ -215,13 +216,13 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 #### Opdracht 38: Route toevoegen
 
 1. Open `routes/web.php`.
-2. Voeg bovenaan de import toe:
-   ```php
-   use App\Http\Controllers\PriceController;
-   ```
-3. Voeg de route toe:
+2. Voeg de route toe:
    ```php
    Route::get('/prices', [PriceController::class, 'index']);
+   ```
+3. Voeg bovenaan de import toe:
+   ```php
+   use App\Http\Controllers\PriceController;
    ```
 
 4. Voeg optioneel een link toe aan de navigatie in `resources/views/components/layout.blade.php`:
@@ -233,7 +234,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 #### Opdracht 39: View maken
 
-1. Maak de map `resources/views/prices/` aan.
+1. Maak de map `resources/views/prices/` aan (of draai het commando `php artisan make:view prices.index`).
 2. Maak daarin het bestand `index.blade.php` met de volgende inhoud:
    ```blade
    <x-layout title="Prijzen">
