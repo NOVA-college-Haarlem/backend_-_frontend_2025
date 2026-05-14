@@ -14,36 +14,12 @@ Het lokale fitnesscentrum wil graag een applicatie om hun workouts, trainers, le
 6. Initialize a Git repository: Ja
 7. ga naar http://fitnesscenter.test
 
-## Userstories
 
-### Gym Manager
-- [ ] Als manager wil ik nieuwe workouts kunnen toevoegen met naam, duur en moeilijkheidsgraad zodat leden variatie hebben
-- [ ] Als manager wil ik trainers kunnen toewijzen aan workouts zodat er altijd begeleiding is
-- [ ] Als manager wil ik equipment kunnen koppelen aan workouts zodat leden weten wat ze nodig hebben
-- [ ] Als manager wil ik member rapporten kunnen bekijken zodat ik zie hoe actief onze leden zijn
-
-### Gym Lid
-- [ ] Als lid wil ik workouts kunnen bekijken gefilterd op moeilijkheidsgraad zodat ik passende oefeningen vind
-- [ ] Als lid wil ik kunnen zien welke equipment ik nodig heb voor een workout zodat ik me kan voorbereiden
-- [ ] Als lid wil ik mijn workout geschiedenis kunnen bijhouden zodat ik mijn voortgang kan zien
-- [ ] Als lid wil ik workouts kunnen zoeken op naam zodat ik specifieke oefeningen kan vinden
-- [ ] Als lid wil ik kunnen zien welke trainer een workout begeleidt zodat ik weet bij wie ik terecht kan
-
-### Personal Trainer
-- [ ] Als trainer wil ik kunnen zien welke workouts aan mij zijn toegewezen zodat ik weet waar ik moet zijn
-- [ ] Als trainer wil ik workout details kunnen bekijken zodat ik me kan voorbereiden op de begeleiding
-- [ ] Als trainer wil ik kunnen zien welke leden zich hebben aangemeld zodat ik weet hoeveel mensen er komen
-- [ ] Als trainer wil ik mijn specialisaties kunnen aangeven zodat ik bij de juiste workouts word ingezet
-
-### Receptionist
-- [ ] Als receptionist wil ik nieuwe leden kunnen registreren zodat ze toegang krijgen tot faciliteiten
-- [ ] Als receptionist wil ik leden kunnen inschrijven voor workouts zodat ze kunnen deelnemen
-- [ ] Als receptionist wil ik kunnen zien welke workouts vol zijn zodat ik leden correcte informatie geef
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - workouts (naam, duur, moeilijkheidsgraad, beschrijving)
 - equipment (naam, beschrijving)
 - specializations (naam, beschrijving)
@@ -95,3 +71,29 @@ Een reservering heeft één gebruiker.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Gym Manager
+- [ ] Als manager wil ik nieuwe workouts kunnen toevoegen met naam, duur en moeilijkheidsgraad zodat leden variatie hebben
+- [ ] Als manager wil ik trainers kunnen toewijzen aan workouts zodat er altijd begeleiding is
+- [ ] Als manager wil ik equipment kunnen koppelen aan workouts zodat leden weten wat ze nodig hebben
+- [ ] Als manager wil ik member rapporten kunnen bekijken zodat ik zie hoe actief onze leden zijn
+
+### Gym Lid
+- [ ] Als lid wil ik workouts kunnen bekijken gefilterd op moeilijkheidsgraad zodat ik passende oefeningen vind
+- [ ] Als lid wil ik kunnen zien welke equipment ik nodig heb voor een workout zodat ik me kan voorbereiden
+- [ ] Als lid wil ik mijn workout geschiedenis kunnen bijhouden zodat ik mijn voortgang kan zien
+- [ ] Als lid wil ik workouts kunnen zoeken op naam zodat ik specifieke oefeningen kan vinden
+- [ ] Als lid wil ik kunnen zien welke trainer een workout begeleidt zodat ik weet bij wie ik terecht kan
+
+### Personal Trainer
+- [ ] Als trainer wil ik kunnen zien welke workouts aan mij zijn toegewezen zodat ik weet waar ik moet zijn
+- [ ] Als trainer wil ik workout details kunnen bekijken zodat ik me kan voorbereiden op de begeleiding
+- [ ] Als trainer wil ik kunnen zien welke leden zich hebben aangemeld zodat ik weet hoeveel mensen er komen
+- [ ] Als trainer wil ik mijn specialisaties kunnen aangeven zodat ik bij de juiste workouts word ingezet
+
+### Receptionist
+- [ ] Als receptionist wil ik nieuwe leden kunnen registreren zodat ze toegang krijgen tot faciliteiten
+- [ ] Als receptionist wil ik leden kunnen inschrijven voor workouts zodat ze kunnen deelnemen
+- [ ] Als receptionist wil ik kunnen zien welke workouts vol zijn zodat ik leden correcte informatie geef

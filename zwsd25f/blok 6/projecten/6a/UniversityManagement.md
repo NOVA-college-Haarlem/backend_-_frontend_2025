@@ -14,36 +14,12 @@ De lokale universiteit wil graag een applicatie om hun studenten, docenten, curs
 6. Initialize a Git repository: Ja
 7. ga naar http://universitymanagement.test
 
-## Userstories
 
-### Studieadviseur
-- [ ] Als studieadviseur wil ik nieuwe studenten kunnen registreren met persoonlijke gegevens zodat ze kunnen studeren
-- [ ] Als studieadviseur wil ik studievoortgang kunnen bekijken zodat ik studenten kan adviseren
-- [ ] Als studieadviseur wil ik studenten kunnen inschrijven voor cursussen zodat ze kunnen deelnemen
-- [ ] Als studieadviseur wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
-
-### Student
-- [ ] Als student wil ik beschikbare cursussen kunnen bekijken zodat ik weet wat ik kan volgen
-- [ ] Als student wil ik mijn inschrijvingen kunnen bekijken zodat ik weet waar ik aan deelneem
-- [ ] Als student wil ik mijn cijfers kunnen zien zodat ik mijn voortgang kan bijhouden
-- [ ] Als student wil ik mijn persoonlijke gegevens kunnen updaten zodat deze actueel blijven
-
-### Docent
-- [ ] Als docent wil ik mijn cursussen kunnen bekijken zodat ik weet wat ik moet geven
-- [ ] Als docent wil ik ingeschreven studenten kunnen zien zodat ik weet wie er komen
-- [ ] Als docent wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
-- [ ] Als docent wil ik cursusmateriaal kunnen toevoegen zodat studenten kunnen studeren
-
-### Faculteits Manager
-- [ ] Als manager wil ik nieuwe cursussen kunnen aanmaken zodat het aanbod compleet is
-- [ ] Als manager wil ik docenten kunnen toewijzen aan cursussen zodat er altijd begeleiding is
-- [ ] Als manager wil ik student statistieken kunnen bekijken zodat ik trends kan identificeren
-- [ ] Als manager wil ik roosters kunnen beheren zodat er geen overlap is
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - students (naam, studentnummer, studie)
 - teachers (naam, specialisatie, faculteit)
 - courses (naam, beschrijving, studiepunten)
@@ -103,3 +79,29 @@ Een cijfer heeft één docent.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Studieadviseur
+- [ ] Als studieadviseur wil ik nieuwe studenten kunnen registreren met persoonlijke gegevens zodat ze kunnen studeren
+- [ ] Als studieadviseur wil ik studievoortgang kunnen bekijken zodat ik studenten kan adviseren
+- [ ] Als studieadviseur wil ik studenten kunnen inschrijven voor cursussen zodat ze kunnen deelnemen
+- [ ] Als studieadviseur wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
+
+### Student
+- [ ] Als student wil ik beschikbare cursussen kunnen bekijken zodat ik weet wat ik kan volgen
+- [ ] Als student wil ik mijn inschrijvingen kunnen bekijken zodat ik weet waar ik aan deelneem
+- [ ] Als student wil ik mijn cijfers kunnen zien zodat ik mijn voortgang kan bijhouden
+- [ ] Als student wil ik mijn persoonlijke gegevens kunnen updaten zodat deze actueel blijven
+
+### Docent
+- [ ] Als docent wil ik mijn cursussen kunnen bekijken zodat ik weet wat ik moet geven
+- [ ] Als docent wil ik ingeschreven studenten kunnen zien zodat ik weet wie er komen
+- [ ] Als docent wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
+- [ ] Als docent wil ik cursusmateriaal kunnen toevoegen zodat studenten kunnen studeren
+
+### Faculteits Manager
+- [ ] Als manager wil ik nieuwe cursussen kunnen aanmaken zodat het aanbod compleet is
+- [ ] Als manager wil ik docenten kunnen toewijzen aan cursussen zodat er altijd begeleiding is
+- [ ] Als manager wil ik student statistieken kunnen bekijken zodat ik trends kan identificeren
+- [ ] Als manager wil ik roosters kunnen beheren zodat er geen overlap is

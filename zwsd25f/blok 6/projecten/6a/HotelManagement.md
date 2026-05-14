@@ -14,35 +14,12 @@ Het lokale hotel wil graag een applicatie om hun kamers, gasten, reserveringen e
 6. Initialize a Git repository: Ja
 7. ga naar http://hotelmanagement.test
 
-## Userstories
 
-### Receptionist
-- [ ] Als receptionist wil ik nieuwe gasten kunnen registreren met persoonlijke gegevens zodat ze kunnen reserveren
-- [ ] Als receptionist wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan aanbieden
-- [ ] Als receptionist wil ik reserveringen kunnen maken zodat gasten kunnen verblijven
-- [ ] Als receptionist wil ik check-ins en check-outs kunnen verwerken zodat de administratie klopt
-
-### Gast
-- [ ] Als gast wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan boeken
-- [ ] Als gast wil ik kunnen filteren op prijs en faciliteiten zodat ik een passende kamer vind
-- [ ] Als gast wil ik mijn reservering kunnen bekijken zodat ik weet wanneer ik kom
-- [ ] Als gast wil ik extra diensten kunnen boeken zodat ik mijn verblijf kan aanvullen
-
-### Huishoudelijke Dienst
-- [ ] Als huishoudelijke dienst wil ik kunnen zien welke kamers schoongemaakt moeten worden
-- [ ] Als huishoudelijke dienst wil ik kamers kunnen markeren als schoon zodat nieuwe gasten kunnen inchecken
-- [ ] Als huishoudelijke dienst wil ik onderhoudsproblemen kunnen melden zodat ze opgelost worden
-
-### Hotel Manager
-- [ ] Als manager wil ik nieuwe kamers kunnen toevoegen zodat het aanbod compleet is
-- [ ] Als manager wil ik prijzen kunnen beheren zodat we competitief blijven
-- [ ] Als manager wil ik bezettingsgraad kunnen bekijken zodat ik trends kan identificeren
-- [ ] Als manager wil ik personeelsroosters kunnen beheren zodat er altijd voldoende dekking is
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - guests (naam, email, telefoon)
 - rooms (nummer, type, prijs, capaciteit)
 - reservations (check_in, check_out, status)
@@ -99,3 +76,28 @@ Een onderhoudsmelding heeft één gebruiker.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Receptionist
+- [ ] Als receptionist wil ik nieuwe gasten kunnen registreren met persoonlijke gegevens zodat ze kunnen reserveren
+- [ ] Als receptionist wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan aanbieden
+- [ ] Als receptionist wil ik reserveringen kunnen maken zodat gasten kunnen verblijven
+- [ ] Als receptionist wil ik check-ins en check-outs kunnen verwerken zodat de administratie klopt
+
+### Gast
+- [ ] Als gast wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan boeken
+- [ ] Als gast wil ik kunnen filteren op prijs en faciliteiten zodat ik een passende kamer vind
+- [ ] Als gast wil ik mijn reservering kunnen bekijken zodat ik weet wanneer ik kom
+- [ ] Als gast wil ik extra diensten kunnen boeken zodat ik mijn verblijf kan aanvullen
+
+### Huishoudelijke Dienst
+- [ ] Als huishoudelijke dienst wil ik kunnen zien welke kamers schoongemaakt moeten worden
+- [ ] Als huishoudelijke dienst wil ik kamers kunnen markeren als schoon zodat nieuwe gasten kunnen inchecken
+- [ ] Als huishoudelijke dienst wil ik onderhoudsproblemen kunnen melden zodat ze opgelost worden
+
+### Hotel Manager
+- [ ] Als manager wil ik nieuwe kamers kunnen toevoegen zodat het aanbod compleet is
+- [ ] Als manager wil ik prijzen kunnen beheren zodat we competitief blijven
+- [ ] Als manager wil ik bezettingsgraad kunnen bekijken zodat ik trends kan identificeren
+- [ ] Als manager wil ik personeelsroosters kunnen beheren zodat er altijd voldoende dekking is

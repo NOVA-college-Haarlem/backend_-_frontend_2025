@@ -14,35 +14,12 @@ Het lokale ziekenhuis wil graag een applicatie om hun patiënten, afspraken, dok
 6. Initialize a Git repository: Ja
 7. ga naar http://ziekenhuismanagement.test
 
-## Userstories
 
-### Receptionist
-- [ ] Als receptionist wil ik nieuwe patiënten kunnen registreren met naam, geboortedatum en contactgegevens zodat ze in het systeem staan
-- [ ] Als receptionist wil ik afspraken kunnen inplannen met beschikbare dokters zodat patiënten geholpen kunnen worden
-- [ ] Als receptionist wil ik afspraken kunnen bekijken per dag zodat ik weet wat de planning is
-- [ ] Als receptionist wil ik patiënt informatie kunnen opzoeken zodat ik hen snel kan helpen
-
-### Patiënt
-- [ ] Als patiënt wil ik mijn afspraken kunnen bekijken zodat ik weet wanneer ik moet komen
-- [ ] Als patiënt wil ik beschikbare tijdslots kunnen zien zodat ik een afspraak kan maken
-- [ ] Als patiënt wil ik mijn medische geschiedenis kunnen bekijken zodat ik geïnformeerd ben
-- [ ] Als patiënt wil ik contact informatie kunnen updaten zodat het ziekenhuis me kan bereiken
-
-### Dokter
-- [ ] Als dokter wil ik mijn agenda kunnen bekijken zodat ik weet welke patiënten ik ga zien
-- [ ] Als dokter wil ik patiënt informatie kunnen bekijken voordat een afspraak zodat ik me kan voorbereiden
-- [ ] Als dokter wil ik behandeling notities kunnen toevoegen zodat de patiënt geschiedenis compleet is
-- [ ] Als dokter wil ik mijn beschikbaarheid kunnen aangeven zodat receptie afspraken kan inplannen
-
-### Afdelings Manager
-- [ ] Als manager wil ik alle afspraken van mijn afdeling kunnen zien zodat ik de workload kan monitoren
-- [ ] Als manager wil ik dokter roosters kunnen beheren zodat er altijd voldoende dekking is
-- [ ] Als manager wil ik patiënt statistieken kunnen bekijken zodat ik trends kan identificeren
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - patients (naam, geboortedatum, contactgegevens)
 - doctors (naam, specialisatie, afdeling)
 - departments (naam, beschrijving)
@@ -99,3 +76,28 @@ Een medische notitie heeft één dokter.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Receptionist
+- [ ] Als receptionist wil ik nieuwe patiënten kunnen registreren met naam, geboortedatum en contactgegevens zodat ze in het systeem staan
+- [ ] Als receptionist wil ik afspraken kunnen inplannen met beschikbare dokters zodat patiënten geholpen kunnen worden
+- [ ] Als receptionist wil ik afspraken kunnen bekijken per dag zodat ik weet wat de planning is
+- [ ] Als receptionist wil ik patiënt informatie kunnen opzoeken zodat ik hen snel kan helpen
+
+### Patiënt
+- [ ] Als patiënt wil ik mijn afspraken kunnen bekijken zodat ik weet wanneer ik moet komen
+- [ ] Als patiënt wil ik beschikbare tijdslots kunnen zien zodat ik een afspraak kan maken
+- [ ] Als patiënt wil ik mijn medische geschiedenis kunnen bekijken zodat ik geïnformeerd ben
+- [ ] Als patiënt wil ik contact informatie kunnen updaten zodat het ziekenhuis me kan bereiken
+
+### Dokter
+- [ ] Als dokter wil ik mijn agenda kunnen bekijken zodat ik weet welke patiënten ik ga zien
+- [ ] Als dokter wil ik patiënt informatie kunnen bekijken voordat een afspraak zodat ik me kan voorbereiden
+- [ ] Als dokter wil ik behandeling notities kunnen toevoegen zodat de patiënt geschiedenis compleet is
+- [ ] Als dokter wil ik mijn beschikbaarheid kunnen aangeven zodat receptie afspraken kan inplannen
+
+### Afdelings Manager
+- [ ] Als manager wil ik alle afspraken van mijn afdeling kunnen zien zodat ik de workload kan monitoren
+- [ ] Als manager wil ik dokter roosters kunnen beheren zodat er altijd voldoende dekking is
+- [ ] Als manager wil ik patiënt statistieken kunnen bekijken zodat ik trends kan identificeren

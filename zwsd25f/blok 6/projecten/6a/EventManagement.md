@@ -14,36 +14,12 @@ Het lokale evenementenbureau wil graag een applicatie om hun events, venues, tic
 6. Initialize a Git repository: Ja
 7. ga naar http://eventmanagement.test
 
-## Userstories
 
-### Event Manager
-- [ ] Als manager wil ik nieuwe events kunnen aanmaken met datum, tijd, locatie en beschrijving zodat ons programma compleet is
-- [ ] Als manager wil ik events kunnen categoriseren zodat bezoekers makkelijk kunnen vinden wat hen interesseert
-- [ ] Als manager wil ik venues kunnen beheren zodat ik weet welke locaties beschikbaar zijn
-- [ ] Als manager wil ik ticket verkopen kunnen volgen zodat ik weet hoe populair events zijn
-- [ ] Als manager wil ik capaciteit per event kunnen instellen zodat we niet oververkopen
-
-### Bezoeker
-- [ ] Als bezoeker wil ik upcoming events kunnen bekijken zodat ik kan zien wat er te doen is
-- [ ] Als bezoeker wil ik events kunnen filteren op datum zodat ik kan zien wat er deze week speelt
-- [ ] Als bezoeker wil ik event details kunnen bekijken zodat ik weet wat me te wachten staat
-- [ ] Als bezoeker wil ik tickets kunnen kopen zodat ik kan deelnemen aan events
-- [ ] Als bezoeker wil ik mijn gekochte tickets kunnen bekijken zodat ik weet waarvoor ik betaald heb
-
-### Venue Manager
-- [ ] Als venue manager wil ik beschikbare data kunnen aangeven zodat event managers weten wanneer ze kunnen boeken
-- [ ] Als venue manager wil ik venue details kunnen bijwerken zodat informatie actueel is
-- [ ] Als venue manager wil ik kunnen zien welke events gepland zijn zodat ik me kan voorbereiden
-
-### Ticket Office Medewerker
-- [ ] Als medewerker wil ik tickets kunnen verkopen aan bezoekers zodat zij events kunnen bijwonen
-- [ ] Als medewerker wil ik kunnen zien hoeveel tickets er nog beschikbaar zijn zodat ik klanten correct kan informeren
-- [ ] Als medewerker wil ik verkoop rapporten kunnen bekijken zodat ik management kan informeren
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - events (datum, tijd, locatie, beschrijving, capaciteit)
 - venues (naam, adres, capaciteit, beschrijving)
 - categories (naam, beschrijving)
@@ -94,3 +70,29 @@ Een ticket heeft één gebruiker.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Event Manager
+- [ ] Als manager wil ik nieuwe events kunnen aanmaken met datum, tijd, locatie en beschrijving zodat ons programma compleet is
+- [ ] Als manager wil ik events kunnen categoriseren zodat bezoekers makkelijk kunnen vinden wat hen interesseert
+- [ ] Als manager wil ik venues kunnen beheren zodat ik weet welke locaties beschikbaar zijn
+- [ ] Als manager wil ik ticket verkopen kunnen volgen zodat ik weet hoe populair events zijn
+- [ ] Als manager wil ik capaciteit per event kunnen instellen zodat we niet oververkopen
+
+### Bezoeker
+- [ ] Als bezoeker wil ik upcoming events kunnen bekijken zodat ik kan zien wat er te doen is
+- [ ] Als bezoeker wil ik events kunnen filteren op datum zodat ik kan zien wat er deze week speelt
+- [ ] Als bezoeker wil ik event details kunnen bekijken zodat ik weet wat me te wachten staat
+- [ ] Als bezoeker wil ik tickets kunnen kopen zodat ik kan deelnemen aan events
+- [ ] Als bezoeker wil ik mijn gekochte tickets kunnen bekijken zodat ik weet waarvoor ik betaald heb
+
+### Venue Manager
+- [ ] Als venue manager wil ik beschikbare data kunnen aangeven zodat event managers weten wanneer ze kunnen boeken
+- [ ] Als venue manager wil ik venue details kunnen bijwerken zodat informatie actueel is
+- [ ] Als venue manager wil ik kunnen zien welke events gepland zijn zodat ik me kan voorbereiden
+
+### Ticket Office Medewerker
+- [ ] Als medewerker wil ik tickets kunnen verkopen aan bezoekers zodat zij events kunnen bijwonen
+- [ ] Als medewerker wil ik kunnen zien hoeveel tickets er nog beschikbaar zijn zodat ik klanten correct kan informeren
+- [ ] Als medewerker wil ik verkoop rapporten kunnen bekijken zodat ik management kan informeren

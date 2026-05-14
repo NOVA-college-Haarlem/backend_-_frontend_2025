@@ -14,27 +14,12 @@ De lokale bibliotheek wil graag een applicatie om hun boeken, leden en uitleenre
 6. Initialize a Git repository: Ja
 7. ga naar http://bibliotheek.test
 
-## Userstories
 
-### Bibliothecaris
-- [ ] Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen met titel, auteur, ISBN en beschrijving zodat onze collectie up-to-date blijft
-- [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
-- [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
-- [ ] Als bibliothecaris wil ik kunnen zien welke boeken uitgeleend zijn zodat ik weet wat beschikbaar is
-- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
-- [ ] Als bibliothecaris wil ik boeken kunnen categoriseren zodat leden makkelijker kunnen browsen
-
-### Bibliotheeklid
-- [ ] Als lid wil ik kunnen zoeken naar boeken op titel zodat ik kan vinden wat ik wil lezen
-- [ ] Als lid wil ik kunnen filteren op categorie zodat ik boeken in mijn interessegebied kan vinden
-- [ ] Als lid wil ik kunnen zien of een boek beschikbaar is zodat ik weet of ik het kan lenen
-- [ ] Als lid wil ik mijn uitgeleende boeken kunnen bekijken zodat ik weet wat ik terug moet brengen
-- [ ] Als lid wil ik kunnen zien wanneer ik boeken moet inleveren zodat ik geen boete krijg
 
 ## Opdracht 3 - Database ontwerp
 
 Dit zijn de gegevens die we gaan opslaan.
-- users (Laravel Breeze)
+- users (standaard Laravel users-tabel)
 - books (titel, auteur, isbn, beschrijving)
 - categories (naam, beschrijving)
 - loans (uitleendatum, inleverdatum)
@@ -42,7 +27,7 @@ Dit zijn de gegevens die we gaan opslaan.
 ### Relaties
 
 #### Users
-Users ofwel gebruikers zijn bibliothecarissen of leden.
+Users ofwel gebruikers zijn bibliothecarissen, leden, balie medewerkers of collectiebeheerders.
 
 #### Books
 Een boek kan meerdere uitleenregistraties hebben.
@@ -80,3 +65,30 @@ Een uitleenregistratie heeft één gebruiker.
 ## Opdracht 7 - Userstories maken
 
 Realiseer de userstories.
+
+## Userstories
+
+### Bibliothecaris
+- [ ] Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen met titel, auteur, ISBN en beschrijving zodat onze collectie up-to-date blijft
+- [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
+- [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
+- [ ] Als bibliothecaris wil ik kunnen zien welke boeken uitgeleend zijn zodat ik weet wat beschikbaar is
+- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
+- [ ] Als bibliothecaris wil ik boeken kunnen categoriseren zodat leden makkelijker kunnen browsen
+
+### Bibliotheeklid
+- [ ] Als lid wil ik kunnen zoeken naar boeken op titel zodat ik kan vinden wat ik wil lezen
+- [ ] Als lid wil ik kunnen filteren op categorie zodat ik boeken in mijn interessegebied kan vinden
+- [ ] Als lid wil ik kunnen zien of een boek beschikbaar is zodat ik weet of ik het kan lenen
+- [ ] Als lid wil ik mijn uitgeleende boeken kunnen bekijken zodat ik weet wat ik terug moet brengen
+- [ ] Als lid wil ik kunnen zien wanneer ik boeken moet inleveren zodat ik geen boete krijg
+
+### Balie Medewerker
+- [ ] Als balie medewerker wil ik een uitleenregistratie kunnen koppelen aan een lid zodat boeken correct worden uitgeleend
+- [ ] Als balie medewerker wil ik ingeleverde boeken kunnen verwerken zodat de beschikbaarheid direct weer klopt
+- [ ] Als balie medewerker wil ik alle openstaande uitleningen kunnen zien zodat ik leden gericht kan helpen aan de balie
+
+### Collectiebeheerder
+- [ ] Als collectiebeheerder wil ik per categorie kunnen zien welke boeken er zijn zodat de collectie overzichtelijk blijft
+- [ ] Als collectiebeheerder wil ik kunnen zien welke boeken vaak uitgeleend zijn zodat ik kan bepalen welke titels we moeten uitbreiden
+- [ ] Als collectiebeheerder wil ik ontbrekende of onjuiste boekinformatie kunnen signaleren zodat bibliothecarissen dit kunnen corrigeren
