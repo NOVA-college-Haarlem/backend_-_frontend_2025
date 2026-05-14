@@ -71,31 +71,42 @@ Een uitleenregistratie heeft één gebruiker.
 - Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
 - Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
 - Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Maak gerelateerde gegevens klikbaar: toon je bijvoorbeeld een categorie, gebruiker of locatie, dan link je door naar de bijbehorende detailpagina.
 - Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
 - Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
 - Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
+#### Algemene gebruiker
+- [ ] Als gebruiker wil ik een navigatiemenu zien met links naar alle entiteiten zodat ik snel door de applicatie kan navigeren.
+- [ ] Als gebruiker wil ik kunnen zien op welke pagina ik ben (actief menu-item) zodat ik altijd context heb.
+- [ ] Als gebruiker wil ik op elke pagina een footer zien met projectnaam en klas/groep zodat de layout compleet en consistent is.
+- [ ] Als gebruiker wil ik vanaf een overzicht naar een detailpagina kunnen klikken zodat ik meer informatie per item kan bekijken.
+- [ ] Als gebruiker wil ik een duidelijke melding zien als er geen data is zodat ik begrijp waarom een lijst leeg is.
+- [ ] Als gebruiker wil ik dat de applicatie goed leesbaar en bruikbaar is op mobiel.
+
 #### Bibliothecaris
-- [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
 - [ ] Als bibliothecaris wil ik kunnen zien welke boeken uitgeleend zijn zodat ik weet wat beschikbaar is
 
 #### Bibliotheeklid
-- [ ] Als lid wil ik kunnen zoeken naar boeken op titel zodat ik kan vinden wat ik wil lezen
 - [ ] Als lid wil ik kunnen filteren op categorie zodat ik boeken in mijn interessegebied kan vinden
 - [ ] Als lid wil ik kunnen zien of een boek beschikbaar is zodat ik weet of ik het kan lenen
 - [ ] Als lid wil ik mijn uitgeleende boeken kunnen bekijken zodat ik weet wat ik terug moet brengen
 - [ ] Als lid wil ik kunnen zien wanneer ik boeken moet inleveren zodat ik geen boete krijg
+- [ ] Als lid wil ik op de detailpagina van een boek alle categorieen van dat boek zien zodat ik direct weet in welke genres het boek valt
 
 #### Balie Medewerker
 - [ ] Als balie medewerker wil ik alle openstaande uitleningen kunnen zien zodat ik leden gericht kan helpen aan de balie
+- [ ] Als balie medewerker wil ik op de detailpagina van een boek alle uitleenregistraties van dat boek zien zodat ik de uitleengeschiedenis kan controleren
 
 #### Collectiebeheerder
 - [ ] Als collectiebeheerder wil ik per categorie kunnen zien welke boeken er zijn zodat de collectie overzichtelijk blijft
 - [ ] Als collectiebeheerder wil ik kunnen zien welke boeken vaak uitgeleend zijn zodat ik kan bepalen welke titels we moeten uitbreiden
+- [ ] Als collectiebeheerder wil ik op de detailpagina van een categorie alle boeken binnen die categorie zien zodat ik de collectie per categorie kan beoordelen
 
 ### Later oppakken (als formulieren en crud-operaties behandeld zijn)
 
 #### Bibliothecaris
+- [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
 - [ ] Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen met titel, auteur, ISBN en beschrijving zodat onze collectie up-to-date blijft
 - [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
 - [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
@@ -104,6 +115,9 @@ Een uitleenregistratie heeft één gebruiker.
 #### Balie Medewerker
 - [ ] Als balie medewerker wil ik een uitleenregistratie kunnen koppelen aan een lid zodat boeken correct worden uitgeleend
 - [ ] Als balie medewerker wil ik ingeleverde boeken kunnen verwerken zodat de beschikbaarheid direct weer klopt
+
+#### Bibliotheeklid
+- [ ] Als lid wil ik kunnen zoeken naar boeken op titel zodat ik kan vinden wat ik wil lezen
 
 #### Collectiebeheerder
 - [ ] Als collectiebeheerder wil ik ontbrekende of onjuiste boekinformatie kunnen signaleren zodat bibliothecarissen dit kunnen corrigeren

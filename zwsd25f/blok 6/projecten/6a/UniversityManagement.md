@@ -85,21 +85,33 @@ Een cijfer heeft één docent.
 - Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
 - Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
 - Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Maak gerelateerde gegevens klikbaar: toon je bijvoorbeeld een categorie, gebruiker of locatie, dan link je door naar de bijbehorende detailpagina.
 - Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
 - Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
 - Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
+#### Algemene gebruiker
+- [ ] Als gebruiker wil ik een navigatiemenu zien met links naar alle entiteiten zodat ik snel door de applicatie kan navigeren.
+- [ ] Als gebruiker wil ik kunnen zien op welke pagina ik ben (actief menu-item) zodat ik altijd context heb.
+- [ ] Als gebruiker wil ik op elke pagina een footer zien met projectnaam en klas/groep zodat de layout compleet en consistent is.
+- [ ] Als gebruiker wil ik vanaf een overzicht naar een detailpagina kunnen klikken zodat ik meer informatie per item kan bekijken.
+- [ ] Als gebruiker wil ik een duidelijke melding zien als er geen data is zodat ik begrijp waarom een lijst leeg is.
+- [ ] Als gebruiker wil ik dat de applicatie goed leesbaar en bruikbaar is op mobiel.
+
 #### Studieadviseur
 - [ ] Als studieadviseur wil ik studievoortgang kunnen bekijken zodat ik studenten kan adviseren
+- [ ] Als studieadviseur wil ik op de detailpagina van een student alle inschrijvingen en cijfers zien zodat ik gericht studieadvies kan geven
 
 #### Student
 - [ ] Als student wil ik beschikbare cursussen kunnen bekijken zodat ik weet wat ik kan volgen
 - [ ] Als student wil ik mijn inschrijvingen kunnen bekijken zodat ik weet waar ik aan deelneem
 - [ ] Als student wil ik mijn cijfers kunnen zien zodat ik mijn voortgang kan bijhouden
+- [ ] Als student wil ik op de detailpagina van een cursus de docent en mijn inschrijfstatus zien zodat ik weet wat ik kan verwachten
 
 #### Docent
 - [ ] Als docent wil ik mijn cursussen kunnen bekijken zodat ik weet wat ik moet geven
 - [ ] Als docent wil ik ingeschreven studenten kunnen zien zodat ik weet wie er komen
+- [ ] Als docent wil ik op de detailpagina van een cursus de gekoppelde cijfers zien zodat ik de voortgang van de groep kan monitoren
 
 #### Faculteits Manager
 - [ ] Als manager wil ik student statistieken kunnen bekijken zodat ik trends kan identificeren

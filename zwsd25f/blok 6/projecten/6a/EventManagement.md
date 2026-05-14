@@ -76,9 +76,18 @@ Een ticket heeft één gebruiker.
 - Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
 - Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
 - Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Maak gerelateerde gegevens klikbaar: toon je bijvoorbeeld een categorie, gebruiker of locatie, dan link je door naar de bijbehorende detailpagina.
 - Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
 - Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
 - Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
+
+#### Algemene gebruiker
+- [ ] Als gebruiker wil ik een navigatiemenu zien met links naar alle entiteiten zodat ik snel door de applicatie kan navigeren.
+- [ ] Als gebruiker wil ik kunnen zien op welke pagina ik ben (actief menu-item) zodat ik altijd context heb.
+- [ ] Als gebruiker wil ik op elke pagina een footer zien met projectnaam en klas/groep zodat de layout compleet en consistent is.
+- [ ] Als gebruiker wil ik vanaf een overzicht naar een detailpagina kunnen klikken zodat ik meer informatie per item kan bekijken.
+- [ ] Als gebruiker wil ik een duidelijke melding zien als er geen data is zodat ik begrijp waarom een lijst leeg is.
+- [ ] Als gebruiker wil ik dat de applicatie goed leesbaar en bruikbaar is op mobiel.
 
 #### Event Manager
 - [ ] Als manager wil ik ticket verkopen kunnen volgen zodat ik weet hoe populair events zijn
@@ -88,13 +97,16 @@ Een ticket heeft één gebruiker.
 - [ ] Als bezoeker wil ik events kunnen filteren op datum zodat ik kan zien wat er deze week speelt
 - [ ] Als bezoeker wil ik event details kunnen bekijken zodat ik weet wat me te wachten staat
 - [ ] Als bezoeker wil ik mijn gekochte tickets kunnen bekijken zodat ik weet waarvoor ik betaald heb
+- [ ] Als bezoeker wil ik op de detailpagina van een event de venue en categorieen zien zodat ik alle context van het event direct heb
 
 #### Venue Manager
 - [ ] Als venue manager wil ik kunnen zien welke events gepland zijn zodat ik me kan voorbereiden
+- [ ] Als venue manager wil ik op de detailpagina van een venue alle events op die locatie zien zodat ik de planning kan overzien
 
 #### Ticket Office Medewerker
 - [ ] Als medewerker wil ik kunnen zien hoeveel tickets er nog beschikbaar zijn zodat ik klanten correct kan informeren
 - [ ] Als medewerker wil ik verkoop rapporten kunnen bekijken zodat ik management kan informeren
+- [ ] Als medewerker wil ik op de detailpagina van een event alle tickets met status zien zodat ik snel de ticketverdeling kan controleren
 
 ### Later oppakken (als formulieren en crud-operaties behandeld zijn)
 

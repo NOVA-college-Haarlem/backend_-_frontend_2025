@@ -77,24 +77,35 @@ Een reservering heeft één gebruiker.
 - Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
 - Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
 - Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Maak gerelateerde gegevens klikbaar: toon je bijvoorbeeld een categorie, gebruiker of locatie, dan link je door naar de bijbehorende detailpagina.
 - Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
 - Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
 - Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
+#### Algemene gebruiker
+- [ ] Als gebruiker wil ik een navigatiemenu zien met links naar alle entiteiten zodat ik snel door de applicatie kan navigeren.
+- [ ] Als gebruiker wil ik kunnen zien op welke pagina ik ben (actief menu-item) zodat ik altijd context heb.
+- [ ] Als gebruiker wil ik op elke pagina een footer zien met projectnaam en klas/groep zodat de layout compleet en consistent is.
+- [ ] Als gebruiker wil ik vanaf een overzicht naar een detailpagina kunnen klikken zodat ik meer informatie per item kan bekijken.
+- [ ] Als gebruiker wil ik een duidelijke melding zien als er geen data is zodat ik begrijp waarom een lijst leeg is.
+- [ ] Als gebruiker wil ik dat de applicatie goed leesbaar en bruikbaar is op mobiel.
+
 #### Gym Manager
 - [ ] Als manager wil ik member rapporten kunnen bekijken zodat ik zie hoe actief onze leden zijn
+- [ ] Als manager wil ik op de detailpagina van een trainer de specialisaties en toegewezen workouts zien zodat ik de inzet beter kan plannen
 
 #### Gym Lid
 - [ ] Als lid wil ik workouts kunnen bekijken gefilterd op moeilijkheidsgraad zodat ik passende oefeningen vind
 - [ ] Als lid wil ik kunnen zien welke equipment ik nodig heb voor een workout zodat ik me kan voorbereiden
 - [ ] Als lid wil ik mijn workout geschiedenis kunnen bijhouden zodat ik mijn voortgang kan zien
-- [ ] Als lid wil ik workouts kunnen zoeken op naam zodat ik specifieke oefeningen kan vinden
 - [ ] Als lid wil ik kunnen zien welke trainer een workout begeleidt zodat ik weet bij wie ik terecht kan
+- [ ] Als lid wil ik op de detailpagina van een workout alle gekoppelde equipment en trainerinformatie zien zodat ik goed voorbereid kan starten
 
 #### Personal Trainer
 - [ ] Als trainer wil ik kunnen zien welke workouts aan mij zijn toegewezen zodat ik weet waar ik moet zijn
 - [ ] Als trainer wil ik workout details kunnen bekijken zodat ik me kan voorbereiden op de begeleiding
 - [ ] Als trainer wil ik kunnen zien welke leden zich hebben aangemeld zodat ik weet hoeveel mensen er komen
+- [ ] Als trainer wil ik op de detailpagina van een workout alle reserveringen voor die workout zien zodat ik de groepsgrootte kan inschatten
 
 #### Receptionist
 - [ ] Als receptionist wil ik kunnen zien welke workouts vol zijn zodat ik leden correcte informatie geef
@@ -105,6 +116,9 @@ Een reservering heeft één gebruiker.
 - [ ] Als manager wil ik nieuwe workouts kunnen toevoegen met naam, duur en moeilijkheidsgraad zodat leden variatie hebben
 - [ ] Als manager wil ik trainers kunnen toewijzen aan workouts zodat er altijd begeleiding is
 - [ ] Als manager wil ik equipment kunnen koppelen aan workouts zodat leden weten wat ze nodig hebben
+
+#### Gym Lid
+- [ ] Als lid wil ik workouts kunnen zoeken op naam zodat ik specifieke oefeningen kan vinden
 
 #### Personal Trainer
 - [ ] Als trainer wil ik mijn specialisaties kunnen aangeven zodat ik bij de juiste workouts word ingezet

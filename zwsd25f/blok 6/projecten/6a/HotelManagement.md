@@ -82,20 +82,32 @@ Een onderhoudsmelding heeft één gebruiker.
 - Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
 - Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
 - Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Maak gerelateerde gegevens klikbaar: toon je bijvoorbeeld een categorie, gebruiker of locatie, dan link je door naar de bijbehorende detailpagina.
 - Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
 - Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
 - Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
+#### Algemene gebruiker
+- [ ] Als gebruiker wil ik een navigatiemenu zien met links naar alle entiteiten zodat ik snel door de applicatie kan navigeren.
+- [ ] Als gebruiker wil ik kunnen zien op welke pagina ik ben (actief menu-item) zodat ik altijd context heb.
+- [ ] Als gebruiker wil ik op elke pagina een footer zien met projectnaam en klas/groep zodat de layout compleet en consistent is.
+- [ ] Als gebruiker wil ik vanaf een overzicht naar een detailpagina kunnen klikken zodat ik meer informatie per item kan bekijken.
+- [ ] Als gebruiker wil ik een duidelijke melding zien als er geen data is zodat ik begrijp waarom een lijst leeg is.
+- [ ] Als gebruiker wil ik dat de applicatie goed leesbaar en bruikbaar is op mobiel.
+
 #### Receptionist
 - [ ] Als receptionist wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan aanbieden
+- [ ] Als receptionist wil ik op de detailpagina van een kamer alle reserveringen van die kamer zien zodat ik de bezetting kan controleren
 
 #### Gast
 - [ ] Als gast wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan boeken
 - [ ] Als gast wil ik kunnen filteren op prijs en faciliteiten zodat ik een passende kamer vind
 - [ ] Als gast wil ik mijn reservering kunnen bekijken zodat ik weet wanneer ik kom
+- [ ] Als gast wil ik op de detailpagina van mijn reservering de kamergegevens en gekoppelde diensten zien zodat ik precies weet wat inbegrepen is
 
 #### Huishoudelijke Dienst
 - [ ] Als huishoudelijke dienst wil ik kunnen zien welke kamers schoongemaakt moeten worden
+- [ ] Als huishoudelijke dienst wil ik op de detailpagina van een kamer de onderhoudsmeldingen zien zodat ik rekening kan houden met technische issues
 
 #### Hotel Manager
 - [ ] Als manager wil ik bezettingsgraad kunnen bekijken zodat ik trends kan identificeren
