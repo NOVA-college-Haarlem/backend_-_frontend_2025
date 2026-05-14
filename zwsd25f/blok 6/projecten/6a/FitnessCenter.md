@@ -70,30 +70,45 @@ Een reservering heeft één gebruiker.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Gym Manager
-- [ ] Als manager wil ik nieuwe workouts kunnen toevoegen met naam, duur en moeilijkheidsgraad zodat leden variatie hebben
-- [ ] Als manager wil ik trainers kunnen toewijzen aan workouts zodat er altijd begeleiding is
-- [ ] Als manager wil ik equipment kunnen koppelen aan workouts zodat leden weten wat ze nodig hebben
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
+
+#### Gym Manager
 - [ ] Als manager wil ik member rapporten kunnen bekijken zodat ik zie hoe actief onze leden zijn
 
-### Gym Lid
+#### Gym Lid
 - [ ] Als lid wil ik workouts kunnen bekijken gefilterd op moeilijkheidsgraad zodat ik passende oefeningen vind
 - [ ] Als lid wil ik kunnen zien welke equipment ik nodig heb voor een workout zodat ik me kan voorbereiden
 - [ ] Als lid wil ik mijn workout geschiedenis kunnen bijhouden zodat ik mijn voortgang kan zien
 - [ ] Als lid wil ik workouts kunnen zoeken op naam zodat ik specifieke oefeningen kan vinden
 - [ ] Als lid wil ik kunnen zien welke trainer een workout begeleidt zodat ik weet bij wie ik terecht kan
 
-### Personal Trainer
+#### Personal Trainer
 - [ ] Als trainer wil ik kunnen zien welke workouts aan mij zijn toegewezen zodat ik weet waar ik moet zijn
 - [ ] Als trainer wil ik workout details kunnen bekijken zodat ik me kan voorbereiden op de begeleiding
 - [ ] Als trainer wil ik kunnen zien welke leden zich hebben aangemeld zodat ik weet hoeveel mensen er komen
+
+#### Receptionist
+- [ ] Als receptionist wil ik kunnen zien welke workouts vol zijn zodat ik leden correcte informatie geef
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Gym Manager
+- [ ] Als manager wil ik nieuwe workouts kunnen toevoegen met naam, duur en moeilijkheidsgraad zodat leden variatie hebben
+- [ ] Als manager wil ik trainers kunnen toewijzen aan workouts zodat er altijd begeleiding is
+- [ ] Als manager wil ik equipment kunnen koppelen aan workouts zodat leden weten wat ze nodig hebben
+
+#### Personal Trainer
 - [ ] Als trainer wil ik mijn specialisaties kunnen aangeven zodat ik bij de juiste workouts word ingezet
 
-### Receptionist
+#### Receptionist
 - [ ] Als receptionist wil ik nieuwe leden kunnen registreren zodat ze toegang krijgen tot faciliteiten
 - [ ] Als receptionist wil ik leden kunnen inschrijven voor workouts zodat ze kunnen deelnemen
-- [ ] Als receptionist wil ik kunnen zien welke workouts vol zijn zodat ik leden correcte informatie geef

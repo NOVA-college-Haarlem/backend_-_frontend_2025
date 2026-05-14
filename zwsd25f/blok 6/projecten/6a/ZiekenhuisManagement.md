@@ -75,29 +75,46 @@ Een medische notitie heeft één dokter.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Receptionist
-- [ ] Als receptionist wil ik nieuwe patiënten kunnen registreren met naam, geboortedatum en contactgegevens zodat ze in het systeem staan
-- [ ] Als receptionist wil ik afspraken kunnen inplannen met beschikbare dokters zodat patiënten geholpen kunnen worden
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
+
+#### Receptionist
 - [ ] Als receptionist wil ik afspraken kunnen bekijken per dag zodat ik weet wat de planning is
 - [ ] Als receptionist wil ik patiënt informatie kunnen opzoeken zodat ik hen snel kan helpen
 
-### Patiënt
+#### Patiënt
 - [ ] Als patiënt wil ik mijn afspraken kunnen bekijken zodat ik weet wanneer ik moet komen
 - [ ] Als patiënt wil ik beschikbare tijdslots kunnen zien zodat ik een afspraak kan maken
 - [ ] Als patiënt wil ik mijn medische geschiedenis kunnen bekijken zodat ik geïnformeerd ben
-- [ ] Als patiënt wil ik contact informatie kunnen updaten zodat het ziekenhuis me kan bereiken
 
-### Dokter
+#### Dokter
 - [ ] Als dokter wil ik mijn agenda kunnen bekijken zodat ik weet welke patiënten ik ga zien
 - [ ] Als dokter wil ik patiënt informatie kunnen bekijken voordat een afspraak zodat ik me kan voorbereiden
+
+#### Afdelings Manager
+- [ ] Als manager wil ik alle afspraken van mijn afdeling kunnen zien zodat ik de workload kan monitoren
+- [ ] Als manager wil ik patiënt statistieken kunnen bekijken zodat ik trends kan identificeren
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Receptionist
+- [ ] Als receptionist wil ik nieuwe patiënten kunnen registreren met naam, geboortedatum en contactgegevens zodat ze in het systeem staan
+- [ ] Als receptionist wil ik afspraken kunnen inplannen met beschikbare dokters zodat patiënten geholpen kunnen worden
+
+#### Patiënt
+- [ ] Als patiënt wil ik contact informatie kunnen updaten zodat het ziekenhuis me kan bereiken
+
+#### Dokter
 - [ ] Als dokter wil ik behandeling notities kunnen toevoegen zodat de patiënt geschiedenis compleet is
 - [ ] Als dokter wil ik mijn beschikbaarheid kunnen aangeven zodat receptie afspraken kan inplannen
 
-### Afdelings Manager
-- [ ] Als manager wil ik alle afspraken van mijn afdeling kunnen zien zodat ik de workload kan monitoren
+#### Afdelings Manager
 - [ ] Als manager wil ik dokter roosters kunnen beheren zodat er altijd voldoende dekking is
-- [ ] Als manager wil ik patiënt statistieken kunnen bekijken zodat ik trends kan identificeren

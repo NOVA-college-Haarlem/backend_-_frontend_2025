@@ -64,31 +64,46 @@ Een uitleenregistratie heeft één gebruiker.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Bibliothecaris
-- [ ] Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen met titel, auteur, ISBN en beschrijving zodat onze collectie up-to-date blijft
-- [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
+
+#### Bibliothecaris
 - [ ] Als bibliothecaris wil ik boeken kunnen zoeken op titel of auteur zodat ik snel kan vinden wat leden zoeken
 - [ ] Als bibliothecaris wil ik kunnen zien welke boeken uitgeleend zijn zodat ik weet wat beschikbaar is
-- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
-- [ ] Als bibliothecaris wil ik boeken kunnen categoriseren zodat leden makkelijker kunnen browsen
 
-### Bibliotheeklid
+#### Bibliotheeklid
 - [ ] Als lid wil ik kunnen zoeken naar boeken op titel zodat ik kan vinden wat ik wil lezen
 - [ ] Als lid wil ik kunnen filteren op categorie zodat ik boeken in mijn interessegebied kan vinden
 - [ ] Als lid wil ik kunnen zien of een boek beschikbaar is zodat ik weet of ik het kan lenen
 - [ ] Als lid wil ik mijn uitgeleende boeken kunnen bekijken zodat ik weet wat ik terug moet brengen
 - [ ] Als lid wil ik kunnen zien wanneer ik boeken moet inleveren zodat ik geen boete krijg
 
-### Balie Medewerker
-- [ ] Als balie medewerker wil ik een uitleenregistratie kunnen koppelen aan een lid zodat boeken correct worden uitgeleend
-- [ ] Als balie medewerker wil ik ingeleverde boeken kunnen verwerken zodat de beschikbaarheid direct weer klopt
+#### Balie Medewerker
 - [ ] Als balie medewerker wil ik alle openstaande uitleningen kunnen zien zodat ik leden gericht kan helpen aan de balie
 
-### Collectiebeheerder
+#### Collectiebeheerder
 - [ ] Als collectiebeheerder wil ik per categorie kunnen zien welke boeken er zijn zodat de collectie overzichtelijk blijft
 - [ ] Als collectiebeheerder wil ik kunnen zien welke boeken vaak uitgeleend zijn zodat ik kan bepalen welke titels we moeten uitbreiden
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Bibliothecaris
+- [ ] Als bibliothecaris wil ik nieuwe boeken kunnen toevoegen met titel, auteur, ISBN en beschrijving zodat onze collectie up-to-date blijft
+- [ ] Als bibliothecaris wil ik boekgegevens kunnen bewerken zodat informatie correct en actueel is
+- [ ] Als bibliothecaris wil ik uitleen registraties kunnen maken zodat we bijhouden wie wat heeft geleend  
+- [ ] Als bibliothecaris wil ik boeken kunnen categoriseren zodat leden makkelijker kunnen browsen
+
+#### Balie Medewerker
+- [ ] Als balie medewerker wil ik een uitleenregistratie kunnen koppelen aan een lid zodat boeken correct worden uitgeleend
+- [ ] Als balie medewerker wil ik ingeleverde boeken kunnen verwerken zodat de beschikbaarheid direct weer klopt
+
+#### Collectiebeheerder
 - [ ] Als collectiebeheerder wil ik ontbrekende of onjuiste boekinformatie kunnen signaleren zodat bibliothecarissen dit kunnen corrigeren

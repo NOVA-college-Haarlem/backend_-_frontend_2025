@@ -69,30 +69,47 @@ Een ticket heeft één gebruiker.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Event Manager
-- [ ] Als manager wil ik nieuwe events kunnen aanmaken met datum, tijd, locatie en beschrijving zodat ons programma compleet is
-- [ ] Als manager wil ik events kunnen categoriseren zodat bezoekers makkelijk kunnen vinden wat hen interesseert
-- [ ] Als manager wil ik venues kunnen beheren zodat ik weet welke locaties beschikbaar zijn
-- [ ] Als manager wil ik ticket verkopen kunnen volgen zodat ik weet hoe populair events zijn
-- [ ] Als manager wil ik capaciteit per event kunnen instellen zodat we niet oververkopen
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
-### Bezoeker
+#### Event Manager
+- [ ] Als manager wil ik ticket verkopen kunnen volgen zodat ik weet hoe populair events zijn
+
+#### Bezoeker
 - [ ] Als bezoeker wil ik upcoming events kunnen bekijken zodat ik kan zien wat er te doen is
 - [ ] Als bezoeker wil ik events kunnen filteren op datum zodat ik kan zien wat er deze week speelt
 - [ ] Als bezoeker wil ik event details kunnen bekijken zodat ik weet wat me te wachten staat
-- [ ] Als bezoeker wil ik tickets kunnen kopen zodat ik kan deelnemen aan events
 - [ ] Als bezoeker wil ik mijn gekochte tickets kunnen bekijken zodat ik weet waarvoor ik betaald heb
 
-### Venue Manager
-- [ ] Als venue manager wil ik beschikbare data kunnen aangeven zodat event managers weten wanneer ze kunnen boeken
-- [ ] Als venue manager wil ik venue details kunnen bijwerken zodat informatie actueel is
+#### Venue Manager
 - [ ] Als venue manager wil ik kunnen zien welke events gepland zijn zodat ik me kan voorbereiden
 
-### Ticket Office Medewerker
-- [ ] Als medewerker wil ik tickets kunnen verkopen aan bezoekers zodat zij events kunnen bijwonen
+#### Ticket Office Medewerker
 - [ ] Als medewerker wil ik kunnen zien hoeveel tickets er nog beschikbaar zijn zodat ik klanten correct kan informeren
 - [ ] Als medewerker wil ik verkoop rapporten kunnen bekijken zodat ik management kan informeren
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Event Manager
+- [ ] Als manager wil ik nieuwe events kunnen aanmaken met datum, tijd, locatie en beschrijving zodat ons programma compleet is
+- [ ] Als manager wil ik events kunnen categoriseren zodat bezoekers makkelijk kunnen vinden wat hen interesseert
+- [ ] Als manager wil ik venues kunnen beheren zodat ik weet welke locaties beschikbaar zijn
+- [ ] Als manager wil ik capaciteit per event kunnen instellen zodat we niet oververkopen
+
+#### Bezoeker
+- [ ] Als bezoeker wil ik tickets kunnen kopen zodat ik kan deelnemen aan events
+
+#### Venue Manager
+- [ ] Als venue manager wil ik beschikbare data kunnen aangeven zodat event managers weten wanneer ze kunnen boeken
+- [ ] Als venue manager wil ik venue details kunnen bijwerken zodat informatie actueel is
+
+#### Ticket Office Medewerker
+- [ ] Als medewerker wil ik tickets kunnen verkopen aan bezoekers zodat zij events kunnen bijwonen

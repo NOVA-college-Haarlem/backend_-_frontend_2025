@@ -76,31 +76,48 @@ Een winkelwagen item heeft één gebruiker.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Shop Owner
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
+
+#### Shop Owner
+- [ ] Als eigenaar wil ik verkoop rapporten kunnen bekijken zodat ik mijn business kan analyseren
+
+#### Klant
+- [ ] Als klant wil ik producten kunnen zoeken op naam zodat ik snel vind wat ik zoek
+- [ ] Als klant wil ik kunnen filteren op categorie en prijs zodat ik binnen mijn budget en interesse kan shoppen
+- [ ] Als klant wil ik product details en reviews kunnen bekijken zodat ik een goede keuze kan maken
+- [ ] Als klant wil ik mijn bestelling geschiedenis kunnen zien zodat ik kan bijhouden wat ik gekocht heb
+
+#### Customer Service
+- [ ] Als service medewerker wil ik alle bestellingen kunnen bekijken zodat ik klanten kan helpen
+- [ ] Als service medewerker wil ik klant informatie kunnen bekijken zodat ik persoonlijke service kan bieden
+
+#### Warehouse Medewerker
+- [ ] Als warehouse medewerker wil ik nieuwe bestellingen kunnen zien zodat ik weet wat ik moet inpakken
+- [ ] Als warehouse medewerker wil ik voorraad levels kunnen checken zodat ik weet wat op is
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Shop Owner
 - [ ] Als eigenaar wil ik nieuwe producten kunnen toevoegen met naam, prijs, beschrijving en voorraad zodat klanten kunnen kopen
 - [ ] Als eigenaar wil ik product informatie kunnen bewerken zodat details en prijzen actueel zijn
 - [ ] Als eigenaar wil ik producten kunnen categoriseren zodat klanten makkelijk kunnen browsen
 - [ ] Als eigenaar wil ik voorraad kunnen bijhouden zodat ik weet wanneer ik moet bijbestellen
-- [ ] Als eigenaar wil ik verkoop rapporten kunnen bekijken zodat ik mijn business kan analyseren
 
-### Klant
-- [ ] Als klant wil ik producten kunnen zoeken op naam zodat ik snel vind wat ik zoek
-- [ ] Als klant wil ik kunnen filteren op categorie en prijs zodat ik binnen mijn budget en interesse kan shoppen
-- [ ] Als klant wil ik product details en reviews kunnen bekijken zodat ik een goede keuze kan maken
+#### Klant
 - [ ] Als klant wil ik producten aan mijn winkelwagen kunnen toevoegen zodat ik meerdere items kan kopen
-- [ ] Als klant wil ik mijn bestelling geschiedenis kunnen zien zodat ik kan bijhouden wat ik gekocht heb
 - [ ] Als klant wil ik reviews kunnen schrijven zodat andere klanten kunnen profiteren van mijn ervaring
 
-### Customer Service
-- [ ] Als service medewerker wil ik alle bestellingen kunnen bekijken zodat ik klanten kan helpen
+#### Customer Service
 - [ ] Als service medewerker wil ik bestelling status kunnen updaten zodat klanten weten waar hun order staat
-- [ ] Als service medewerker wil ik klant informatie kunnen bekijken zodat ik persoonlijke service kan bieden
 
-### Warehouse Medewerker
-- [ ] Als warehouse medewerker wil ik nieuwe bestellingen kunnen zien zodat ik weet wat ik moet inpakken
-- [ ] Als warehouse medewerker wil ik voorraad levels kunnen checken zodat ik weet wat op is
+#### Warehouse Medewerker
 - [ ] Als warehouse medewerker wil ik bestellingen kunnen markeren als verzonden zodat klanten op de hoogte zijn

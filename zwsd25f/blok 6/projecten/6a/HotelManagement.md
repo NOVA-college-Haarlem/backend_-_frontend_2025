@@ -75,29 +75,46 @@ Een onderhoudsmelding heeft één gebruiker.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Receptionist
-- [ ] Als receptionist wil ik nieuwe gasten kunnen registreren met persoonlijke gegevens zodat ze kunnen reserveren
-- [ ] Als receptionist wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan aanbieden
-- [ ] Als receptionist wil ik reserveringen kunnen maken zodat gasten kunnen verblijven
-- [ ] Als receptionist wil ik check-ins en check-outs kunnen verwerken zodat de administratie klopt
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
-### Gast
+#### Receptionist
+- [ ] Als receptionist wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan aanbieden
+
+#### Gast
 - [ ] Als gast wil ik beschikbare kamers kunnen bekijken zodat ik weet wat ik kan boeken
 - [ ] Als gast wil ik kunnen filteren op prijs en faciliteiten zodat ik een passende kamer vind
 - [ ] Als gast wil ik mijn reservering kunnen bekijken zodat ik weet wanneer ik kom
+
+#### Huishoudelijke Dienst
+- [ ] Als huishoudelijke dienst wil ik kunnen zien welke kamers schoongemaakt moeten worden
+
+#### Hotel Manager
+- [ ] Als manager wil ik bezettingsgraad kunnen bekijken zodat ik trends kan identificeren
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Receptionist
+- [ ] Als receptionist wil ik nieuwe gasten kunnen registreren met persoonlijke gegevens zodat ze kunnen reserveren
+- [ ] Als receptionist wil ik reserveringen kunnen maken zodat gasten kunnen verblijven
+- [ ] Als receptionist wil ik check-ins en check-outs kunnen verwerken zodat de administratie klopt
+
+#### Gast
 - [ ] Als gast wil ik extra diensten kunnen boeken zodat ik mijn verblijf kan aanvullen
 
-### Huishoudelijke Dienst
-- [ ] Als huishoudelijke dienst wil ik kunnen zien welke kamers schoongemaakt moeten worden
+#### Huishoudelijke Dienst
 - [ ] Als huishoudelijke dienst wil ik kamers kunnen markeren als schoon zodat nieuwe gasten kunnen inchecken
 - [ ] Als huishoudelijke dienst wil ik onderhoudsproblemen kunnen melden zodat ze opgelost worden
 
-### Hotel Manager
+#### Hotel Manager
 - [ ] Als manager wil ik nieuwe kamers kunnen toevoegen zodat het aanbod compleet is
 - [ ] Als manager wil ik prijzen kunnen beheren zodat we competitief blijven
-- [ ] Als manager wil ik bezettingsgraad kunnen bekijken zodat ik trends kan identificeren
 - [ ] Als manager wil ik personeelsroosters kunnen beheren zodat er altijd voldoende dekking is

@@ -78,30 +78,47 @@ Een cijfer heeft één docent.
 
 ## Opdracht 7 - Userstories maken
 
-Realiseer de userstories.
-
 ## Userstories
 
-### Studieadviseur
-- [ ] Als studieadviseur wil ik nieuwe studenten kunnen registreren met persoonlijke gegevens zodat ze kunnen studeren
-- [ ] Als studieadviseur wil ik studievoortgang kunnen bekijken zodat ik studenten kan adviseren
-- [ ] Als studieadviseur wil ik studenten kunnen inschrijven voor cursussen zodat ze kunnen deelnemen
-- [ ] Als studieadviseur wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
+### Requirements
+- Zorg ervoor dat je seeders alle situaties (testdata) bevatten die je nodig hebt om onderstaande userstories te realiseren.
+- Gebruik geen Laravel-code of features die nog niet in de les zijn behandeld.
+- Gebruik ten minste 2 Blade-componenten in moderne syntax (bijvoorbeeld <x-layout> en <x-ui.card>).
+- Neem basisstyling op via een centrale CSS-file die je in de layout laadt (geen Tailwind).
+- Begin met de onderstaande stories; de stories uit "Later oppakken" komen in projectweek 6A nog niet aan bod.
+- Maak per role eerst een overzichtspagina (index/read), en breid daarna pas uit met extra functionaliteit.
+- Controleer na elke stap of je pagina's werken met je seeddata, zodat je problemen vroeg ontdekt.
 
-### Student
+#### Studieadviseur
+- [ ] Als studieadviseur wil ik studievoortgang kunnen bekijken zodat ik studenten kan adviseren
+
+#### Student
 - [ ] Als student wil ik beschikbare cursussen kunnen bekijken zodat ik weet wat ik kan volgen
 - [ ] Als student wil ik mijn inschrijvingen kunnen bekijken zodat ik weet waar ik aan deelneem
 - [ ] Als student wil ik mijn cijfers kunnen zien zodat ik mijn voortgang kan bijhouden
-- [ ] Als student wil ik mijn persoonlijke gegevens kunnen updaten zodat deze actueel blijven
 
-### Docent
+#### Docent
 - [ ] Als docent wil ik mijn cursussen kunnen bekijken zodat ik weet wat ik moet geven
 - [ ] Als docent wil ik ingeschreven studenten kunnen zien zodat ik weet wie er komen
+
+#### Faculteits Manager
+- [ ] Als manager wil ik student statistieken kunnen bekijken zodat ik trends kan identificeren
+
+### Later oppakken (als formulieren en crud-operaties behandeld zijn)
+
+#### Studieadviseur
+- [ ] Als studieadviseur wil ik nieuwe studenten kunnen registreren met persoonlijke gegevens zodat ze kunnen studeren
+- [ ] Als studieadviseur wil ik studenten kunnen inschrijven voor cursussen zodat ze kunnen deelnemen
+- [ ] Als studieadviseur wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
+
+#### Student
+- [ ] Als student wil ik mijn persoonlijke gegevens kunnen updaten zodat deze actueel blijven
+
+#### Docent
 - [ ] Als docent wil ik cijfers kunnen invoeren zodat studenten hun resultaten kunnen zien
 - [ ] Als docent wil ik cursusmateriaal kunnen toevoegen zodat studenten kunnen studeren
 
-### Faculteits Manager
+#### Faculteits Manager
 - [ ] Als manager wil ik nieuwe cursussen kunnen aanmaken zodat het aanbod compleet is
 - [ ] Als manager wil ik docenten kunnen toewijzen aan cursussen zodat er altijd begeleiding is
-- [ ] Als manager wil ik student statistieken kunnen bekijken zodat ik trends kan identificeren
 - [ ] Als manager wil ik roosters kunnen beheren zodat er geen overlap is
