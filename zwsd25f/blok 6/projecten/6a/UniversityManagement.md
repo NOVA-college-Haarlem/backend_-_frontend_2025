@@ -7,43 +7,12 @@ De lokale universiteit wil graag een applicatie om hun studenten, docenten, curs
 ## Opdracht 1 - Laravel Project beginnen
 
 1. Start een nieuw Laravel project in Laravel Herd.
-2. Kies voor het gebruik van Laravel Breeze voor authenticatie
+2. Kies voor "No Starter Kit"
 3. Noem het project "universitymanagement"
-4. Kies Blade voor de frontend
-5. Testing Framework: PHPUnit
-6. Target location: _hoef je niet te kiezen_
+4. Testing Framework: Pest
+5. Install Laravel Boost: Ja
+6. Initialize a Git repository: Ja
 7. ga naar http://universitymanagement.test
-
-## Opdracht 2a - Database server/file opzetten
-
-Standaard werkt Laravel met een SQLITE database. Dit is een eenvoudige database die in een enkele file staat.
-
-Als je met PHPMyAdmin wilt werken dan moeten we eerst een Docker omgeving opzetten. In opdracht 2a en 2b zetten we deze omgeving op.
-
-1. Open VS Code
-2. Open je projecten folder (dus werk netjes volgens de eerdere afspraken/opdrachten)
-3. Open een terminal
-4. Clone deze repository: https://github.com/NOVA-college-Haarlem/mysql-phpmyadmin in de projecten folder
-    - `git clone https://github.com/NOVA-college-Haarlem/mysql-phpmyadmin`
-5. Open de map `mysql-phpmyadmin`
-6. Open een terminal in deze map
-7. Run `docker compose up -d`
-8. Open een browser en ga naar http://localhost:8000
-9. Je hebt nu toegang tot een MySQL database met een phpmyadmin interface.
-
-## Opdracht 2b - Database connectie
-
-1. Druk op Ctrl + P
-2. Open .env file
-3. Gebruik je liever mysql en phpmyadmin. Vul de correcte database connectie in. Zie regel 24 tm 29
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3307
-DB_DATABASE=universitymanagement
-DB_USERNAME=root
-DB_PASSWORD=password
-```
 
 ## Userstories
 
