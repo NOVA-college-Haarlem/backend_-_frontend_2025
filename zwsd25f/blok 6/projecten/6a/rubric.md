@@ -60,7 +60,7 @@ Puntenaftrek geldt wanneer code aantoonbaar door AI is gegenereerd zonder begrip
 - **-2.0**: Overwegend AI-uitwerking zonder beheersing van de gemaakte keuzes.
 - **-3.0**: Project is in de kern AI-gegenereerd en student kan keuzes of werking onvoldoende uitleggen.
 
-> Maximale AI-puntenaftrek is 3.0. Eindscore kan niet lager dan 0.0.
+> Maximale AI-puntenaftrek is 3.0. Eindscore kan niet lager dan 1.0.
 
 ## Snelle beslisregels voor docenten
 
