@@ -2,7 +2,7 @@
 
 ## Introductie
 
-Fitnessbedrijf Work4Me wil graag een applicatie om haar leden te kunnen registeren en bij te kunnen houden. Daarnaast willen ze de verschillende workouts die ze aanbieden dynamisch kunnen tonen op de site. 
+Fitnessbedrijf "Work4Me" wil graag een applicatie om haar leden te kunnen registeren en bij te kunnen houden. Daarnaast willen ze de verschillende workouts die ze aanbieden dynamisch kunnen tonen op de site. 
 
 ## Database eisen
 De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
@@ -19,8 +19,8 @@ De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
 
 Er zijn twee verschillende rollen. 
 Rollen hebben de volgende eigenschappen:
-- **Member**: `member_number`, `last_login_date`
 - **Employee**: `start_date`, `job_title`
+- **Member**: `member_number`, `last_login_date`
 
 ### Adres
 

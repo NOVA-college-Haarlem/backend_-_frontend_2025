@@ -19,8 +19,8 @@ De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
 
 Er zijn twee verschillende rollen. 
 Rollen hebben de volgende eigenschappen:
-- **Member**: `member_number`, `last_login_date`
 - **Employee**: `start_date`, `job_title`
+- **Member**: `member_number`, `last_login_date`
 
 ### Adres
 

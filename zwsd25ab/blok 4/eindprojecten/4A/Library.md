@@ -23,8 +23,8 @@ De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
 Er zijn twee verschillende rollen.
 Rollen hebben de volgende eigenschappen:
 
-- **Member**: `library_card_number`, `registration_date`
 - **Employee**: `start_date`, `specialization`
+- **Member**: `library_card_number`, `registration_date`
 
 ### Adres
 
