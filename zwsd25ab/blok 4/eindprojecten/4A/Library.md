@@ -6,6 +6,18 @@
 
 Bibliotheek "De Wijze Uil" wil graag een applicatie om haar leden te kunnen registeren en bij te kunnen houden. Daarnaast willen ze de verschillende boeken die ze in de collectie hebben dynamisch kunnen tonen op de site.
 
+## Project setup
+
+1. Kloon op Github het project [Docker Template](https://github.com/NOVA-college-Haarlem/docker-template) (je kunt de default settings aanhouden). 
+2. Kopieer de URL van de repository (via de groene knop "Code").
+2. Open de map waarin je je projecten bewaart met VS Code. 
+3. Open de terminal en run `git clone <PASTE URL>`
+4. In de Windows Verkenner (File Explorer): verander de naam "docker-template" naar de naam van je project, bijvoorbeeld "fitness" of "library".
+5. Open dit project in VS Code.
+6. In `.env` verander de naam `MYSQL_DATABASE` van "testdb" naar de naam van je project.
+7. Open de terminal en run `docker compose up -d`.
+8. Je website draait nu op http://localhost en PhpMyAdmin op http://localhost:8000/.
+
 ## Database eisen
 
 De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
