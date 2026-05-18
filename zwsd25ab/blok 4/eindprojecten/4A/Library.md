@@ -29,6 +29,7 @@ De volgende gegevens zijn bekend over de data die opgeslagen gaat worden.
 - Elke gebruiker heeft de volgende eigenschappen:
 `id`, `firstname`, `lastname`, `email`, `username`, `password` en `rol`.
 - Elke gebruiker heeft 1 rol. 
+- Schrijf met behulp van AI de SQL om de tabel `users` aan te maken met 10 verschillende gebruikers.
 
 ### Rollen
 
@@ -38,11 +39,14 @@ Rollen hebben de volgende eigenschappen:
 - **Employee**: `start_date`, `specialization`
 - **Member**: `library_card_number`, `registration_date`
 
+Voeg deze vier velden toe aan de database `users`. Bij een medewerker worden alleen de employee-velden gevuld, bij een lid alleen de member-velden.
+
 ### Adres
 
 - Elk adres heeft de volgende eigenschappen:
 `street`, `housenumber`, `zipcode`, `city`, `country`, en `phone`. 
 - Elke gebruiker heeft 1 adres en 1 adres hoort bij 1 gebruiker.
+- Maak deze tabel aan.
 
 ### Boeken
 
