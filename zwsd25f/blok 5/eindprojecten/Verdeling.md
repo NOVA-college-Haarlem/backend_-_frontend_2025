@@ -4,10 +4,12 @@
 
 - Demelsa
 - Rowin
+- Rink
 
 ## GameVault
 
 - Mucahit
+- Hidde
 
 ## SportBuddy
 
@@ -17,3 +19,5 @@
 ## RecipeBox
 
 - Alfahad
+- Don
+
