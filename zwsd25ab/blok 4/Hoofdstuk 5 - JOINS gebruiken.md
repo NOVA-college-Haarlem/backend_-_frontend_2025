@@ -47,7 +47,7 @@ We maken een overzichtspagina waarop we alle gebruikers tonen samen met hun inst
 require 'database.php';
 
 $sql = "SELECT * FROM users
-            JOIN usersettings
+            LEFT JOIN usersettings
                 ON users.id = usersettings.user_id";
 
 $result = mysqli_query($conn, $sql);
@@ -88,7 +88,7 @@ Met `ON users.id = usersettings.user_id` vertellen we de database: *koppel de ri
 $sql = "SELECT users.id, users.firstname, users.lastname, users.email,
                usersettings.backgroundColor, usersettings.font
         FROM users
-            JOIN usersettings
+            LEFT JOIN usersettings
                 ON users.id = usersettings.user_id";
 ```
 
@@ -115,7 +115,7 @@ $user_id = $_SESSION['user_id'];
 $sql = "SELECT users.firstname, users.lastname, users.email,
                user_settings.backgroundColor, user_settings.font
         FROM users
-            JOIN user_settings
+            LEFT JOIN user_settings
                 ON users.id = user_settings.user_id
         WHERE users.id = $user_id";
 
@@ -157,3 +157,23 @@ De tabel moet de volgende kolommen bevatten:
 - Email
 - Backgroundcolor
 - Font
+
+---
+
+#### Opdracht 4 - Adresgegevens koppelen aan gebruikers
+
+Breid je database en profielpagina uit met een extra tabel voor adresgegevens.
+
+1. Maak een nieuwe tabel aan, bijvoorbeeld `address`.
+2. Bepaal zelf welke velden deze tabel bevat, maar neem minimaal 4 adresvelden op.
+3. Voeg een `user_id` kolom toe als foreign key naar `users.id`.
+4. Voeg testdata toe voor meerdere gebruikers.
+5. Pas `profile.php` aan zodat de adresgegevens van de ingelogde gebruiker zichtbaar worden.
+
+Voorwaarden:
+- Minimaal 4 zelfgekozen adresvelden.
+- Een werkende relatie via een foreign key met de tabel `users`.
+- De profielpagina toont zowel gebruikersgegevens, instellingen als adresgegevens.
+
+Tip:
+Gebruik een extra LEFT JOIN in je query op de profielpagina, bijvoorbeeld op basis van `users.id = address.user_id`.
