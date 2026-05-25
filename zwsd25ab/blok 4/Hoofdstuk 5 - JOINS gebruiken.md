@@ -172,7 +172,7 @@ Breid je database en profielpagina uit met een extra tabel voor adresgegevens.
 
 Voorwaarden:
 - Minimaal 4 zelfgekozen adresvelden.
-- Een werkende relatie via een foreign key met de tabel `users`.
+- Een werkende relatie via een foreign key (vreemde sleutel) met de tabel `users`.
 - De profielpagina toont zowel gebruikersgegevens, instellingen als adresgegevens.
 
 Tip:
