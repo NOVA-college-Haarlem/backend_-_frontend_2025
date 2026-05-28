@@ -6,25 +6,20 @@ In dit hoofdstuk bouwen we de volledige CRUD-functionaliteit voor producten. We 
 - [Hoofdstuk 3 - CRUD Formulieren en Validatie](#hoofdstuk-3---crud-formulieren-en-validatie)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
-  - [Opdracht 1: Resource Controller](#opdracht-1-resource-controller)
-    - [Opdracht 1.1: Resource routes](#opdracht-11-resource-routes)
-    - [Opdracht 1.2: Test de routes](#opdracht-12-test-de-routes)
-    - [Opdracht 2: Producten aanmaken (Create)](#opdracht-2-producten-aanmaken-create)
-        - [Opdracht 2.1: Formulier view](#opdracht-21-formulier-view)
-        - [Opdracht 2.2: Store methode met validatie](#opdracht-22-store-methode-met-validatie)
-        - [Opdracht 2.3: Test aanmaken](#opdracht-23-test-aanmaken)
-    - [Opdracht 3: Product detail (Show)](#opdracht-3-product-detail-show)
-    - [Opdracht 4: Producten bewerken (Edit/Update)](#opdracht-4-producten-bewerken-editupdate)
-        - [Opdracht 4.1: Edit formulier](#opdracht-41-edit-formulier)
-        - [Opdracht 4.2: Update methode](#opdracht-42-update-methode)
-    - [Opdracht 5: Producten verwijderen (Delete)](#opdracht-5-producten-verwijderen-delete)
-    - [Opdracht 6: Flash messages](#opdracht-6-flash-messages)
-    - [Opdracht 7: Zoekfunctie](#opdracht-7-zoekfunctie)
-    - [Opdracht 8: Tests](#opdracht-8-tests)
+    - [Resource controller (overzicht)](#resource-controller-overzicht)
+    - [Opdracht 1: Producten aanmaken (Create)](#opdracht-1-producten-aanmaken-create)
+        - [Opdracht 1.1: Formulier view](#opdracht-11-formulier-view)
+        - [Opdracht 1.2: Store methode met validatie](#opdracht-12-store-methode-met-validatie)
+    - [Opdracht 2: Producten bewerken (Edit/Update)](#opdracht-2-producten-bewerken-editupdate)
+        - [Opdracht 2.1: Edit formulier](#opdracht-21-edit-formulier)
+        - [Opdracht 2.2: Update methode](#opdracht-22-update-methode)
+    - [Opdracht 3: Producten verwijderen (Delete)](#opdracht-3-producten-verwijderen-delete)
+    - [Opdracht 4: Flash messages](#opdracht-4-flash-messages)
+    - [Opdracht 5: Zoekfunctie](#opdracht-5-zoekfunctie)
   - [Afronding / Reflectie](#afronding--reflectie)
 
 ## Leerdoelen
-- Een resource controller aanmaken en gebruiken.
+- Een resource controller herkennen en gebruiken.
 - Formulieren bouwen in Blade met CSRF-beveiliging.
 - Gebruikersinvoer valideren met Laravel validation rules.
 - Foutmeldingen weergeven bij formuliervelden.
@@ -34,7 +29,7 @@ In dit hoofdstuk bouwen we de volledige CRUD-functionaliteit voor producten. We 
 
 ---
 
-## Opdracht 1: Resource Controller
+## Resource controller (overzicht)
 
 In Laravel bestaat een resource controller uit zeven standaard methoden die samen de volledige CRUD-cyclus dekken:
 
@@ -48,39 +43,15 @@ In Laravel bestaat een resource controller uit zeven standaard methoden die same
 | update    | PUT/PATCH | /products/{id}         | Product bijwerken            |
 | destroy   | DELETE    | /products/{id}         | Product verwijderen          |
 
-1. Maak een resource controller aan:
-   ```bash
-   php artisan make:controller ProductController --resource
-   ```
-2. Open `app/Http/Controllers/ProductController.php` en bekijk de zeven methoden.
-
-### Opdracht 1.1: Resource routes
-
-In plaats van elke route apart te definiëren, gebruik je één regel voor alle resource routes:
-
-1. Open `routes/web.php`.
-2. Vervang de losse `/products`-route door:
-   ```php
-   use App\Http\Controllers\ProductController;
-
-   Route::resource('products', ProductController::class);
-   ```
-3. Controleer alle gegenereerde routes met:
-   ```bash
-   php artisan route:list --path=products
-   ```
-
-### Opdracht 1.2: Test de routes
-
-```bash
-php artisan test --group=ProductRoutesTest
-```
+Deze tabel is bedoeld als naslag. In dit hoofdstuk werken we verder in de bestaande `ProductController` en voegen we de nodige methodes handmatig toe.
 
 ---
 
-## Opdracht 2: Producten aanmaken (Create)
+## Opdracht 1: Producten aanmaken (Create)
 
-### Opdracht 2.1: Formulier view
+In deze opdracht werk je in de bestaande `ProductController` en voeg je de benodigde methodes handmatig toe of werk je ze bij.
+
+### Opdracht 1.1: Formulier view
 
 1. Maak de view aan:
    ```bash
@@ -157,7 +128,7 @@ php artisan test --group=ProductRoutesTest
 
 > **Let op `@csrf`**: Laravel vereist een CSRF-token bij elk POST-formulier. Dit beschermt je applicatie tegen aanvallen waarbij kwaadaardige websites acties namens de gebruiker uitvoeren. Zonder `@csrf` geeft Laravel een 419-fout.
 
-### Opdracht 2.2: Store methode met validatie
+### Opdracht 1.2: Store methode met validatie
 
 1. Open `app/Http/Controllers/ProductController.php`.
 2. Pas de `create`-methode aan:
@@ -203,72 +174,12 @@ php artisan test --group=ProductRoutesTest
 > - `exists:categories,id` → de waarde moet bestaan in de `categories` tabel kolom `id`
 > - `numeric|min:0` → moet een getal zijn, minimaal 0
 
-### Opdracht 2.3: Test aanmaken
-
-```bash
-php artisan test --group=ProductCreateTest
-```
 
 ---
 
-## Opdracht 3: Product detail (Show)
+## Opdracht 2: Producten bewerken (Edit/Update)
 
-1. Pas de `show`-methode aan in de controller:
-   ```php
-   public function show(Product $product)
-   {
-       $product->load(['category', 'prices', 'reviews.user']);
-       return view('products.show', compact('product'));
-   }
-   ```
-
-2. Maak de view aan:
-   ```bash
-   php artisan make:view products.show
-   ```
-
-3. Vul `resources/views/products/show.blade.php` in:
-   ```html
-    <x-layout :title="$product->name">
-       <a href="{{ route('products.index') }}" class="btn btn-secondary mb-3">← Terug</a>
-
-       <h1>{{ $product->name }}</h1>
-       <p class="text-muted">Categorie: {{ $product->category->name ?? 'Onbekend' }}</p>
-       <p>{{ $product->description }}</p>
-
-       <h4>Prijs:
-           @if($product->prices->isNotEmpty())
-               € {{ number_format($product->prices->sortByDesc('in_effect_date')->first()->price / 100, 2, ',', '.') }}
-           @else
-               n.v.t.
-           @endif
-       </h4>
-
-       <hr>
-       <h3>Reviews ({{ $product->reviews->count() }})</h3>
-       @forelse($product->reviews as $review)
-           <div class="card mb-2">
-               <div class="card-body">
-                   <strong>{{ $review->user->name }}</strong>
-                   — Beoordeling: {{ $review->rating }}/5
-                   <p>{{ $review->comment }}</p>
-               </div>
-           </div>
-       @empty
-           <p>Nog geen reviews.</p>
-       @endforelse
-
-       <div class="mt-3">
-           <a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Bewerken</a>
-       </div>
-   </x-layout>
-   ```
-
----
-
-## Opdracht 4: Producten bewerken (Edit/Update)
-
-### Opdracht 4.1: Edit formulier
+### Opdracht 2.1: Edit formulier
 
 1. Pas de `edit`-methode aan:
    ```php
@@ -357,7 +268,7 @@ php artisan test --group=ProductCreateTest
 
 > **`@method('PUT')`**: HTML-formulieren ondersteunen alleen GET en POST. Laravel gebruikt een verborgen `_method` veld om PUT, PATCH en DELETE te simuleren. Zonder `@method('PUT')` herkent Laravel de update-route niet.
 
-### Opdracht 4.2: Update methode
+### Opdracht 2.2: Update methode
 
 1. Pas de `update`-methode aan:
    ```php
@@ -389,7 +300,7 @@ php artisan test --group=ProductCreateTest
 
 ---
 
-## Opdracht 5: Producten verwijderen (Delete)
+## Opdracht 3: Producten verwijderen (Delete)
 
 1. Voeg een verwijderknop toe in de `show`-view na de bewerkknop:
    ```html
@@ -417,7 +328,7 @@ php artisan test --group=ProductCreateTest
 
 ---
 
-## Opdracht 6: Flash messages
+## Opdracht 4: Flash messages
 
 Flash messages zijn berichten die eenmalig getoond worden na een actie (zoals opslaan of verwijderen). Ze worden opgeslagen in de sessie en verdwijnen na het vernieuwen van de pagina.
 
@@ -439,7 +350,7 @@ We hebben de flash message al verwerkt in de layout. Controleer of je de volgend
 
 ---
 
-## Opdracht 7: Zoekfunctie
+## Opdracht 5: Zoekfunctie
 
 We voegen een zoekfunctie toe aan het producten-overzicht zodat gebruikers kunnen filteren op naam of categorie.
 
@@ -495,21 +406,6 @@ We voegen een zoekfunctie toe aan het producten-overzicht zodat gebruikers kunne
    ```
 
 > **`$request->filled('zoek')`** controleert of het veld aanwezig én niet leeg is. Dit is handiger dan `$request->has()`, dat ook een lege string accepteert.
-
----
-
-## Opdracht 8: Tests
-
-```bash
-php artisan test --group=ProductCrudTest
-```
-
-Controleer dat de volgende scenario's werken:
-- Een product aanmaken met geldige data slaagt.
-- Een product aanmaken zonder naam geeft een validatiefout.
-- Een product bewerken slaat de nieuwe naam op.
-- Een product verwijderen haalt het uit de database.
-- De zoekfunctie filtert correct op naam.
 
 ---
 
