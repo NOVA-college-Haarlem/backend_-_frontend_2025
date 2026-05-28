@@ -203,7 +203,7 @@ In deze opdracht werk je in de bestaande `ProductController` en voeg je de benod
    ```php
    public function edit(Product $product)
    {
-       $categories = \App\Models\Category::all();
+       $categories = Category::all();
        $currentPrice = $product->prices()->latest('in_effect_date')->first();
        return view('products.edit', compact('product', 'categories', 'currentPrice'));
    }
@@ -305,11 +305,16 @@ In deze opdracht werk je in de bestaande `ProductController` en voeg je de benod
            'category_id' => $validated['category_id'],
        ]);
 
-       // Nieuwe prijs toevoegen als historisch record
-       $product->prices()->create([
-           'price'          => (int) round($validated['price'] * 100),
-           'in_effect_date' => now(),
-       ]);
+       $newPriceInCents = (int) round($validated['price'] * 100);
+       $currentPrice = $product->prices()->latest('in_effect_date')->first();
+
+       // Alleen een nieuw prijsrecord toevoegen als de prijs gewijzigd is
+       if (! $currentPrice || $currentPrice->price !== $newPriceInCents) {
+           $product->prices()->create([
+               'price'          => $newPriceInCents,
+               'in_effect_date' => now(),
+           ]);
+       }
 
        return redirect()->route('products.show', $product)
            ->with('success', 'Product succesvol bijgewerkt!');
