@@ -126,7 +126,12 @@ In deze opdracht werk je in de bestaande `ProductController` en voeg je de benod
    </x-layout>
    ```
 
-> **Let op `@csrf`**: Laravel vereist een CSRF-token bij elk POST-formulier. Dit beschermt je applicatie tegen aanvallen waarbij kwaadaardige websites acties namens de gebruiker uitvoeren. Zonder `@csrf` geeft Laravel een 419-fout.
+| Onderdeel | Korte uitleg |
+|-----------|--------------|
+| `@csrf` | Voegt een CSRF-token toe: een unieke, tijdelijke code die Laravel vergelijkt met de sessie van de gebruiker. Zonder dit token wordt een POST-aanvraag geweigerd (419-fout). |
+| `@error('veld')` | Toont een foutmelding voor dat specifieke veld als validatie faalt. |
+| `route('naam')` | Bouwt automatisch de juiste URL op basis van een routenaam, bijvoorbeeld `products.store`. |
+| `old('veld')` | Zet eerder ingevulde invoer terug in het formulier na een validatiefout. |
 
 ### Opdracht 1.2: Store methode met validatie
 
