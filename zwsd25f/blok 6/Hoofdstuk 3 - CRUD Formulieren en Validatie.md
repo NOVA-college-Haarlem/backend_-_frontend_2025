@@ -9,19 +9,18 @@ In dit hoofdstuk bouwen we de volledige CRUD-functionaliteit voor producten. We 
   - [Opdracht 1: Resource Controller](#opdracht-1-resource-controller)
     - [Opdracht 1.1: Resource routes](#opdracht-11-resource-routes)
     - [Opdracht 1.2: Test de routes](#opdracht-12-test-de-routes)
-  - [Opdracht 2: Layout met Blade](#opdracht-2-layout-met-blade)
-  - [Opdracht 3: Producten aanmaken (Create)](#opdracht-3-producten-aanmaken-create)
-    - [Opdracht 3.1: Formulier view](#opdracht-31-formulier-view)
-    - [Opdracht 3.2: Store methode met validatie](#opdracht-32-store-methode-met-validatie)
-    - [Opdracht 3.3: Test aanmaken](#opdracht-33-test-aanmaken)
-  - [Opdracht 4: Product detail (Show)](#opdracht-4-product-detail-show)
-  - [Opdracht 5: Producten bewerken (Edit/Update)](#opdracht-5-producten-bewerken-editupdate)
-    - [Opdracht 5.1: Edit formulier](#opdracht-51-edit-formulier)
-    - [Opdracht 5.2: Update methode](#opdracht-52-update-methode)
-  - [Opdracht 6: Producten verwijderen (Delete)](#opdracht-6-producten-verwijderen-delete)
-  - [Opdracht 7: Flash messages](#opdracht-7-flash-messages)
-  - [Opdracht 8: Zoekfunctie](#opdracht-8-zoekfunctie)
-  - [Opdracht 9: Tests](#opdracht-9-tests)
+    - [Opdracht 2: Producten aanmaken (Create)](#opdracht-2-producten-aanmaken-create)
+        - [Opdracht 2.1: Formulier view](#opdracht-21-formulier-view)
+        - [Opdracht 2.2: Store methode met validatie](#opdracht-22-store-methode-met-validatie)
+        - [Opdracht 2.3: Test aanmaken](#opdracht-23-test-aanmaken)
+    - [Opdracht 3: Product detail (Show)](#opdracht-3-product-detail-show)
+    - [Opdracht 4: Producten bewerken (Edit/Update)](#opdracht-4-producten-bewerken-editupdate)
+        - [Opdracht 4.1: Edit formulier](#opdracht-41-edit-formulier)
+        - [Opdracht 4.2: Update methode](#opdracht-42-update-methode)
+    - [Opdracht 5: Producten verwijderen (Delete)](#opdracht-5-producten-verwijderen-delete)
+    - [Opdracht 6: Flash messages](#opdracht-6-flash-messages)
+    - [Opdracht 7: Zoekfunctie](#opdracht-7-zoekfunctie)
+    - [Opdracht 8: Tests](#opdracht-8-tests)
   - [Afronding / Reflectie](#afronding--reflectie)
 
 ## Leerdoelen
@@ -79,95 +78,9 @@ php artisan test --group=ProductRoutesTest
 
 ---
 
-## Opdracht 2: Layout met Blade
+## Opdracht 2: Producten aanmaken (Create)
 
-We maken een gedeelde layout zodat alle pagina's dezelfde navigatie en stijl hebben.
-
-1. Maak een layout-bestand aan:
-   ```bash
-   php artisan make:view layouts.app
-   ```
-2. Vul `resources/views/layouts/app.blade.php` in:
-   ```html
-   <!DOCTYPE html>
-   <html lang="nl">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Spelshop - @yield('title', 'Home')</title>
-       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   </head>
-   <body>
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-           <div class="container">
-               <a class="navbar-brand" href="/">Spelshop</a>
-               <div class="navbar-nav">
-                   <a class="nav-link" href="{{ route('products.index') }}">Producten</a>
-               </div>
-           </div>
-       </nav>
-
-       <div class="container">
-           @if(session('success'))
-               <div class="alert alert-success">{{ session('success') }}</div>
-           @endif
-
-           @yield('content')
-       </div>
-   </body>
-   </html>
-   ```
-3. Pas `resources/views/products/index.blade.php` aan om de layout te gebruiken:
-   ```html
-   @extends('layouts.app')
-
-   @section('title', 'Producten')
-
-   @section('content')
-       <div class="d-flex justify-content-between align-items-center mb-3">
-           <h1>Producten</h1>
-           <a href="{{ route('products.create') }}" class="btn btn-primary">+ Nieuw product</a>
-       </div>
-
-       @if($products->isEmpty())
-           <p>Geen producten gevonden.</p>
-       @else
-           <table class="table table-striped">
-               <thead>
-                   <tr>
-                       <th>Naam</th>
-                       <th>Categorie</th>
-                       <th>Prijs</th>
-                       <th>Acties</th>
-                   </tr>
-               </thead>
-               <tbody>
-                   @foreach($products as $product)
-                       <tr>
-                           <td>{{ $product->name }}</td>
-                           <td>{{ $product->category->name ?? 'Onbekend' }}</td>
-                           <td>
-                               {{ optional($product->prices->first())->price
-                                   ? '€ ' . number_format($product->prices->first()->price / 100, 2, ',', '.')
-                                   : 'n.v.t.' }}
-                           </td>
-                           <td>
-                               <a href="{{ route('products.show', $product) }}" class="btn btn-sm btn-info">Bekijk</a>
-                               <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning">Bewerk</a>
-                           </td>
-                       </tr>
-                   @endforeach
-               </tbody>
-           </table>
-       @endif
-   @endsection
-   ```
-
----
-
-## Opdracht 3: Producten aanmaken (Create)
-
-### Opdracht 3.1: Formulier view
+### Opdracht 2.1: Formulier view
 
 1. Maak de view aan:
    ```bash
@@ -175,11 +88,7 @@ We maken een gedeelde layout zodat alle pagina's dezelfde navigatie en stijl heb
    ```
 2. Vul `resources/views/products/create.blade.php` in:
    ```html
-   @extends('layouts.app')
-
-   @section('title', 'Nieuw product')
-
-   @section('content')
+    <x-layout title="Nieuw product">
        <h1>Nieuw product toevoegen</h1>
 
        <form action="{{ route('products.store') }}" method="POST">
@@ -243,12 +152,12 @@ We maken een gedeelde layout zodat alle pagina's dezelfde navigatie en stijl heb
            <button type="submit" class="btn btn-primary">Opslaan</button>
            <a href="{{ route('products.index') }}" class="btn btn-secondary">Annuleren</a>
        </form>
-   @endsection
+   </x-layout>
    ```
 
 > **Let op `@csrf`**: Laravel vereist een CSRF-token bij elk POST-formulier. Dit beschermt je applicatie tegen aanvallen waarbij kwaadaardige websites acties namens de gebruiker uitvoeren. Zonder `@csrf` geeft Laravel een 419-fout.
 
-### Opdracht 3.2: Store methode met validatie
+### Opdracht 2.2: Store methode met validatie
 
 1. Open `app/Http/Controllers/ProductController.php`.
 2. Pas de `create`-methode aan:
@@ -294,7 +203,7 @@ We maken een gedeelde layout zodat alle pagina's dezelfde navigatie en stijl heb
 > - `exists:categories,id` → de waarde moet bestaan in de `categories` tabel kolom `id`
 > - `numeric|min:0` → moet een getal zijn, minimaal 0
 
-### Opdracht 3.3: Test aanmaken
+### Opdracht 2.3: Test aanmaken
 
 ```bash
 php artisan test --group=ProductCreateTest
@@ -302,7 +211,7 @@ php artisan test --group=ProductCreateTest
 
 ---
 
-## Opdracht 4: Product detail (Show)
+## Opdracht 3: Product detail (Show)
 
 1. Pas de `show`-methode aan in de controller:
    ```php
@@ -320,11 +229,7 @@ php artisan test --group=ProductCreateTest
 
 3. Vul `resources/views/products/show.blade.php` in:
    ```html
-   @extends('layouts.app')
-
-   @section('title', $product->name)
-
-   @section('content')
+    <x-layout :title="$product->name">
        <a href="{{ route('products.index') }}" class="btn btn-secondary mb-3">← Terug</a>
 
        <h1>{{ $product->name }}</h1>
@@ -356,14 +261,14 @@ php artisan test --group=ProductCreateTest
        <div class="mt-3">
            <a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Bewerken</a>
        </div>
-   @endsection
+   </x-layout>
    ```
 
 ---
 
-## Opdracht 5: Producten bewerken (Edit/Update)
+## Opdracht 4: Producten bewerken (Edit/Update)
 
-### Opdracht 5.1: Edit formulier
+### Opdracht 4.1: Edit formulier
 
 1. Pas de `edit`-methode aan:
    ```php
@@ -382,11 +287,7 @@ php artisan test --group=ProductCreateTest
 
 3. Vul `resources/views/products/edit.blade.php` in:
    ```html
-   @extends('layouts.app')
-
-   @section('title', 'Bewerken: ' . $product->name)
-
-   @section('content')
+    <x-layout :title="'Bewerken: ' . $product->name">
        <h1>Product bewerken: {{ $product->name }}</h1>
 
        <form action="{{ route('products.update', $product) }}" method="POST">
@@ -451,12 +352,12 @@ php artisan test --group=ProductCreateTest
            <button type="submit" class="btn btn-primary">Opslaan</button>
            <a href="{{ route('products.show', $product) }}" class="btn btn-secondary">Annuleren</a>
        </form>
-   @endsection
+   </x-layout>
    ```
 
 > **`@method('PUT')`**: HTML-formulieren ondersteunen alleen GET en POST. Laravel gebruikt een verborgen `_method` veld om PUT, PATCH en DELETE te simuleren. Zonder `@method('PUT')` herkent Laravel de update-route niet.
 
-### Opdracht 5.2: Update methode
+### Opdracht 4.2: Update methode
 
 1. Pas de `update`-methode aan:
    ```php
@@ -488,7 +389,7 @@ php artisan test --group=ProductCreateTest
 
 ---
 
-## Opdracht 6: Producten verwijderen (Delete)
+## Opdracht 5: Producten verwijderen (Delete)
 
 1. Voeg een verwijderknop toe in de `show`-view na de bewerkknop:
    ```html
@@ -516,11 +417,11 @@ php artisan test --group=ProductCreateTest
 
 ---
 
-## Opdracht 7: Flash messages
+## Opdracht 6: Flash messages
 
 Flash messages zijn berichten die eenmalig getoond worden na een actie (zoals opslaan of verwijderen). Ze worden opgeslagen in de sessie en verdwijnen na het vernieuwen van de pagina.
 
-We hebben de flash message al verwerkt in de layout (stap 2). Controleer of je de volgende code in `layouts/app.blade.php` hebt staan:
+We hebben de flash message al verwerkt in de layout. Controleer of je de volgende code in `components/layout.blade.php` hebt staan:
 
 ```html
 @if(session('success'))
@@ -538,7 +439,7 @@ We hebben de flash message al verwerkt in de layout (stap 2). Controleer of je d
 
 ---
 
-## Opdracht 8: Zoekfunctie
+## Opdracht 7: Zoekfunctie
 
 We voegen een zoekfunctie toe aan het producten-overzicht zodat gebruikers kunnen filteren op naam of categorie.
 
@@ -597,7 +498,7 @@ We voegen een zoekfunctie toe aan het producten-overzicht zodat gebruikers kunne
 
 ---
 
-## Opdracht 9: Tests
+## Opdracht 8: Tests
 
 ```bash
 php artisan test --group=ProductCrudTest
