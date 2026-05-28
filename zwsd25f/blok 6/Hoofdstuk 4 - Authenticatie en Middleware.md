@@ -1,11 +1,37 @@
 # Hoofdstuk 4 — Authenticatie en Middleware
 
-In dit hoofdstuk zetten we de authenticatie aan die bij het opstarten al meegeleverd was via Laravel Breeze. We beveiligen routes met middleware, tonen content op basis van of iemand is ingelogd, en geven beheerders extra rechten voor het beheren van producten.
+In dit hoofdstuk leer je hoe je bepaalt wie mag inloggen en wie welke acties mag uitvoeren in je webapp.
+
+- **Laravel Breeze** is een kant-en-klaar startpakket voor inloggen, registreren, uitloggen en wachtwoordfunctionaliteit.
+- **Middleware** is een controlelaag voor je routes. Die checkt bijvoorbeeld eerst of iemand is ingelogd, voordat een pagina wordt geopend.
+- **Inlogstatus** betekent: is een gebruiker op dit moment ingelogd (**ja**) of niet (**nee**).
+
+We controleren eerst of Breeze al aanwezig is (en installeren het indien nodig). Daarna beveiligen we routes met middleware, tonen we andere content voor ingelogde en niet-ingelogde gebruikers, en geven we beheerders extra rechten voor het beheren van producten.
+
+### Waar zie je dit terug in je project?
+
+| Onderdeel | Type bestand | Locatie in je project | Wat gebeurt daar? |
+|---|---|---|---|
+| Breeze-routes | PHP routebestand | `routes/auth.php` | Login, registratie, logout en wachtwoordroutes |
+| Website-routes | PHP routebestand | `routes/web.php` | Hier koppel je middleware zoals `auth` aan routes |
+| Auth-controllers | PHP controllers | `app/Http/Controllers/Auth/` | Logica voor inloggen, registreren, wachtwoord reset |
+| User-model | PHP model | `app/Models/User.php` | Ingelogde gebruiker, rollen en helpers zoals `isAdmin()` |
+| Middleware | PHP classes | `app/Http/Middleware/` | Extra controles voordat de route/controller wordt uitgevoerd |
+| Login/register pagina's | Blade views | `resources/views/auth/` | Formulieren voor inloggen en registreren |
+| Layout en navigatie | Blade views | `resources/views/components/layout.blade.php` + `resources/views/components/auth-menubar.blade.php` | Bestaande layout blijft; auth-menubar wordt apart ingeladen |
+
+Kort samengevat:
+- **Models** (zoals `User.php`) bevatten data en hulpfuncties.
+- **Views** (in `resources/views`) tonen wat de gebruiker ziet.
+- **Controllers** verwerken acties van formulieren en routes.
+- **Routes + middleware** bepalen wie welke pagina/methode mag gebruiken.
 
 ## Inhoudsopgave
 - [Hoofdstuk 4 — Authenticatie en Middleware](#hoofdstuk-4--authenticatie-en-middleware)
   - [Inhoudsopgave](#inhoudsopgave)
+    - [Waar zie je dit terug in je project?](#waar-zie-je-dit-terug-in-je-project)
   - [Leerdoelen](#leerdoelen)
+    - [Breeze installeren (indien nodig)](#breeze-installeren-indien-nodig)
   - [Opdracht 1: Breeze verkennen](#opdracht-1-breeze-verkennen)
     - [Opdracht 1.1: Wat heeft Breeze aangemaakt?](#opdracht-11-wat-heeft-breeze-aangemaakt)
     - [Opdracht 1.2: Registreren en inloggen](#opdracht-12-registreren-en-inloggen)
@@ -32,9 +58,62 @@ In dit hoofdstuk zetten we de authenticatie aan die bij het opstarten al meegele
 
 ---
 
-## Opdracht 1: Breeze verkennen
+## Breeze installeren (indien nodig)
 
-Bij het aanmaken van het spelshop-project in Hoofdstuk 1 hebben we gekozen voor Laravel Breeze. Breeze heeft automatisch een compleet authenticatiesysteem aangemaakt. Laten we bekijken wat er is meegeleverd.
+Controleer eerst of Breeze al aanwezig is:
+
+1. Kijk of `routes/auth.php` bestaat.
+2. Controleer of routes zoals `login` en `register` beschikbaar zijn.
+3. Gebruik dit check-commando:
+
+```bash
+php artisan route:list --name=login
+php artisan route:list --name=register
+```
+
+Als Breeze nog niet aanwezig is, voer dan uit:
+
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+php artisan migrate
+npm install
+npm run build
+```
+
+Let op: Breeze overschrijft de `routes/web.php`. Zet de volgende inhoud weer terug in de aangepaste `web.php`:
+
+```php
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/over', function () {
+    return view('over');
+});
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+
+Route::resource('products', ProductController::class);
+
+Route::get('/prices', [PriceController::class, 'index']);
+
+Route::get('/reviews', [ReviewController::class, 'index']);
+```
+
+### Opdracht 0.1 Commit wijzigingen
+
+Commit alle bestanden die bij de bovenstaande acties gewijzigd of aangemaakt zijn.
+---
+
+## Opdracht 1: Breeze verkennen
 
 ### Opdracht 1.1: Wat heeft Breeze aangemaakt?
 
@@ -52,7 +131,7 @@ Bekijk de volgende bestanden en mappen in VS Code:
 2. Zoek de route voor `login` en `register`.
 3. Open `app/Http/Controllers/Auth/RegisteredUserController.php` en lees de `store`-methode. Wat gebeurt er als iemand zich registreert?
 
-> **Let op**: Breeze heeft een eigen `layouts/app.blade.php` aangemaakt. In Hoofdstuk 3 hebben wij ook een layout aangemaakt. We gaan beide samenvoegen in de volgende opdracht.
+> **Let op**: Breeze heeft een eigen `layouts/app.blade.php` aangemaakt, maar in dit project werken we verder met onze bestaande `views/components/layout.blade.php`.
 
 ### Opdracht 1.2: Registreren en inloggen
 
@@ -68,66 +147,33 @@ Bekijk de volgende bestanden en mappen in VS Code:
 
 ## Opdracht 2: De layout koppelen aan Breeze
 
-Breeze gebruikt `resources/views/layouts/app.blade.php` als standaard layout voor ingelogde pagina's. We passen onze eigen layout aan zodat de navigatiebalk de Breeze-navigatie gebruikt en een login/logout-knop toont.
+Breeze levert standaard een eigen layout, maar in dit project behouden we onze bestaande `views/components/layout.blade.php`. We voegen alleen een aparte auth-menubar toe en laden die in in de bestaande layout.
 
-1. Open `resources/views/layouts/app.blade.php` (onze eigen layout uit Hoofdstuk 3).
-2. Vervang de inhoud volledig met:
+1. Maak een nieuw componentbestand aan: `resources/views/components/auth-menubar.blade.php`.
+2. Zet daar deze inhoud in:
 
 ```html
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spelshop - @yield('title', 'Home')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="/">Spelshop</a>
-            <div class="navbar-nav me-auto">
-                <a class="nav-link" href="{{ route('products.index') }}">Producten</a>
-            </div>
+<div class="navbar-nav ms-auto">
+    @auth
+        <span class="navbar-text text-light me-3">
+            Welkom, {{ Auth::user()->name }}
+        </span>
+        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-outline-light btn-sm">Uitloggen</button>
+        </form>
+    @else
+        <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
+        <a class="nav-link" href="{{ route('register') }}">Registreren</a>
+    @endauth
+</div>
+```
 
-            <div class="navbar-nav">
-                @auth
-                    <span class="navbar-text text-light me-3">
-                        Welkom, {{ Auth::user()->name }}
-                    </span>
-                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-light btn-sm">Uitloggen</button>
-                    </form>
-                @else
-                    <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
-                    <a class="nav-link" href="{{ route('register') }}">Registreren</a>
-                @endauth
-            </div>
-        </div>
-    </nav>
+3. Open je bestaande layout: `resources/views/components/layout.blade.php`.
+4. Voeg in de navbar (naast je bestaande links) alleen deze regel toe:
 
-    <div class="container">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
-        @yield('content')
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+```html
+<x-auth-menubar />
 ```
 
 > **`@auth` en `@guest`**: Dit zijn Blade-directives die controleren of iemand ingelogd is.
@@ -135,7 +181,7 @@ Breeze gebruikt `resources/views/layouts/app.blade.php` als standaard layout voo
 > - `@guest` → content wordt alleen getoond aan niet-ingelogde gebruikers
 > - `@else` mag tussen beide gebruikt worden
 
-3. Herlaad de pagina. Je ziet nu "Welkom, [naam]" als je ingelogd bent, of "Inloggen / Registreren" als je dat niet bent.
+6. Herlaad de pagina. Je ziet nu "Welkom, [naam]" als je ingelogd bent, of "Inloggen / Registreren" als je dat niet bent, zonder je bestaande layout te vervangen.
 
 ---
 
@@ -149,19 +195,14 @@ Middleware is een filter dat wordt uitgevoerd vóórdat een route-actie plaatsvi
 2. Splits de resource-route op in een publiek deel (lezen) en een beveiligd deel (schrijven):
 
 ```php
-use App\Http\Controllers\ProductController;
+// Publiek: iedereen mag producten bekijken (2 van de 7 routes)
+Route::resource('products', ProductController::class)
+    ->only(['index', 'show']);
 
-// Publiek: iedereen mag producten bekijken
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-
-// Beveiligd: alleen ingelogde gebruikers
+// Beveiligd: alleen ingelogde gebruikers (de overige 5 routes)
 Route::middleware('auth')->group(function () {
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::resource('products', ProductController::class)
+        ->except(['index', 'show']);
 });
 ```
 
@@ -173,10 +214,6 @@ Route::middleware('auth')->group(function () {
 2. Ga naar `http://spelshop.test/products/create`.
 3. Je wordt doorgestuurd naar de loginpagina.
 4. Log in en probeer opnieuw — nu werkt het wel.
-
-```bash
-php artisan test --group=AuthMiddlewareTest
-```
 
 ---
 
