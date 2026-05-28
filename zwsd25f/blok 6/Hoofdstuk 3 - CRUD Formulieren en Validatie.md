@@ -136,15 +136,22 @@ In deze opdracht werk je in de bestaande `ProductController` en voeg je de benod
 ### Opdracht 1.2: Store methode met validatie
 
 1. Open `app/Http/Controllers/ProductController.php`.
-2. Pas de `create`-methode aan:
+2. Voeg bovenaan de controller de juiste imports toe:
+    ```php
+    use App\Models\Category;
+    use App\Models\Product;
+    use Illuminate\Http\Request;
+    ```
+3. Pas de `create`-methode aan:
    ```php
    public function create()
    {
-       $categories = \App\Models\Category::all();
+       $categories = Category::all();
+       
        return view('products.create', compact('categories'));
    }
    ```
-3. Pas de `store`-methode aan:
+4. Pas de `store`-methode aan:
    ```php
    public function store(Request $request)
    {
@@ -178,6 +185,12 @@ In deze opdracht werk je in de bestaande `ProductController` en voeg je de benod
 > - `nullable` → veld mag leeg zijn
 > - `exists:categories,id` → de waarde moet bestaan in de `categories` tabel kolom `id`
 > - `numeric|min:0` → moet een getal zijn, minimaal 0
+
+| Onderdeel | Korte uitleg |
+|-----------|--------------|
+| `$validated` | Bevat alleen de velden die door de validatie zijn goedgekeurd. Je gebruikt deze array om veilig data op te slaan. |
+| `$product->prices()->create([...])` | Maakt naast het product ook een nieuw record in de `prices` tabel via de relatie. Zo wordt de prijs als apart (historisch) prijsrecord opgeslagen. |
+| `->with('success', '...')` | Voegt een flash message toe aan de sessie bij de redirect. Die melding kun je op de volgende pagina één keer tonen. |
 
 
 ---
