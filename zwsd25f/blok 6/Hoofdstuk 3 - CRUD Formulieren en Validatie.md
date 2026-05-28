@@ -45,6 +45,21 @@ In Laravel bestaat een resource controller uit zeven standaard methoden die same
 
 Deze tabel is bedoeld als naslag. In dit hoofdstuk werken we verder in de bestaande `ProductController` en voegen we de nodige methodes handmatig toe.
 
+### Routes opnieuw toevoegen
+
+Dit hoofdstuk steunt op resource-routes. Je voegt hem als volgt toe:
+
+1. Open `routes/web.php`.
+2. Verwijder bestaande losse `index`- en `show`-routes voor `products` (die zitten straks in de resource-route).
+3. Voeg toe:
+    ```php
+    Route::resource('products', ProductController::class);
+    ```
+4. Controleer met:
+    ```bash
+    php artisan route:list --path=products
+    ```
+
 ---
 
 ## Opdracht 1: Producten aanmaken (Create)
