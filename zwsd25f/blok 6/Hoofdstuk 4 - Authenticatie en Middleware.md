@@ -45,7 +45,7 @@ Kort samengevat:
   - [Opdracht 6: Gate gebruiken voor autorisatie](#opdracht-6-gate-gebruiken-voor-autorisatie)
     - [Opdracht 6.1: Gate toepassen in de view](#opdracht-61-gate-toepassen-in-de-view)
     - [Opdracht 6.2: Gate toepassen in de controller](#opdracht-62-gate-toepassen-in-de-controller)
-  - [Opdracht 7: Tests](#opdracht-7-tests)
+    - [Opdracht 7: Controleren](#opdracht-7-controleren)
   - [Afronding / Reflectie](#afronding--reflectie)
 
 ## Leerdoelen
@@ -195,15 +195,15 @@ Middleware is een filter dat wordt uitgevoerd vóórdat een route-actie plaatsvi
 2. Splits de resource-route op in een publiek deel (lezen) en een beveiligd deel (schrijven):
 
 ```php
-// Publiek: iedereen mag producten bekijken (2 van de 7 routes)
-Route::resource('products', ProductController::class)
-    ->only(['index', 'show']);
-
 // Beveiligd: alleen ingelogde gebruikers (de overige 5 routes)
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class)
         ->except(['index', 'show']);
 });
+
+// Publiek: iedereen mag producten bekijken (2 van de 7 routes)
+Route::resource('products', ProductController::class)
+    ->only(['index', 'show']);
 ```
 
 > **`Route::middleware('auth')->group(...)`**: Alle routes binnen deze groep vereisen een ingelogde gebruiker. Als iemand niet is ingelogd, stuurt Laravel die automatisch door naar `/login`.
@@ -221,7 +221,7 @@ Route::middleware('auth')->group(function () {
 
 Nu we weten wie er is ingelogd, kunnen we de gebruikersinformatie tonen in views en gebruiken in de controller.
 
-1. Open de `show`-view (`resources/views/products/show.blade.php`).
+1. Open de `show`-view van producten (`resources/views/products/show.blade.php`).
 2. Voeg onderaan de pagina een conditieblok toe voor de reviewknop:
 
 ```html
@@ -266,12 +266,42 @@ Nu we weten wie er is ingelogd, kunnen we de gebruikersinformatie tonen in views
 
 In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We gebruiken dit om een onderscheid te maken tussen gewone gebruikers en beheerders.
 
-1. Open de seeder voor rollen. Maak hem aan als hij nog niet bestaat:
+> **Belangrijk**: `Role` hoort niet bij Laravel Breeze. Dit model en deze tabel maak je zelf op basis van je eigen ERD.
+
+1. Heb je Hoofdstuk 2 gedaan? Gebruik dan diezelfde modeldefinitie en migrations. Je hoeft `Role` niet opnieuw aan te maken.
+
+2. Controleer dat je modelrelaties uit Hoofdstuk 2 aanwezig zijn:
+   ```php
+   // app/Models/Role.php
+   protected $fillable = ['name'];
+
+   public function users()
+   {
+       return $this->hasMany(User::class);
+   }
+   ```
+
+   ```php
+   // app/Models/User.php
+   public function role()
+   {
+       return $this->belongsTo(Role::class);
+   }
+   ```
+
+3. Controleer ook dat `users.role_id` bestaat met een foreign key naar `roles.id`.
+
+4. Als je iets hebt aangepast, draai dan:
+   ```bash
+   php artisan migrate
+   ```
+
+5. Open de seeder voor rollen. Maak hem aan als hij nog niet bestaat:
    ```bash
    php artisan make:seeder RolesSeeder
    ```
 
-2. Vul `database/seeders/RolesSeeder.php` in:
+6. Vul `database/seeders/RolesSeeder.php` in:
    ```php
    use App\Models\Role;
 
@@ -279,12 +309,13 @@ In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We 
    {
        Role::insert([
            ['name' => 'admin'],
+           ['name' => 'medewerker'],
            ['name' => 'klant'],
        ]);
    }
    ```
 
-3. Voeg de seeder toe aan `DatabaseSeeder.php` vóór de andere seeders:
+7. Voeg de seeder toe aan `DatabaseSeeder.php` vóór de andere seeders:
    ```php
    $this->call([
        RolesSeeder::class,
@@ -295,12 +326,13 @@ In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We 
    ]);
    ```
 
-4. Pas de `UsersSeeder` aan (of maak hem aan) om een admin-account toe te voegen:
+8. Pas de `UsersSeeder` aan (of maak hem aan) om een admin-account toe te voegen:
    ```bash
    php artisan make:seeder UsersSeeder
    ```
 
    ```php
+   use App\Models\Role;
    use App\Models\User;
    use Illuminate\Support\Facades\Hash;
 
@@ -310,12 +342,12 @@ In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We 
            'name'     => 'Admin',
            'email'    => 'admin@spelshop.nl',
            'password' => Hash::make('password'),
-           'role_id'  => 1, // admin
+           'role_id'  => Role::where('name', 'admin')->value('id'),
        ]);
    }
    ```
 
-5. Voeg de UsersSeeder toe aan DatabaseSeeder:
+9. Voeg de UsersSeeder toe aan DatabaseSeeder:
    ```php
    $this->call([
        RolesSeeder::class,
@@ -325,12 +357,12 @@ In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We 
    ]);
    ```
 
-6. Draai alles opnieuw:
+10. Draai alles opnieuw:
    ```bash
    php artisan migrate:fresh --seed
    ```
 
-7. Log in met `admin@spelshop.nl` / `password`.
+11. Log in met `admin@spelshop.nl` / `password`.
 
 ### Opdracht 5.1: Admin-controle in de controller
 
@@ -357,7 +389,7 @@ We voegen een hulpfunctie toe aan het `User`-model om eenvoudig te controleren o
    }
    ```
 
-   Doe hetzelfde voor `update` en `destroy`.
+ 4.  Doe hetzelfde voor `update` en `destroy`. Test de functionaliteit door in te loggen als niet-admin-gebruiker.
 
 > **`abort(403)`**: Gooit een HTTP 403 Forbidden fout. Laravel toont automatisch een foutpagina. Dit is een vangnet naast de UI-aanpassingen.
 
@@ -426,14 +458,9 @@ Pas dit toe in `store`, `update` en `destroy`.
 
 ---
 
-## Opdracht 7: Tests
+## Opdracht 7: Controleren
 
-```bash
-php artisan test --group=AuthMiddlewareTest
-php artisan test --group=AdminAuthTest
-```
-
-Controleer dat de volgende scenario's werken:
+Controleer handmatig dat de volgende scenario's werken:
 - Een niet-ingelogde gebruiker die `/products/create` bezoekt, wordt doorgestuurd naar `/login`.
 - Een ingelogde gebruiker zonder adminrol krijgt een 403 bij het opslaan van een product.
 - Een admin kan producten aanmaken, bewerken en verwijderen.
