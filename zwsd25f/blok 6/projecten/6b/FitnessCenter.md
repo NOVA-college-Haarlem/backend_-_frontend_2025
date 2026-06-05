@@ -9,6 +9,11 @@ Je bouwt verder op je 6A FitnessCenter-project. In 6B voeg je beheerfunctionalit
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - CRUD (Create, Read, Update, Delete)
@@ -71,6 +76,9 @@ Je bouwt verder op je 6A FitnessCenter-project. In 6B voeg je beheerfunctionalit
 
 ## Acceptatiecriteria
 
-- [ ] Workout CRUD en `specializations` CRUD zijn afgerond.
-- [ ] Rollen, gates en policies beperken acties correct.
-- [ ] Validatie en flash messages werken in schrijf-flow.
+- [ ] Ik heb aangetoond dat `workouts` volledige CRUD heeft met de gevraagde validatie.
+- [ ] Ik heb aangetoond dat `equipment` many-to-many gekoppeld wordt in create en edit van `workouts`.
+- [ ] Ik heb aangetoond dat leden reserveringen kunnen maken en dat een receptionist reserveringsstatus kan bijwerken.
+- [ ] Ik heb aangetoond dat `specializations` CRUD werkt, inclusief koppeling aan trainers en weergave op trainerdetail.
+- [ ] Ik heb aangetoond dat zoeken op workoutnaam en filteren op moeilijkheidsgraad werkt.
+- [ ] Ik heb aangetoond dat schrijfacties correct afgeschermd zijn met auth middleware en gates (`beheer-workouts`, `beheer-reserveringen`).

@@ -9,6 +9,11 @@ Je bouwt verder op je 6A HotelManagement-project. In 6B voeg je complete hotelpr
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - CRUD (Create, Read, Update, Delete)
@@ -75,6 +80,8 @@ Je bouwt verder op je 6A HotelManagement-project. In 6B voeg je complete hotelpr
 
 ## Acceptatiecriteria
 
-- [ ] Room CRUD en Guest CRUD volledig afgerond.
-- [ ] Reserveringen valideren op datumlogica.
-- [ ] Rollen, gates en policies werken correct.
+- [ ] Ik heb aangetoond dat `rooms` en `guests` complete CRUD hebben met de gevraagde validatie.
+- [ ] Ik heb aangetoond dat reserveringen aangemaakt en bijgewerkt worden met correcte datumvalidatie (`check_out` na `check_in`) en statusflow.
+- [ ] Ik heb aangetoond dat huishoudelijke dienst `maintenance` meldingen kan aanmaken en updaten, en dat meldingen op room-detail zichtbaar zijn.
+- [ ] Ik heb aangetoond dat zoeken op gastnaam of `room_number` en filteren op reserverings-`status` werkt.
+- [ ] Ik heb aangetoond dat beheerroutes en beheerknoppen correct afgeschermd zijn met auth middleware, gates (`beheer-kamers`, `beheer-reserveringen`) en `@can`.

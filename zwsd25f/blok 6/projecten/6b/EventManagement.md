@@ -9,6 +9,11 @@ Je bouwt verder op je 6A EventManagement-project. In 6B voeg je beheer en ticket
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - Resource controller (controller met standaard CRUD-methodes)
@@ -68,6 +73,8 @@ Je bouwt verder op je 6A EventManagement-project. In 6B voeg je beheer en ticket
 
 ## Acceptatiecriteria
 
-- [ ] Event CRUD en venue CRUD werken met validatie.
-- [ ] Ticketverkoop respecteert capaciteit.
-- [ ] Rollen en policies beperken beheeracties correct.
+- [ ] Ik heb aangetoond dat `events` en `venues` complete CRUD hebben met de gevraagde validatie.
+- [ ] Ik heb aangetoond dat op venue-detail de gekoppelde `events` zichtbaar zijn.
+- [ ] Ik heb aangetoond dat een ingelogde bezoeker tickets kan kopen en dat ticketverkoop blokkeert bij bereikte capaciteit.
+- [ ] Ik heb aangetoond dat zoeken op eventnaam, filteren op datumrange/categorie en een melding bij 0 resultaten werkt.
+- [ ] Ik heb aangetoond dat beheeracties correct afgeschermd zijn met auth middleware, gate `beheer-events` en policy op `venues`.

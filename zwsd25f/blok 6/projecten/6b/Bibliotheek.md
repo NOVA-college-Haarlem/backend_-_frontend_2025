@@ -9,6 +9,11 @@ Je bouwt verder op je 6A Bibliotheek-project. In 6B maak je de applicatie intera
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of index- en detailpagina's nog werken met seeddata.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - Resource route (een routepakket met standaard CRUD-routes)
@@ -78,7 +83,8 @@ Je bouwt verder op je 6A Bibliotheek-project. In 6B maak je de applicatie intera
 
 ## Acceptatiecriteria
 
-- [ ] CRUD voor 2 entiteiten afgerond.
-- [ ] Schrijf-acties beveiligd met auth en rolcontrole.
-- [ ] Validatiefouten per veld zichtbaar.
-- [ ] Geen N+1 op kernoverzichten (eager loading gebruiken).
+- [ ] Ik heb aangetoond dat `books` volledige CRUD heeft met validatie en flash messages.
+- [ ] Ik heb aangetoond dat `loans` aangemaakt en afgerond worden met correcte datumvalidatie (`due_date` na of gelijk aan `loan_date`).
+- [ ] Ik heb aangetoond dat boeken aan categorieen gekoppeld worden, met sync geupdatet worden, en op detail zichtbaar zijn.
+- [ ] Ik heb aangetoond dat zoeken op titel/auteur en filteren op categorie werkt op de boeken-index.
+- [ ] Ik heb aangetoond dat schrijfacties correct afgeschermd zijn met auth middleware, gate `beheer-boeken` en policy op uitleningen.

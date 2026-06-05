@@ -9,6 +9,11 @@ Je bouwt verder op je 6A UniversityManagement-project. In 6B breid je uit met in
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - CRUD (Create, Read, Update, Delete)
@@ -71,6 +76,8 @@ Je bouwt verder op je 6A UniversityManagement-project. In 6B breid je uit met in
 
 ## Acceptatiecriteria
 
-- [ ] Student CRUD en Course CRUD compleet.
-- [ ] Validatie werkt in create en update flows.
-- [ ] Rollen, gates en policies werken correct.
+- [ ] Ik heb aangetoond dat `students` en `courses` complete CRUD hebben met de gevraagde validatie.
+- [ ] Ik heb aangetoond dat een studieadviseur studenten kan inschrijven en inschrijvings-`status` kan bijwerken.
+- [ ] Ik heb aangetoond dat docent cijfers kan toevoegen en wijzigen met validatie van `grade` tussen 1.0 en 10.0.
+- [ ] Ik heb aangetoond dat zoeken op cursusnaam en filteren op `study` of inschrijf-`status` werkt.
+- [ ] Ik heb aangetoond dat beheeracties en beheerknoppen correct afgeschermd zijn met auth middleware, gates (`beheer-cursussen`, `beheer-inschrijvingen`) en `@can`.

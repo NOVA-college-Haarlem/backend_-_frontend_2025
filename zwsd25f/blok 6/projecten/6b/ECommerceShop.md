@@ -9,6 +9,11 @@ Je bouwt verder op je 6A ECommerceShop-project. In 6B voeg je beheerflows en kla
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - Resource route (routepakket met standaard CRUD-routes)
@@ -69,6 +74,8 @@ Je bouwt verder op je 6A ECommerceShop-project. In 6B voeg je beheerflows en kla
 
 ## Acceptatiecriteria
 
-- [ ] Producten hebben complete CRUD met validatie en flash messages.
-- [ ] Reviews gebruiken policy-gebaseerde autorisatie.
-- [ ] Rollen en rechten worden correct afgedwongen.
+- [ ] Ik heb aangetoond dat `products` complete CRUD heeft met validatie en flash messages.
+- [ ] Ik heb aangetoond dat producten aan meerdere categorieen gekoppeld zijn en dat filter op categorie plus zoeken op productnaam werkt.
+- [ ] Ik heb aangetoond dat een ingelogde klant reviews kan plaatsen (`rating`, `comment`) en dat reviews met auteur en datum zichtbaar zijn.
+- [ ] Ik heb aangetoond dat alleen review-eigenaar of admin een review kan verwijderen via policy.
+- [ ] Ik heb aangetoond dat beheerroutes en beheerknoppen correct afgeschermd zijn met auth middleware, gates (`beheer-producten`, `beheer-bestellingen`) en `@can`.

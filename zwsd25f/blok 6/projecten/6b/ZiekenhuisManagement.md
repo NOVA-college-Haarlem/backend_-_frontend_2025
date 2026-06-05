@@ -9,6 +9,11 @@ Je bouwt verder op je 6A ZiekenhuisManagement-project. In 6B voeg je patientregi
 - [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
 - [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
+## Commit-afspraak per checkbox
+
+- [ ] Ik heb na elke afgevinkte checkbox precies 1 nieuwe commit gemaakt.
+- [ ] De docent controleert mijn voortgang met `git log` op volgorde, inhoud en tijd van mijn commits.
+
 ## Korte begrippen in dit project
 
 - CRUD (Create, Read, Update, Delete)
@@ -72,6 +77,9 @@ Je bouwt verder op je 6A ZiekenhuisManagement-project. In 6B voeg je patientregi
 
 ## Acceptatiecriteria
 
-- [ ] Patient CRUD en Appointment CRUD afgerond met validatie.
-- [ ] Rollen, gates en policies werken correct.
-- [ ] Validatie en flash messages werken in schrijf-flow.
+- [ ] Ik heb aangetoond dat `patients` complete CRUD heeft met de gevraagde validatie.
+- [ ] Ik heb aangetoond dat een receptionist afspraken kan aanmaken, wijzigen en annuleren met correcte statusflow (planned, `checked_in`, completed, canceled).
+- [ ] Ik heb aangetoond dat een dokter notities kan toevoegen en eigen notities kan wijzigen.
+- [ ] Ik heb aangetoond dat update-flow voor `doctors` werkt en dat op department-detail dokters plus komende afspraken zichtbaar zijn.
+- [ ] Ik heb aangetoond dat zoeken op patientnaam en filteren op afspraak-`status` of datum werkt.
+- [ ] Ik heb aangetoond dat schrijfacties en actieknoppen correct afgeschermd zijn met auth middleware, gates (`beheer-afspraken`, `beheer-afdelingen`) en `@can`.

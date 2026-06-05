@@ -42,3 +42,8 @@ In 6B bouw je verder op je bestaande 6A-project. Je start dus niet opnieuw.
    - [ ] Welke CRUD's ik heb gemaakt.
    - [ ] Welke middleware, gate en policy ik heb gebruikt.
    - [ ] Welke validatieregels ik heb toegepast.
+
+## Commit-afspraak (verplicht)
+
+- [ ] Per afgevinkte checkbox is er precies 1 commit.
+- [ ] De docent controleert met `git log` of checkbox-volgorde, commit-inhoud en commit-tijd logisch overeenkomen.
