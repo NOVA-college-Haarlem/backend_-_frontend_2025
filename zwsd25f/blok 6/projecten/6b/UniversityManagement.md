@@ -1,46 +1,60 @@
-# Project 6: UniversityManagement (6B - CRUD uitbreiding)
+# UniversityManagement (6B - CRUD uitbreiding)
 
 ## Introductie
 
-Je bouwt verder op je 6A UniversityManagement-project. In 6B breid je uit met inschrijvingen, cijferregistratie en beheer van studenten/cursussen.
+Je bouwt verder op je 6A UniversityManagement-project. In 6B breid je uit met inschrijvingen, cijferregistratie en beheer van studenten en cursussen.
 
-## 6B opdrachten
+## Startpunt
 
-## Opdracht 1 - Student CRUD
+- [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
+- [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
-1. Maak volledige CRUD voor students.
-2. Valideer minimaal:
-   - name required
-   - student_number required unique
-   - study required
+## Korte begrippen in dit project
 
-## Opdracht 2 - Course CRUD
+- CRUD (Create, Read, Update, Delete)
+- Middleware (controlelaag voor routes)
+- Gate (centrale rechtencheck)
+- Policy (rechtencheck op 1 specifiek record)
 
-1. Maak volledige CRUD voor courses.
-2. Koppel een docent aan elke cursus.
-3. Valideer study points als integer min 1.
+## Verplichte opdrachten
 
-## Opdracht 3 - Enrollments beheren
+### Student CRUD
+- [ ] Ik heb volledige CRUD voor `students` gemaakt.
+- [ ] Ik heb gevalideerd met regel: `name` required.
+- [ ] Ik heb gevalideerd met regel: `student_number` required unique.
+- [ ] Ik heb gevalideerd met regel: `study` required.
 
-1. Studieadviseur kan student inschrijven voor cursus.
-2. Voorkom dubbele inschrijving van dezelfde student op dezelfde cursus.
-3. Voeg status toe (active, dropped, completed) en update-flow.
+### Course CRUD
+- [ ] Ik heb volledige CRUD voor `courses` gemaakt.
+- [ ] Ik heb gekoppeld een docent aan elke cursus.
+- [ ] Ik heb gevalideerd `study_points` als integer min 1.
 
-## Opdracht 4 - Grades invoeren
+### Enrollments beheren
+- [ ] Ik heb ervoor gezorgd dat studieadviseur een student kan inschrijven voor een cursus.
+- [ ] Ik heb `status` toegevoegd (active, dropped, completed) en update-flow.
 
-1. Docent kan cijfers toevoegen en wijzigen voor eigen cursussen.
-2. Valideer grade tussen 1.0 en 10.0.
-3. Policy: docent mag alleen cijfers beheren van cursussen die aan hem/haar gekoppeld zijn.
+### Grades invoeren
+- [ ] Ik heb ervoor gezorgd dat docent cijfers kan toevoegen en wijzigen.
+- [ ] Ik heb gevalideerd `grade` tussen 1.0 en 10.0.
 
-## Opdracht 5 - Auth en autorisatie
+### Zoeken en filteren
+- [ ] Ik heb een zoekopdracht op cursusnaam toegevoegd.
+- [ ] Ik heb een filter op `study` of inschrijf-`status` toegevoegd.
 
-1. Gebruik je nog geen Breeze? Werk dan eerst de les Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze) door.
-1. Beveilig beheeracties met auth middleware.
-2. Gate: `beheer-cursussen` voor faculteits manager.
-3. Gate: `beheer-inschrijvingen` voor studieadviseur.
-4. Gebruik @can voor knoppen in views.
+### Auth en autorisatie
+- [ ] Als Breeze nog ontbreekt, doorloop ik eerst Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
+- [ ] Ik heb beheeracties met auth middleware beveiligd.
+- [ ] Ik heb gate beheer-cursussen voor faculteits manager gebruikt.
+- [ ] Ik heb gate beheer-inschrijvingen voor studieadviseur gebruikt.
+- [ ] Ik heb @can voor knoppen in views gebruikt.
 
-## 6B user stories
+## Plusopdrachten (extra)
+
+- [ ] Ik heb voorkomen dubbele inschrijving van dezelfde student op dezelfde cursus.
+- [ ] Ik heb een policy: docent mag alleen cijfers beheren van eigen cursussen gebruikt.
+- [ ] Ik heb een overzicht toegevoegd met gemiddelde cijfers per cursus.
+
+## User stories 6B
 
 ### Studieadviseur
 - [ ] Als studieadviseur wil ik studenten kunnen registreren zodat ze kunnen deelnemen.
@@ -57,6 +71,6 @@ Je bouwt verder op je 6A UniversityManagement-project. In 6B breid je uit met in
 
 ## Acceptatiecriteria
 
-- Student CRUD en Course CRUD compleet.
-- Enrollment-duplicaten worden voorkomen.
-- Grade-beheer gebruikt policy op eigenaarschap van cursus.
+- [ ] Student CRUD en Course CRUD compleet.
+- [ ] Validatie werkt in create en update flows.
+- [ ] Rollen, gates en policies werken correct.

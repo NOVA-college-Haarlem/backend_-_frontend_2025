@@ -1,48 +1,63 @@
-# Project 5: HotelManagement (6B - CRUD uitbreiding)
+# HotelManagement (6B - CRUD uitbreiding)
 
 ## Introductie
 
 Je bouwt verder op je 6A HotelManagement-project. In 6B voeg je complete hotelprocessen toe: gastenbeheer, reserveringen, kamerbeheer en onderhoud.
 
-## 6B opdrachten
+## Startpunt
 
-## Opdracht 1 - Room CRUD
+- [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
+- [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
-1. Maak volledige CRUD voor rooms.
-2. Valideer minimaal:
-   - room_number required unique
-   - type required
-   - price required numeric min 0
-   - capacity required integer min 1
+## Korte begrippen in dit project
 
-## Opdracht 2 - Guest CRUD
+- CRUD (Create, Read, Update, Delete)
+- Middleware (controlelaag voor routes)
+- Gate (centrale rechtencheck)
+- Policy (rechtencheck op 1 specifiek record)
 
-1. Receptionist kan gasten registreren, wijzigen en verwijderen.
-2. Valideer email uniek en telefoonformaat.
-3. Toon op guest detail alle reserveringen met status.
+## Verplichte opdrachten
 
-## Opdracht 3 - Reserveringen beheren
+### Room CRUD
+- [ ] Ik heb volledige CRUD voor `rooms` gemaakt.
+- [ ] Ik heb gevalideerd met regel: `room_number` required unique.
+- [ ] Ik heb gevalideerd met regel: `type` required.
+- [ ] Ik heb gevalideerd met regel: `price` required numeric min 0.
+- [ ] Ik heb gevalideerd met regel: `capacity` required integer min 1.
 
-1. Receptionist kan reserveringen aanmaken en bijwerken.
-2. Valideer dat check_out na check_in ligt.
-3. Blokkeer dubbele booking van dezelfde kamer in overlappende periode.
-4. Voeg check-in/check-out statusflow toe.
+### Guest CRUD
+- [ ] Ik heb ervoor gezorgd dat receptionist gasten kan registreren, wijzigen en verwijderen.
+- [ ] Ik heb gevalideerd email als uniek.
+- [ ] Ik heb gevalideerd telefoon in een logisch formaat.
+- [ ] Ik heb op guest-detail alle reserveringen met `status` getoond.
 
-## Opdracht 4 - Maintenance meldingen
+### Reserveringen beheren
+- [ ] Ik heb ervoor gezorgd dat receptionist reserveringen kan aanmaken en bijwerken.
+- [ ] Ik heb gevalideerd met regel: `check_out` na `check_in` ligt.
+- [ ] Ik heb check-in/check-out statusflow toegevoegd.
 
-1. Huishoudelijke dienst kan maintenance meldingen aanmaken en status wijzigen.
-2. Policy: alleen maker of manager mag een melding sluiten/verwijderen.
-3. Toon meldingen op room detailpagina.
+### Maintenance meldingen
+- [ ] Ik heb ervoor gezorgd dat huishoudelijke dienst `maintenance` meldingen kan aanmaken en `status` kan wijzigen.
+- [ ] Ik heb meldingen op room-detailpagina getoond.
 
-## Opdracht 5 - Auth en autorisatie
+### Zoeken en filteren
+- [ ] Ik heb een zoekopdracht op gastnaam of `room_number` toegevoegd.
+- [ ] Ik heb een filter op reserverings-`status` toegevoegd.
 
-1. Gebruik je nog geen Breeze? Werk dan eerst de les Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze) door.
-1. Beveilig schrijf-routes met auth middleware.
-2. Gate: `beheer-kamers` voor manager.
-3. Gate: `beheer-reserveringen` voor receptionist.
-4. Gebruik @can in de UI voor beheerknoppen.
+### Auth en autorisatie
+- [ ] Als Breeze nog ontbreekt, doorloop ik eerst Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
+- [ ] Ik heb schrijf-routes met auth middleware beveiligd.
+- [ ] Ik heb gate beheer-kamers voor manager gebruikt.
+- [ ] Ik heb gate beheer-reserveringen voor receptionist gebruikt.
+- [ ] Ik heb @can in de UI voor beheerknoppen gebruikt.
 
-## 6B user stories
+## Plusopdrachten (extra)
+
+- [ ] Ik heb geblokkeerd dubbele booking van dezelfde kamer in overlappende periode.
+- [ ] Ik heb een policy: alleen maker of manager mag een `maintenance`-melding sluiten of verwijderen gebruikt.
+- [ ] Ik heb extra rapportage toegevoegd op bezetting per periode.
+
+## User stories 6B
 
 ### Receptionist
 - [ ] Als receptionist wil ik gasten kunnen registreren zodat reserveringen gekoppeld kunnen worden.
@@ -60,6 +75,6 @@ Je bouwt verder op je 6A HotelManagement-project. In 6B voeg je complete hotelpr
 
 ## Acceptatiecriteria
 
-- Room CRUD en Guest CRUD volledig afgerond.
-- Reserveringen valideren op datumlogica en beschikbaarheid.
-- Maintenance gebruikt policy-gebaseerde rechten.
+- [ ] Room CRUD en Guest CRUD volledig afgerond.
+- [ ] Reserveringen valideren op datumlogica.
+- [ ] Rollen, gates en policies werken correct.

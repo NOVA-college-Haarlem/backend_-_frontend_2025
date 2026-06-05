@@ -1,46 +1,60 @@
-# Project 7: ZiekenhuisManagement (6B - CRUD uitbreiding)
+# ZiekenhuisManagement (6B - CRUD uitbreiding)
 
 ## Introductie
 
-Je bouwt verder op je 6A ZiekenhuisManagement-project. In 6B voeg je operationele processen toe: patientregistratie, afspraakplanning en medische notities met juiste autorisatie.
+Je bouwt verder op je 6A ZiekenhuisManagement-project. In 6B voeg je patientregistratie, afspraakplanning en medische notities toe met juiste rechten.
 
-## 6B opdrachten
+## Startpunt
 
-## Opdracht 1 - Patient CRUD
+- [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
+- [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
-1. Maak volledige CRUD voor patients.
-2. Valideer minimaal:
-   - name required
-   - birth_date required date
-   - contact_details required
+## Korte begrippen in dit project
 
-## Opdracht 2 - Appointment CRUD
+- CRUD (Create, Read, Update, Delete)
+- Middleware (controlelaag voor routes)
+- Gate (centrale rechtencheck)
+- Policy (rechtencheck op 1 specifiek record)
 
-1. Receptionist kan afspraken aanmaken, wijzigen en annuleren.
-2. Valideer datum/tijd en dokter/patient koppeling.
-3. Voorkom dubbele afspraak voor dezelfde dokter op hetzelfde tijdstip.
-4. Voeg statusflow toe (planned, checked_in, completed, canceled).
+## Verplichte opdrachten
 
-## Opdracht 3 - Medical notes beheren
+### Patient CRUD
+- [ ] Ik heb volledige CRUD voor `patients` gemaakt.
+- [ ] Ik heb gevalideerd met regel: `name` required.
+- [ ] Ik heb gevalideerd met regel: `birth_date` required date.
+- [ ] Ik heb gevalideerd met regel: `contact_details` required.
 
-1. Dokter kan notities toevoegen bij patient.
-2. Dokter kan eigen notities wijzigen.
-3. Policy: alleen auteur-dokter of manager mag notitie verwijderen.
+### Appointment beheer
+- [ ] Ik heb ervoor gezorgd dat receptionist afspraken kan aanmaken, wijzigen en annuleren.
+- [ ] Ik heb gevalideerd datum, tijd en dokter-patient koppeling.
+- [ ] Ik heb statusflow toegevoegd (planned, `checked_in`, completed, canceled).
 
-## Opdracht 4 - Department en doctors beheer
+### Medical notes
+- [ ] Dokter kan notities toevoegen bij patient.
+- [ ] Dokter kan eigen notities wijzigen.
 
-1. Maak minimaal update-flow voor doctors (afdeling, specialisatie).
-2. Toon op department detail alle dokters en komende afspraken.
+### Departments en `doctors`
+- [ ] Ik heb een update-flow voor `doctors` (afdeling, specialisatie) gemaakt.
+- [ ] Ik heb op department detail alle dokters en komende afspraken getoond.
 
-## Opdracht 5 - Auth en autorisatie
+### Zoeken en filteren
+- [ ] Ik heb een zoekopdracht op patientnaam toegevoegd.
+- [ ] Ik heb een filter op afspraak-`status` of datum toegevoegd.
 
-1. Gebruik je nog geen Breeze? Werk dan eerst de les Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze) door.
-1. Beveilig schrijf-routes met auth middleware.
-2. Gate: `beheer-afspraken` voor receptionist.
-3. Gate: `beheer-afdelingen` voor afdelings manager.
-4. Gebruik @can op actieknoppen.
+### Auth en autorisatie
+- [ ] Als Breeze nog ontbreekt, doorloop ik eerst Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
+- [ ] Ik heb schrijf-routes met auth middleware beveiligd.
+- [ ] Ik heb gate beheer-afspraken voor receptionist gebruikt.
+- [ ] Ik heb gate beheer-afdelingen voor afdelings manager gebruikt.
+- [ ] Ik heb @can op actieknoppen gebruikt.
 
-## 6B user stories
+## Plusopdrachten (extra)
+
+- [ ] Ik heb voorkomen dubbele afspraak voor dezelfde dokter op hetzelfde tijdstip.
+- [ ] Ik heb een policy: alleen auteur-dokter of manager mag een notitie verwijderen gebruikt.
+- [ ] Ik heb extra dagoverzicht toegevoegd voor afspraken per afdeling.
+
+## User stories 6B
 
 ### Receptionist
 - [ ] Als receptionist wil ik nieuwe patienten kunnen registreren zodat afspraken ingepland kunnen worden.
@@ -58,6 +72,6 @@ Je bouwt verder op je 6A ZiekenhuisManagement-project. In 6B voeg je operationel
 
 ## Acceptatiecriteria
 
-- Patient CRUD en Appointment CRUD afgerond met validatie.
-- Afspraakplanning voorkomt dubbele tijdslots per dokter.
-- Medical notes gebruikt policy-gebaseerde rechten.
+- [ ] Patient CRUD en Appointment CRUD afgerond met validatie.
+- [ ] Rollen, gates en policies werken correct.
+- [ ] Validatie en flash messages werken in schrijf-flow.

@@ -1,4 +1,4 @@
-# Project 1: Bibliotheek (6B - CRUD uitbreiding)
+# Bibliotheek (6B - CRUD uitbreiding)
 
 ## Introductie
 
@@ -6,55 +6,62 @@ Je bouwt verder op je 6A Bibliotheek-project. In 6B maak je de applicatie intera
 
 ## Startpunt
 
-- Gebruik je bestaande 6A-project als basis.
-- Controleer eerst of index en detailpagina's nog werken met seeddata.
+- [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
+- [ ] Ik heb eerst gecontroleerd of index- en detailpagina's nog werken met seeddata.
 
-## 6B opdrachten
+## Korte begrippen in dit project
 
-## Opdracht 1 - Resource routes en controllers
+- Resource route (een routepakket met standaard CRUD-routes)
+- Controller (bestand met logica tussen route en view)
+- Many-to-many (veel-op-veel-relatie tussen twee tabellen)
+- Sync (methode die gekoppelde records in een keer vervangt)
+- Middleware (controlelaag voor routes, zoals inloggen verplicht)
+- Gate (centrale rechtencheck)
+- Policy (rechtencheck op 1 specifiek record)
 
-1. Zet `books` om naar een resource route.
-2. Maak of vul de standaard methodes aan: index, show, create, store, edit, update, destroy.
-3. Laat categorieen en uitleningen op de book-detailpagina zichtbaar blijven.
+## Verplichte opdrachten
 
-## Opdracht 2 - CRUD boeken (bibliothecaris)
+### Routes en controllers
+- [ ] Ik heb `books` omgezet naar een resource route.
+- [ ] Ik heb in de controller de methodes index, show, create, store, edit, update en destroy.
+- [ ] Op de boek-detailpagina blijven categorieen en uitleningen zichtbaar.
 
-1. Maak formulier voor nieuw boek.
-2. Valideer minimaal:
-   - title required, min 2
-   - author required, min 2
-   - isbn required, unique
-   - description nullable
-3. Maak edit formulier en update flow.
-4. Voeg delete met bevestiging toe.
-5. Toon flash messages voor create, update en delete.
+### CRUD boeken (bibliothecaris)
+- [ ] Ik heb een formulier voor een nieuw boek gemaakt.
+- [ ] Ik heb gevalideerd met regel: `title` required min 2.
+- [ ] Ik heb gevalideerd met regel: `author` required min 2.
+- [ ] Ik heb gevalideerd met regel: `isbn` required unique.
+- [ ] Ik heb gevalideerd met regel: `description` nullable.
+- [ ] Ik heb een edit-formulier en update-flow gemaakt.
+- [ ] Ik heb een delete-actie met bevestiging toegevoegd.
+- [ ] Ik heb flash messages bij create, update en delete gemaakt.
 
-## Opdracht 3 - Categorieen koppelen (many-to-many)
+### Categorieen koppelen
+- [ ] Ik heb een boek aan 1 of meer categorieen gekoppeld.
+- [ ] Ik heb sync bij het updaten van categorie-koppelingen gebruikt.
+- [ ] Ik heb op category detail alle gekoppelde boeken met links getoond.
 
-1. Voeg formulier toe om een boek aan 1 of meer categorieen te koppelen.
-2. Gebruik sync voor update van categorie-koppelingen.
-3. Toon op category detail alle gekoppelde boeken met links.
+### Uitleningen beheren
+- [ ] Ik heb create en update voor `loans` gemaakt.
+- [ ] Ik heb ervoor gezorgd dat een balie medewerker een uitlening kan registreren met `user_id`, `book_id`, `loan_date` en `due_date`.
+- [ ] Ik heb ervoor gezorgd dat een balie medewerker een uitlening kan afronden (ingeleverd).
+- [ ] Ik heb gevalideerd met regel: `due_date` komt na of is gelijk aan `loan_date`.
 
-## Opdracht 4 - Uitleningen beheren
+### Zoeken en filteren
+- [ ] Ik heb een zoekopdracht op titel en auteur toegevoegd.
+- [ ] Ik heb een filter op categorie toegevoegd op de boeken-index.
 
-1. Maak CRUD voor `loans` (minimaal create en update).
-2. Balie medewerker kan een uitlening registreren:
-   - user_id
-   - book_id
-   - loan_date
-   - due_date
-3. Balie medewerker kan een boek als ingeleverd markeren.
-4. Validatie: due_date moet na of gelijk aan loan_date zijn.
+### Auth en autorisatie
+- [ ] Als Breeze nog ontbreekt, doorloop ik eerst Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
+- [ ] Ik heb schrijf-routes met auth middleware beveiligd.
+- [ ] Ik heb gate beheer-boeken voor bibliothecaris-acties gebruikt.
+- [ ] Ik heb een policy gebruikt zodat alleen maker of bibliothecaris een uitlening mag aanpassen/verwijderen.
 
-## Opdracht 5 - Auth, middleware, rollen, gate, policy
+## Plusopdrachten (extra)
 
-1. Installeer Breeze als dit nog niet is gebeurd.
-   Zie hiervoor expliciet de les Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
-2. Beveilig schrijf-routes met auth middleware.
-3. Gate: `beheer-boeken` voor bibliothecaris.
-4. Policy: alleen de maker van een uitlening of een bibliothecaris mag een uitlening aanpassen/verwijderen.
+- [ ] Ik heb waarschuwing toegevoegd voor bijna te late inleverdatum.
 
-## 6B user stories
+## User stories 6B
 
 ### Bibliothecaris
 - [ ] Als bibliothecaris wil ik boeken kunnen toevoegen zodat de collectie up-to-date blijft.
@@ -64,14 +71,14 @@ Je bouwt verder op je 6A Bibliotheek-project. In 6B maak je de applicatie intera
 
 ### Balie medewerker
 - [ ] Als balie medewerker wil ik een uitlening kunnen registreren zodat bekend is wie welk boek mee heeft.
-- [ ] Als balie medewerker wil ik een uitlening kunnen afronden (ingeleverd) zodat beschikbaarheid klopt.
+- [ ] Als balie medewerker wil ik een uitlening kunnen afronden zodat beschikbaarheid klopt.
 
 ### Bibliotheeklid
 - [ ] Als lid wil ik mijn actieve uitleningen en inleverdatum kunnen zien zodat ik boetes voorkom.
 
 ## Acceptatiecriteria
 
-- Minimaal 2 volledige CRUD-entiteiten afgerond.
-- Schrijf-acties beveiligd met auth en rolcontrole.
-- Validatiefouten netjes per veld zichtbaar.
-- Geen N+1 op kernoverzichten (gebruik eager loading).
+- [ ] CRUD voor 2 entiteiten afgerond.
+- [ ] Schrijf-acties beveiligd met auth en rolcontrole.
+- [ ] Validatiefouten per veld zichtbaar.
+- [ ] Geen N+1 op kernoverzichten (eager loading gebruiken).

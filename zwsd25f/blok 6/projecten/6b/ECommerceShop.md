@@ -1,50 +1,56 @@
-# Project 2: ECommerceShop (6B - CRUD uitbreiding)
+# ECommerceShop (6B - CRUD uitbreiding)
 
 ## Introductie
 
-Je bouwt verder op je 6A ECommerceShop-project. In 6B voeg je volledige beheerflows en klantinteractie toe met CRUD, autorisatie en policies.
+Je bouwt verder op je 6A ECommerceShop-project. In 6B voeg je beheerflows en klantinteractie toe met CRUD en autorisatie.
 
-## 6B opdrachten
+## Startpunt
 
-## Opdracht 1 - Productbeheer via resource controller
+- [ ] Ik heb mijn bestaande 6A-project geopend en kan het lokaal starten.
+- [ ] Ik heb eerst gecontroleerd of mijn overzichten en detailpagina's uit 6A nog werken.
 
-1. Gebruik resource routes voor `products`.
-2. Maak complete CRUD voor producten.
-3. Valideer minimaal:
-   - name required
-   - price required numeric min 0
-   - stock required integer min 0
-   - description nullable
+## Korte begrippen in dit project
 
-## Opdracht 2 - Categorieen en voorraad
+- Resource route (routepakket met standaard CRUD-routes)
+- Middleware (controlelaag voor routes)
+- Gate (centrale rechtencheck)
+- Policy (rechtencheck op een specifiek record)
 
-1. Koppel producten aan meerdere categorieen.
-2. Voeg filter op categorie toe op product index.
-3. Voeg zoekfunctie op productnaam toe.
-4. Voeg eenvoudige voorraadstatus toe op detailpagina (op voorraad / bijna op / uitverkocht).
+## Verplichte opdrachten
 
-## Opdracht 3 - Reviews door klanten
+### Productbeheer
+- [ ] Ik heb resource routes voor `products` gebruikt.
+- [ ] Ik heb complete CRUD voor producten gemaakt.
+- [ ] Ik heb gevalideerd met regel: `name` required.
+- [ ] Ik heb gevalideerd met regel: `price` required numeric min 0.
+- [ ] Ik heb gevalideerd met regel: `stock` required integer min 0.
+- [ ] Ik heb gevalideerd met regel: `description` nullable.
 
-1. Ingelogde klanten kunnen review plaatsen (rating 1-5, comment).
-2. Toon reviews op product detail met auteur en datum.
-3. Policy: alleen review-eigenaar of admin mag verwijderen.
+### Categorieen en voorraad
+- [ ] Ik heb producten aan meerdere categorieen gekoppeld.
+- [ ] Ik heb filter op categorie toegevoegd op product index.
+- [ ] Ik heb een zoekopdracht op productnaam toegevoegd.
+- [ ] Ik heb een eenvoudige voorraadstatus op detailpagina getoond.
 
-## Opdracht 4 - Bestelstatus beheren
+### Reviews
+- [ ] Ik heb ervoor gezorgd dat ingelogde klanten een review kunnen plaatsen (`rating` 1-5 en `comment`).
+- [ ] Ik heb `reviews` op productdetail met auteur en datum getoond.
+- [ ] Ik heb een policy: alleen review-eigenaar of admin mag verwijderen gebruikt.
 
-1. Maak update-flow voor order status (bijvoorbeeld pending, packed, shipped, delivered, canceled).
-2. Customer service mag status bijwerken.
-3. Warehouse mag alleen packed/shipped zetten.
-4. Valideer toegestane statusovergangen.
+### Auth en autorisatie
+- [ ] Als Breeze nog ontbreekt, doorloop ik eerst Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze).
+- [ ] Ik heb create, edit en delete routes met auth middleware beveiligd.
+- [ ] Ik heb gate beheer-producten voor shop owner gebruikt.
+- [ ] Ik heb gate beheer-bestellingen voor customer service en warehouse gebruikt.
+- [ ] Ik heb @can in views voor beheerknoppen gebruikt.
 
-## Opdracht 5 - Auth en autorisatie
+## Plusopdrachten (extra)
 
-1. Gebruik je nog geen Breeze? Werk dan eerst de les Hoofdstuk 4 - Authenticatie en Middleware (Laravel Breeze) door.
-1. Beveilig create/edit/delete routes voor producten met auth.
-2. Gate: `beheer-producten` voor shop owner.
-3. Gate: `beheer-bestellingen` voor customer service en warehouse.
-4. Gebruik @can in views om beheerknoppen te tonen/verbergen.
+- [ ] Ik heb gebouwd een update-flow voor orderstatus.
+- [ ] Ik heb beperkt statuswijzigingen per rol (bijvoorbeeld warehouse alleen packed of shipped).
+- [ ] Ik heb gevalideerd toegestane statusovergangen.
 
-## 6B user stories
+## User stories 6B
 
 ### Shop owner
 - [ ] Als eigenaar wil ik producten kunnen aanmaken zodat assortiment groeit.
@@ -63,6 +69,6 @@ Je bouwt verder op je 6A ECommerceShop-project. In 6B voeg je volledige beheerfl
 
 ## Acceptatiecriteria
 
-- Producten hebben complete CRUD met validatie en flash messages.
-- Reviews gebruiken policy-gebaseerde autorisatie.
-- Orderstatus update is rolafhankelijk en gevalideerd.
+- [ ] Producten hebben complete CRUD met validatie en flash messages.
+- [ ] Reviews gebruiken policy-gebaseerde autorisatie.
+- [ ] Rollen en rechten worden correct afgedwongen.
