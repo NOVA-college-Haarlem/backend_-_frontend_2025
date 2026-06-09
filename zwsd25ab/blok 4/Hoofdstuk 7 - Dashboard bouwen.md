@@ -1,52 +1,141 @@
-# Hoofdstuk 6 - Dashboard data
+# Hoofdstuk 7 - Dashboard bouwen
 
-In deze les gaan we de data uit de database halen en tonen op het dashboard.
+In deze les ga je meerdere query's combineren op een dashboard. Je gebruikt wat je in eerdere hoofdstukken hebt geleerd: database connectie, validatie, JOINS en het tonen van resultaten.
 
-#### Opdracht 1 - Aantal drivers in db
+## Leerdoelen
 
-Toon het aantal drivers in db
+Na deze les kun je:
 
-Hiervoor hebben we een database connectie nodig.
-Met behulp van de COUNT function kunnen we het aantal drivers in de database halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'number_of_drivers'.
+- Met `COUNT`, `MAX` en `SUM` kerncijfers ophalen uit de database.
+- Data uit meerdere tabellen combineren met een `JOIN`.
+- Resultaten netjes tonen in een dashboard met duidelijke blokken.
+- Foutafhandeling toevoegen als een query mislukt.
 
+## Opdracht 1 - Voorbereiding dashboard
+
+1. Maak een nieuw bestand aan genaamd `dashboard.php`.
+2. Voeg onderaan dit bestand HTML toe waarin je straks de resultaten toont.
+3. Vergeet niet de database connectie te laden.
 
 ```php
-
+<?php
 require 'database.php';
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; }
+        h2 { margin-top: 0; font-size: 18px; }
+        .value { font-size: 28px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Formula 1 Dashboard</h1>
+    <div class="cards">
+        <!-- Cards komen hier -->
+    </div>
+</body>
+</html>
+```
+
+## Opdracht 2 - Aantal drivers in de database
+
+Gebruik `COUNT(*)` om het totaal aantal drivers op te halen.
+
+```php
 $sql = "SELECT COUNT(*) AS number_of_drivers FROM drivers";
 $result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($conn));
+}
+
 $count = mysqli_fetch_assoc($result);
 ```
 
-#### Opdracht 2 - Aantal drivers uit Duitsland in db
+Toon de waarde in een card:
 
-Met behulp van de COUNT function kunnen we het aantal drivers in de database halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'number_of_drivers'.
-En we maken gebruik van de WHERE clause om de drivers te filteren op de nationaliteit 'German'.
 ```php
-
-require 'database.php';
-
-$sql = "SELECT COUNT(*) AS number_of_drivers FROM drivers WHERE nationality = 'German'";
-$result = mysqli_query($conn, $sql);
-$count_germany = mysqli_fetch_assoc($result);
-
-echo "Het aantal drivers is " . $count['number_of_drivers'] . "<br>";
+<div class="card">
+    <h2>Totaal aantal drivers</h2>
+    <p class="value"><?php echo $count['number_of_drivers']; ?></p>
+</div>
 ```
 
-#### Opdracht 3 - Hoogtste positie behaald door het team RENAULT (constructor_standing tabel)
+## Opdracht 3 - Aantal Duitse drivers
 
-Met behulp van de MAX function kunnen we de hoogtste positie behaald door het team RENAULT halen. Omdat het in ons geval om 1 getal gaat gebruiken we mysqli_fetch_assoc() om het resultaat te halen. En we maken gebruik van de alias 'highest_position'.
-En we maken gebruik van de JOIN clause om de constructors te filteren op de naam 'RENAULT'.
+Filter op nationaliteit met een `WHERE` clause.
+
 ```php
-
-require 'database.php';
-
-$sql = "SELECT MAX(position) as highest_position FROM constructor_standing 
-                    JOIN constructors ON constructors.constructorId = constructor_standing.constructorId
-                    WHERE constructors.name = 'RENAULT'";
+$sql = "SELECT COUNT(*) AS number_of_german_drivers
+        FROM drivers
+        WHERE nationality = 'German'";
 $result = mysqli_query($conn, $sql);
-$standings = mysqli_fetch_assoc($result);
 
-var_dump($standings['highest_position']);
-die;
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($conn));
+}
+
+$count_germany = mysqli_fetch_assoc($result);
+```
+
+Toon deze waarde ook in een card.
+
+## Opdracht 4 - Beste positie van team RENAULT
+
+We willen weten wat de beste klassering van team `RENAULT` was in de tabel `constructor_standings`. Let op: in dit soort tabellen is positie `1` de beste positie, dus gebruiken we `MIN(position)`.
+
+```php
+$sql = "SELECT MIN(constructor_standings.position) AS best_position
+        FROM constructor_standings
+        JOIN constructors
+            ON constructors.constructorId = constructor_standings.constructorId
+        WHERE constructors.name = 'RENAULT'";
+
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($conn));
+}
+
+$renault = mysqli_fetch_assoc($result);
+```
+
+Toon dit in de dashboard card.
+
+## Opdracht 5 - Extra dashboard statistiek
+
+Voeg zelf 1 extra statistiek toe. Kies er een:
+
+- Totaal aantal constructors.
+- Aantal verschillende nationaliteiten bij drivers.
+- Gemiddeld puntenaantal in `driver_standings`.
+
+Voorbeeld (verschillende nationaliteiten):
+
+```php
+$sql = "SELECT COUNT(DISTINCT nationality) AS total_nationalities FROM drivers";
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($conn));
+}
+
+$nationalities = mysqli_fetch_assoc($result);
+```
+
+## Opdracht 6 - Dashboard netjes maken
+
+Werk je dashboard af:
+
+1. Voeg een titel en korte uitleg toe.
+2. Toon minimaal 4 cards met statistieken.
+3. Zorg dat je pagina bruikbaar blijft op mobiel.
+4. Gebruik duidelijke labels en waarden.
