@@ -55,7 +55,6 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 ### Verplichte velden en regels
 
 Match_scores:
-1. `match_ref`: string, verplicht
 2. `player_username`: string, verplicht
 3. `title`: string, niet verplicht
 4. `game_name`: string, verplicht
@@ -83,7 +82,7 @@ Addresses:
 
 ### Database requirements
 
-1. Elke project moet 3 nieuwe sql-bestanden bevatten: `addresses.sql`, `match_scores.sql`, `final_matches.sql`.
+1. Elke project moet 3 nieuwe sql-bestanden bevatten: `addresses.sql`, `match_scores.sql`, `final_matches.sql`. Deze worden gedurende het project aangeleverd door de docent.
 2. Elk bestand bevat:
     - `CREATE TABLE` statements.
     - `INSERT INTO` statements.
@@ -115,7 +114,9 @@ Welke data:
 1. Counterstrike-sessie: elke student geeft zijn score voor `meeste_kills` door via MS Forms.
 
 Taken:
-- [ ] Game 1 spelen en kills registreren met screenshot.
+- [ ] Formulier 1 invullen: https://forms.office.com/e/2W5E4va5GH Let op: gebruik fictieve adresgegevens!
+- [ ] Counterstrike spelen. Maak een screenshot van je game met de meeste kills.
+- [ ] Kill count invullen in formulier 2: https://forms.office.com/e/AtGz6X2Bwh
 
 Definition of Done:
 1. Geen dubbele username.
@@ -124,14 +125,10 @@ Definition of Done:
 ## Dinsdagochtend: Database en basispagina's
 
 Taken:
-- [ ] Database en tabellen users, roles, addresses, match_scores, final_matches aanmaken.
-- [ ] Gegevens uit tabblad 1 importeren of invoeren.
-- [ ] SQL-bestand opleveren (bijv. database.sql) met alle `CREATE TABLE` en `INSERT INTO` statements.
-    - [ ] Controle: op lege database in 1 keer uitvoerbaar.
-    - [ ] Controle: geen handmatige phpMyAdmin-kliks nodig voor eindoplevering.
-- [ ] Homepage bouwen.
+- [ ] Database en tabellen users, roles, addresses en match_scores aanmaken. Docent deelt data met gegevens van gisteren.
+- [ ] Homepage bouwen (op http://localhost/)
     - [ ] Gebruik een herbruikbare nav-bar als include/partial (bijv. `navbar.php`) die op meerdere pagina's wordt ingeladen.
-    - [ ] Nav-bar bevat minimaal links naar: Home, Overzicht, Login/Logout.
+    - [ ] Navbar bevat minimaal links naar: Home, Overzicht, Login/Logout.
     - [ ] Korte intro met: wie The Grand Arena is en doel van het toernooi.
     - [ ] Tabel met toernooi-opzet: kwalificatie (ma-do) + vrijdagfinale.
     - [ ] "Call-to-action" buttons (grote knoppen): Bekijk score-overzicht en Bekijk leaderboard.
@@ -139,22 +136,19 @@ Taken:
     - [ ] Basis-styling toepassen: consistente kleuren, nette spacing, duidelijke koppen en goed leesbare tekst.
     - [ ] Pagina werkt bruikbaar op laptop en mobiel (geen overlappende blokken of afbrekende navigatie).
 - [ ] Overzichtspagina opzetten.
-    - [ ] Maak een apart bestand, bijv. `overzicht.php`.
-    - [ ] Voeg bovenaan dezelfde includes toe als op home (`navbar.php`, evt. `config.php`).
-    - [ ] Maak een eenvoudige HTML-tabel met kolommen: title, game_name, score_type, points_value.
+    - [ ] Maak een apart bestand, bijv. `overview.php`.
+    - [ ] Voeg dezelfde includes toe als op home (`navbar.php`, `footer.php`).
+    - [ ] Maak een eenvoudige HTML-tabel met kolommen: player_username, title, game_name, score_type, points_value.
     - [ ] Toon minimaal 2 regels testdata (hardcoded of uit een eenvoudige query).
     - [ ] Voeg een nette melding toe voor lege resultaten: "Nog geen scores beschikbaar".
     - [ ] Controleer dat de links Home en Overzicht op beide pagina's werken.
 
 
 Definition of Done:
-1. SQL-bestand met `CREATE TABLE` en `INSERT INTO` draait zonder fouten.
-2. Minimaal 2 users correct zichtbaar vanuit database.
 3. Homepage en overzichtspagina laden zonder errors.
-4. Nav-bar include werkt op minimaal Home + Overzicht.
+4. Navbar include werkt op minimaal Home + Overzicht.
 5. Homepage bevat alle verplichte onderdelen uit de uitwerking hierboven.
-6. Overzichtspagina werkt met basis-PHP (bestand + include + tabel + lege-statusmelding).
-7. Database kan op een lege omgeving opnieuw worden opgebouwd met alleen het SQL-bestand.
+6. Overzichtspagina werkt
 8. Homepage en overzichtspagina hebben een verzorgde, consistente en professionele uitstraling.
 
 ## Dinsdagmiddag: Eerste numerieke scores verzamelen
@@ -283,35 +277,20 @@ Definition of Done:
 
 ---
 
-## 4. Excel-opzet voor data-uitwisseling
-
-De docent (of een aangewezen student) beheert een centrale Google Sheet of Excel-sheet in de cloud. De sheet heeft 4 tabbladen. Aan het einde van elke middag kopieert elke student zijn rij(en), zodat iedereen de volgende ochtend de complete dataset kan downloaden.
-
-Regels:
-1. Iedere student vult dagelijks zijn eigen rij(en) in.
-2. Aan het einde van de middag controleert het team op lege verplichte velden.
-3. De volgende ochtend werkt elk team met de complete, gecontroleerde dataset.
-
-### Tabblad 1: Leden en Rollen (maandagmiddag)
-
-| id | name | email | username | role | address | zipcode | city | country |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Jan de Vries | jan@email.com | JantjePro | Player | Dorpsstraat 12 | 1234AB | Haarlem | Nederland |
-| 2 | Lisa Bakker | lisa@email.com | MasterOrganiser | Organiser | Markt 5 | 5678CD | Amsterdam | Nederland |
+## 4. Data-uitwisseling
 
 ### Tabblad 2: MatchScores - Cijfers (dinsdagmiddag)
 
 Definitie voor dit tabblad:
 1. Per speler per gespeelde match worden 4 regels ingevuld: `kills`, `assists`, `damage`, `healing`.
-2. Gebruik dezelfde `match_ref` voor die 4 regels, zodat duidelijk is dat ze bij 1 match horen.
 3. `player_username` is verplicht voor elke regel.
 
-| match_ref | player_username | title | game_name | description | score_type | achieved_year | points_value | image_filename |
+| player_username | title | game_name | description | score_type | achieved_year | points_value | image_filename |
 |---|---|---|---|---|---|---|---|---|
-| OW-M1-JAN | JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | kills | 2026 | 22 | ow_jan_match1.png |
-| OW-M1-JAN | JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | assists | 2026 | 11 | ow_jan_match1.png |
-| OW-M1-JAN | JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | damage | 2026 | 8450 | ow_jan_match1.png |
-| OW-M1-JAN | JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | healing | 2026 | 1800 | ow_jan_match1.png |
+| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | kills | 2026 | 22 | ow_jan_match1.png |
+| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | assists | 2026 | 11 | ow_jan_match1.png |
+| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | damage | 2026 | 8450 | ow_jan_match1.png |
+| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | healing | 2026 | 1800 | ow_jan_match1.png |
 
 ### Tabblad 3: MatchScores - Context (woensdagmiddag)
 
