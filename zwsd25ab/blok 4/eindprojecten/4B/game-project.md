@@ -1,8 +1,6 @@
 # Tournament Tracker: The Grand Arena
 
-E-sports-vereniging __The Grand Arena__ is een lokale community waar recreatieve en competitieve gamers samen trainen, scrims spelen en maandelijkse events organiseren. We werken met meerdere games en teams, maar missen nu een centrale manier om resultaten eerlijk, snel en inzichtelijk vast te leggen.
-
-Voor dit toernooi hebben we de hulp van studenten nodig om twee dingen tegelijk neer te zetten: een strak georganiseerd speelschema en een werkende data-gedreven webapp. Tijdens de projectweek verzamelen studenten wedstrijddata, zetten die om naar bruikbare scores en bouwen een applicatie waarmee spelers, organisatoren en publiek direct kunnen zien wie presteert, waarom iemand wint en hoe het toernooi zich ontwikkelt.
+E-sports-vereniging __The Grand Arena__  wil een website hebben om interne competities in vast te leggen. Voor dit toernooi hebben we de hulp van studenten nodig. Tijdens de projectweek verzamelen studenten data door verschillende games te spelen. Die data zetten we in een database, die we uitlezen en tonen op de website van de vereniging.
 
 Doel: in 5 dagen een werkende webapp opleveren met:
 1. spelers en rollen in database
@@ -11,6 +9,25 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 4. login/logout en rolbeveiliging
 5. dashboard met kernstatistieken
 6. nette, professionele en consistente vormgeving op alle kernpagina's
+
+## Inhoud
+
+1. [Randvoorwaarden](#1-randvoorwaarden-verplicht)
+2. [Datamodel](#2-datamodel)
+3. [Weekprogramma](#3-weekprogramma)
+   - [Geselecteerde games en volgorde](#geselecteerde-games-en-volgorde)
+   - [Maandagmiddag: Gamen en ledenadministratie](#maandagmiddag-gamen-en-ledenadministratie)
+   - [Dinsdagochtend: Database en basispagina's](#dinsdagochtend-database-en-basispaginas)
+   - [Dinsdagmiddag: Eerste numerieke scores verzamelen](#dinsdagmiddag-eerste-numerieke-scores-verzamelen)
+   - [Woensdagochtend: Dynamische weergave](#woensdagochtend-dynamische-weergave)
+   - [Woensdagmiddag: MatchScores - Context verzamelen](#woensdagmiddag-matchscores---context-verzamelen)
+   - [Donderdagochtend: Zoeken, filteren en sorteren](#donderdagochtend-zoeken-filteren-en-sorteren)
+   - [Donderdagmiddag: Finaledata verzamelen](#donderdagmiddag-finaledata-verzamelen)
+   - [Vrijdagochtend: Beveiliging en dashboard](#vrijdagochtend-beveiliging-en-dashboard)
+   - [Vrijdagmiddag: Afronding en presentatie](#vrijdagmiddag-afronding-en-presentatie)
+4. [Excel-opzet voor data-uitwisseling](#4-excel-opzet-voor-data-uitwisseling)
+5. [Beoordeling](#5-beoordeling)
+6. [Extra toelichting](#6-extra-toelichting)
 
 ---
 
@@ -29,33 +46,24 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 ## 2. Datamodel
 
 ### Tabellen
-1. `users`
-2. `roles`
+1. `users` (al aanwezig in project als `users.sql`)
+2. `roles` (al aanwezig in project als `roles.sql`)
 3. `addresses`
 4. `match_scores`
 5. `final_matches`
 
 ### Verplichte velden en regels
 
-Users:
-1. `firstname`, `lastname`: string, verplicht
-2. `email`: string, verplicht, uniek, geldig e-mailformaat
-3. `username`: string, verplicht, uniek
-4. `password`: string, verplicht (gehashte waarde)
-5. `role_id`: foreign key, verplicht
-6. `address_id`: foreign key, verplicht
-
 Match_scores:
 1. `match_ref`: string, verplicht
 2. `player_username`: string, verplicht
-3. `title`: string, verplicht
+3. `title`: string, niet verplicht
 4. `game_name`: string, verplicht
-5. `description`: text, verplicht
+5. `description`: text, niet verplicht
 6. `score_type`: string, verplicht
 7. `points_value`: integer, verplicht, min 0
-8. `achieved_year`: integer, optioneel
-9. `hero_or_vehicle`: string, optioneel
-10. `match_rules`: string, optioneel
+9. `hero_or_vehicle`: string, optioneel, de gebruikte hero, vehicle of ander karakter/materiaal in de match
+10. `match_rules`: string, optioneel, een korte omschrijving van de gevolgde spelregels
 11. `image_filename`: string, optioneel
 
 Final_matches:
@@ -66,24 +74,30 @@ Final_matches:
 5. `win_loss`: tinyint, verplicht, alleen 0 of 1
 6. `added_at`: datetime, verplicht
 
-### Database-aanlevering (verplicht)
+Addresses:
+1. `id`: integer, primary key, verplicht
+2. `address`: string, verplicht, straat en huisnummer samen in 1 veld
+3. `zipcode`: string, niet verplicht
+4. `city`: string, verplicht
+5. `country`: string, niet verplicht
 
-1. Elke groep levert 1 SQL-bestand aan (bijv. `database.sql`).
-2. Dit bestand bevat minimaal:
-    - `CREATE TABLE` statements voor `users`, `roles`, `addresses`, `match_scores`, `final_matches`.
-    - `INSERT INTO` statements voor startdata (minimaal rollen + 2 users + gekoppelde adressen).
-3. De database moet volledig op te bouwen zijn door alleen dit SQL-bestand uit te voeren op een lege database.
-4. Handmatig tabellen/records aanmaken via losse phpMyAdmin-kliks is niet toegestaan als eindoplevering.
+### Database requirements
+
+1. Elke project moet 3 nieuwe sql-bestanden bevatten: `addresses.sql`, `match_scores.sql`, `final_matches.sql`.
+2. Elk bestand bevat:
+    - `CREATE TABLE` statements.
+    - `INSERT INTO` statements.
+3. De database moet volledig op te bouwen zijn door deze SQL-bestanden uit te voeren op een lege database.
+4. Handmatig tabellen/records aanmaken via losse phpMyAdmin-kliks is niet toegestaan.
 
 Mappingregels (verplicht voor consistente import):
-1. Vul eerst `roles` en `addresses`, daarna pas `users`.
-2. `users.role_id` verwijst naar `roles.id` op basis van de kolom `role` in tabblad 1.
+1. `users.role_id` verwijst naar `roles.id` op basis van de kolom `role` in tabblad 1.
 3. `users.address_id` verwijst naar `addresses.id` op basis van het adres van dezelfde gebruiker uit tabblad 1.
 4. Gebruik in `match_scores.player_username` exact dezelfde `username` als in `users.username`.
 
 ---
 
-## 3. 5-daags programma (must-haves)
+## 3. Weekprogramma
 
 ### Geselecteerde games en volgorde
 
@@ -91,26 +105,21 @@ Mappingregels (verplicht voor consistente import):
 2. Dinsdagmiddag: Overwatch
 3. Woensdagmiddag: Minecraft Education
 4. Donderdagmiddag: GTA (of alternatief spel op laptop)
+4. Vrijdagmiddag: toernooi
 
 ## Maandagmiddag: Gamen en ledenadministratie
 
 Doel: basisgegevens verzamelen om de database te vullen.
 
 Welke data:
-1. Iedereen vult tabblad 1 (Leden en Rollen) in de centrale sheet.
-2. Counterstrike-sessie: per student 1 score voor `meeste_kills` registreren (tabblad 2).
+1. Counterstrike-sessie: elke student geeft zijn score voor `meeste_kills` door via MS Forms.
 
 Taken:
-- [ ] Rollen verdelen: Player en Organiser.
-- [ ] Tabblad 1 volledig invullen.
-- [ ] Dataset controleren op unieke usernames en e-mails.
 - [ ] Game 1 spelen en kills registreren met screenshot.
 
 Definition of Done:
-1. Alle groepsleden staan in tabblad 1.
-2. Geen dubbele username.
-3. Geen lege verplichte kolommen.
-4. Iedereen heeft minimaal 1 kill-score van Counterstrike.
+1. Geen dubbele username.
+2. Iedereen heeft minimaal 1 kill-score van Counterstrike.
 
 ## Dinsdagochtend: Database en basispagina's
 
@@ -285,10 +294,10 @@ Regels:
 
 ### Tabblad 1: Leden en Rollen (maandagmiddag)
 
-| id | firstname | lastname | email | username | role | member_number / job_title | street | housenumber | zipcode | city | country |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Jan | De Vries | jan@email.com | JantjePro | Player | M-10043 | Dorpsstraat | 12 | 1234AB | Haarlem | Nederland |
-| 2 | Lisa | Bakker | lisa@email.com | MasterOrganiser | Organiser | Hoofdscheidsrechter | Markt | 5 | 5678CD | Amsterdam | Nederland |
+| id | name | email | username | role | address | zipcode | city | country |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Jan de Vries | jan@email.com | JantjePro | Player | Dorpsstraat 12 | 1234AB | Haarlem | Nederland |
+| 2 | Lisa Bakker | lisa@email.com | MasterOrganiser | Organiser | Markt 5 | 5678CD | Amsterdam | Nederland |
 
 ### Tabblad 2: MatchScores - Cijfers (dinsdagmiddag)
 
