@@ -16,18 +16,16 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 2. [Datamodel](#2-datamodel)
 3. [Weekprogramma](#3-weekprogramma)
    - [Geselecteerde games en volgorde](#geselecteerde-games-en-volgorde)
-   - [Maandagmiddag: Gamen en ledenadministratie](#maandagmiddag-gamen-en-ledenadministratie)
+   - [Maandagmiddag: Ledenadministratie / Counterstrike](#maandagmiddag-ledenadministratie--counterstrike)
    - [Dinsdagochtend: Database en basispagina's](#dinsdagochtend-database-en-basispaginas)
-   - [Dinsdagmiddag: Eerste numerieke scores verzamelen](#dinsdagmiddag-eerste-numerieke-scores-verzamelen)
+   - [Dinsdagmiddag: Overwatch](#dinsdagmiddag-overwatch)
    - [Woensdagochtend: Dynamische weergave](#woensdagochtend-dynamische-weergave)
-   - [Woensdagmiddag: MatchScores - Context verzamelen](#woensdagmiddag-matchscores---context-verzamelen)
+   - [Woensdagmiddag: Minecraft Education](#woensdagmiddag-minecraft-education)
    - [Donderdagochtend: Zoeken, filteren en sorteren](#donderdagochtend-zoeken-filteren-en-sorteren)
    - [Donderdagmiddag: Finaledata verzamelen](#donderdagmiddag-finaledata-verzamelen)
    - [Vrijdagochtend: Beveiliging en dashboard](#vrijdagochtend-beveiliging-en-dashboard)
    - [Vrijdagmiddag: Afronding en presentatie](#vrijdagmiddag-afronding-en-presentatie)
-4. [Excel-opzet voor data-uitwisseling](#4-excel-opzet-voor-data-uitwisseling)
-5. [Beoordeling](#5-beoordeling)
-6. [Extra toelichting](#6-extra-toelichting)
+4. [Extra toelichting](#extra-toelichting)
 
 ---
 
@@ -89,11 +87,6 @@ Addresses:
 3. De database moet volledig op te bouwen zijn door deze SQL-bestanden uit te voeren op een lege database.
 4. Handmatig tabellen/records aanmaken via losse phpMyAdmin-kliks is niet toegestaan.
 
-Mappingregels (verplicht voor consistente import):
-1. `users.role_id` verwijst naar `roles.id` op basis van de kolom `role` in tabblad 1.
-3. `users.address_id` verwijst naar `addresses.id` op basis van het adres van dezelfde gebruiker uit tabblad 1.
-4. Gebruik in `match_scores.player_username` exact dezelfde `username` als in `users.username`.
-
 ---
 
 ## 3. Weekprogramma
@@ -143,11 +136,9 @@ Taken:
     - [ ] Voeg een nette melding toe voor lege resultaten: "Nog geen scores beschikbaar".
     - [ ] Controleer dat de links Home en Overzicht op beide pagina's werken.
 
-## Dinsdagmiddag: Overmatch
+## Dinsdagmiddag: Overwatch
 
 Doel: eerste numerieke matchscores en bewijsmateriaal verzamelen.
-
-Welke data: iedereen vult tabblad 2 (MatchScores - Cijfers) in de sheet met Overwatch-data.
 
 Taken:
 - [ ] Overwatch-match:
@@ -205,7 +196,7 @@ Taken:
 - [ ] Minimaal 3 rondes per speler registreren.
 - [ ] Win/loss (1 of 0) noteren.
 - [ ] Tijdstempel noteren.
-- [ ] Tabblad 4 invullen.
+- [ ] Formulier invullen: https://forms.office.com/e/[LINK_TOEVOEGEN]
 
 ---
 
@@ -232,7 +223,7 @@ Taken:
 
 ---
 
-## 6. Extra toelichting
+## Extra toelichting
 
 ### Score-check: kwantificeerbaarheid per game
 
