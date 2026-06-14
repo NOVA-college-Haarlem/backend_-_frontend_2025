@@ -48,11 +48,11 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 ### Tabellen
 1. `users` (al aanwezig in project als `users.sql`)
 2. `roles` (al aanwezig in project als `roles.sql`)
-3. `addresses`
-4. `match_scores`
-5. `final_matches`
+3. `addresses` (komt dinsdag)
+4. `match_scores` (komt dinsdag)
+5. `final_matches` (komt later)
 
-### Verplichte velden en regels
+#### Tabeldefinities
 
 Match_scores:
 2. `player_username`: string, verplicht
@@ -106,7 +106,7 @@ Mappingregels (verplicht voor consistente import):
 4. Donderdagmiddag: GTA (of alternatief spel op laptop)
 4. Vrijdagmiddag: toernooi
 
-## Maandagmiddag: Gamen en ledenadministratie
+## Maandagmiddag: Ledenadministratie / Counterstrike
 
 Doel: basisgegevens verzamelen om de database te vullen.
 
@@ -118,7 +118,7 @@ Taken:
 - [ ] Counterstrike spelen. Maak een screenshot van je game met de meeste kills.
 - [ ] Kill count invullen in formulier 2: https://forms.office.com/e/AtGz6X2Bwh
 
-Definition of Done:
+Requirements:
 1. Geen dubbele username.
 2. Iedereen heeft minimaal 1 kill-score van Counterstrike.
 
@@ -143,15 +143,7 @@ Taken:
     - [ ] Voeg een nette melding toe voor lege resultaten: "Nog geen scores beschikbaar".
     - [ ] Controleer dat de links Home en Overzicht op beide pagina's werken.
 
-
-Definition of Done:
-3. Homepage en overzichtspagina laden zonder errors.
-4. Navbar include werkt op minimaal Home + Overzicht.
-5. Homepage bevat alle verplichte onderdelen uit de uitwerking hierboven.
-6. Overzichtspagina werkt
-8. Homepage en overzichtspagina hebben een verzorgde, consistente en professionele uitstraling.
-
-## Dinsdagmiddag: Eerste numerieke scores verzamelen
+## Dinsdagmiddag: Overmatch
 
 Doel: eerste numerieke matchscores en bewijsmateriaal verzamelen.
 
@@ -160,55 +152,42 @@ Welke data: iedereen vult tabblad 2 (MatchScores - Cijfers) in de sheet met Over
 Taken:
 - [ ] Overwatch-match:
     - [ ] Speel per student minimaal 1 volledige match.
-    - [ ] Verzamel tijdens het spelen direct meetbare scores voor de database.
+    - [ ] Verzamel tijdens het spelen meetbare scores voor de database.
 - [ ] Scores noteren: kills, assists, damage, healing.
-- [ ] Screenshot bewaren.
-- [ ] Score in tabblad 2 invullen.
-
-Definition of Done:
-1. Iedereen heeft minimaal 1 score in tabblad 2.
-2. Bij elke score hoort een geldige screenshot-bestandsnaam.
-3. Per speler per match staan 4 records in tabblad 2 met score_type: kills, assists, damage, healing.
+- [ ] Screenshot van hoogste scores bewaren.
+- [ ] Score(s) invullen in formulier 3: https://forms.office.com/e/Ghn3nwFniQ
 
 ## Woensdagochtend: Dynamische weergave
 
 Taken:
-- [ ] Match_scores structuur controleren (kolommen aanwezig en juiste datatypes).
-- [ ] Data uit tabblad 2 toevoegen aan de tabel `match_scores` in de database.
-- [ ] Screenshots op server (in het PHP-project) plaatsen.
+- [ ] Databasetabel `match_scores` bijwerken met gegevens van gisteren.
+- [ ] Screenshots van hoogste scores (Counterstrike en Overwatch) op server (in het PHP-project) plaatsen.
+- [ ] Login (POST) en logout implementeren met `email` en `password` uit de `users` tabel.
 - [ ] Dynamisch overzicht uitbreiden op bestaande overzichtspagina (met data uit match_scores, thumbnail en detaillink).
-- [ ] Detailpagina bouwen met grote afbeelding en extra info.
+- [ ] Profielpagina maken met alle scores van de ingelogde gebruiker.
 
-Definition of Done:
-1. Overzicht haalt data uit database.
-2. Klik op een score opent detailpagina.
-3. Geen kapotte afbeeldingen (fallback-afbeelding bij ontbrekend bestand).
-4. Tabblad 2-data staat in `match_scores`.
+## Woensdagmiddag: Minecraft Education
 
-## Woensdagmiddag: MatchScores - Context verzamelen
-
-Doel: contextdata verzamelen voor zoek- en filterfuncties.
-
-Welke data: iedereen vult tabblad 3 (MatchScores - Context) in de sheet met Minecraft Education-data.
+Doel: data verzamelen voor zoek- en filterfuncties.
 
 Taken:
-- [ ] Minecraft Education-sessie uitvoeren.
-- [ ] Meetwaarden noteren: PvP kills, built battle score, bed wars resultaat.
-- [ ] Context invullen: hero_or_vehicle, match_rules, score_type.
-- [ ] Tabblad 3 volledig invullen.
-
-Definition of Done:
-1. Nieuwe contextdata staat volledig in tabblad 3.
-2. Data is klaar voor import op donderdag.
-3. Elk Minecraft-record heeft een duidelijke score_type en points_value.
+- [ ] Minecraft Education-sessie(s) uitvoeren.
+- [ ] Meetwaarden noteren: `PvP kills`, `Build Battle` score, `Bed Wars` resultaat.
+- [ ] Context invullen: `hero_or_vehicle`, `match_rules`, `score_type`.
+- [ ] Formulier 4 invullen voor 1 of meerdere games: 
+    - PvP score: https://forms.office.com/e/WfcEZMXZtP
+    - Build Battle score: https://forms.office.com/e/2Xx6B1n2yB
+    - Bed Wars score: https://forms.office.com/e/vg0U1UWmTT
+- [ ] Screenshots bewaren van hoogste scores
 
 ## Donderdagochtend: Zoeken, filteren en sorteren
 
 Taken:
-- [ ] Data uit tabblad 3 toevoegen aan database.
-- [ ] Filter op game_name bouwen.
-- [ ] Sorteerfunctie op points_value bouwen (asc/desc).
-- [ ] Zoekfunctie op title en description bouwen.
+- [ ] Databasetabel `match_scores` bijwerken met gegevens van gisteren.
+- [ ] Detailpagina. Vanaf de profielpagina moet elke score doorlinken naar een detailpagina die ten minste een grote afbeelding (screenshot score) en alle verdere info bevat.
+- [ ] Filter op `game_name` bouwen.
+- [ ] Sorteerfunctie op `points_value` bouwen (asc/desc).
+- [ ] Zoekfunctie op `title` en `description` bouwen.
 
 Definition of Done:
 1. Filter werkt en geeft correcte resultaten.
@@ -220,8 +199,6 @@ Definition of Done:
 
 Doel: voldoende data verzamelen voor dashboard-statistieken.
 
-Welke data: iedereen vult tabblad 4 (Toernooifinale - Statistieken) in de sheet met GTA-data.
-
 Taken:
 - [ ] GTA (of alternatief spel) spelen.
 - [ ] Modi registreren: deathmatch (meeste kills) of race (tijd).
@@ -229,35 +206,19 @@ Taken:
 - [ ] Win/loss (1 of 0) noteren.
 - [ ] Tijdstempel noteren.
 - [ ] Tabblad 4 invullen.
-- [ ] Tabblad 4-data importeren in `final_matches`.
-
-Definition of Done:
-1. Elke speler heeft minimaal 3 records in tabblad 4.
-2. Win/loss bevat alleen 0 of 1.
-3. Alle records hebben geldige timestamp.
-4. Elk record bevat een score die naar points_value is omgezet.
-5. `final_matches` bevat de geimporteerde finaledata voor het dashboard van vrijdag.
 
 ---
 
 ## Vrijdagochtend: Beveiliging en dashboard
 
 Taken:
-- [ ] Login (POST) en logout implementeren.
-- [ ] Afgeschermde organiser-pagina maken.
-- [ ] Formulier voor handmatige score en screenshot-upload maken.
-- [ ] Dashboard met SQL-statistieken bouwen.
-
-Dashboard-statistieken (verplicht):
-1. Totaal aantal final matches (COUNT).
-2. Gemiddelde points_value (AVG).
-3. Hoogste points_value (MAX).
-4. Winnaar op basis van hoogste gemiddelde score.
-
-Definition of Done:
-1. Niet-ingelogde gebruikers kunnen organiser-pagina niet openen.
-2. Upload accepteert alleen toegestane bestandsformaten.
-3. Dashboard toont actuele cijfers uit final_matches.
+- [ ] Tabel `final_matches` vullen met data van gisteren.
+- [ ] Dashboard met SQL-statistieken bouwen die alleen zichtbaar is voor de rol `organiser`. De volgende statistieken moeten getoond worden:
+    1. Totaal aantal final matches (COUNT).
+    2. Gemiddelde points_value (AVG).
+    3. Hoogste points_value (MAX).
+    4. Winnaar op basis van hoogste gemiddelde score.
+- [ ] Tijd over? Formulier voor handmatige score en screenshot-upload maken.
 
 ## Vrijdagmiddag: Afronding en presentatie
 
@@ -268,60 +229,6 @@ Taken:
 - [ ] Vrijdagfinale draaien met top 4 (halve finales + finale).
 - [ ] Korte demo geven met winnaar uit dashboard.
 - [ ] Side-awards uitreiken (bijv. Most Kills, Best Support, Comeback).
-
-Definition of Done:
-1. 3 pagina's werken goed op mobiel.
-2. Demo bevat login, filter/sort/search, dashboard en publieke leaderboard.
-3. Winnaar wordt onderbouwd met data.
-4. Vrijdagfinale is gespeeld en uitslag staat zichtbaar in de app.
-
----
-
-## 4. Data-uitwisseling
-
-### Tabblad 2: MatchScores - Cijfers (dinsdagmiddag)
-
-Definitie voor dit tabblad:
-1. Per speler per gespeelde match worden 4 regels ingevuld: `kills`, `assists`, `damage`, `healing`.
-3. `player_username` is verplicht voor elke regel.
-
-| player_username | title | game_name | description | score_type | achieved_year | points_value | image_filename |
-|---|---|---|---|---|---|---|---|---|
-| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | kills | 2026 | 22 | ow_jan_match1.png |
-| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | assists | 2026 | 11 | ow_jan_match1.png |
-| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | damage | 2026 | 8450 | ow_jan_match1.png |
-| JantjePro | Overwatch Ranked Match 1 | Overwatch | Teamfight op payload map | healing | 2026 | 1800 | ow_jan_match1.png |
-
-### Tabblad 3: MatchScores - Context (woensdagmiddag)
-
-| title | game_name | description | score_type | points_value | hero_or_vehicle | match_rules | image_filename |
-|---|---|---|---|---|---|---|---|
-| Castle PvP Clash | Minecraft Education | Teamduel in arena | PvP Kills | 14 | Diamond Sword | 10 min / Last team standing | mc_jan_pvp.png |
-| Bed Breaker Finals | Minecraft Education | Snelste bed wars overwinning | BedWars Win | 1 | Team Blue | Best of 3 / No respawn after bed break | mc_lisa_bedwars.png |
-
-### Tabblad 4: Toernooifinale - Statistieken (donderdagmiddag)
-
-| match_id | player_username | game_name | round_number | points_value | win_loss (1/0) | added_at (Tijdstempel) |
-|---|---|---|---|---|---|---|
-| 1 | JantjePro | GTA | 1 | 17 | 1 | 2026-06-11 14:15:00 |
-| 2 | JantjePro | GTA | 2 | 13 | 0 | 2026-06-11 14:45:00 |
-| 3 | JantjePro | GTA | 3 | 19 | 1 | 2026-06-11 15:15:00 |
-
----
-
-## 5. Beoordeling (100 punten)
-
-1. Datamodel en databasekwaliteit: 20
-2. Dynamische pagina's (overzicht en detail): 20
-3. Zoeken, filteren en sorteren: 20
-4. Auth en autorisatie: 20
-5. Dashboard, presentatie en professionele afwerking: 20
-
-Afkeurcriteria:
-1. Geen werkende login/logout.
-2. Geen dynamische data uit database.
-3. Geen werkende filter of zoekfunctie.
-4. Geen dashboardberekening op finaledata.
 
 ---
 
@@ -341,7 +248,7 @@ Opmerking:
 2. Voor niet-numerieke prestaties (zoals built battle) gebruik je een rubric met vaste criteria en een maximale score.
 3. Leg de omzetregel naar `points_value` vast in de About-pagina, zodat de beoordeling transparant blijft.
 
-### Publiek toernooi-opzet en vrijdagfinale
+### Voorstel: Publiek toernooi-opzet en vrijdagfinale
 
 Het publieke toernooi bestaat uit twee delen:
 1. Maandag t/m donderdag: kwalificatie met dagelijkse scores.
