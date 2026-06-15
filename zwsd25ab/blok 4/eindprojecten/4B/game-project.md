@@ -41,6 +41,13 @@ Doel: in 5 dagen een werkende webapp opleveren met:
 
 ---
 
+## Fork en clone
+
+1. Ga naar https://github.com/meester-tom/project-the-grand-arena
+2. Fork het project met defaultinstellingen
+3. Clone het project `git clone <project-name>`
+4. Volg de installatie-instructies uit de readme.md van het project.
+
 ## 2. Datamodel
 
 ### Tabellen
