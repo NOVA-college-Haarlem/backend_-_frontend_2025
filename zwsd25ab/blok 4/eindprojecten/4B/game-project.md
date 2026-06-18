@@ -210,8 +210,9 @@ Taken:
 ## Vrijdagochtend: Beveiliging en dashboard
 
 Taken:
-- [ ] Pagina `final_matches` maken (zie tabeldefinitie bovenaan deze pagina). Maak ook een formulier dat een score kan toevoegen aan de tabel `final_matches`. Let op dat de usernames opgehaald worden uit de tabel `users` (dat is dus _geen_ vrij invoerveld).
-- [ ] Dashboard met SQL-statistieken bouwen die alleen zichtbaar is voor de rol `organiser`. De volgende statistieken moeten getoond worden:
+- [ ] Pagina `final_matches` maken (voer het script `scores-gta.sql` (zie mail) uit om de tabel aan te maken in PhpMyAdmin). 
+- [ ] Maak een formulier dat een score kan toevoegen aan de tabel `final_matches`. Let op dat de usernames opgehaald worden uit de tabel `users` (dat is dus _geen_ vrij invoerveld).
+- [ ] Bouw een dashboard met SQL-statistieken die alleen zichtbaar is voor de rol `organiser`. De volgende statistieken moeten getoond worden:
     1. Totaal aantal final matches (COUNT).
     2. Gemiddelde points_value (AVG).
     3. Hoogste points_value (MAX).
