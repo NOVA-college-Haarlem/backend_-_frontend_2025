@@ -203,7 +203,7 @@ Taken:
 - [ ] Minimaal 3 rondes per speler registreren.
 - [ ] Win/loss (1 of 0) noteren.
 - [ ] Tijdstempel noteren.
-- [ ] Formulier invullen: https://forms.office.com/e/[LINK_TOEVOEGEN]
+- [ ] Formulier invullen: https://forms.office.com/e/pNyw9p7L3X
 
 ---
 
