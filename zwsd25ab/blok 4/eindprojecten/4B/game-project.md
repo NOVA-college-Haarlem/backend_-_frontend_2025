@@ -210,67 +210,14 @@ Taken:
 ## Vrijdagochtend: Beveiliging en dashboard
 
 Taken:
-- [ ] Tabel `final_matches` vullen met data van gisteren.
+- [ ] Pagina `final_matches` maken (zie tabeldefinitie bovenaan deze pagina). Maak ook een formulier dat een score kan toevoegen aan de tabel `final_matches`. Let op dat de usernames opgehaald worden uit de tabel `users` (dat is dus _geen_ vrij invoerveld).
 - [ ] Dashboard met SQL-statistieken bouwen die alleen zichtbaar is voor de rol `organiser`. De volgende statistieken moeten getoond worden:
     1. Totaal aantal final matches (COUNT).
     2. Gemiddelde points_value (AVG).
     3. Hoogste points_value (MAX).
     4. Winnaar op basis van hoogste gemiddelde score.
-- [ ] Tijd over? Formulier voor handmatige score en screenshot-upload maken.
 
-## Vrijdagmiddag: Afronding en presentatie
+## Vrijdagmiddag: Finale
 
-Taken:
-- [ ] About-pagina met toernooiregels maken.
-- [ ] Mobiel testen op minimaal 3 pagina's: home, overzicht, detail.
-- [ ] Publieke leaderboard- en finaleweergave klaarzetten.
-- [ ] Vrijdagfinale draaien met top 4 (halve finales + finale).
-- [ ] Korte demo geven met winnaar uit dashboard.
-- [ ] Side-awards uitreiken (bijv. Most Kills, Best Support, Comeback).
-
+Halve finale en Finale!
 ---
-
-## Extra toelichting
-
-### Score-check: kwantificeerbaarheid per game
-
-| Game | Opgegeven score(s) | Kwantificeerbaar? | Advies voor points_value | Extra scores die je ook kunt bijhouden |
-|---|---|---|---|---|
-| Counterstrike | Meeste kills | Ja | Gebruik kills direct als points_value | deaths, kill/death ratio, headshots, winst/verlies per ronde |
-| Overwatch | kills, assists, damage, healing | Ja | Sla elke metric op als aparte record met eigen score_type | objective time, eliminations, accuracy %, deaths |
-| Minecraft Education | PvP kills, built battle, bed wars | Gedeeltelijk | PvP kills: direct. Built battle: rubric-score (bijv. 1-10). Bed wars: 1 voor winst, 0 voor verlies + tijd tot winst | blocks placed, deaths, resources verzameld, survival time |
-| GTA of alternatief | deathmatch kills, race tijd | Ja | Deathmatch: kills direct. Race: tijd omzetten naar punten (bijv. sneller = hogere points_value) | laps completed, crashes, clean lap bonus, positie |
-
-Opmerking:
-1. Alles is kwantificeerbaar als je per score_type vooraf 1 vaste meetregel afspreekt.
-2. Voor niet-numerieke prestaties (zoals built battle) gebruik je een rubric met vaste criteria en een maximale score.
-3. Leg de omzetregel naar `points_value` vast in de About-pagina, zodat de beoordeling transparant blijft.
-
-### Voorstel: Publiek toernooi-opzet en vrijdagfinale
-
-Het publieke toernooi bestaat uit twee delen:
-1. Maandag t/m donderdag: kwalificatie met dagelijkse scores.
-2. Vrijdagmiddag: live finaleronde met publiek.
-
-Aanpak:
-1. Alle scores van maandag t/m donderdag tellen mee voor een weekklassement.
-2. De top 4 spelers op basis van gemiddelde `points_value` plaatsen zich voor de vrijdagfinale.
-3. De vrijdagfinale wordt gespeeld als halve finales + finale.
-
-Scoremodel (advies):
-1. Weekscore: 70% (op basis van alle kwalificatiedata).
-2. Finalescore: 30% (op basis van vrijdagmatches).
-3. Eindwinnaar: hoogste totaalscore na weging.
-
-Publieke zichtbaarheid in de webapp:
-1. Open leaderboard-pagina (alleen lezen, geen login nodig).
-2. Speelschema met tijdsloten en status: gepland, bezig, afgerond.
-3. Finale-pagina met live tussenstanden en winnaar.
-4. Hall of Fame-sectie met winnaar en side-awards.
-
-Vrijdagmiddag-draaiboek (60-90 minuten):
-1. 10 min: opening, uitleg format, tonen top 4.
-2. 20 min: halve finale 1 en 2.
-3. 20 min: finale.
-4. 10 min: dashboardresultaten en side-awards.
-5. 10 min: afsluiting, winnaar, korte demo van de app.
