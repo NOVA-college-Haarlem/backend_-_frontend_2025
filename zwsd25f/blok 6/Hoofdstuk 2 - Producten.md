@@ -1,6 +1,6 @@
 ### CRUD uitbreiden: Producten
 
-#### opdracht 12: Product model maken
+#### opdracht 1: Product model maken
 
 1. Om producten uit de database te halen, maken we nu het model Product.
    ```bash
@@ -17,7 +17,7 @@
    }
    ```
 
-#### opdracht 13: Product migration maken
+#### opdracht 2: Product migration maken
 
 1. Maak een migration voor de products tabel.
    ```bash
@@ -42,7 +42,7 @@
    php artisan migrate  
    ```
 
-#### opdracht 14: Product seeder maken
+#### opdracht 3: Product seeder maken
 
 1. Maak een seeder aan voor producten:
    ```bash
@@ -100,7 +100,7 @@
    ```
 Als je nu `database.sqlite` opent en de products tabel bekijkt, zie je dat de 3 spellen zijn toegevoegd.
 
-#### opdracht 15: Product controller maken
+#### opdracht 4: Product controller maken
 
 1. Maak de controller aan:
    ```bash
@@ -118,14 +118,14 @@ Als je nu `database.sqlite` opent en de products tabel bekijkt, zie je dat de 3 
    }
    ```
 
-#### opdracht 16: Product route maken
+#### opdracht 5: Product route maken
 
 1. Voeg een route toe in `routes/web.php`:
    ```php
    Route::get('/products', [ProductController::class, 'index']);
    ```
 
-#### opdracht 17: Product view maken
+#### opdracht 6: Product view maken
 
 1. Maak de product view aan met het volgende artisan commando:
 ```bash
@@ -158,7 +158,7 @@ php artisan make:view products.index
    </html>
    ```
 
-#### opdracht 18: Test je product-overzicht
+#### opdracht 7: Test je product-overzicht
 
 1. Open in de browser: https://spelshop.test/products
 2. Controleer of je producten ziet met hun categorie.

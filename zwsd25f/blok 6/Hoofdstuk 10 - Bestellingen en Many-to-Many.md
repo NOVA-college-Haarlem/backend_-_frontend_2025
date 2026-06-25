@@ -1,9 +1,9 @@
-# Hoofdstuk 6 — Bestellingen en Many-to-Many
+# Hoofdstuk 10 — Bestellingen en Many-to-Many
 
 In dit hoofdstuk bouwen we de bestelfunctionaliteit van de spelshop. Een bestelling kan meerdere producten bevatten, en een product kan in meerdere bestellingen voorkomen. Dit is een many-to-many relatie die via de `orderrows`-pivot tabel loopt.
 
 ## Inhoudsopgave
-- [Hoofdstuk 6 — Bestellingen en Many-to-Many](#hoofdstuk-6--bestellingen-en-many-to-many)
+- [Hoofdstuk 10 — Bestellingen en Many-to-Many](#hoofdstuk-10--bestellingen-en-many-to-many)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
   - [Opdracht 1: De datastructuur begrijpen](#opdracht-1-de-datastructuur-begrijpen)

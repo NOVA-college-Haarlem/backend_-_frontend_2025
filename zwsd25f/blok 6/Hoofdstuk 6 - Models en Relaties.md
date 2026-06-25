@@ -1,26 +1,26 @@
-# Hoofdstuk 2 - Nieuwe entiteiten toevoegen
+# Hoofdstuk 6 - Nieuwe entiteiten toevoegen
 
 We breiden de spelshop stap voor stap uit met vier nieuwe entiteiten: **Price**, **Review**, **Order** en **Role**. Voor elke entiteit doorloop je telkens dezelfde stappen: model → migration → seeder → controller → route → view.  
 ![ERD](./images/erd.png)
 
 ## Inhoudsopgave
-- [Hoofdstuk 2 - Nieuwe entiteiten toevoegen](#hoofdstuk-2---nieuwe-entiteiten-toevoegen)
+- [Hoofdstuk 6 - Nieuwe entiteiten toevoegen](#hoofdstuk-6---nieuwe-entiteiten-toevoegen)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
   - [Benodigdheden](#benodigdheden)
   - [Deel 1 – Price (gezamenlijk)](#deel-1--price-gezamenlijk)
-    - [Opdracht 34: Price model maken](#opdracht-34-price-model-maken)
-    - [Opdracht 35: Price migration invullen](#opdracht-35-price-migration-invullen)
-    - [Opdracht 36: Price seeder maken](#opdracht-36-price-seeder-maken)
-    - [Opdracht 37: PriceController maken](#opdracht-37-pricecontroller-maken)
-    - [Opdracht 38: Route toevoegen](#opdracht-38-route-toevoegen)
-    - [Opdracht 39: View maken](#opdracht-39-view-maken)
+    - [Opdracht 1: Price model maken](#opdracht-1-price-model-maken)
+    - [Opdracht 2: Price migration invullen](#opdracht-2-price-migration-invullen)
+    - [Opdracht 3: Price seeder maken](#opdracht-3-price-seeder-maken)
+    - [Opdracht 4: PriceController maken](#opdracht-4-pricecontroller-maken)
+    - [Opdracht 5: Route toevoegen](#opdracht-5-route-toevoegen)
+    - [Opdracht 6: View maken](#opdracht-6-view-maken)
   - [Deel 2 – Review (zelfstandig)](#deel-2--review-zelfstandig)
-    - [Opdracht 40: Review – alle stappen](#opdracht-40-review--alle-stappen)
+    - [Opdracht 7: Review – alle stappen](#opdracht-7-review--alle-stappen)
   - [Deel 3 – Order (zelfstandig)](#deel-3--order-zelfstandig)
-    - [Opdracht 41: Order – alle stappen](#opdracht-41-order--alle-stappen)
+    - [Opdracht 8: Order – alle stappen](#opdracht-8-order--alle-stappen)
   - [Deel 4 – Role (zelfstandig)](#deel-4--role-zelfstandig)
-    - [Opdracht 42: Role – alle stappen](#opdracht-42-role--alle-stappen)
+    - [Opdracht 9: Role – alle stappen](#opdracht-9-role--alle-stappen)
   - [Afronding / Reflectie](#afronding--reflectie)
 
 ## Leerdoelen
@@ -30,7 +30,7 @@ We breiden de spelshop stap voor stap uit met vier nieuwe entiteiten: **Price**,
 - Zelfstandig een volledige entiteit opbouwen aan de hand van het ERD.
 
 ## Benodigdheden
-- Werkend spelshop-project uit Hoofdstuk 1 t/m 1e.
+- Werkend spelshop-project uit Hoofdstuk 1 t/m 5.
 - Categories en Products zijn al aanwezig met model, migration, seeder, controller, routes en views.
 - Database connectie actief; `php artisan migrate:fresh --seed` mag vrij gebruikt worden.
 
@@ -42,7 +42,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 34: Price model maken
+#### Opdracht 1: Price model maken
 
 1. Genereer het model:
    ```bash
@@ -76,7 +76,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 35: Price migration invullen
+#### Opdracht 2: Price migration invullen
 
 1. Open de nieuw aangemaakte migration in `database/migrations/` (de naam eindigt op `_create_prices_table.php`).
 2. Vul de `up`-methode als volgt in:
@@ -105,7 +105,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 36: Price seeder maken
+#### Opdracht 3: Price seeder maken
 
 1. Maak een seeder aan:
    ```bash
@@ -181,7 +181,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 37: PriceController maken
+#### Opdracht 4: PriceController maken
 
 1. Maak de controller aan:
    ```bash
@@ -213,7 +213,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 38: Route toevoegen
+#### Opdracht 5: Route toevoegen
 
 1. Open `routes/web.php`.
 2. Voeg de route toe:
@@ -232,7 +232,7 @@ Een product kan meerdere prijzen hebben (bijhouden van prijsgeschiedenis). We bo
 
 ---
 
-#### Opdracht 39: View maken
+#### Opdracht 6: View maken
 
 1. Maak de map `resources/views/prices/` aan (of draai het commando `php artisan make:view prices.index`).
 2. Maak daarin het bestand `index.blade.php` met de volgende inhoud:
@@ -285,7 +285,7 @@ Je doorloopt nu dezelfde stappen zelfstandig voor **Review**. Gebruik Deel 1 als
 
 ---
 
-#### Opdracht 40: Review – alle stappen
+#### Opdracht 7: Review – alle stappen
 
 Gegevens volgens het ERD:
 | Veld | Type | Opmerking |
@@ -340,7 +340,7 @@ Orders zijn iets complexer: een order bevat meerdere producten via een tussentab
 
 ---
 
-#### Opdracht 41: Order – alle stappen
+#### Opdracht 8: Order – alle stappen
 
 Gegevens voor de `orders`-tabel:
 | Veld | Type | Opmerking |
@@ -414,7 +414,7 @@ Roles zijn eenvoudig: een rol heeft alleen een naam. De koppeling naar users ver
 
 ---
 
-#### Opdracht 42: Role – alle stappen
+#### Opdracht 9: Role – alle stappen
 
 Gegevens voor de `roles`-tabel:
 | Veld | Type | Opmerking |
@@ -491,5 +491,5 @@ Je hebt voor vier entiteiten telkens dezelfde stappen doorlopen:
 | Route | Koppel een URL aan de controllermethode |
 | View | Toon de data overzichtelijk in een Blade-template |
 
-**Volgende stap:** in Hoofdstuk 3 voeg je CRUD-functionaliteit toe (create, update, delete) en werk je met formulieren en validatie.
+**Volgende stap:** in Hoofdstuk 7 voeg je CRUD-functionaliteit toe (create, update, delete) en werk je met formulieren en validatie.
 

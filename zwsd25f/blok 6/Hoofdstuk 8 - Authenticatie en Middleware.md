@@ -1,4 +1,4 @@
-# Hoofdstuk 4 — Authenticatie en Middleware
+# Hoofdstuk 8 — Authenticatie en Middleware
 
 In dit hoofdstuk leer je hoe je bepaalt wie mag inloggen en wie welke acties mag uitvoeren in je webapp.
 
@@ -27,7 +27,7 @@ Kort samengevat:
 - **Routes + middleware** bepalen wie welke pagina/methode mag gebruiken.
 
 ## Inhoudsopgave
-- [Hoofdstuk 4 — Authenticatie en Middleware](#hoofdstuk-4--authenticatie-en-middleware)
+- [Hoofdstuk 8 — Authenticatie en Middleware](#hoofdstuk-8--authenticatie-en-middleware)
   - [Inhoudsopgave](#inhoudsopgave)
     - [Waar zie je dit terug in je project?](#waar-zie-je-dit-terug-in-je-project)
   - [Leerdoelen](#leerdoelen)
@@ -230,7 +230,7 @@ Nu we weten wie er is ingelogd, kunnen we de gebruikersinformatie tonen in views
         <h4>Schrijf een review</h4>
         <p>Je bent ingelogd als <strong>{{ Auth::user()->name }}</strong>.</p>
         <a href="#" class="btn btn-primary">Review schrijven</a>
-        {{-- In Hoofdstuk 5 bouwen we dit verder uit --}}
+        {{-- In Hoofdstuk 9 bouwen we dit verder uit --}}
     </div>
 @else
     <div class="mt-4 alert alert-info">
@@ -268,9 +268,9 @@ In het ERD hebben we een `roles`-tabel en een `role_id` op de `users`-tabel. We 
 
 > **Belangrijk**: `Role` hoort niet bij Laravel Breeze. Dit model en deze tabel maak je zelf op basis van je eigen ERD.
 
-1. Heb je Hoofdstuk 2 gedaan? Gebruik dan diezelfde modeldefinitie en migrations. Je hoeft `Role` niet opnieuw aan te maken.
+1. Heb je Hoofdstuk 6 gedaan? Gebruik dan diezelfde modeldefinitie en migrations. Je hoeft `Role` niet opnieuw aan te maken.
 
-2. Controleer dat je modelrelaties uit Hoofdstuk 2 aanwezig zijn:
+2. Controleer dat je modelrelaties uit Hoofdstuk 6 aanwezig zijn:
    ```php
    // app/Models/Role.php
    protected $fillable = ['name'];

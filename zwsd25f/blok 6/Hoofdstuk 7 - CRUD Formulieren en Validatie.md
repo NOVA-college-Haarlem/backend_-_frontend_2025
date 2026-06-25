@@ -1,9 +1,9 @@
-# Hoofdstuk 3 - CRUD Formulieren en Validatie
+# Hoofdstuk 7 - CRUD Formulieren en Validatie
 
 In dit hoofdstuk bouwen we de volledige CRUD-functionaliteit voor producten. We maken formulieren om producten toe te voegen, te bewerken en te verwijderen. Daarnaast leren we hoe we gebruikersinvoer valideren en foutmeldingen tonen.
 
 ## Inhoudsopgave
-- [Hoofdstuk 3 - CRUD Formulieren en Validatie](#hoofdstuk-3---crud-formulieren-en-validatie)
+- [Hoofdstuk 7 - CRUD Formulieren en Validatie](#hoofdstuk-7---crud-formulieren-en-validatie)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
     - [Resource controller (overzicht)](#resource-controller-overzicht)

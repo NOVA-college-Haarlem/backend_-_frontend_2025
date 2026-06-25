@@ -1,9 +1,9 @@
-# Hoofdstuk 5 — Reviews en Autorisatie
+# Hoofdstuk 9 — Reviews en Autorisatie
 
 In dit hoofdstuk bouwen we de reviewfunctionaliteit. Ingelogde klanten kunnen een review schrijven bij een product. We passen autorisatie toe zodat alleen de schrijver zijn eigen review kan verwijderen, en admins alle reviews kunnen beheren.
 
 ## Inhoudsopgave
-- [Hoofdstuk 5 — Reviews en Autorisatie](#hoofdstuk-5--reviews-en-autorisatie)
+- [Hoofdstuk 9 — Reviews en Autorisatie](#hoofdstuk-9--reviews-en-autorisatie)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
   - [Opdracht 1: Review model verkennen](#opdracht-1-review-model-verkennen)
@@ -33,7 +33,7 @@ In dit hoofdstuk bouwen we de reviewfunctionaliteit. Ingelogde klanten kunnen ee
 
 ## Opdracht 1: Review model verkennen
 
-In Hoofdstuk 2 hebben we het `Review`-model al aangemaakt met de bijbehorende migration. Laten we de huidige staat controleren.
+In Hoofdstuk 6 hebben we het `Review`-model al aangemaakt met de bijbehorende migration. Laten we de huidige staat controleren.
 
 1. Open `app/Models/Review.php`. Controleer of de volgende zaken aanwezig zijn:
    ```php
@@ -64,7 +64,7 @@ In Hoofdstuk 2 hebben we het `Review`-model al aangemaakt met de bijbehorende mi
    }
    ```
 
-Als iets ontbreekt, voeg het dan toe op basis van Hoofdstuk 2.
+Als iets ontbreekt, voeg het dan toe op basis van Hoofdstuk 6.
 
 ---
 
@@ -106,7 +106,7 @@ use Illuminate\Support\Facades\Auth;
 
 ## Opdracht 3: Review formulier in de product-show view
 
-We bouwen het formulier uit dat we in Hoofdstuk 4 al klaargezet hadden.
+We bouwen het formulier uit dat we in Hoofdstuk 8 al klaargezet hadden.
 
 Open `resources/views/products/show.blade.php` en vervang het `@auth`-blok onderaan door:
 

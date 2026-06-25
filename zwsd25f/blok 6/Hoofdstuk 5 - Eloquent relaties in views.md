@@ -20,7 +20,7 @@ In dit hoofdstuk gaan we een stap verder: we koppelen modellen met Eloquent rela
 
 ---
 
-#### Opdracht 26: Relaties toevoegen aan de models
+#### Opdracht 1: Relaties toevoegen aan de models
 
 We beginnen met de relatie tussen categorieën en producten. Een product hoort bij één categorie. Een categorie kan meerdere producten hebben.
 
@@ -56,7 +56,7 @@ We beginnen met de relatie tussen categorieën en producten. Een product hoort b
 
 ---
 
-#### Opdracht 27: Relaties testen met Tinker
+#### Opdracht 2: Relaties testen met Tinker
 
 Voordat we de views aanpassen, testen we eerst in Tinker of de relaties goed werken.
 
@@ -114,7 +114,7 @@ Beantwoord kort:
 
 ---
 
-#### Opdracht 28: Relationele data tonen op de productpagina
+#### Opdracht 3: Relationele data tonen op de productpagina
 
 Nu Laravel de relatie kent, kunnen we in de product-detailpagina ook gegevens van de categorie tonen.
 
@@ -167,7 +167,7 @@ public function show($id)
 
 ---
 
-#### Opdracht 29: Producten tonen bij een categorie
+#### Opdracht 4: Producten tonen bij een categorie
 
 Nu doen we ook de omgekeerde richting: op de categorie-detailpagina tonen we alle producten uit die categorie.
 
@@ -230,7 +230,7 @@ public function show($id)
 
 ---
 
-#### Opdracht 30: Eager loading op de productoverzichtspagina
+#### Opdracht 5: Eager loading op de productoverzichtspagina
 
 Wanneer je meerdere producten toont en per product ook de categorie laat zien, wil je die categorieën slim vooraf laden.
 
@@ -268,7 +268,7 @@ laad je de categorieën in één keer mee. Dat is sneller en netter.
 
 ---
 
-#### Opdracht 31: Extra oefening met gerelateerde producten
+#### Opdracht 6: Extra oefening met gerelateerde producten
 
 Als extra oefening kun je op de product-detailpagina ook andere producten uit dezelfde categorie tonen.
 
@@ -313,7 +313,7 @@ Als extra oefening kun je op de product-detailpagina ook andere producten uit de
 
 ---
 
-#### Opdracht 32: Test en controle
+#### Opdracht 7: Test en controle
 
 1. Controleer of de product-detailpagina de juiste categorienaam toont.
 2. Controleer of de categorie-detailpagina een lijst met producten toont.
@@ -329,11 +329,11 @@ Als alles goed werkt, controleer dan deze pagina's in de browser:
 
 ---
 
-#### Opdracht 33: Commit
+#### Opdracht 8: Commit
 
 ```bash
 git add .
-git commit -m "Hoofdstuk 1e: eloquent relaties in views"
+git commit -m "Hoofdstuk 5: eloquent relaties in views"
 ```
 
 ---

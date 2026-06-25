@@ -1,9 +1,9 @@
-# Hoofdstuk 7 — Herhaling en Verdieping
+# Hoofdstuk 11 — Herhaling en Verdieping
 
 In dit laatste hoofdstuk consolideren we alles wat we hebben geleerd. We refactoren onze validatielogica naar FormRequest classes, voegen paginatie en filtering toe en bouwen zelfstandige oefeningen als voorbereiding op het eindproject.
 
 ## Inhoudsopgave
-- [Hoofdstuk 7 — Herhaling en Verdieping](#hoofdstuk-7--herhaling-en-verdieping)
+- [Hoofdstuk 11 — Herhaling en Verdieping](#hoofdstuk-11--herhaling-en-verdieping)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Leerdoelen](#leerdoelen)
   - [Opdracht 1: FormRequest classes](#opdracht-1-formrequest-classes)
@@ -269,7 +269,7 @@ In Hoofdstuk 1 hebben we een basis `CategoryController` aangemaakt met alleen ee
 
 ## Opdracht 3: Zoekfunctie uitbreiden
 
-De zoekfunctie uit Hoofdstuk 3 filtert alleen op naam. We breiden hem uit.
+De zoekfunctie uit Hoofdstuk 7 filtert alleen op naam. We breiden hem uit.
 
 1. Voeg sortering toe in de `index`-methode van `ProductController`:
    ```php

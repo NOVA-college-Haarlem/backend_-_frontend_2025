@@ -14,11 +14,11 @@ In dit hoofdstuk maken we **detailpagina's**. Een detailpagina toont alle inform
 | **`findOrFail($id)`** | Laravel zoekt een item op ID. Als het niet bestaat, toont het automatisch een 404-foutpagina |
 | **`show()` methode** | De controller-methode die één enkel item teruggeeft (in plaats van een hele lijst) |
 
-> 💡 **Patroon dat we volgen:** Elke nieuwe pagina in Laravel maak je altijd in dezelfde volgorde: **Route → Controller → View**. Dit is hetzelfde patroon als in hoofdstuk 1 en 1b.
+> 💡 **Patroon dat we volgen:** Elke nieuwe pagina in Laravel maak je altijd in dezelfde volgorde: **Route → Controller → View**. Dit is hetzelfde patroon als in hoofdstuk 1 en 2.
 
 ---
 
-#### Opdracht 19: Detailpagina voor categorieën
+#### Opdracht 1: Detailpagina voor categorieën
 
 We bouwen de detailpagina stap voor stap op. Na elke stap lees je wat het resultaat zou moeten zijn.
 
@@ -231,7 +231,7 @@ git commit -m "Detailpagina categorieën toegevoegd"
 
 ---
 
-#### Opdracht 20: Zelf doen — Detailpagina voor producten
+#### Opdracht 2: Zelf doen — Detailpagina voor producten
 
 Je hebt net stap voor stap een detailpagina voor categorieën gemaakt. Nu ga je **hetzelfde doen voor producten**. Je krijgt een stappenplan, maar de code schrijf je zelf.
 
@@ -277,7 +277,7 @@ Je hebt net stap voor stap een detailpagina voor categorieën gemaakt. Nu ga je 
    - De categorie waar het product bij hoort (gebruik `$product->category->name`)
    - Een "← Terug naar alle producten" link
 
-> 💡 **Hint voor de categorie:** In hoofdstuk 1b heb je al `$product->category->name` gebruikt in de index-view. Gebruik dezelfde aanpak hier.
+> 💡 **Hint voor de categorie:** In hoofdstuk 2 heb je al `$product->category->name` gebruikt in de index-view. Gebruik dezelfde aanpak hier.
 
 > ✅ **Check:** Test `https://spelshop.test/products/1`. Je ziet de productdetails.
 

@@ -1,6 +1,6 @@
 ### Layout files
 
-In hoofdstuk 1 heb je de basis van Laravel geleerd met een overzicht van categorieen. In 1b heb je dezelfde MVC-stappen herhaald voor producten. In 1c heb je detailpagina's toegevoegd.
+In hoofdstuk 1 heb je de basis van Laravel geleerd met een overzicht van categorieen. In 2 heb je dezelfde MVC-stappen herhaald voor producten. In 3 heb je detailpagina's toegevoegd.
 
 In dit hoofdstuk maken we de views netter en slimmer met een gedeelde layout. Zo hoeven we header, footer en HTML-structuur niet steeds opnieuw te schrijven.
 
@@ -19,7 +19,7 @@ In dit hoofdstuk maken we de views netter en slimmer met een gedeelde layout. Zo
 
 ---
 
-#### Opdracht 21: Gedeelde layout aanmaken
+#### Opdracht 1: Gedeelde layout aanmaken
 
 We maken eerst een centrale layout met een header, navigatie, content-gebied en footer.
 
@@ -72,7 +72,7 @@ We maken eerst een centrale layout met een header, navigatie, content-gebied en 
 
 ---
 
-#### Opdracht 22: Bestaande views laten erven van de layout
+#### Opdracht 2: Bestaande views laten erven van de layout
 
 Nu zetten we bestaande views om, zodat ze dezelfde header en footer delen.
 
@@ -125,7 +125,7 @@ Nu zetten we bestaande views om, zodat ze dezelfde header en footer delen.
 
 ---
 
-#### Opdracht 23: Props vs attributes + merge
+#### Opdracht 3: Props vs attributes + merge
 
 Nu maken we een tweede component om het verschil tussen props en attributes duidelijk te zien.
 
@@ -176,7 +176,7 @@ Resultaat voor class:
 
 ---
 
-#### Opdracht 24: Test en controle
+#### Opdracht 4: Test en controle
 
 1. Controleer alle pagina's opnieuw in de browser.
 2. Bekijk in de browser devtools of de classes correct gemerged zijn op het panel element.
@@ -185,7 +185,7 @@ Resultaat voor class:
 
 ---
 
-#### Opdracht 25: Commit
+#### Opdracht 5: Commit
 
 ```bash
 git add .

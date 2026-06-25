@@ -36,7 +36,6 @@ Hierbij kunnen gebruikers:
         - [opdracht 8.1: Methode aanpassen](#opdracht-81-methode-aanpassen)
       - [opdracht 9: Route maken](#opdracht-9-route-maken)
       - [opdracht 10: View maken](#opdracht-10-view-maken)
-      - [opdracht 11: Test je code](#opdracht-11-test-je-code)
 
 
 ## Hoofdstuk 1 - Project Setup en Basis Functionaliteit
