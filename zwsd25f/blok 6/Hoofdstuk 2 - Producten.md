@@ -1,4 +1,15 @@
-### CRUD uitbreiden: Producten
+# Hoofdstuk 2 - CRUD uitbreiden: Producten
+
+## Inhoudsopgave
+- [Hoofdstuk 2 - CRUD uitbreiden: Producten](#hoofdstuk-2---crud-uitbreiden-producten)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Opdracht 1: Product model maken](#opdracht-1-product-model-maken)
+  - [Opdracht 2: Product migration maken](#opdracht-2-product-migration-maken)
+  - [Opdracht 3: Product seeder maken](#opdracht-3-product-seeder-maken)
+  - [Opdracht 4: Product controller maken](#opdracht-4-product-controller-maken)
+  - [Opdracht 5: Product route maken](#opdracht-5-product-route-maken)
+  - [Opdracht 6: Product view maken](#opdracht-6-product-view-maken)
+  - [Opdracht 7: Test je product-overzicht](#opdracht-7-test-je-product-overzicht)
 
 #### opdracht 1: Product model maken
 

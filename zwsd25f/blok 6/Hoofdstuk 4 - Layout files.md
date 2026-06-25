@@ -1,8 +1,20 @@
-### Layout files
+# Hoofdstuk 4 - Layout files
 
 In hoofdstuk 1 heb je de basis van Laravel geleerd met een overzicht van categorieen. In 2 heb je dezelfde MVC-stappen herhaald voor producten. In 3 heb je detailpagina's toegevoegd.
 
 In dit hoofdstuk maken we de views netter en slimmer met een gedeelde layout. Zo hoeven we header, footer en HTML-structuur niet steeds opnieuw te schrijven.
+
+
+## Inhoudsopgave
+- [Hoofdstuk 4 - Layout files](#hoofdstuk-4---layout-files)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Wat ga je leren?](#wat-ga-je-leren)
+  - [Opdracht 1: Gedeelde layout aanmaken](#opdracht-1-gedeelde-layout-aanmaken)
+  - [Opdracht 2: Bestaande views laten erven van de layout](#opdracht-2-bestaande-views-laten-erven-van-de-layout)
+  - [Opdracht 3: Props vs attributes + merge](#opdracht-3-props-vs-attributes--merge)
+  - [Opdracht 4: Test en controle](#opdracht-4-test-en-controle)
+  - [Opdracht 5: Commit](#opdracht-5-commit)
+  - [Terugblik: wat heb je geleerd?](#terugblik-wat-heb-je-geleerd)
 
 ---
 

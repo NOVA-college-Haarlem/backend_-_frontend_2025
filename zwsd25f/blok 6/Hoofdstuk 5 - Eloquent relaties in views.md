@@ -1,8 +1,24 @@
-### Eloquent relaties in views
+# Hoofdstuk 5 - Eloquent relaties in views
 
 In de vorige hoofdstukken heb je categorieën en producten opgebouwd, detailpagina's gemaakt en je views netter gemaakt met een layout en componenten.
 
 In dit hoofdstuk gaan we een stap verder: we koppelen modellen met Eloquent relaties en tonen die relationele data in je views. We werken hier met een 1-op-meer-relatie: een product hoort bij één categorie en een categorie kan meerdere producten hebben.
+
+
+## Inhoudsopgave
+- [Hoofdstuk 5 - Eloquent relaties in views](#hoofdstuk-5---eloquent-relaties-in-views)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Wat ga je leren?](#wat-ga-je-leren)
+  - [Opdracht 1: Relaties toevoegen aan de models](#opdracht-1-relaties-toevoegen-aan-de-models)
+  - [Opdracht 2: Relaties testen met Tinker](#opdracht-2-relaties-testen-met-tinker)
+  - [Opdracht 3: Relationele data tonen op de productpagina](#opdracht-3-relationele-data-tonen-op-de-productpagina)
+  - [Opdracht 4: Producten tonen bij een categorie](#opdracht-4-producten-tonen-bij-een-categorie)
+  - [Opdracht 5: Eager loading op de productoverzichtspagina](#opdracht-5-eager-loading-op-de-productoverzichtspagina)
+  - [Opdracht 6: Extra oefening met gerelateerde producten](#opdracht-6-extra-oefening-met-gerelateerde-producten)
+  - [Opdracht 7: Test en controle](#opdracht-7-test-en-controle)
+  - [Opdracht 8: Commit](#opdracht-8-commit)
+  - [Terugblik: wat heb je geleerd?](#terugblik-wat-heb-je-geleerd)
+  - [Vooruitblik](#vooruitblik)
 
 ---
 

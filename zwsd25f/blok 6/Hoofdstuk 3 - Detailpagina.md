@@ -1,8 +1,17 @@
-### CRUD uitbreiden: Detailpagina's
+# Hoofdstuk 3 - CRUD uitbreiden: Detailpagina's
 
 Je hebt nu twee lijstpagina's: een voor categorieën en een voor producten. Maar als je op een categorie of product klikt, gebeurt er nog niets.
 
 In dit hoofdstuk maken we **detailpagina's**. Een detailpagina toont alle informatie van **één enkel item**. Denk aan een webshop waarbij je op een product klikt en dan de volledige beschrijving ziet.
+
+
+## Inhoudsopgave
+- [Hoofdstuk 3 - CRUD uitbreiden: Detailpagina's](#hoofdstuk-3---crud-uitbreiden-detailpaginas)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Wat ga je leren?](#wat-ga-je-leren)
+  - [Opdracht 1: Detailpagina voor categorieën](#opdracht-1-detailpagina-voor-categorieën)
+  - [Opdracht 2: Zelf doen — Detailpagina voor producten](#opdracht-2-zelf-doen--detailpagina-voor-producten)
+  - [Terugblik: wat heb je geleerd?](#terugblik-wat-heb-je-geleerd)
 
 ---
 
